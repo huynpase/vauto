@@ -1,0 +1,95 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D7EB9037-B879-4721-A74E-E913D45A2448}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Contract</RootNamespace>
+    <AssemblyName>Vibz.Contract</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Common\IError.cs" />
+    <Compile Include="Common\ISynchronize.cs" />
+    <Compile Include="Data\DataExportMode.cs" />
+    <Compile Include="Data\ExternalData.cs" />
+    <Compile Include="Data\DataCollection.cs" />
+    <Compile Include="Data\IDataProcessor.cs" />
+    <Compile Include="Data\Source\ISource.cs" />
+    <Compile Include="Data\ParameterSet.cs" />
+    <Compile Include="Data\Source\SourceType.cs" />
+    <Compile Include="Data\Source\TextFile.cs" />
+    <Compile Include="Data\DataTable.cs" />
+    <Compile Include="Data\DataType.cs" />
+    <Compile Include="Data\IData.cs" />
+    <Compile Include="Data\KeyValueSet.cs" />
+    <Compile Include="Data\Text.cs" />
+    <Compile Include="Data\TextArray.cs" />
+    <Compile Include="Data\DataHandler.cs" />
+    <Compile Include="Data\Parameter.cs" />
+    <Compile Include="Data\Variable.cs" />
+    <Compile Include="FunctionType.cs" />
+    <Compile Include="IAction.cs" />
+    <Compile Include="IAssert.cs" />
+    <Compile Include="ICompile.cs" />
+    <Compile Include="ICondition.cs" />
+    <Compile Include="IFetch.cs" />
+    <Compile Include="IInstruction.cs" />
+    <Compile Include="IMacroFunction.cs" />
+    <Compile Include="IMacroVariable.cs" />
+    <Compile Include="InstructionValueMap.cs" />
+    <Compile Include="Macro\CommonMacroVariables.cs" />
+    <Compile Include="Macro\IMacroManager.cs" />
+    <Compile Include="Macro\MacroParser.cs" />
+    <Compile Include="TypeInfo.cs" />
+    <Compile Include="InstructionBase.cs" />
+    <Compile Include="IReport.cs" />
+    <Compile Include="Log\LogElement.cs" />
+    <Compile Include="Log\LogException.cs" />
+    <Compile Include="Log\LogQueue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibz\Vibz.csproj">
+      <Project>{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}</Project>
+      <Name>Vibz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

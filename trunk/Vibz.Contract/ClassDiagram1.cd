@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="Vibz.Contract.Data.DataCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\DataCollection.cs</FileName>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAAAAAAAAQgAAgABAIAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.DataHandler" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\DataHandler.cs</FileName>
+      <HashCode>AAAAgAQAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Data.DataTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>Data\DataTable.cs</FileName>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAgAAAAAAAAAAAQAgAAAAgAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.KeyValueSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>Data\KeyValueSet.cs</FileName>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAgAAAAAAAAAAAQAgAAAAgAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.Parameter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\Parameter.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAQAAAAAAAgAAAAgAAAAACA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.ParameterSet" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\ParameterSet.cs</FileName>
+      <HashCode>AAIQAAAAAAAAAAAAAAAAAEACAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Data.Text" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>Data\Text.cs</FileName>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAgAAAAAAAAAAAQAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.256" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.TextArray" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>Data\TextArray.cs</FileName>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAgAAAAAAAAAAAQAgAAAAgAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.Variable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\Variable.cs</FileName>
+      <HashCode>AgAAAAAAAkAACAQAABACAAQAAAAAABoAAYAAAAIAADA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.Data.Source.TextFile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\Source\TextFile.cs</FileName>
+      <HashCode>AAAAAAAAAgAAAAIAAAACAAAAAAAAAAACAABCAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.FunctionType" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>FunctionType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.InstructionBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>InstructionBase.cs</FileName>
+      <HashCode>AgAAAAQAAACAAAQAACAAAAAAACAAAAAAAQAAEAAAAEA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vibz.Contract.InstructionValueMap" Collapsed="true">
+    <Position X="7" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>InstructionValueMap.cs</FileName>
+      <HashCode>AAAEAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.TypeInfo" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>TypeInfo.cs</FileName>
+      <HashCode>IAAAAAAAAAABAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Log.LogElement" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogElement.cs</FileName>
+      <HashCode>AAIAAAAAAAAgAAAEAAQAAAAAAAAAAAAAEQAAIBQAARE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Log.LogException" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogException.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Log.LogQueue" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogQueue.cs</FileName>
+      <HashCode>AABAAAACABAABAAAAAAAAAEAoAAAAAAAQAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Macro.CommonMacroVariables" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Macro\CommonMacroVariables.cs</FileName>
+      <HashCode>AAAEAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vibz.Contract.Macro.MacroParser" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Macro\MacroParser.cs</FileName>
+      <HashCode>CAAgAAAAAAAAAAAABCAAAgAAKAAAAAAAAAAAAACAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Vibz.Contract.Log.LogQueueElement" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogQueue.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAA=</HashCode>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="Vibz.Contract.Common.IError" Collapsed="true">
+    <Position X="10.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Common\IError.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.Common.ISynchronize" Collapsed="true">
+    <Position X="5.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Common\ISynchronize.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.Data.IData" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\IData.cs</FileName>
+      <HashCode>AAAAgAAAAgAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.Data.IDataProcessor" Collapsed="true">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\IDataProcessor.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.Data.Source.ISource" Collapsed="true">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\Source\ISource.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IAction" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IAction.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IAssert" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IAssert.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.ICompile" Collapsed="true">
+    <Position X="5.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ICompile.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.ICondition" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ICondition.cs</FileName>
+      <HashCode>AAAAAAgAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IFetch" Collapsed="true">
+    <Position X="12.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IFetch.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IInstruction" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IInstruction.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAAAACAAAAAAACAAAAAAAQAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IMacroFunction" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IMacroFunction.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IMacroVariable" Collapsed="true">
+    <Position X="8.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IMacroVariable.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.IReport" Collapsed="true">
+    <Position X="10.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IReport.cs</FileName>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAhAAAAAAAAAAAgAAGAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vibz.Contract.Macro.IMacroManager" Collapsed="true">
+    <Position X="7" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Macro\IMacroManager.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Vibz.Contract.Common.StepToFollow" Collapsed="true">
+    <Position X="10.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Common\ISynchronize.cs</FileName>
+      <HashCode>AAAACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.Data.DataType" Collapsed="true">
+    <Position X="7" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\DataType.cs</FileName>
+      <HashCode>CAAEAAABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.Data.Source.SourceType" Collapsed="true">
+    <Position X="8.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Data\Source\SourceType.cs</FileName>
+      <HashCode>AAAACAAAAEAAAAAAAIAAAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.ConditionOperator" Collapsed="true">
+    <Position X="5.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ICondition.cs</FileName>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.InstructionType" Collapsed="true">
+    <Position X="8.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IInstruction.cs</FileName>
+      <HashCode>AAAEAAAIAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAQ=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.ReportStatus" Collapsed="true">
+    <Position X="7" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IReport.cs</FileName>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.Log.LogType" Collapsed="true">
+    <Position X="5.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogElement.cs</FileName>
+      <HashCode>AAAAAAAAAAAABAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.Log.LogSeverity" Collapsed="true">
+    <Position X="12.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogElement.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vibz.Contract.Log.LogDirection" Collapsed="true">
+    <Position X="10.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log\LogException.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

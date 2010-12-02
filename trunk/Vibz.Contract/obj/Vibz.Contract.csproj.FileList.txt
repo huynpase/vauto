@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+..\binaries\Vibz.Contract.dll
+..\binaries\Vibz.Contract.pdb
+obj\Debug\Vibz.Contract.dll
+obj\Debug\Vibz.Contract.pdb
