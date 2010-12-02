@@ -1,0 +1,78 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D797FB3B-A4AF-4E4A-BEB2-F5D377DA8D0E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Solution</RootNamespace>
+    <AssemblyName>Vibz.Solution</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Element\ApplicationConfiguration.cs" />
+    <Compile Include="Element\ApplicationGlobalFile.cs" />
+    <Compile Include="Element\Reference.cs" />
+    <Compile Include="Element\SuiteElement.cs" />
+    <Compile Include="Element\Function.cs" />
+    <Compile Include="Element\Project.cs" />
+    <Compile Include="Element\Space.cs" />
+    <Compile Include="Loader.cs" />
+    <Compile Include="Element\CaseFile.cs" />
+    <Compile Include="Element\IdentifierFile.cs" />
+    <Compile Include="Element\IElement.cs" />
+    <Compile Include="Element\SuiteFile.cs" />
+    <Compile Include="Compiler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibz.Contract\Vibz.Contract.csproj">
+      <Project>{D7EB9037-B879-4721-A74E-E913D45A2448}</Project>
+      <Name>Vibz.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz.Interpreter\Vibz.Interpreter.csproj">
+      <Project>{9F571CE5-7A82-4EE9-AA0F-FF1F7718AA22}</Project>
+      <Name>Vibz.Interpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz\Vibz.csproj">
+      <Project>{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}</Project>
+      <Name>Vibz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
