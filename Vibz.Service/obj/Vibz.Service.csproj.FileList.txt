@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Vibz.Service.Automate.resources
+obj\Debug\Vibz.Service.csproj.GenerateResource.Cache
+..\binaries\Vibz.Service.exe
+..\binaries\Vibz.Service.pdb
+obj\Debug\Vibz.Service.exe
+obj\Debug\Vibz.Service.pdb
+obj\Debug\Vibz.Service.ProjectInstaller.resources
