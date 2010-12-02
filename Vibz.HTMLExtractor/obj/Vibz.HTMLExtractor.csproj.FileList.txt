@@ -1,0 +1,12 @@
+..\binaries\plugin\web\browser.config
+..\binaries\plugin\web\Vibz.HTMLExtractor.dll
+..\binaries\plugin\web\Vibz.HTMLExtractor.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Vibz.HTMLExtractor.WBrowser.resources
+obj\Debug\Vibz.HTMLExtractor.csproj.GenerateResource.Cache
+obj\Debug\Vibz.HTMLExtractor.dll
+obj\Debug\Vibz.HTMLExtractor.pdb
+..\binaries\plugin\web\Vibz.HTMLExtractor.XML
+..\binaries\plugin\instruction\web\browser.config
+..\binaries\plugin\instruction\web\Vibz.HTMLExtractor.dll
+..\binaries\plugin\instruction\web\Vibz.HTMLExtractor.pdb
