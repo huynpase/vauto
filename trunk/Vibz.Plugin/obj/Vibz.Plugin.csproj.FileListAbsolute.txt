@@ -1,7 +1,0 @@
-D:\Project\Auto mate\binaries\App.config
-D:\Project\Auto mate\binaries\Vibz.Plugin.dll.config
-D:\Project\Auto mate\binaries\Vibz.Plugin.dll
-D:\Project\Auto mate\binaries\Vibz.Plugin.pdb
-D:\Project\Auto mate\Vibz.Plugin\obj\Debug\ResolveAssemblyReference.cache
-D:\Project\Auto mate\Vibz.Plugin\obj\Debug\Vibz.Plugin.dll
-D:\Project\Auto mate\Vibz.Plugin\obj\Debug\Vibz.Plugin.pdb

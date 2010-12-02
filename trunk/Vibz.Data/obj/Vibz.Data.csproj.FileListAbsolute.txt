@@ -1,5 +1,0 @@
-D:\Project\Auto mate\binaries\plugin\data\vibz\Vibz.Data.dll
-D:\Project\Auto mate\binaries\plugin\data\vibz\Vibz.Data.pdb
-D:\Project\Auto mate\Vibz.Data\obj\Debug\ResolveAssemblyReference.cache
-D:\Project\Auto mate\Vibz.Data\obj\Debug\Vibz.Data.dll
-D:\Project\Auto mate\Vibz.Data\obj\Debug\Vibz.Data.pdb

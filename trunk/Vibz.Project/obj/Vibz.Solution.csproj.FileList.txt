@@ -1,6 +1,0 @@
-..\binaries\Vibz.Solution.dll
-..\binaries\Vibz.Solution.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Vibz.Solution.dll
-obj\Debug\Vibz.Solution.pdb
-..\binaries\vibz.reg

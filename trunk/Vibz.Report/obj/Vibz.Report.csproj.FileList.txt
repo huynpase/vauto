@@ -1,7 +1,0 @@
-..\binaries\Vibz.Report.dll
-..\binaries\Vibz.Report.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Vibz.Report.dll
-obj\Debug\Vibz.Report.pdb
-..\binaries\plugin\report\vibz\Vibz.Report.dll
-..\binaries\plugin\report\vibz\Vibz.Report.pdb

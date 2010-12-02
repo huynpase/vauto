@@ -1,7 +1,0 @@
-..\binaries\Vibz.IO.dll
-..\binaries\Vibz.IO.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Vibz.IO.dll
-obj\Debug\Vibz.IO.pdb
-..\binaries\plugin\instruction\io\Vibz.IO.dll
-..\binaries\plugin\instruction\io\Vibz.IO.pdb

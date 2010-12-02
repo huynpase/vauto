@@ -1,9 +1,0 @@
-D:\Project\Auto mate\binaries\Vibz.Forms.dll
-D:\Project\Auto mate\binaries\Vibz.Forms.pdb
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\ResolveAssemblyReference.cache
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\Vibz.Forms.MdiTabStrip.bmp
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\Vibz.Forms.MdiChildForm.resources
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\Vibz.Forms.NoResizeChildForm.resources
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\Vibz.Forms.csproj.GenerateResource.Cache
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\Vibz.Forms.dll
-D:\Project\Auto mate\Vibz.Forms\obj\Debug\Vibz.Forms.pdb

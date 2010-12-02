@@ -1,7 +1,0 @@
-..\binaries\App.config
-..\binaries\Vibz.Plugin.dll.config
-..\binaries\Vibz.Plugin.dll
-..\binaries\Vibz.Plugin.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Vibz.Plugin.dll
-obj\Debug\Vibz.Plugin.pdb
