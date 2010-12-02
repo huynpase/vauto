@@ -1,0 +1,5 @@
+D:\Project\Auto mate\binaries\Vibz.Contract.dll
+D:\Project\Auto mate\binaries\Vibz.Contract.pdb
+D:\Project\Auto mate\Vibz.Contract\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Contract\obj\Debug\Vibz.Contract.dll
+D:\Project\Auto mate\Vibz.Contract\obj\Debug\Vibz.Contract.pdb
