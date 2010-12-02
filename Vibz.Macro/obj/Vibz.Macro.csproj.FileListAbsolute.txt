@@ -1,0 +1,5 @@
+D:\Project\Auto mate\binaries\plugin\macro\vibz\Vibz.Macro.dll
+D:\Project\Auto mate\binaries\plugin\macro\vibz\Vibz.Macro.pdb
+D:\Project\Auto mate\Vibz.Macro\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Macro\obj\Debug\Vibz.Macro.dll
+D:\Project\Auto mate\Vibz.Macro\obj\Debug\Vibz.Macro.pdb
