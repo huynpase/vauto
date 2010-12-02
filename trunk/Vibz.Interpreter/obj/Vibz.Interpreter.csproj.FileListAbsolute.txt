@@ -1,0 +1,9 @@
+D:\Project\Auto mate\binaries\vibz.reg
+D:\Project\Auto mate\binaries\Vibz.Interpreter.dll
+D:\Project\Auto mate\binaries\Vibz.Interpreter.pdb
+D:\Project\Auto mate\Vibz.Web.Interpreter\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Web.Interpreter\obj\Debug\Vibz.Interpreter.dll
+D:\Project\Auto mate\Vibz.Web.Interpreter\obj\Debug\Vibz.Interpreter.pdb
+D:\Project\Auto mate\Vibz.Interpreter\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Interpreter\obj\Debug\Vibz.Interpreter.dll
+D:\Project\Auto mate\Vibz.Interpreter\obj\Debug\Vibz.Interpreter.pdb

@@ -1,0 +1,99 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F571CE5-7A82-4EE9-AA0F-FF1F7718AA22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Interpreter</RootNamespace>
+    <AssemblyName>Vibz.Interpreter</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vibz, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\binaries\Vibz.dll</HintPath>
+    </Reference>
+    <Reference Include="Vibz.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\binaries\Vibz.Contract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Configuration\ConfigManager.cs" />
+    <Compile Include="Configuration\DataManager.cs" />
+    <Compile Include="Configuration\InstructionManager.cs" />
+    <Compile Include="Configuration\MacroManager.cs" />
+    <Compile Include="Configuration\Register.cs" />
+    <Compile Include="Configuration\ReportManager.cs" />
+    <Compile Include="Data\DataProcessor.cs" />
+    <Compile Include="Plugin\PluginAssemblyInfo.cs" />
+    <Compile Include="Plugin\FunctionTypeInfo.cs" />
+    <Compile Include="Plugin\PluginManager.cs" />
+    <Compile Include="Plugin\PluginAssembly.cs" />
+    <Compile Include="Executer.cs" />
+    <Compile Include="Plugin\PluginSettings.cs" />
+    <Compile Include="Script\FlowController\Condition.cs" />
+    <Compile Include="Script\FlowController\Case.cs" />
+    <Compile Include="Script\FlowController\Body.cs" />
+    <Compile Include="Script\FlowController\FunctionSet.cs" />
+    <Compile Include="Script\FlowController\LoopControl\For.cs" />
+    <Compile Include="Script\FlowController\LoopControl\DoWhile.cs" />
+    <Compile Include="Script\FlowController\VariableControl\Define.cs" />
+    <Compile Include="Script\FlowController\VariableControl\Invoke.cs" />
+    <Compile Include="Script\FlowController\VariableControl\Set.cs" />
+    <Compile Include="Script\FlowController\LoopControl\While.cs" />
+    <Compile Include="Script\FlowController\Else.cs" />
+    <Compile Include="Script\FlowController\If.cs" />
+    <Compile Include="Script\FlowController\Function.cs" />
+    <Compile Include="Script\FlowController\Include.cs" />
+    <Compile Include="Script\FlowController\Section.cs" />
+    <Compile Include="Script\Serializer.cs" />
+    <Compile Include="FileParser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vibz.reg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
