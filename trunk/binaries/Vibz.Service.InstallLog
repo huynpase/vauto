@@ -1,0 +1,335 @@
+﻿Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Attempt to stop service Vibz.Service.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Warning: The source Vibz.Service is not registered on the local machine.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Attempt to stop service Vibz.Service.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Warning: The source Vibz.Service is not registered on the local machine.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Attempt to stop service Vibz.Service.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz.Service.
+Service Vibz.Service is being removed from the system...
+Service Vibz.Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz.Service...
+Service Vibz.Service has been successfully installed.
+Creating EventLog source Vibz.Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Automate.
+Warning: The source Automate is not registered on the local machine.
+Service Automate is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Automate...
+Service Automate has been successfully installed.
+Creating EventLog source Automate in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Automate.
+Service Automate is being removed from the system...
+Service Automate was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz Automate...
+Service Vibz Automate has been successfully installed.
+Creating EventLog source Vibz Automate in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz Automate.
+Service Vibz Automate is being removed from the system...
+Service Vibz Automate was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz Scheduled Automation Service...
+Service Vibz Scheduled Automation Service has been successfully installed.
+Creating EventLog source Vibz Scheduled Automation Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz Scheduled Automation Service.
+Service Vibz Scheduled Automation Service is being removed from the system...
+Service Vibz Scheduled Automation Service was successfully removed from the system.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source Vibz Scheduled Automation Service.
+Service Vibz Scheduled Automation Service is being removed from the system...
+Service Vibz Scheduled Automation Service was successfully removed from the system.
+Installing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Installing service Vibz Scheduled Automation Service...
+Service Vibz Scheduled Automation Service has been successfully installed.
+Creating EventLog source Vibz Scheduled Automation Service in log Application...
+Committing assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Warning: The source VibzScheduler is not registered on the local machine.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.
+Attempt to stop service VibzScheduler.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.
+Uninstalling assembly 'C:\Amit\Auto mate\binaries\Vibz.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Amit\Auto mate\binaries\Vibz.Service.exe
+   logfile = C:\Amit\Auto mate\binaries\Vibz.Service.InstallLog
+Removing EventLog source VibzScheduler.
+Warning: The source VibzScheduler is not registered on the local machine.
+Service VibzScheduler is being removed from the system...
+Service VibzScheduler was successfully removed from the system.

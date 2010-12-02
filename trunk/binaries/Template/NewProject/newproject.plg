@@ -1,0 +1,19 @@
+<plugin>
+  <init>
+    <destinationpath value="${ProjectLocation}/${ProjectName}" />
+  </init>
+  <operation>
+    <ioaddorreplace type="file" source="app.config" destination="app.config" />
+    <ioaddorreplace type="file" source="global.ag" destination="global.ag" />
+    <ioaddorreplace type="file" source="template.vproj" destination="${ProjectName}.vproj" />
+    <ioaddorreplace type="file" source="case1.tc" destination="Script/case1.tc" />
+    <ioaddorreplace type="file" source="case1.id" destination="Script/case1.id" />
+    <ioaddorreplace type="file" source="suite1.ts" destination="Suite/suite1.ts" />
+    <xmlinsertorreplaceelement path="${ProjectName}.vproj" xpath="//project/buildpath" verify="false">
+      <![CDATA[<buildpath><![CDATA[${BuildPath}]]]]><![CDATA[></buildpath>]]>
+    </xmlinsertorreplaceelement>
+    <xmlinsertorreplaceelement path="${ProjectName}.vproj" xpath="//project/reportpath" verify="false">
+      <![CDATA[<reportpath><![CDATA[${ReportPath}]]]]><![CDATA[></reportpath>]]>
+    </xmlinsertorreplaceelement>
+  </operation>
+</plugin>
