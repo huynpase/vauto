@@ -1,0 +1,8 @@
+D:\Project\Auto mate\binaries\plugin\instruction\web\browser.config
+D:\Project\Auto mate\binaries\plugin\instruction\web\Vibz.HTMLExtractor.dll
+D:\Project\Auto mate\binaries\plugin\instruction\web\Vibz.HTMLExtractor.pdb
+D:\Project\Auto mate\Vibz.HTMLExtractor\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.HTMLExtractor\obj\Debug\Vibz.HTMLExtractor.WBrowser.resources
+D:\Project\Auto mate\Vibz.HTMLExtractor\obj\Debug\Vibz.HTMLExtractor.csproj.GenerateResource.Cache
+D:\Project\Auto mate\Vibz.HTMLExtractor\obj\Debug\Vibz.HTMLExtractor.dll
+D:\Project\Auto mate\Vibz.HTMLExtractor\obj\Debug\Vibz.HTMLExtractor.pdb
