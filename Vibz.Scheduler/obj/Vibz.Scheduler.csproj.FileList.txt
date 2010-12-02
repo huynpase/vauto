@@ -1,8 +1,0 @@
-..\binaries\Vibz.Scheduler.exe
-..\binaries\Vibz.Scheduler.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Vibz.Scheduler.Properties.Resources.resources
-obj\Debug\Vibz.Scheduler.SchedulerUI.resources
-obj\Debug\Vibz.Scheduler.csproj.GenerateResource.Cache
-obj\Debug\Vibz.Scheduler.exe
-obj\Debug\Vibz.Scheduler.pdb

@@ -1,8 +1,0 @@
-D:\Project\Auto mate\VibzProjectTemplate\bin\Debug\VibzProjectTemplate.dll.config
-D:\Project\Auto mate\VibzProjectTemplate\bin\Debug\VibzProjectTemplate.dll
-D:\Project\Auto mate\VibzProjectTemplate\bin\Debug\VibzProjectTemplate.pdb
-D:\Project\Auto mate\VibzProjectTemplate\bin\Debug\Vibz.dll
-D:\Project\Auto mate\VibzProjectTemplate\bin\Debug\Vibz.Interpreter.dll
-D:\Project\Auto mate\VibzProjectTemplate\obj\Debug\ResolveAssemblyReference.cache
-D:\Project\Auto mate\VibzProjectTemplate\obj\Debug\VibzProjectTemplate.dll
-D:\Project\Auto mate\VibzProjectTemplate\obj\Debug\VibzProjectTemplate.pdb

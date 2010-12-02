@@ -1,8 +1,0 @@
-D:\Project\Auto mate\binaries\Vibz.Service.exe
-D:\Project\Auto mate\binaries\Vibz.Service.pdb
-D:\Project\Auto mate\Vibz.Service\obj\Debug\ResolveAssemblyReference.cache
-D:\Project\Auto mate\Vibz.Service\obj\Debug\Vibz.Service.Automate.resources
-D:\Project\Auto mate\Vibz.Service\obj\Debug\Vibz.Service.ProjectInstaller.resources
-D:\Project\Auto mate\Vibz.Service\obj\Debug\Vibz.Service.csproj.GenerateResource.Cache
-D:\Project\Auto mate\Vibz.Service\obj\Debug\Vibz.Service.exe
-D:\Project\Auto mate\Vibz.Service\obj\Debug\Vibz.Service.pdb

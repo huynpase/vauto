@@ -1,5 +1,0 @@
-..\binaries\plugin\data\vibz\Vibz.Data.dll
-..\binaries\plugin\data\vibz\Vibz.Data.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Vibz.Data.dll
-obj\Debug\Vibz.Data.pdb

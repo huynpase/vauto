@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<serviceschedules threadcount="1" tickinterval="300000" loglevel="Release">
-	<schedule name="firstTask" type="periodic" initialinvocation="9/30/2010 10:04:46 PM" interval="600000" lastinvocation="9/30/2010 10:04:46 PM">
-		<event name="updatedatetime" type="command">
-			<![CDATA[/c echo %date% %time% >> "C:\\log1234567.txt"]]>
-		</event>
-	</schedule>
-</serviceschedules>

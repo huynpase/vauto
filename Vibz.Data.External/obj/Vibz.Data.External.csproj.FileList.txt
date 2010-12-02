@@ -1,5 +1,0 @@
-obj\Debug\ResolveAssemblyReference.cache
-..\binaries\Vibz.Data.External.dll
-..\binaries\Vibz.Data.External.pdb
-obj\Debug\Vibz.Data.External.dll
-obj\Debug\Vibz.Data.External.pdb

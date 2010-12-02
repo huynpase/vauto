@@ -1,6 +1,0 @@
-obj\Debug\ResolveAssemblyReference.cache
-..\binaries\vibz.reg
-..\binaries\vauto.exe
-..\binaries\vauto.pdb
-obj\Debug\vauto.exe
-obj\Debug\vauto.pdb

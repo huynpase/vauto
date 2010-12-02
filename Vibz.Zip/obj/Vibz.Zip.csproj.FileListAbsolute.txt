@@ -1,5 +1,0 @@
-D:\Project\Auto mate\binaries\Vibz.Zip.dll
-D:\Project\Auto mate\binaries\Vibz.Zip.pdb
-D:\Project\Auto mate\Vibz.Zip\obj\Debug\ResolveAssemblyReference.cache
-D:\Project\Auto mate\Vibz.Zip\obj\Debug\Vibz.Zip.dll
-D:\Project\Auto mate\Vibz.Zip\obj\Debug\Vibz.Zip.pdb
