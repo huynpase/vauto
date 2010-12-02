@@ -1,0 +1,7 @@
+..\binaries\Vibz.Macro.dll
+..\binaries\Vibz.Macro.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Vibz.Macro.dll
+obj\Debug\Vibz.Macro.pdb
+..\binaries\plugin\macro\vibz\Vibz.Macro.dll
+..\binaries\plugin\macro\vibz\Vibz.Macro.pdb
