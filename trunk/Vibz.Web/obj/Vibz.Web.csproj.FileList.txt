@@ -1,0 +1,11 @@
+..\binaries\plugin\web\browser.config
+..\binaries\plugin\web\Vibz.Web.XML
+..\binaries\plugin\web\Vibz.Web.dll
+..\binaries\plugin\web\Vibz.Web.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Vibz.Web.dll
+obj\Debug\Vibz.Web.pdb
+..\binaries\plugin\instruction\web\browser.config
+..\binaries\plugin\instruction\web\Vibz.Web.dll
+..\binaries\plugin\instruction\web\Vibz.Web.pdb
+..\binaries\plugin\instruction\web\Vibz.Web.XML

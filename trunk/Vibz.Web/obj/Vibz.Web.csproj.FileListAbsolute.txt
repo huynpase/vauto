@@ -1,0 +1,6 @@
+D:\Project\Auto mate\binaries\plugin\instruction\web\browser.config
+D:\Project\Auto mate\binaries\plugin\instruction\web\Vibz.Web.dll
+D:\Project\Auto mate\binaries\plugin\instruction\web\Vibz.Web.pdb
+D:\Project\Auto mate\Vibz.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Web\obj\Debug\Vibz.Web.dll
+D:\Project\Auto mate\Vibz.Web\obj\Debug\Vibz.Web.pdb
