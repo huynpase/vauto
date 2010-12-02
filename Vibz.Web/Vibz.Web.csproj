@@ -1,0 +1,120 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF496459-386E-4C51-999A-009CA3373850}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Web</RootNamespace>
+    <AssemblyName>Vibz.Web</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\plugin\instruction\web\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\binaries\plugin\instruction\web\Vibz.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Browser\Collection\ImageList.cs" />
+    <Compile Include="Browser\Collection\StyleList.cs" />
+    <Compile Include="Browser\Collection\URLList.cs" />
+    <Compile Include="Browser\IBrowser.cs" />
+    <Compile Include="Browser\Image.cs" />
+    <Compile Include="Browser\Instruction\Action\ActionBase.cs" />
+    <Compile Include="Browser\Instruction\Action\Check.cs" />
+    <Compile Include="Browser\Instruction\Action\Click.cs" />
+    <Compile Include="Browser\Instruction\Action\Close.cs" />
+    <Compile Include="Browser\Instruction\Action\DoubleClick.cs" />
+    <Compile Include="Browser\Instruction\Action\DragAndDrop.cs" />
+    <Compile Include="Browser\Instruction\Action\FireEvent.cs" />
+    <Compile Include="Browser\Instruction\Action\Focus.cs" />
+    <Compile Include="Browser\Instruction\Action\KeyPress.cs" />
+    <Compile Include="Browser\Instruction\Action\MouseOver.cs" />
+    <Compile Include="Browser\Instruction\Action\SelectFrame.cs" />
+    <Compile Include="Browser\Instruction\Action\SelectOption.cs" />
+    <Compile Include="Browser\Instruction\Action\SelectWindow.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\GoBack.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\OpenURL.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\OpenWindow.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\Refresh.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\SynchronizeBase.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\WaitForControlEnable.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\WaitForControlLoad.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\WaitForPageLoad.cs" />
+    <Compile Include="Browser\Instruction\Action\Synchronize\WaitForTextLoad.cs" />
+    <Compile Include="Browser\Instruction\Action\Type.cs" />
+    <Compile Include="Browser\Instruction\Action\TypeIntoFileUpload.cs" />
+    <Compile Include="Browser\Instruction\Action\UnCheck.cs" />
+    <Compile Include="Browser\Instruction\Assert\AssertBase.cs" />
+    <Compile Include="Browser\Instruction\Assert\IsChecked.cs" />
+    <Compile Include="Browser\Instruction\Assert\IsEditable.cs" />
+    <Compile Include="Browser\Instruction\Assert\IsEnabled.cs" />
+    <Compile Include="Browser\Instruction\Assert\IsExists.cs" />
+    <Compile Include="Browser\Instruction\Assert\IsTextPresent.cs" />
+    <Compile Include="Browser\Instruction\Assert\IsVisible.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetAttribute.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetTableContent.cs" />
+    <Compile Include="Browser\Instruction\Fetch\FetchBase.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetAttributes.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetElementIndex.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetHtmlSource.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetInnerText.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetLocation.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetTitle.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetValue.cs" />
+    <Compile Include="Browser\Instruction\WebInstructionBase.cs" />
+    <Compile Include="Browser\IWebDocument.cs" />
+    <Compile Include="Browser\Url.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="browser.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibz.Contract\Vibz.Contract.csproj">
+      <Project>{D7EB9037-B879-4721-A74E-E913D45A2448}</Project>
+      <Name>Vibz.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz\Vibz.csproj">
+      <Project>{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}</Project>
+      <Name>Vibz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y  "$(TargetDir)Vibz.Web.dll"  "$(TargetDir)..\..\..\..\Web.Plugin"
+xcopy /Y  "$(TargetDir)browser.config"  "$(TargetDir)..\..\..\..\Web.Plugin"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
