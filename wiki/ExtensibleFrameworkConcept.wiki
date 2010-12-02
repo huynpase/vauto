@@ -1,0 +1,2 @@
+<b>Concept of an Extensible Framework</b>
+Automation is a collective term for a wide range of activity done in order to reduce the manual effort of doing repeating task. In order to meet the ever growing need of an automation process a framework need be highly extensible to keep pace with demands. (to be continued) 
