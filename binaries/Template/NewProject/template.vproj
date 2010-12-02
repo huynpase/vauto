@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project>
+  <buildpath><![CDATA[bin/Debug]]></buildpath>
+  <appglobal><![CDATA[global.ag]]></appglobal>
+  <appconfig><![CDATA[app.config]]></appconfig>
+  <reportpath><![CDATA[C:/logs/rpt_{DATETIMESTAMP}]]></reportpath>
+</project>

@@ -1,0 +1,11 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO" />
+  <function name="tc1">
+    <include id="case1.id"></include>
+    <data>
+    </data>
+    <body>
+
+    </body>
+  </function>
+</section>
