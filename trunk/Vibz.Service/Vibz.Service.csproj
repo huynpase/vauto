@@ -1,0 +1,104 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{164355B2-9EE3-4B28-8A68-AD681E6B197A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Service</RootNamespace>
+    <AssemblyName>Vibz.Service</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Automate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Automate.Designer.cs">
+      <DependentUpon>Automate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config\ConfigManager.cs" />
+    <Compile Include="Config\ElementFactory.cs" />
+    <Compile Include="Config\HistoryManager.cs" />
+    <Compile Include="Config\LogLevel.cs" />
+    <Compile Include="History\HistoryBase.cs" />
+    <Compile Include="History\HistoryEvent.cs" />
+    <Compile Include="History\HistoryException.cs" />
+    <Compile Include="History\HistoryInfo.cs" />
+    <Compile Include="History\HistoryType.cs" />
+    <Compile Include="History\IHistory.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule\IElementNode.cs" />
+    <Compile Include="Schedule\OneTimeSchedule.cs" />
+    <Compile Include="Schedule\PeriodicMaskedSchedule.cs" />
+    <Compile Include="Schedule\Event\CommandEvent.cs" />
+    <Compile Include="Schedule\Event\EventBase.cs" />
+    <Compile Include="Schedule\Event\EventType.cs" />
+    <Compile Include="Schedule\ISchedule.cs" />
+    <Compile Include="Schedule\ExecutionResult.cs" />
+    <Compile Include="Schedule\PeriodicSchedule.cs" />
+    <Compile Include="Schedule\ScheduleBase.cs" />
+    <Compile Include="Schedule\Event\IEvent.cs" />
+    <Compile Include="Schedule\Event\EventStatus.cs" />
+    <Compile Include="Schedule\ScheduleType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Automate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Automate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibz\Vibz.csproj">
+      <Project>{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}</Project>
+      <Name>Vibz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
