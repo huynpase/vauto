@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+..\binaries\Vibz.Zip.dll
+..\binaries\Vibz.Zip.pdb
+obj\Debug\Vibz.Zip.dll
+obj\Debug\Vibz.Zip.pdb
