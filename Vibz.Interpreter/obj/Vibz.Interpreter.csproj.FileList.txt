@@ -1,0 +1,6 @@
+..\binaries\vibz.reg
+..\binaries\Vibz.Interpreter.dll
+..\binaries\Vibz.Interpreter.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Vibz.Interpreter.dll
+obj\Debug\Vibz.Interpreter.pdb

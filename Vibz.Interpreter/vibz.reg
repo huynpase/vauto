@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration versionsupport="2.0.1.1">
+  <data>
+    <include name="vibz.data" path="plugin\data\vibz\Vibz.Data.dll"></include>
+  </data>
+  <instruction>
+    <include name="Vibz.Web" path="plugin\instruction\web\Vibz.Web.dll" config="plugin\instruction\web\browser.config" />
+    <include name="Vibz.IO" path="plugin\instruction\io\Vibz.IO.dll" />
+  </instruction>
+  <macro>
+    <include name="Vibz.Macro" path="plugin\macro\vibz\Vibz.Macro.dll" />
+  </macro>
+  <report>
+    <include name="TextReport" ref="plugin\report\vibz\Vibz.Report.dll, Vibz.Report.Text.TextReport">
+      <param name="FilePath"></param>
+      <param name="Format" value="{DateTime} : {Severity} - {Indent}{Message}"></param>
+    </include>
+    <include name="XmlReport" ref="plugin\report\vibz\Vibz.Report.dll, Vibz.Report.Xml.XmlReport">
+      <param name="FilePath"></param>
+    </include>
+  </report>
+</configuration>
+
