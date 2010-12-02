@@ -1,0 +1,92 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Plugin</RootNamespace>
+    <AssemblyName>Vibz.Plugin</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="PlugConfig.cs" />
+    <Compile Include="Processor.cs" />
+    <Compile Include="TemplateProcessor.cs" />
+    <Compile Include="Plug\IO\AppendPlug.cs" />
+    <Compile Include="Plug\IO\AddOrReplacePlug.cs" />
+    <Compile Include="Plug\IO\DeletePlug.cs" />
+    <Compile Include="Plug\IO\IOPlugBase.cs" />
+    <Compile Include="Plug\IPlug.cs" />
+    <Compile Include="Plug\PlugBase.cs" />
+    <Compile Include="PluginProcessor.cs" />
+    <Compile Include="Plug\PlugCommand.cs" />
+    <Compile Include="Plug\PlugFactory.cs" />
+    <Compile Include="Plug\Register.cs" />
+    <Compile Include="Plug\XML\InsertOrReplaceAttributePlug.cs" />
+    <Compile Include="Plug\XML\InsertAttributePlug.cs" />
+    <Compile Include="Plug\XML\DeleteAttributePlug.cs" />
+    <Compile Include="Plug\XML\InsertOrReplaceElementPlug.cs" />
+    <Compile Include="Plug\XML\ReplaceElementPlug.cs" />
+    <Compile Include="Plug\XML\DeleteElementPlug.cs" />
+    <Compile Include="Plug\XML\InsertElementPlug.cs" />
+    <Compile Include="Plug\XML\XMLPlugBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibz.Contract\Vibz.Contract.csproj">
+      <Project>{D7EB9037-B879-4721-A74E-E913D45A2448}</Project>
+      <Name>Vibz.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz.Zip\Vibz.Zip.csproj">
+      <Project>{F70D16D8-A376-4832-9652-097DB58295C5}</Project>
+      <Name>Vibz.Zip</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz\Vibz.csproj">
+      <Project>{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}</Project>
+      <Name>Vibz</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y  "$(TargetDir)Vibz.Plugin.dll.config"  "$(TargetDir)..\SetupFiles"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
