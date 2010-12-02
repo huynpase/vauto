@@ -1,0 +1,6 @@
+D:\Project\Auto mate\binaries\vibz.reg
+D:\Project\Auto mate\binaries\vauto.exe
+D:\Project\Auto mate\binaries\vauto.pdb
+D:\Project\Auto mate\Vibz.Console\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Console\obj\Debug\vauto.exe
+D:\Project\Auto mate\Vibz.Console\obj\Debug\vauto.pdb
