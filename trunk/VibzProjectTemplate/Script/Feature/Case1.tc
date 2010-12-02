@@ -1,0 +1,9 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include path="Vibz.IO" />
+  <function name="main">
+    <include id="Feature.Case1"></include>
+    <body>
+      <Write filepath="@fileName" content="@message" onerror="continue" />
+    </body>
+  </function>
+</section>

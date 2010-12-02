@@ -1,0 +1,16 @@
+bin\Release\VibzProjectTemplate.dll.config
+bin\Release\VibzProjectTemplate.dll
+bin\Release\VibzProjectTemplate.pdb
+bin\Release\Vibz.dll
+bin\Release\Vibz.Interpreter.dll
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\VibzProjectTemplate.dll
+obj\Release\VibzProjectTemplate.pdb
+bin\Debug\VibzProjectTemplate.dll.config
+bin\Debug\VibzProjectTemplate.dll
+bin\Debug\VibzProjectTemplate.pdb
+bin\Debug\Vibz.dll
+bin\Debug\Vibz.Interpreter.dll
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\VibzProjectTemplate.dll
+obj\Debug\VibzProjectTemplate.pdb
