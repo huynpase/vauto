@@ -1,0 +1,5 @@
+D:\Project\Auto mate\binaries\plugin\instruction\io\Vibz.IO.dll
+D:\Project\Auto mate\binaries\plugin\instruction\io\Vibz.IO.pdb
+D:\Project\Auto mate\Vibz.IO\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.IO\obj\Debug\Vibz.IO.dll
+D:\Project\Auto mate\Vibz.IO\obj\Debug\Vibz.IO.pdb
