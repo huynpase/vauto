@@ -1,16 +1,14 @@
 ==Why do we need a Framework for Automation?==
 
-• <b>Tools incapability:</b> 
-Automation tool vendors do not provide complete forthright demonstrations when showcasing the "simplicity" of their tools. We have seen the vendor’s sample applications. We have seen the tools play nice with those applications. And we try to get the tools to play nice with our applications just as fluently. Inherently, project after project, we do not achieve the same level of success. Here we are left with two options. Either do we switch to the new tool or mastermind technically creative solutions to make these automation tools work with our applications.
-	When the automation script is tightly coupled with tool technology, then situation would be worst since switching to a different tool will result into whole lot of past efforts getting scrapped.
-• <b>Need for a Unified solution: </b>
+===Tools incapability:===
+Automation tool vendors do not provide complete forthright demonstrations when showcasing the "simplicity" of their tools. We have seen the vendor’s sample applications. We have seen the tools play nice with those applications. And we try to get the tools to play nice with our applications just as fluently. Inherently, project after project, we do not achieve the same level of success. Here we are left with two options. Either do we switch to the new tool or mastermind technically creative solutions to make these automation tools work with our applications. When the automation script is tightly coupled with tool technology, then situation would be worst since switching to a different tool will result into whole lot of past efforts getting scrapped.
+===Need for a Unified solution===
 An automation engineer is required to support diverse applications. If each project implements a unique test strategy, then engineer moving among different projects can potentially be more a hindrance rather than a help. The time needed for the tester to become productive in the new environment just may not be there. And, it may surely detract from the productivity of those bringing the new tester up to speed.
-• <b>Language dependency with tools: </b>
+===Language dependency with tools===
 All of the automation tools uses some scripting language. Most unfortunate of all, even fully capable testers are seldom given the time required to gain the appropriate software development skills. For the most part, testers have been testers, not programmers. Consequently, the ‘simple’ commercial solutions have been far too complex to implement and maintain; and they become shelf-ware.
-• <b>Need of Modular approach: </b>
+===Need of Modular approach===
 Ground requirement of an automation system goes hands in hands with the capability of modularizing various components of a test cycle. i.e. need for linking simple functional blocks to create more complex scenarios. Automation tools rarely provide help for modularization. When same is expected from the tool supported language and that too from a tester the maintainability is always compromised.
-• <b>Intermixing of Application business logic with Tools complexity:</b>
+===Intermixing of Application business logic with Tools complexity===
 When a testing team is required to automate an applications testing process, very often a tester lands up in creating a wrapper on top of a privileged automation tool. Many times the wrapper is termed as a framework, which is definitely a misnomer.  The tools complexity and the applications business logics are so much inter-weaved that for a new automation engineer or even for the same test engineer looking at the script after a period of time, it becomes hard to figure out the functional goal of the script.
-• <b>Intermixing of Data with the Application logic:</b>
+===Intermixing of Data with the Application logic===
 Each engineer has their own way of looking into a requirement. When it comes to automation, a team may find varying solution to achieve same functional aspect. What should go as data and what should be the plain logic is individual’s perception. In absence of a regulating framework there always remains a scope of mixing the data with the application logic. As a result of which there will be increased maintenance cost , though not visible at early phase of scripting.
-
