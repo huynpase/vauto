@@ -1,0 +1,265 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0315E27A-5C8F-4EE2-95FD-8C4891A2B33A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vibz.Studio</RootNamespace>
+    <AssemblyName>Vibz.Studio</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\binaries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vibz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\binaries\Vibz.dll</HintPath>
+    </Reference>
+    <Reference Include="Vibz.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\binaries\Vibz.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Vibz.Interpreter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\binaries\Vibz.Interpreter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AboutStudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutStudio.Designer.cs">
+      <DependentUpon>AboutStudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>App.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration.Designer.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\BaseDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Document\BaseDocument.Designer.cs">
+      <DependentUpon>BaseDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\DocumentFactory.cs" />
+    <Compile Include="Document\IDocument.cs" />
+    <Compile Include="Document\DocumentList.cs" />
+    <Compile Include="Document\UserSession.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Document\UserSession.Designer.cs">
+      <DependentUpon>UserSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Document\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\XDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Document\XDocument.Designer.cs">
+      <DependentUpon>XDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\ProjectLocation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\ProjectLocation.Designer.cs">
+      <DependentUpon>ProjectLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\ProjectReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\ProjectReport.Designer.cs">
+      <DependentUpon>ProjectReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\ProjectSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\ProjectSettings.Designer.cs">
+      <DependentUpon>ProjectSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\Wizard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\WizardContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizard\WizardContainer.Designer.cs">
+      <DependentUpon>WizardContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="AboutStudio.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutStudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\BaseDocument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\UserSession.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UserSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\Welcome.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\XDocument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\ProjectLocation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\ProjectReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\ProjectSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\WizardContainer.resx">
+      <DependentUpon>WizardContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportManager.resx">
+      <DependentUpon>ReportManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Studio.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Studio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\TestSuite.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TestSuite.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="App.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>App.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RegistryManager.cs" />
+    <Compile Include="ReportManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportManager.Designer.cs">
+      <DependentUpon>ReportManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Spider.cs" />
+    <Compile Include="Studio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Studio.Designer.cs">
+      <DependentUpon>Studio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\TestSuite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Document\TestSuite.Designer.cs">
+      <DependentUpon>TestSuite.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vibz.Data\Vibz.Data.csproj">
+      <Project>{F1DA7650-7964-478A-BD6E-BB0D4864725D}</Project>
+      <Name>Vibz.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz.Forms\Vibz.Forms.csproj">
+      <Project>{B144666C-9191-4BCA-9521-5A4EC001F818}</Project>
+      <Name>Vibz.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz.Options\Vibz.Options.csproj">
+      <Project>{9C4474AC-33AE-4B8C-964E-1E8272BE69B3}</Project>
+      <Name>Vibz.Options</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz.Plugin\Vibz.Plugin.csproj">
+      <Project>{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}</Project>
+      <Name>Vibz.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vibz.Project\Vibz.Solution.csproj">
+      <Project>{D797FB3B-A4AF-4E4A-BEB2-F5D377DA8D0E}</Project>
+      <Name>Vibz.Solution</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
