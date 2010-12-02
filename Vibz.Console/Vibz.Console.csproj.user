@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>-s -f="C:\Amit\Auto mate\Document\TestHTMLProject\bin\Debug6\test.vacs"</StartArguments>
+  </PropertyGroup>
+</Project>
