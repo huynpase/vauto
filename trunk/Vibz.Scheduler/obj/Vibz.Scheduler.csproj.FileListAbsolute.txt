@@ -1,0 +1,8 @@
+D:\Project\Auto mate\binaries\Vibz.Scheduler.exe
+D:\Project\Auto mate\binaries\Vibz.Scheduler.pdb
+D:\Project\Auto mate\Vibz.Scheduler\obj\Debug\ResolveAssemblyReference.cache
+D:\Project\Auto mate\Vibz.Scheduler\obj\Debug\Vibz.Scheduler.Properties.Resources.resources
+D:\Project\Auto mate\Vibz.Scheduler\obj\Debug\Vibz.Scheduler.SchedulerUI.resources
+D:\Project\Auto mate\Vibz.Scheduler\obj\Debug\Vibz.Scheduler.csproj.GenerateResource.Cache
+D:\Project\Auto mate\Vibz.Scheduler\obj\Debug\Vibz.Scheduler.exe
+D:\Project\Auto mate\Vibz.Scheduler\obj\Debug\Vibz.Scheduler.pdb
