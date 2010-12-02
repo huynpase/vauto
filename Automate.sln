@@ -9,7 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Studio", "Vibz.Studio\
 		{5A3F5998-9C10-4C04-8BC4-8583A5631C0C} = {5A3F5998-9C10-4C04-8BC4-8583A5631C0C}
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF} = {5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}
 		{9F571CE5-7A82-4EE9-AA0F-FF1F7718AA22} = {9F571CE5-7A82-4EE9-AA0F-FF1F7718AA22}
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD} = {499527FF-AE52-450F-B3E3-4AD53E1712AD}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Web", "Vibz.Web\Vibz.Web.csproj", "{DF496459-386E-4C51-999A-009CA3373850}"
@@ -22,19 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.HTMLExtractor", "Vibz.
 		{DF496459-386E-4C51-999A-009CA3373850} = {DF496459-386E-4C51-999A-009CA3373850}
 		{5A3F5998-9C10-4C04-8BC4-8583A5631C0C} = {5A3F5998-9C10-4C04-8BC4-8583A5631C0C}
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF} = {5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD} = {499527FF-AE52-450F-B3E3-4AD53E1712AD}
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DEF68739-94B1-4EB3-B83A-B830C218AC5D}"
-	ProjectSection(SolutionItems) = preProject
-		Document\google.vibz = Document\google.vibz
-		Document\photobiz.vibz = Document\photobiz.vibz
-		Document\rac.vibz = Document\rac.vibz
-		Document\rediffform.vibz = Document\rediffform.vibz
-		Document\testhtml.vibz = Document\testhtml.vibz
-		Document\unittest.vibz = Document\unittest.vibz
-		Document\unittest2.vibz = Document\unittest2.vibz
-		WebInfo-commands.txt = WebInfo-commands.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.IO", "Vibz.IO\Vibz.IO.csproj", "{5A3F5998-9C10-4C04-8BC4-8583A5631C0C}"
@@ -43,37 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.IO", "Vibz.IO\Vibz.IO.
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF} = {5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll", "sgmlreaderdll\SgmlReaderDll.csproj", "{499527FF-AE52-450F-B3E3-4AD53E1712AD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestHTML", "TestHTML", "{1B093C76-3FAF-468D-B446-43493E65EA75}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTML\Controls.htm = Document\TestHTML\Controls.htm
-		Document\TestHTML\FormSubmit.htm = Document\TestHTML\FormSubmit.htm
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz", "Vibz\Vibz.csproj", "{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibzProjectTemplate", "VibzProjectTemplate\VibzProjectTemplate.csproj", "{79BA8369-0914-4A3B-9E34-B685274A07F7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestHTMLProject", "TestHTMLProject", "{CB1B1637-26D9-45A1-BD4B-F7C8925D9031}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\App.config = Document\TestHTMLProject\App.config
-		Document\TestHTMLProject\global.ag = Document\TestHTMLProject\global.ag
-		Document\TestHTMLProject\TestHtml.vproj = Document\TestHTMLProject\TestHtml.vproj
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{F65FFED0-71A1-4E22-A817-BF1694DC23C0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Suite", "Suite", "{370BA8DE-4722-4AF2-949E-BBA09B455F78}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Suite\test.ts = Document\TestHTMLProject\Suite\test.ts
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML", "HTML", "{BFC83950-D834-4A33-B56B-6D127B28469C}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\HTML\testhtml.id = Document\TestHTMLProject\Script\HTML\testhtml.id
-		Document\TestHTMLProject\Script\HTML\testhtml.tc = Document\TestHTMLProject\Script\HTML\testhtml.tc
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Solution", "Vibz.Project\Vibz.Solution.csproj", "{D797FB3B-A4AF-4E4A-BEB2-F5D377DA8D0E}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -81,45 +39,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Solution", "Vibz.Proje
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF} = {5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML2", "HTML2", "{D3CC63C2-EE05-426E-8762-31EDB8141CD1}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\HTML2\html2.id = Document\TestHTMLProject\Script\HTML2\html2.id
-		Document\TestHTMLProject\Script\HTML2\html2.tc = Document\TestHTMLProject\Script\HTML2\html2.tc
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SUBHTML", "SUBHTML", "{2FD4648A-963F-47B3-B26B-00F448F19BB6}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\HTML\SUBHTML\shtml.id = Document\TestHTMLProject\Script\HTML\SUBHTML\shtml.id
-		Document\TestHTMLProject\Script\HTML\SUBHTML\shtml.tc = Document\TestHTMLProject\Script\HTML\SUBHTML\shtml.tc
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loop", "Loop", "{40D1D8C5-B092-4BED-95BD-21EB712C0AB8}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\HTML\SUBHTML\Loop\loophtml.id = Document\TestHTMLProject\Script\HTML\SUBHTML\Loop\loophtml.id
-		Document\TestHTMLProject\Script\HTML\SUBHTML\Loop\loophtml.tc = Document\TestHTMLProject\Script\HTML\SUBHTML\Loop\loophtml.tc
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Macro", "Vibz.Macro\Vibz.Macro.csproj", "{AB8A7D36-2901-420C-A8C2-DCEEA8DBC053}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF} = {5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestMacro", "TestMacro", "{949C9C84-C0A9-4D0A-A392-36968AF3686D}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\HTML2\TestMacro\macro.id = Document\TestHTMLProject\Script\HTML2\TestMacro\macro.id
-		Document\TestHTMLProject\Script\HTML2\TestMacro\macro.tc = Document\TestHTMLProject\Script\HTML2\TestMacro\macro.tc
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Report", "Vibz.Report\Vibz.Report.csproj", "{CC9B1BA0-61D9-4B45-B8CC-4485BA915C3E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D7EB9037-B879-4721-A74E-E913D45A2448} = {D7EB9037-B879-4721-A74E-E913D45A2448}
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF} = {5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NegativeTest", "NegativeTest", "{33C95AD1-C9B6-4888-AC65-F32B20D8EC77}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\NegativeTest\html2.id = Document\TestHTMLProject\Script\NegativeTest\html2.id
-		Document\TestHTMLProject\Script\NegativeTest\html2.tc = Document\TestHTMLProject\Script\NegativeTest\html2.tc
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Contract", "Vibz.Contract\Vibz.Contract.csproj", "{D7EB9037-B879-4721-A74E-E913D45A2448}"
@@ -143,12 +71,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Plugin", "Web.Plugin", 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Options", "Vibz.Options\Vibz.Options.csproj", "{9C4474AC-33AE-4B8C-964E-1E8272BE69B3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp", "Temp", "{9639CA47-350B-45C4-B14F-7FBD8E5D620A}"
-	ProjectSection(SolutionItems) = preProject
-		PendingTask.txt = PendingTask.txt
-		UnitTest.txt = UnitTest.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "inst_web", "inst_web", "{7ACC50F8-B7BC-4152-9D7E-AD184CDD95BA}"
 EndProject
@@ -186,12 +108,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data_vibz", "data_vibz", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vibz.Interpreter", "Vibz.Interpreter\Vibz.Interpreter.csproj", "{9F571CE5-7A82-4EE9-AA0F-FF1F7718AA22}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalData", "ExternalData", "{69F9F09F-4D1B-41D8-81DF-165AD16E729A}"
-	ProjectSection(SolutionItems) = preProject
-		Document\TestHTMLProject\Script\ExternalData\exdata.id = Document\TestHTMLProject\Script\ExternalData\exdata.id
-		Document\TestHTMLProject\Script\ExternalData\exdata.tc = Document\TestHTMLProject\Script\ExternalData\exdata.tc
-	EndProjectSection
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationFramework", "AutomationFramework\AutomationFramework.vdproj", "{703A0C9E-BDEC-4FD3-A05B-5599590860D2}"
 EndProject
 Global
@@ -216,9 +132,6 @@ Global
 		{5A3F5998-9C10-4C04-8BC4-8583A5631C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A3F5998-9C10-4C04-8BC4-8583A5631C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3F5998-9C10-4C04-8BC4-8583A5631C0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -289,20 +202,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FC55DC4E-30C0-4BB8-AF3F-21BA5BC83EE0} = {7ACC50F8-B7BC-4152-9D7E-AD184CDD95BA}
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD} = {7ACC50F8-B7BC-4152-9D7E-AD184CDD95BA}
 		{DF496459-386E-4C51-999A-009CA3373850} = {7ACC50F8-B7BC-4152-9D7E-AD184CDD95BA}
-		{1B093C76-3FAF-468D-B446-43493E65EA75} = {DEF68739-94B1-4EB3-B83A-B830C218AC5D}
-		{CB1B1637-26D9-45A1-BD4B-F7C8925D9031} = {DEF68739-94B1-4EB3-B83A-B830C218AC5D}
 		{5A3F5998-9C10-4C04-8BC4-8583A5631C0C} = {9F504542-F079-4C51-AFE5-47810A48E15F}
-		{F65FFED0-71A1-4E22-A817-BF1694DC23C0} = {CB1B1637-26D9-45A1-BD4B-F7C8925D9031}
-		{370BA8DE-4722-4AF2-949E-BBA09B455F78} = {CB1B1637-26D9-45A1-BD4B-F7C8925D9031}
-		{BFC83950-D834-4A33-B56B-6D127B28469C} = {F65FFED0-71A1-4E22-A817-BF1694DC23C0}
-		{D3CC63C2-EE05-426E-8762-31EDB8141CD1} = {F65FFED0-71A1-4E22-A817-BF1694DC23C0}
-		{33C95AD1-C9B6-4888-AC65-F32B20D8EC77} = {F65FFED0-71A1-4E22-A817-BF1694DC23C0}
-		{69F9F09F-4D1B-41D8-81DF-165AD16E729A} = {F65FFED0-71A1-4E22-A817-BF1694DC23C0}
-		{2FD4648A-963F-47B3-B26B-00F448F19BB6} = {BFC83950-D834-4A33-B56B-6D127B28469C}
-		{949C9C84-C0A9-4D0A-A392-36968AF3686D} = {D3CC63C2-EE05-426E-8762-31EDB8141CD1}
-		{40D1D8C5-B092-4BED-95BD-21EB712C0AB8} = {2FD4648A-963F-47B3-B26B-00F448F19BB6}
 		{AB8A7D36-2901-420C-A8C2-DCEEA8DBC053} = {65EF73F6-2B58-458D-8099-7A3610DB2FAD}
 		{CC9B1BA0-61D9-4B45-B8CC-4485BA915C3E} = {F5634DC7-3B69-478C-AFC8-568872411B39}
 		{A8E39275-E33B-431E-837C-CA6AAB6170A3} = {EB752A28-5B41-4F71-BFB9-A70ADDFBB7DC}
