@@ -1,0 +1,1 @@
+C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\installutil "C:\Amit\Auto mate\binaries\Vibz.Service.exe"
