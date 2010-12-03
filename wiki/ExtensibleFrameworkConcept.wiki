@@ -1,5 +1,5 @@
 ==Concept of an Extensible Framework==
-[http://code.google.com/p/vauto/wiki/CreatingExtendedModule Know how to write your extended module.]
+[http://code.google.com/p/vauto/wiki/CreatingExtendedModule Know how to write your extended module.]<br/>
 Automation is a generic term for a wide range of activity being done in order to reduce the manual effort of doing repeating task. Automation can scope from simple data extraction process to enterprise level testing and reporting processes. 
 <br/>When it comes to data extraction or data feeding process, you never know when your external environment is goining to change, making your valuable efforts and money wastage. 
 <br/>Also you might have experienced your managements never-ending requirements of automation. One very fine day you might have selected a tool for some specific automation process and probably have got a success. But the day, the management starts putting on more diversified requirements, you will come to a situation where you are forced to tweek the tool functinality which costs the overall performance or sometimes lowers down your confidance level on the tool. Then one another day you start looking for yet another tool to increase the scope of the automation. 
