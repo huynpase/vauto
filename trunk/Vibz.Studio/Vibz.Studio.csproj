@@ -233,10 +233,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vibz.Data\Vibz.Data.csproj">
-      <Project>{F1DA7650-7964-478A-BD6E-BB0D4864725D}</Project>
-      <Name>Vibz.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Vibz.Forms\Vibz.Forms.csproj">
       <Project>{B144666C-9191-4BCA-9521-5A4EC001F818}</Project>
       <Name>Vibz.Forms</Name>
