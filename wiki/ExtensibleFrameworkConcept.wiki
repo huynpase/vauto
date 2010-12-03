@@ -5,8 +5,10 @@ Automation is a generic term for a wide range of activity being done in order to
 <br/>Automation tool vendors do not provide complete forthright demonstrations when showcasing the "simplicity" of their tools. We have seen the tools play nice with those applications. And we try to get the tools to play nice with our applications just as fluently. Inherently, project after project, we do not achieve the same level of success. 
 <br/>In order to meet the ever growing need of an automation process there is a need of an automation framework which is highly extensible to keep pace with future demands.
 <br/>Vibz Automation Framework is designed keeping in view the easy of extending the scope of automation to meet any requirement which can be automated. Whether it is a web automation or a windows automation, anything can be brought under the unified framework either by using built-in modules or including extended module to the framework. The scope can be extended in four different directions.
-    # Extended instructions.
+<br/>http://vauto.googlecode.com/files/architecture2.jpg <br/>
+    # Extended instructions. 
     # Extended Macros.
     # Extended Input data.
     # Extended Reporting.
-<br/>http://vauto.googlecode.com/files/architecture2.jpg <br/>
+
+[http://code.google.com/p/vauto/wiki/CreatingExtendedModule Know how to write your extended module.]
