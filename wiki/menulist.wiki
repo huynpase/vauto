@@ -2,4 +2,5 @@
 [http://code.google.com/p/vauto/wiki/NeedForAFramework Need for an Framework]<br/>
 [http://code.google.com/p/vauto/wiki/IdealFramework Ideal framework]<br/>
 [http://code.google.com/p/vauto/wiki/ExtensibleFrameworkConcept Extensible framework]<br/>
-[http://code.google.com/p/vauto/wiki/CreatingExtendedModule Writing Extended module.]<br/>
+[http://code.google.com/p/vauto/wiki/CreatingExtendedModule Writing Extended module]<br/>
+[http://code.google.com/p/vauto/wiki/Examples Examples]<br/>
