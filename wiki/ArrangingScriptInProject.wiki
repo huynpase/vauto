@@ -14,3 +14,7 @@ _Note: The script can be maintained in folder structure specific to application 
       * LandForSale
       * HouseForSale
     * ECom
+
+_Note: After the folders have been created, the members in the team can now own one component and start scripting process._<br/> 
+  Under each folder I will add the test script files. Ideally for each feature one should have one case file and one identifier file. All the functions, specific to the current feature should stay in the same case file. Details on adding a test component can be found [http://code.google.com/p/vauto/ComponentsOfTestScript here].
+_Note: You still can maintain multiple case file with in a feature folder._
