@@ -8,8 +8,12 @@ Now lets see, what are the components of a Test script.
     * The framework classifies the testcase file with extension <b>.tc</b>. 
     * All the functions specific to one feature can be dumped into one case file. In other words, a case file is just a collection of various functionality of a feature and has no sequential significance. 
     * A testcase can call another testcase from within. 
-    * The function flow can be controlled at each instruction level.
+    * While making a call to a test case function, the the caller is bound to pass the arguments as expected by the called test case function.
+    * The functional flow can be controlled at each instruction level.
   * <b>Identifier file:</b> An identifier file holds the locators or the ids that bounds the instruction to the controls of the application. 
     * All the controls of a complete feature can be placed in a single file. 
     * The testcase file references the identifier file using the locator key. 
   * <b>Test suite file:</b> A test suite file is a logical and sequential modeling of test cases.
+    * A suite can call a test case or another test suite.
+    * The functional flow can be controlled at each call level.
+    * While making a call to a test case function, the the caller is bound to pass the arguments as expected by the called test case function.
