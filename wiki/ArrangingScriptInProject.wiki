@@ -1,0 +1,4 @@
+==Arranging Script In a Project==
+
+Using Vibz automation framework, the development phase during automation majorily deals in scripting down the functional aspect of the application under test (AUT). Once the project is created (Ref: [http://code.google.com/p/vauto/wiki/StartingNewProject Starting a New Project]), you will only be concerned in modularizing the test script, by adding script files in self defined folder structure. 
+__Note: The script can be maintained in folder structure specific to application feature.
