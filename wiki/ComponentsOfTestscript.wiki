@@ -17,3 +17,8 @@ Now lets see, what are the components of a Test script.
     * A suite can call a test case or another test suite.
     * The functional flow can be controlled at each call level.
     * While making a call to a test case function, the the caller is bound to pass the arguments as expected by the called test case function.
+
+_A test case is the building block of a scenario. Framework doesn't support to build and execute a test case individually. Test suite is the executable unit and can be executed indevidually. To test a individual test case function a function should be called from within a test suite file._
+
+After you have seen the components of a test script you may would like to know:
+  * [http://code.google.com/p/vauto/wiki/BuildingTestSuite Building and Executing a test suite]
