@@ -1,0 +1,6 @@
+==Data driven architecture==
+
+===Distributed Test Components===
+To improve the scalability and reduce the maintenance cost, the Vibzworld Automation framework supports distributed data layer architecture. This mean the actual logic, the input data, and the application identifiers can stay segregated during the whole development phase of automation. This approach brings inherent advantage.
+<br/>
+Consider your web application goes into a minor change with control repositioning or just id change. To reflect this in your automation script, your just need to open up the corresponding identifier file and make the appropriate changes. The logic part remains untouched. On a contrary note, if there is a major change in functional aspect of the test flow, you will update the logic portion. The point of consideration is that there is less chance of errors that could have come when you change the script that has intermixed layers.
