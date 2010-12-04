@@ -1,4 +1,9 @@
 ==Components of a Test script==
-To improve the scalability and reduce the maintenance cost, the Vibzworld Automation framework supports distributed data layer architecture. This mean the actual logic, the input data, and the application identifiers can stay segregated during the whole development phase of automation. This approach brings inherent advantage like:
-===Low maintenance cost===
-Consider you web application goes into a minor change with control repositioning or id change. To reflect this in your automation script, your just need to open up the corresponding identifier file and make the appropriate changes. The logic part remains untouched. On a contrary note, if there is a major change in functional aspect of the test flow, you will change the logic portion. The point of consideration is that there is less chance of issues that could have come with intermixing of layers.
+You can manage your automation script in a stand alone project structure as most of the enterprise software solutions do. Typically your automation project structure looks like:
+  * A Project file
+  * A project configuration file
+  * Application global file
+  * One script folder
+  * One Suite folder
+  * One bin folder
+<br/>More @ [http://code.google.com/p/vauto/ComponentsOfTestProject Components Of Test Project]
