@@ -4,5 +4,6 @@
 [http://code.google.com/p/vauto/wiki/ExtensibleFrameworkConcept Extensible framework]<br/>
 [http://code.google.com/p/vauto/wiki/DataDrivenarchitecture Data Driven architecture]<br/>
 [http://code.google.com/p/vauto/wiki/ComponentsOfTestscript Components of a Test script]<br/>
+[http://code.google.com/p/vauto/ComponentsOfTestProject Components Of a Test Project]<br/>
 [http://code.google.com/p/vauto/wiki/CreatingExtendedModule Writing Extended module]<br/>
 [http://code.google.com/p/vauto/wiki/Examples Examples]<br/>
