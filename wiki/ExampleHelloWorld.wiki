@@ -1,1 +1,4 @@
-[http://vauto.googlecode.com/files/HelloWorld.zip Download Source]
+[http://vauto.googlecode.com/files/HelloWorld.zip Download Source] - [http://vauto.googlecode.com/files/HelloWorldVacs.zip Download VACS]
+
+Pre-requisite: 
+  * Vibz Automation Framework. [http://vauto.googlecode.com/files/AutomationFramework.msi Download here]
