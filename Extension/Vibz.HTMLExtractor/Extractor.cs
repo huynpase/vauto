@@ -69,7 +69,16 @@ namespace Vibz.HTMLExtractor
         public void DownloadAllImages(string path)
         {
             if (!Directory.Exists(path))
-                throw new Exception("Download path is not valid.");
+            {
+                try
+                {
+                    Vibz.Helper.IO.CreateFolderPath(path, IOType.Folder);
+                }
+                catch (Exception exc)
+                {
+                    throw new Exception("Download path is not valid.");
+                }
+            }
             foreach (Image img in Document.Images)
             {
                 try
