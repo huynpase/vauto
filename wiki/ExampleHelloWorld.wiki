@@ -49,3 +49,6 @@ Lets see the code in detail;<br/>
 </suite>
 }}}
     * The suite file calls the above function 'Say Hello' and passes on the value to the message argument. 
+
+===You may need to know===
+  * [http://code.google.com/p/vauto/wiki/BuildingTestSuite What happens when suite file is compiled.]
