@@ -8,7 +8,7 @@ The source files can be viewed through Vibz Automation Studio or in any editor. 
 The Vacs (Vibz automation compiled script), is portable, self contained executable file that can be executed on any remote machine where Vibz Automation framework (VAF) is installed.<br/>
 Lets see the code in detail;<br/> 
   * Case file
-`
+{{{
 <section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <include ref="Vibz.IO"/>
   <function name="Say Hello">
@@ -21,7 +21,7 @@ Lets see the code in detail;<br/>
     </body>
   </function>
 </section>
-`
+}}}
   * Identifier file
 `
 <controls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
