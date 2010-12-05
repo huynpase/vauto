@@ -25,8 +25,8 @@ Lets see the code in detail;<br/>
     * The case file has one section node that contains one or more function nodes.
     * The section includes the module reference for 'Vibz.IO' since we are going to use an instruction 'textalert' which is provided by it. Similarly you need to include module reference for an instruction before calling it within the case file.
     * Above case file has a function named 'Say Hello'. 
-    * The function 'Say Hello' includes reference to the identifier file 'case1.id'. A function can have any number of identifier references.
-    * The data section defines the arguments to the function. The callee will of the function will pass value to the arguments of the function.
+    * The function 'Say Hello' includes reference to the identifier file 'case1.id'. A function can have any number of identifier file references.
+    * The data section defines the arguments to the function. The callee of the function will pass value to the arguments of the function.
     * The body section contains the logical flow of the test case.
   * <b>Identifier file</b>
 {{{
@@ -34,6 +34,7 @@ Lets see the code in detail;<br/>
 
 </controls>
 }}}
+    * There is no identifier for the current test case, hence no control node is needed.
   * Suite file
 {{{
 <?xml version="1.0" encoding="utf-8"?>
@@ -45,3 +46,4 @@ Lets see the code in detail;<br/>
   </function>
 </suite>
 }}}
+    * The suite file calls the above function 'Say Hello' and passes on the value to the message argument. 
