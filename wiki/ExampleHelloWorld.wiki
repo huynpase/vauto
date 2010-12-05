@@ -1,7 +1,7 @@
 [http://vauto.googlecode.com/files/HelloWorld.zip Download Source] - [http://vauto.googlecode.com/files/HelloWorldVacs.zip Download VACS]
 
 ===Pre-requisite===
-  * Vibz Automation Framework. [http://vauto.googlecode.com/files/AutomationFramework.msi Download here]
+  * Vibz Automation Framework. [http://code.google.com/p/vauto/downloads/list Download here]
 
 ===Description===
 The source files can be viewed through Vibz Automation Studio or in any editor. The source contains project files, a script folder and a suite folder. Script folder is where you can find the case file and identifier files. Suite folder contains the test suite file. There is a bin/Debug in the source folder which has compiled script (VACS) file.<br/>
@@ -50,5 +50,11 @@ Lets see the code in detail;<br/>
 }}}
     * The suite file calls the above function 'Say Hello' and passes on the value to the message argument. 
 
+===Output===
+Above example alerts the user with message passed through the suite file.
+<br/>
+If you are thinking what is so called automation involved here!!! Well, the example above just demonstrated the basics of scripting through Automation framework. To see a real time automation example lets see the second example '[http://code.google.com/p/vauto/wiki/ExampleImageCollection Image collection.]'. 
+
 ===You may need to know===
   * [http://code.google.com/p/vauto/wiki/BuildingTestSuite What happens when suite file is compiled.]
+  * [http://code.google.com/p/vauto/wiki/Examples Other Examples]
