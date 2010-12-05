@@ -49,6 +49,17 @@
     <Compile Include="IOBase.cs" />
     <Compile Include="IOFactory.cs" />
     <Compile Include="TextFile\TextFile.cs" />
+    <Compile Include="Window\DisplayMode.cs" />
+    <Compile Include="Window\ExitMode.cs" />
+    <Compile Include="Window\Direction.cs" />
+    <Compile Include="Window\Position.cs" />
+    <Compile Include="Window\TextAlert.cs" />
+    <Compile Include="Window\TextAlertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\TextAlertForm.Designer.cs">
+      <DependentUpon>TextAlertForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Vibz.Contract\Vibz.Contract.csproj">
@@ -59,6 +70,12 @@
       <Project>{5FB62399-E54A-455A-8C06-8BDE6EF6CFFF}</Project>
       <Name>Vibz</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Window\TextAlertForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TextAlertForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Excel\" />

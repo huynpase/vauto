@@ -49,6 +49,7 @@
     <Compile Include="Browser\Instruction\Action\Check.cs" />
     <Compile Include="Browser\Instruction\Action\Click.cs" />
     <Compile Include="Browser\Instruction\Action\Close.cs" />
+    <Compile Include="Browser\Instruction\Action\DownloadImages.cs" />
     <Compile Include="Browser\Instruction\Action\DoubleClick.cs" />
     <Compile Include="Browser\Instruction\Action\DragAndDrop.cs" />
     <Compile Include="Browser\Instruction\Action\FireEvent.cs" />
