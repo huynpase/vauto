@@ -52,7 +52,7 @@ Lets see the code in detail;<br/>
 
 ===Output===
 Above example alerts the user with message passed through the suite file.
-<br/>
+<br/><br/>
 If you are thinking what is so called automation involved here!!! Well, the example above just demonstrated the basics of scripting through Automation framework. To see a real time automation example lets see the second example '[http://code.google.com/p/vauto/wiki/ExampleImageCollection Image collection.]'. 
 
 ===You may need to know===
