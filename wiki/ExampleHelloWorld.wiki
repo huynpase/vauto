@@ -7,7 +7,7 @@
 The source files can be viewed through Vibz Automation Studio or in any editor. The source contains project files, a script folder and a suite folder. Script folder is where you can find the case file and identifier files. Suite folder contains the test suite file. There is a bin/Debug in the source folder which has compiled script (VACS) file.<br/>
 The Vacs (Vibz automation compiled script), is portable, self contained executable file that can be executed on any remote machine where Vibz Automation framework (VAF) is installed.<br/>
 Lets see the code in detail;<br/> 
-  * Case file
+  * <b>Case file</b>
 {{{
 <section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <include ref="Vibz.IO"/>
@@ -22,7 +22,12 @@ Lets see the code in detail;<br/>
   </function>
 </section>
 }}}
-  * Identifier file
+    * The suite includes the module reference for 'Vibz.IO' since we are going to use an instruction 'textalert' which is provided by it.
+    * The case file has a function named 'Say Hello'. (We can have multiple functions under a section.) 
+    * The function 'Say Hello' includes reference to the identifier file 'case1.id'. A function can have any number of identifier references.
+    * The data section defines the arguments to the function. The callee will of the function will pass value to the arguments of the function.
+    * The body section contains the logical flow of the test case.
+  * <b>Identifier file</b>
 {{{
 <controls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
