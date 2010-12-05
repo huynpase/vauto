@@ -3,6 +3,6 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <StartArguments>"C:\Amit\StockMarket\StockMarket.vproj"</StartArguments>
+    <StartArguments>"C:\Amit\Auto mate\Demo\HelloWorld\HelloWorld.vproj"</StartArguments>
   </PropertyGroup>
 </Project>

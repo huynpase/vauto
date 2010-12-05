@@ -97,12 +97,6 @@
     <Compile Include="Document\XDocument.Designer.cs">
       <DependentUpon>XDocument.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
     <Compile Include="Wizard\ProjectLocation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -154,10 +148,6 @@
     <EmbeddedResource Include="Document\XDocument.resx">
       <SubType>Designer</SubType>
       <DependentUpon>XDocument.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizard\ProjectLocation.resx">
       <SubType>Designer</SubType>

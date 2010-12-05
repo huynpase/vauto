@@ -526,6 +526,8 @@ namespace Vibz.Studio
         #region Compile And Run
         object PerformAction(Vibz.TaskType type, IElement element)
         {
+            if (element == null)
+                return null;
             object arg = null;
             rtbLogSummary.Clear();
             switch (type)
