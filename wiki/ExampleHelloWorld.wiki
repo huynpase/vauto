@@ -28,6 +28,7 @@ Lets see the code in detail;<br/>
     * The function 'Say Hello' includes reference to the identifier file 'case1.id'. A function can have any number of identifier file references.
     * The data section defines the arguments to the function. The callee of the function will pass value to the arguments of the function.
     * The body section contains the logical flow of the test case.
+<br/>
   * <b>Identifier file</b>
 {{{
 <controls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -35,7 +36,8 @@ Lets see the code in detail;<br/>
 </controls>
 }}}
     * There is no identifier for the current test case, hence no control node is needed.
-  * Suite file
+<br/>
+  * <b>Suite file</b>
 {{{
 <?xml version="1.0" encoding="utf-8"?>
 <suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="suite1" ref="Suite/suite1">
