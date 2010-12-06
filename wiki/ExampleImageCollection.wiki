@@ -9,16 +9,38 @@ The Vacs (Vibz automation compiled script), is portable, self contained executab
 Lets see the code in detail;<br/> 
   * <b>Case file</b>
 {{{
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+  <include ref="Vibz.Web"/>
+  <function name="Extract All Image">
+    <include id="case1.id"></include>
+    <data>
+	<var name="url" />
+    </data>
+    <body>
+	<openurl url="@url" />
+	<DownloadImages folderpath="images" />
+    </body>
+  </function>
+</section>
 }}}
 <br/>
    
   * <b>Identifier file</b>
-{{{
-}}}
+    * There is no identifier for the current test case, hence no control node is needed.
 <br/>
 
   * <b>Suite file</b>
 {{{
+<suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="suite1" ref="Suite/suite1">
+  <function name="Extract All Image" ref="Script/case1/Extract All Image">
+    <data>
+      <var name="url" source="Internal" type="Scalar">
+        <Value><![CDATA[http://www.rosecomparison.com/]]></Value>
+      </var>
+    </data>
+  </function>
+</suite>
 }}}
 
 ===Output===
