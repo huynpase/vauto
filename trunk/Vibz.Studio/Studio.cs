@@ -535,7 +535,7 @@ namespace Vibz.Studio
                 case Vibz.TaskType.Compile:
                     if (_docList != null && _docList.Current != null)
                     {
-                        _project.Queue.Enqueue(new LogQueueElement("Saving the document.", LogSeverity.Info));
+                        _project.Queue.Enqueue(new LogQueueElement("Saving the document.", LogSeverity.Trace));
                         _docList.Current.Save();
                     }
                     
@@ -545,12 +545,12 @@ namespace Vibz.Studio
                     string buildFile = _project.BuildLocation + "/" + element.Name + "." + Vibz.FileType.CompiledScropt;
 
                     arg = new object[] { element, buildFile };
-                    _project.Queue.Enqueue(new LogQueueElement("Compiling document.", LogSeverity.Info));
+                    _project.Queue.Enqueue(new LogQueueElement("Compiling document.", LogSeverity.Trace));
                     break;
                 case Vibz.TaskType.Execute:
                     object cplArg = PerformAction(Vibz.TaskType.Compile, element);
                     arg = new object[] { ((object[])cplArg).GetValue(1).ToString() };
-                    _project.Queue.Enqueue(new LogQueueElement("Executing document.", LogSeverity.Info));
+                    _project.Queue.Enqueue(new LogQueueElement("Executing document.", LogSeverity.Trace));
                     _currentTask = new Executer();
                     break;
             }
@@ -579,14 +579,16 @@ namespace Vibz.Studio
             {
                 case Vibz.TaskType.Execute:
                 case Vibz.TaskType.Compile:
-                    while (_project.Queue.Count > 0)
+                    while (Vibz.Contract.Log.LogQueue.Instance.Count > 0)
                     {
-                        LogQueueElement ele = _project.Queue.Dequeue();
+                        LogQueueElement ele = Vibz.Contract.Log.LogQueue.Instance.Dequeue();
                         rtbLogSummary.SelectionFont = new Font("Arial", (float)8, FontStyle.Regular);
                         lblStatus.Text = ele.Message;
                         switch (ele.Severity)
                         {
                             case LogSeverity.Info:
+                                rtbLogSummary.SelectionColor = Color.Black;
+                                rtbLogSummary.AppendText("\r\n " + ele.Message);
                                 break;
                             case LogSeverity.Warn:
                                 rtbLogSummary.SelectionColor = Color.Orange;
@@ -608,11 +610,11 @@ namespace Vibz.Studio
                 case Vibz.TaskState.Complete:
                     rtbLogSummary.AppendText("\r\n_______________________________________");
                     string result = "with error.";
-                    if (_project.Queue.ErrorCount == 0)
+                    if (Vibz.Contract.Log.LogQueue.Instance.ErrorCount == 0)
                         result = "succesfuly.";
                     rtbLogSummary.AppendText("\r\n" + _currentTask.Message + result
-                        + "\r\n Error:" + _project.Queue.ErrorCount.ToString()
-                        + "\t Warnings:" + _project.Queue.WarnCount.ToString()
+                        + "\r\n Error:" + Vibz.Contract.Log.LogQueue.Instance.ErrorCount.ToString()
+                        + "\t Warnings:" + Vibz.Contract.Log.LogQueue.Instance.WarnCount.ToString()
                         );
                     lblStatus.Text = _currentTask.Message + result;
                     rtbLogSummary.ScrollToCaret();
@@ -641,7 +643,7 @@ namespace Vibz.Studio
                 lblStatus.Text = ele.Message;
                 switch (ele.Severity)
                 {
-                    case LogSeverity.Info:
+                    case LogSeverity.Trace:
                     case LogSeverity.Warn:
                         break;
                     case LogSeverity.Error:
@@ -752,13 +754,13 @@ namespace Vibz.Studio
 
         private void playSoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            App.Default.PlaySound = !App.Default.PlaySound;
+            App.Default.PlaySound = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
             App.Default.Save();
         }
 
         private void encodeBuildOutputToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            App.Default.EncodeBuild = !App.Default.EncodeBuild;
+            App.Default.EncodeBuild = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
             App.Default.Save();
         }
     }

@@ -17,7 +17,7 @@ namespace Vibz.Plugin
             if (Execute(ProcessType.Validate) && Execute(ProcessType.Execute))
             {
                 Cleanup();
-                LogQueue.Instance.Enqueue(new LogQueueElement("Plugin installed successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Plugin installed successfully.", LogSeverity.Trace));
             }
             else
             {

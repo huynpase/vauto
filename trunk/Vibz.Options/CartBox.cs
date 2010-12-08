@@ -54,7 +54,7 @@ namespace Vibz.Options
                 if (tvPlugin.Nodes.Count > 0)
                     ShowDetails(tvPlugin.Nodes[0]);
 
-                LogQueue.Instance.Enqueue(new LogQueueElement(type.ToString() + " type plugins loaded successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement(type.ToString() + " type plugins loaded successfully.", LogSeverity.Trace));
 
             }
             catch (Exception exc)

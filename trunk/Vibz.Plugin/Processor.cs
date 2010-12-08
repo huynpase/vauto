@@ -31,7 +31,7 @@ namespace Vibz.Plugin
             _sourceDir = Directory.CreateDirectory(tempFolder);
             if (!zh.ExtractFilesFromZip(sourcePath, _sourceDir.FullName, ""))
             {
-                LogQueue.Instance.Enqueue(new LogQueueElement("Invalid Plugin type.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Invalid Plugin type.", LogSeverity.Trace));
                 return;
             }
 
@@ -49,10 +49,10 @@ namespace Vibz.Plugin
                 StreamReader sr = new StreamReader(plug.FullName);
                 try
                 {
-                    LogQueue.Instance.Enqueue(new LogQueueElement(GetVerb(type) + " plugger '" + plug.FullName + "'.", LogSeverity.Info));
+                    LogQueue.Instance.Enqueue(new LogQueueElement(GetVerb(type) + " plugger '" + plug.FullName + "'.", LogSeverity.Trace));
                     XmlDocument doc = new XmlDocument();
                     doc.Load(sr);
-                    LogQueue.Instance.Enqueue(new LogQueueElement("Plugger loaded successfully.", LogSeverity.Info));
+                    LogQueue.Instance.Enqueue(new LogQueueElement("Plugger loaded successfully.", LogSeverity.Trace));
                     XmlNode xnPlugin = doc.SelectSingleNode("plugin");
                     if (xnPlugin == null)
                     {
@@ -97,11 +97,11 @@ namespace Vibz.Plugin
                     {
                         foreach (XmlNode xNode in xnl)
                         {
-                            LogQueue.Instance.Enqueue(new LogQueueElement(GetVerb(type) + " plug '" + xNode.Name + "'.", LogSeverity.Info));
+                            LogQueue.Instance.Enqueue(new LogQueueElement(GetVerb(type) + " plug '" + xNode.Name + "'.", LogSeverity.Trace));
                             IPlug plg = pFactory.GetPlugHandler(xNode);
                             if (plg == null)
                                 throw new Exception("Invalid plug command. " + xNode.OuterXml);
-                            LogQueue.Instance.Enqueue(new LogQueueElement("Plug handler for '" + xNode.Name + "' found.", LogSeverity.Info));
+                            LogQueue.Instance.Enqueue(new LogQueueElement("Plug handler for '" + xNode.Name + "' found.", LogSeverity.Trace));
                             try
                             {
                                 switch (type)
@@ -109,7 +109,7 @@ namespace Vibz.Plugin
                                     case ProcessType.Validate:
                                         if (!plg.VerificationNeeded)
                                         {
-                                            LogQueue.Instance.Enqueue(new LogQueueElement("Verification skipped.", LogSeverity.Info));
+                                            LogQueue.Instance.Enqueue(new LogQueueElement("Verification skipped.", LogSeverity.Trace));
                                             break;
                                         }
                                         if (!plg.CanExecute)
@@ -119,7 +119,7 @@ namespace Vibz.Plugin
                                             retValue = false;
                                         }
                                         else
-                                            LogQueue.Instance.Enqueue(new LogQueueElement("Validation passed.", LogSeverity.Info));
+                                            LogQueue.Instance.Enqueue(new LogQueueElement("Validation passed.", LogSeverity.Trace));
                                         break;
                                     case ProcessType.Execute:
                                         if (!plg.TryExecute())
@@ -129,7 +129,7 @@ namespace Vibz.Plugin
                                             return false;
                                         }
                                         else
-                                            LogQueue.Instance.Enqueue(new LogQueueElement("Execution passed.", LogSeverity.Info));
+                                            LogQueue.Instance.Enqueue(new LogQueueElement("Execution passed.", LogSeverity.Trace));
                                         break;
                                 }
                             }

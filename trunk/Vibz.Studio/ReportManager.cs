@@ -42,7 +42,7 @@ namespace Vibz.Studio
                 
                 tvAvailableReport.ImageList = imageList1;
 
-                LogQueue.Instance.Enqueue(new LogQueueElement("Available reports loaded successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Available reports loaded successfully.", LogSeverity.Trace));
 
             }
             catch (Exception exc)
@@ -78,7 +78,7 @@ namespace Vibz.Studio
                 }
 
 
-                LogQueue.Instance.Enqueue(new LogQueueElement("Project reports loaded successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Project reports loaded successfully.", LogSeverity.Trace));
 
             }
             catch (Exception exc)

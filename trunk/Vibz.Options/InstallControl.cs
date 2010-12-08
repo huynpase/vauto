@@ -36,7 +36,7 @@ namespace Vibz.Options
                 Vibz.Plugin.PluginProcessor pProcessor = new Vibz.Plugin.PluginProcessor(txtPath.Text);
                 pProcessor.Execute();
                 _pie();
-                LogQueue.Instance.Enqueue(new LogQueueElement("Plugin installed successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Plugin installed successfully.", LogSeverity.Trace));
             }
             catch (Exception exc)
             {

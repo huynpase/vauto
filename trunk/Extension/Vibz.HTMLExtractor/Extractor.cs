@@ -44,8 +44,7 @@ namespace Vibz.HTMLExtractor
             }
             catch (Exception exc)
             {
-                //_webControl.Progress.Enqueue(new ProgressElement(exc.Message, ProgressElementType.Error));
-                throw new Exception("", exc);
+                throw new Exception("Error occured while initializing Web Instance,", exc);
             }
         }
         
@@ -66,8 +65,9 @@ namespace Vibz.HTMLExtractor
         {
             get { return _pageHeaders; }
         }
-        public void DownloadAllImages(string path)
+        public int DownloadAllImages(string absPath, string relPath)
         {
+            string path = Vibz.Helper.IO.CreateRelativePath(absPath, relPath);
             if (!Directory.Exists(path))
             {
                 try
@@ -84,9 +84,11 @@ namespace Vibz.HTMLExtractor
                 try
                 {
                     img.ImageObject.Save(path + "/" + img.FileName);
+                    Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Downloaded image '" + img.FileName + "'", Vibz.Contract.Log.LogSeverity.Trace));
                 }
                 catch (Exception exc) { }
             }
+            return Document.Images.Count;
         }
 
         public IWebDocument Document

@@ -93,7 +93,7 @@ namespace Vibz.Solution.Element
         {
             if (!File.Exists(_path))
                 throw new Exception("Invalid Function file path.");
-            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading function '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Info));
+            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading function '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
             XmlDocument doc = new XmlDocument();
             XmlNodeList xnlFnc = null;
             try
@@ -129,7 +129,7 @@ namespace Vibz.Solution.Element
             Function retValue = prj.CreateFunction(fullname);
             if (!File.Exists(path))
                 throw new Exception("Invalid Function file path.");
-            prj.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading function '" + fullname + "'.", Vibz.Contract.Log.LogSeverity.Info));
+            prj.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading function '" + fullname + "'.", Vibz.Contract.Log.LogSeverity.Trace));
             XmlDocument doc = new XmlDocument();
             XmlNodeList xnlFnc = null;
             try
@@ -183,7 +183,7 @@ namespace Vibz.Solution.Element
             {
                 throw new Exception("Invalid Function content. [" + Path + "]" + exc.Message);
             }
-            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Compiling function '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Info));
+            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Compiling function '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
             XmlNodeList xnlVar = doc.SelectNodes("//" + CaseFile.nSection + "/" + CaseFile.nInclude + "/@" + CaseFile.nReference);
             if (xnlVar != null)
             {

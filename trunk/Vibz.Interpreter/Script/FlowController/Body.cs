@@ -39,7 +39,7 @@ namespace Vibz.Interpreter.Script.FlowController
                     {
                         foreach (XmlElement ele in XInstructions)
                         {
-                            LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading Instructions : " + ele.Name, Vibz.Contract.Log.LogSeverity.Info));
+                            LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading Instructions : " + ele.Name, Vibz.Contract.Log.LogSeverity.Trace));
                             _instructions.Add((IInstruction)Serializer.ConvertXmlElementToInstruction(ele));
                         }
                     }

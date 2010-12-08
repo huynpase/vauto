@@ -11,6 +11,7 @@ namespace Vibz.Web.Browser.Instruction.Action.Synchronize
         Version = "2.0")]
     public class OpenURL : SynchronizeBase
     {
+        string _actUrl = "";
         [XmlAttribute("url")]
         public string Url;
         public OpenURL()
@@ -27,7 +28,15 @@ namespace Vibz.Web.Browser.Instruction.Action.Synchronize
         }
         public override void Execute(Vibz.Contract.Data.DataHandler vList)
         {
-            Browser.LoadUrl(vList.Evaluate(Url), MaxWait);
+            _actUrl = vList.Evaluate(Url);
+            Browser.LoadUrl(_actUrl, MaxWait);
+        }
+        public override Vibz.Contract.Log.LogElement InfoEnd
+        {
+            get
+            {
+                return new Vibz.Contract.Log.LogElement("Url '" + _actUrl + "' opened.");
+            }
         }
     }
 }

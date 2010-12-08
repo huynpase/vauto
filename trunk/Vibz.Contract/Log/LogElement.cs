@@ -5,7 +5,7 @@ using System.Text;
 namespace Vibz.Contract.Log
 {
     public enum LogType { Element, Set }
-    public enum LogSeverity { Error, Info, Warn }
+    public enum LogSeverity { Error, Trace, Warn, Info }
     public class LogElement
     {
         internal string _message;
@@ -18,7 +18,7 @@ namespace Vibz.Contract.Log
         public LogSeverity Severity
         {
             get { return _severity; }
-            set { _severity = LogSeverity.Info; }
+            set { _severity = LogSeverity.Trace; }
         }
 
         internal DateTime _time;
@@ -39,7 +39,7 @@ namespace Vibz.Contract.Log
         }
 
         public LogElement(string message)
-            :this(message, LogSeverity.Info)
+            :this(message, LogSeverity.Trace)
         { }
         public LogElement(string message, LogSeverity severity)
         {

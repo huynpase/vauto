@@ -33,8 +33,25 @@ namespace Vibz.Contract.Data
             get { if (_type == null && Data != null) _type = Data.Type; return _type; }
             set { _type = value; }
         }
-        [XmlText()]
-        public string InnerText;
+        //[XmlText()]
+        //public string InnerText;
+
+        [XmlIgnore()]
+        public string InnerText = "";
+        [XmlElement("Value")]
+        public XmlCDataSection InnerTextNode
+        {
+            get
+            {
+                XmlDocument doc = new XmlDocument();
+                return doc.CreateCDataSection(InnerText);
+            }
+            set
+            {
+                InnerText = value.Value;
+            }
+        }
+
         [XmlIgnore()]
         public IData Data = null;
         [XmlIgnore()]
@@ -115,11 +132,10 @@ namespace Vibz.Contract.Data
 
             string retValue = "<" + nNodeName + " " + nName + "='" + Name + "' " +
                 nSource + "='" + Source + "' " + nType + "='" + Type + "'>";
-
             if (innerXml.Trim() == "")
             {
                 if (InnerText != null || InnerText != "")
-                    retValue += InnerText;
+                    retValue += "<![CDATA[" + InnerText + "]]>";
             }
             else
                 retValue += innerXml;

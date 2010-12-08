@@ -31,7 +31,7 @@ namespace Vibz.Interpreter.Script.FlowController.VariableControl
         {
             Vibz.Contract.Data.IData obj = new Vibz.Contract.Data.Text(vList.Evaluate(Value));
             vList.DataList.Update(new Variable(Variable, obj));
-            Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Value " + obj.ToString() + " assigned to " + Variable, Vibz.Contract.Log.LogSeverity.Info));
+            Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Value " + obj.ToString() + " assigned to " + Variable, Vibz.Contract.Log.LogSeverity.Trace));
         }
     }
 }

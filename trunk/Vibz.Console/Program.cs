@@ -205,7 +205,7 @@ namespace Vibz.Console
                     System.Console.WriteLine("  " + ele.Severity.ToString() + ": " + ele.Message);
                     switch (ele.Severity)
                     {
-                        case LogSeverity.Info:
+                        case LogSeverity.Trace:
                         case LogSeverity.Warn:
                             break;
                         case LogSeverity.Error:

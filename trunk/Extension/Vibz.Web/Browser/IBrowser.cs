@@ -12,7 +12,7 @@ namespace Vibz.Web.Browser
         void Init(Uri url, string htmlSource);
         
         Dictionary<string, string> PageHeaders { get; }
-        void DownloadAllImages(string path);
+        int DownloadAllImages(string absPath, string relPath);
         IWebDocument Document { get; }
         
     }
