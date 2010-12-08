@@ -1,0 +1,25 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.Web" />
+  <include ref="Vibz.IO" />
+  <function name="CheckAssertions">
+    <include id="html2.id"></include>
+    <body>
+      <Check locator="$loc7" />
+      <Check locator="$loc8" />
+      <ischecked locator="$loc8" />
+      <UnCheck locator="$loc9" onerror="continue" />
+      <UnCheck locator="$loc10" onerror="continue" />
+      <ischecked locator="$loc10" onerror="continue" />
+      <isenabled locator="$loc1" onerror="continue" />
+      <isenabled locator="$loc11" onerror="continue" />
+      <iseditable locator="$loc1" onerror="continue" />
+      <iseditable locator="$loc12" onerror="continue" />
+      <isvisible locator="$loc1" onerror="continue" />
+      <isvisible locator="$loc13" onerror="continue" />
+      <isexists locator="$loc1" onerror="continue" />
+      <isexists locator="$loc14" onerror="continue" />
+      <istextpresent text="$loc15" onerror="continue" />
+      <istextpresent text="$loc16" onerror="continue" />
+    </body>
+  </function>
+</section>

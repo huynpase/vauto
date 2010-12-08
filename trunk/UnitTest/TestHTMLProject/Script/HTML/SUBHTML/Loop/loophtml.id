@@ -1,0 +1,26 @@
+<controls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <control name="loc1"><![CDATA[txtText]]></control>
+  <control name="loc2"><![CDATA[//input[@name='txtTextName']]]></control>
+  <control name="loc3"><![CDATA[txtPass]]></control>
+  <control name="loc4"><![CDATA[//input[@name='txtPassName']]]></control>
+  <control name="loc5"><![CDATA[txtTextarea]]></control>
+  <control name="loc6"><![CDATA[//textarea[@name='txtAreaName']]]></control>
+  <control name="loc7"><![CDATA[cbCheck]]></control>
+  <control name="loc8"><![CDATA[//input[@name='cbCheckName']]]></control>
+  <control name="loc9"><![CDATA[cbUCheck]]></control>
+  <control name="loc10"><![CDATA[//input[@name='cbUCheckName']]]></control>
+  <control name="loc11"><![CDATA[txtDisabledControl]]></control>
+  <control name="loc12"><![CDATA[txtReadOnlyControl]]></control>
+  <control name="loc13"><![CDATA[txtNotVisibleControl]]></control>
+  <control name="loc14"><![CDATA[txtTextNotExists]]></control>
+  <control name="loc15"><![CDATA[Password (Id)]]></control>
+  <control name="loc16"><![CDATA[This text is not present]]></control>
+  <control name="loc17"><![CDATA[rbRadio]]></control>
+  <control name="loc18"><![CDATA[//input[@name='rbRadioName']]]></control>
+  <control name="loc19"><![CDATA[btnButton]]></control>
+  <control name="loc20"><![CDATA[//input[@value='Click me']]]></control>
+  <control name="loc21"><![CDATA[ddlSelect]]></control>
+  <control name="loc22"><![CDATA[//select[@name='Select1']]]></control>
+  <control name="loc23"><![CDATA[btnSubmit]]></control>
+  <control name="loc"><![CDATA[]]></control>
+</controls>
