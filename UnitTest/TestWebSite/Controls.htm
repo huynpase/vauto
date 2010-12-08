@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Untitled Page</title>
+<script type="text/javascript">
+function Button1_onclick() {
+    document.getElementById('divBtn1').innerHTML = "Button Clicked";
+}
+
+function Button2_onclick() {
+    document.getElementById('divBtn2').innerHTML = "Button Clicked";
+}
+
+function btnSubmit_onclick() {
+    this.location.href="formsubmit.htm";
+}
+</script>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="0" width="100%" style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px">
+        <tr>
+            <td>
+                Textbox (Id)</td>
+            <td>
+                <input id="txtText" type="text" /></td>
+            <td>
+                TextBox (Xpath)</td>
+            <td>
+                <input name="txtTextName" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Password (Id)</td>
+            <td>
+                <input id="txtPass" type="password" /></td>
+            <td>
+                Password (Xpath)</td>
+            <td>
+                <input name="txtPassName" type="password" /></td>
+        </tr>
+        <tr>
+            <td>
+                Textarea (Id)</td>
+            <td>
+                <textarea id="txtTextarea" rows="4" cols="20"></textarea></td>
+            <td>
+                Textarea (Xpath)</td>
+            <td>
+                <textarea name="txtAreaName" rows="4" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>
+                CheckBox (Id)-Check</td>
+            <td>
+                <input id="cbCheck" type="checkbox" /></td>
+            <td>
+                CheckBox (XPath)-Check</td>
+            <td>
+                <input name="cbCheckName" type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>
+                CheckBox (Id)-UnCheck</td>
+            <td>
+                <input id="cbUCheck" type="checkbox" checked="CHECKED" value="off" /></td>
+            <td>
+                CheckBox (XPath)-UnCheck</td>
+            <td>
+                <input name="cbUCheckName" type="checkbox" checked="CHECKED" value="off" /></td>
+        </tr>
+        <tr>
+            <td>
+                RadioButton (Id)</td>
+            <td>
+                <input id="rbRadio" type="radio" /></td>
+            <td>
+                RadioButton (XPath)</td>
+            <td>
+                <input name="rbRadioName" type="radio" /></td>
+        </tr>
+        <tr>
+            <td>
+                Button (Id)</td>
+            <td>
+                <input id="btnButton" type="button" value="Click Me" onclick="return Button1_onclick()" />
+                <div id="divBtn1"></div>
+            </td>
+            <td>
+                Button (XPath)</td>
+            <td>
+                <input type="button" value="Click me" onclick="return Button2_onclick()" />
+                <div id="divBtn2"></div>                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Select (Id)</td>
+            <td>
+                <select id="ddlSelect" style="width: 101px">
+                    <option selected="selected">1</option>
+                    <option selected="selected">2</option>
+                    <option selected="selected">3</option>
+                    <option selected="selected">4</option>
+                    <option selected="selected">5</option>
+                </select>
+            </td>
+            <td>
+                Select (XPath)</td>
+            <td>
+                <select name="Select1" style="width: 101px">
+                    <option selected="selected">1</option>
+                    <option selected="selected">2</option>
+                    <option selected="selected">3</option>
+                    <option selected="selected">4</option>
+                    <option selected="selected">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Disabled Control</td>
+            <td><input id="txtDisabledControl" type="text" disabled="disabled" /></td>
+            <td>ReadOnly Control</td>
+	    <td><input id="txtReadOnlyControl" type="text" readonly="readonly" /></td>
+        </tr>
+	<tr>
+            <td>Not-Visible Control</td>
+            <td style="background-color: yellow;"><input id="txtNotVisibleControl" type="text" style="visibility: hidden;" /></td>
+            <td></td>
+	    <td></td>
+        </tr>
+	<tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input id="btnSubmit" type="button" value="Submit" onclick="return btnSubmit_onclick()" /></td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

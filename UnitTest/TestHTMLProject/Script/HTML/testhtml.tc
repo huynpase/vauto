@@ -1,0 +1,67 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<include ref="Vibz.Web"/>
+  	<include ref="Vibz.IO"/>
+  	<function name="CheckInstructionCaseSensitivity">
+    		<include id="testhtml.id"></include>
+    		<data>
+      			<var name="data1"></var>
+      			<var name="data2"></var>
+      			<var name="data3"></var>
+      			<var name="data4"></var>
+    		</data>
+    		<body>
+      			<type locator="$loc1" value="@data1"/>
+      			<type locator="$loc2" value="@data2"/>
+      			<type locator="$loc3" value="@data3"/>
+      			<type locator="$loc4" value="@data4"/>
+      			<type locator="$loc5" value="area1"/>
+      			<type locator="$loc6" value="area2"/>
+    		</body>
+  	</function>
+  <function name="main">
+    <include id="testhtml.id"></include>
+    <data>
+      <var name="url"></var>
+      <var name="file1"></var>
+      <var name="data1"></var>
+      <var name="data2"></var>
+      <var name="data3"></var>
+      <var name="data4"></var>
+      <var name="data5"></var>
+      <var name="data6"><![CDATA[3]]></var>
+      <var name="data7"></var>
+    </data>
+    <body>
+      <openurl url="@url" maxwait="30000" ontimeout="continue"/>
+      <gethtmlsource assignto="a"/>
+      <write filepath="@file1" content="@a"/>
+      <call name="CheckInstructionCaseSensitivity">
+        <data>
+          <var name="data1">@data1</var>
+          <var name="data2">@data2</var>
+          <var name="data3">@data3</var>
+          <var name="data4">@data4</var>
+        </data>
+      </call>
+      <call name="../HTML2/TestMacro/macro/test">
+        <data>
+          <var name="data1">@data1</var>
+        </data>
+      </call>
+      <call name="../HTML2/html2/CheckAssertions"></call>
+      <call name="Subhtml/shtml/CheckConditionsAndLoop"></call>
+      <click locator="$loc17" onerror="continue"></click>
+      <click locator="$loc18" onerror="continue"></click>
+      <click locator="$loc19" onerror="continue"></click>
+      <click locator="$loc20" onerror="continue"></click>
+      <waitforpageload maxwait="30000" ontimeout="continue" onerror="continue"/>
+      <selectoption locator="$loc21" optiontext="@data6" onerror="continue"></selectoption>
+      <selectoption locator="$loc22" optiontext="@data7" onerror="continue"></selectoption>
+      <click locator="$loc23" onerror="continue"></click>
+      <waitforpageload maxwait="30000" ontimeout="continue" onerror="continue"/>
+      <gethtmlsource assignto="b" onerror="continue"/>
+      <write filepath="@data5" content="@b" onerror="continue"/>
+      <snapshot filepath="C:/12324.jpg"/>
+    </body>
+  </function>
+</section>

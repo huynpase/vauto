@@ -1,0 +1,83 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.Web" />
+  <function name="test2">
+    <include id="shtml.id"></include>
+    <body>
+      <GetHtmlSource assignto="b" onerror="continue" />
+      <Write filepath="C:/test.txt" content="@b" onerror="continue" />
+    </body>
+  </function>
+  <function name="CheckConditionsAndLoop">
+    <include id="shtml.id"></include>
+    <body>
+      <call name="Script/HTML/SUBHTML/shtml/CheckConditions"></call>
+      <call name="Loop/loophtml/CheckLoop"></call>
+    </body>
+  </function>
+  <function name="CheckConditions">
+    <include id="shtml.id"></include>
+    <body>
+      <condition>
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition>
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition expected="true">
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition expected="false">
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition>
+        <ischecked locator="$loc10" onerror="continue" />
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition expected="true" operator="And">
+        <ischecked locator="$loc10" onerror="continue" />
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition expected="true" operator="Or">
+        <ischecked locator="$loc10" onerror="continue" />
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition expected="false" operator="And">
+        <ischecked locator="$loc10" onerror="continue" />
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition expected="false" operator="Or">
+        <ischecked locator="$loc10" onerror="continue" />
+        <isexists locator="$loc1" onerror="continue" />
+      </condition>
+      <condition expected="true" operator="And">
+        <isexists locator="$loc1" onerror="continue" />
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition expected="true" operator="Or">
+        <isexists locator="$loc1" onerror="continue" />
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition expected="false" operator="And">
+        <isexists locator="$loc1" onerror="continue" />
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition expected="false" operator="Or">
+        <isexists locator="$loc1" onerror="continue" />
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition expected="false" operator="Or">
+        <isexists locator="$loc1" onerror="continue" />
+        <isvisible locator="$loc1" onerror="continue" />
+        <ischecked locator="$loc10" onerror="continue" />
+      </condition>
+      <condition expected="true" operator="And">
+        <isexists locator="$loc1" onerror="continue" />
+        <isvisible locator="$loc1" onerror="continue" />
+        <condition>
+          <isexists locator="$loc1" onerror="continue" />
+          <ischecked locator="$loc10" onerror="continue" />
+        </condition>
+      </condition>
+    </body>
+  </function>
+</section>

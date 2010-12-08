@@ -1,0 +1,113 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.Web"/>
+  <include ref="Vibz.io"/>
+  <function name="scalar_data">
+    <include id="exdata.id"></include>
+    <data>
+      <var name="dataSource" type="scalar"></var>
+      <var name="dataDestination" type="scalar"></var>
+      <var name="file"></var>
+    </data>
+    <body>
+      <write filepath="@file" content="@dataSource" onerror="continue"/>
+      <export destination="@dataDestination" source="@dataSource" onerror="continue"/>
+    </body>
+  </function>
+  <function name="array_data">
+    <include id="exdata.id"></include>
+    <data>
+      <var name="data1" type="array"></var>
+      <var name="dataDestination" type="array"></var>
+      <var name="file"></var>
+    </data>
+    <body>
+      <write filepath="@file" content="parse(concat(__newline,0,__space))" onerror="continue"/>
+      <append filepath="@file" content="@data1[0]" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,1,__space))" onerror="continue"/>
+      <append filepath="@file" content="@data1[1]" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,2,__space))" onerror="continue"/>
+      <append filepath="@file" content="@data1[2]" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,3,__space))" onerror="continue"/>
+      <append filepath="@file" content="@data1[3]" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,4,__space))" onerror="continue"/>
+      <append filepath="@file" content="@data1[4]" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,5,__space))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(@data1[0], -0))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,6,__space))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(@data1[1], -1))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,7,__space))" onerror="continue"/>
+      <export destination="@dataDestination" source="@data1" onerror="continue"/>
+    </body>
+  </function>
+  <function name="array_data_forloop">
+    <include id="exdata.id"></include>
+    <data>
+      <var name="data1" type="array"></var>
+      <var name="dataDestination" type="array"></var>
+      <var name="file"></var>
+    </data>
+    <body>
+      <write filepath="@file" content="Test Begin" onerror="continue"/>
+      <for count="@data1.length">
+        <body>
+          <append filepath="@file" content="parse(concat(__newline,@index,__space))" onerror="continue"/>
+          <append filepath="@file" content="@data1[@index]" onerror="continue"/>
+          <export destination="@dataDestination" source="@data1" onerror="continue"/>
+        </body>
+      </for>
+    </body>
+  </function>
+  <function name="datatable_data_forloop">
+    <include id="exdata.id"></include>
+    <data>
+      <var name="data1" type="datatable"></var>
+      <var name="dataDestination" type="datatable"></var>
+      <var name="file"></var>
+    </data>
+    <body>
+      <write filepath="@file" content="Test Begin" onerror="continue"/>
+      <for count="@data1.rowcount">
+        <body>
+          <set var="rowindex" value="@index"></set>
+          <append filepath="@file" content="parse(concat(__newline,Row,@rowindex,__space))" onerror="continue"/>
+          <for count="@data1.columncount">
+            <body>
+              <append filepath="@file" content="parse(concat(__tab,Data,@index,__space))" onerror="continue"/>
+              <append filepath="@file" content="@data1[@rowindex][@index]" onerror="continue"/>
+            </body>
+          </for>
+        </body>
+      </for>
+      <export destination="@dataDestination" source="@data1" onerror="continue"/>
+    </body>
+  </function>
+  <function name="keyvalue_data_general">
+    <include id="exdata.id"></include>
+    <data>
+      <var name="data1" type="keyvalueset"></var>
+      <var name="dataDestination" type="keyvalueset"></var>
+      <var name="file"></var>
+    </data>
+    <body>
+      <write filepath="@file" content="Test Begin" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,[Line 2]:, @data1[Line 2]))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,[Line 1]:, @data1[Line 1]))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,[Line 4]:, @data1[Line 4]))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,[Line 3]:, @data1[Line 3]))" onerror="continue"/>
+      <append filepath="@file" content="parse(concat(__newline,[Line 10]:, @data1[Line 10]))" onerror="continue"/>
+      <export destination="@dataDestination" source="@data1" onerror="continue"/>
+    </body>
+  </function>
+  <function name="scalar_data_neg">
+    <include id="exdata.id"></include>
+    <data>
+      <var name="dataSource" type="scalar"></var>
+      <var name="dataDestination" type="array"></var>
+      <var name="file"></var>
+    </data>
+    <body>
+      <write filepath="@file" content="@dataSource" onerror="continue"/>
+      <export destination="@dataDestination" source="@dataSource" onerror="continue"/>
+    </body>
+  </function>
+</section>

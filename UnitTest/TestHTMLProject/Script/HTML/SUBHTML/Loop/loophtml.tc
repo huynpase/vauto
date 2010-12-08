@@ -1,0 +1,83 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.Web" />
+  <function name="CheckLoop">
+    <include id="loophtml.id"></include>
+    <body>
+      <case>
+        <condition expected="true">
+          <isexists locator="$loc1" onerror="continue" />
+        </condition>
+        <body>
+          <isexists locator="$loc1" onerror="continue" />
+        </body>
+      </case>
+      <if>
+        <case>
+          <condition expected="false">
+            <isexists locator="$loc1" onerror="continue" />
+          </condition>
+          <body>
+            <isexists locator="$loc1" onerror="continue" />
+          </body>
+        </case>
+        <case>
+          <condition expected="true">
+            <isexists locator="$loc1" onerror="continue" />
+          </condition>
+          <body>
+            <isexists locator="$loc1" onerror="continue" />
+          </body>
+        </case>
+        <else>
+          <body>
+            <isexists locator="$loc1" onerror="continue" />
+          </body>
+        </else>
+      </if>
+      <if>
+        <case>
+          <condition expected="false">
+            <isexists locator="$loc1" onerror="continue" />
+          </condition>
+          <body>
+            <isexists locator="$loc1" onerror="continue" />
+          </body>
+        </case>
+        <case>
+          <condition expected="false">
+            <isexists locator="$loc1" onerror="continue" />
+          </condition>
+          <body>
+            <isexists locator="$loc1" onerror="continue" />
+          </body>
+        </case>
+        <else>
+          <body>
+            <isexists locator="$loc1" onerror="continue" />
+          </body>
+        </else>
+      </if>
+      <while>
+        <condition>
+          <ischecked locator="$loc7" />
+        </condition>
+        <body>
+          <UnCheck locator="$loc7" onerror="continue" />
+        </body>
+      </while>
+      <dowhile>
+        <body>
+          <UnCheck locator="$loc7" onerror="continue" />
+        </body>
+        <condition>
+          <ischecked locator="$loc7" />
+        </condition>
+      </dowhile>
+      <for count="6">
+        <body>
+          <Check locator="$loc7" onerror="continue" />
+        </body>
+      </for>
+    </body>
+  </function>
+</section>

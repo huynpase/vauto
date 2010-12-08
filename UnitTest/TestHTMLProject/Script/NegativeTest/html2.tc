@@ -1,0 +1,23 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.Web" />
+  <include ref="Vibz.IO" />
+  <function name="InstructionNotDefined">
+    <include id="html2.id"></include>
+    <body>
+      <Check locator="$loc7" />
+      <NotPresent locator="$loc8" />
+    </body>
+  </function>
+  <function name="InvalidMacroFunction">
+    <include id="html2.id"></include>
+    <body>
+      <Type locator="$loc1" value="parse(concat(invalidmacro(abc,def),xyx))" />
+    </body>
+  </function>
+  <function name="InvalidMacroFormat">
+    <include id="html2.id"></include>
+    <body>
+      <Type locator="$loc1" value="parse(concat((abc,def,xyx))" />
+    </body>
+  </function>
+</section>

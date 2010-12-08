@@ -1,0 +1,33 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.Web" />
+  <include ref="Vibz.IO" />
+  <function name="test">
+    <include id="macro.id"></include>
+    <data>
+      <var name="data1"></var>
+    </data>
+    <body>
+      <Type locator="$loc1" value="parse(concat(abc,def))" />
+      <Type locator="$loc1" value="parse(Divide(Multiply(Sum(10,SUBSTRACT(30, 20)), 2),4))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,2,day,dd))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,0,month,MMM))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,0,month,MM))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,0,day,yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,0,day,M d h:mm yy))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,2,day,dd/MM/yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,-2,day,dd/MM/yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,2,month,dd/MM/yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(07/08/2009,2,year, dd/MM/yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(sysdate,1,day, dd/MM/yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(sysdate,-1,day, dd/MM/yyyy))" />
+      <Type locator="$loc1" value="parse(concat(amit,\,,\(,\),\\,vibhuti,__space,sunita))" />
+      <Type locator="$loc1" value="parse(DateSet(11/15/2009,0,day,dddd\, MMMM dd\, yyyy))" />
+      <Type locator="$loc1" value="parse(DateSet(sysdate,15,day,dddd\, MMMM dd\, yyyy))" />
+      <Type locator="$loc1" value="parse(concat(__basepath, \testsuites\ScormUpload.txt))" />
+      <Type locator="$loc1" value="parse(replace(Replaced AMIT with Vibhuti : [Amit], Amit,Vibhuti ))" />
+      <Type locator="$loc1" value="parse(Substring(AMIT Vibhuti , 5,3 ))" />
+      <Type locator="$loc1" value="parse(Substring(AMIT Vibhuti , 5 ))" />
+      <Type locator="$loc1" value="parse()" />
+    </body>
+  </function>
+</section>
