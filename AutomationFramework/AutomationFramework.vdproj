@@ -33,18 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0D8A6F054EDE6C2853A244EB6FB7821F"
-        "OwnerKey" = "8:_EC0DC5B461BB4AD8888A125C414F1213"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0D8A6F054EDE6C2853A244EB6FB7821F"
-        "OwnerKey" = "8:_8F1EA7E5B60F43A78C7644C45F275282"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
         "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
         "MsmSig" = "8:_UNDEFINED"
@@ -69,18 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2F685FAC854ACFE1B3D948DD3CF18D05"
-        "OwnerKey" = "8:_6D6667B40B0145788B95E9C0A184C0FF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2F685FAC854ACFE1B3D948DD3CF18D05"
-        "OwnerKey" = "8:_78CB3BE9C93BBC174FFC4F7002958B51"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_35C00EA44D226EA0C9DD560D1DE52687"
         "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
         "MsmSig" = "8:_UNDEFINED"
@@ -89,6 +65,60 @@
         {
         "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
         "OwnerKey" = "8:_23F692B5466048B1B8289FA02976424E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_F3BC0185A2A84CEBA43C168E8E8FB011"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_EC0DC5B461BB4AD8888A125C414F1213"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_E383278C4B0A4FA4AEE64CFF51A59F67"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_DEE7B7E4629B47ED8929D310EC0EFF0B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_8F1EA7E5B60F43A78C7644C45F275282"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_8B6069E2CC7A42B896B533E4BF78D095"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_6D6667B40B0145788B95E9C0A184C0FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_55B228F2EEC24131813FBA6DACF85AC3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -148,6 +178,36 @@
         "Entry"
         {
         "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
+        "OwnerKey" = "8:_EC0DC5B461BB4AD8888A125C414F1213"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
+        "OwnerKey" = "8:_998B4BF2D48C4CDBA2258D3086FFDB29"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
+        "OwnerKey" = "8:_8F1EA7E5B60F43A78C7644C45F275282"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
+        "OwnerKey" = "8:_8B6069E2CC7A42B896B533E4BF78D095"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
+        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
         "OwnerKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -167,24 +227,6 @@
         {
         "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
         "OwnerKey" = "8:_9265556C4FF217756BC43CA28827CECE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40507B90FF135F29013A23C30A4DE518"
-        "OwnerKey" = "8:_A66198E83B290BF41FDA76B9A10E46FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40507B90FF135F29013A23C30A4DE518"
-        "OwnerKey" = "8:_DEE7B7E4629B47ED8929D310EC0EFF0B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40507B90FF135F29013A23C30A4DE518"
-        "OwnerKey" = "8:_8B6069E2CC7A42B896B533E4BF78D095"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -231,24 +273,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_552F4D92E04BBBC58F440ECC38038F57"
-        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_552F4D92E04BBBC58F440ECC38038F57"
-        "OwnerKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_552F4D92E04BBBC58F440ECC38038F57"
-        "OwnerKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_55B228F2EEC24131813FBA6DACF85AC3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -275,12 +299,6 @@
         {
         "MsmKey" = "8:_781FBC70F7D74C5DADA155ACF172B7BD"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78CB3BE9C93BBC174FFC4F7002958B51"
-        "OwnerKey" = "8:_998B4BF2D48C4CDBA2258D3086FFDB29"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -375,12 +393,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A66198E83B290BF41FDA76B9A10E46FA"
-        "OwnerKey" = "8:_8B6069E2CC7A42B896B533E4BF78D095"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_ACBBD2D74458427283F871BD5E0E83D9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -425,36 +437,6 @@
         {
         "MsmKey" = "8:_CD61851A3E6C4B9CA25844ACC5A0106B"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D352B8A27E5D4DC38A6AB7D757C5CC84"
-        "OwnerKey" = "8:_E383278C4B0A4FA4AEE64CFF51A59F67"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D352B8A27E5D4DC38A6AB7D757C5CC84"
-        "OwnerKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D352B8A27E5D4DC38A6AB7D757C5CC84"
-        "OwnerKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D352B8A27E5D4DC38A6AB7D757C5CC84"
-        "OwnerKey" = "8:_552F4D92E04BBBC58F440ECC38038F57"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
-        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -507,36 +489,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F49C545F8C7E2517D958383221507D1A"
-        "OwnerKey" = "8:_0D8A6F054EDE6C2853A244EB6FB7821F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F49C545F8C7E2517D958383221507D1A"
-        "OwnerKey" = "8:_55B228F2EEC24131813FBA6DACF85AC3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F49C545F8C7E2517D958383221507D1A"
-        "OwnerKey" = "8:_8F1EA7E5B60F43A78C7644C45F275282"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F49C545F8C7E2517D958383221507D1A"
-        "OwnerKey" = "8:_F3BC0185A2A84CEBA43C168E8E8FB011"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F49C545F8C7E2517D958383221507D1A"
-        "OwnerKey" = "8:_EC0DC5B461BB4AD8888A125C414F1213"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
         "MsmSig" = "8:_UNDEFINED"
@@ -544,30 +496,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2ACC87AEE57C45ACBDDCC07C21630DE8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_55B228F2EEC24131813FBA6DACF85AC3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8F1EA7E5B60F43A78C7644C45F275282"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8A71AD26AC9449ACA22F28362C64226B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F3BC0185A2A84CEBA43C168E8E8FB011"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -575,54 +503,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EC0DC5B461BB4AD8888A125C414F1213"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0D8A6F054EDE6C2853A244EB6FB7821F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F49C545F8C7E2517D958383221507D1A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_552F4D92E04BBBC58F440ECC38038F57"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_35C00EA44D226EA0C9DD560D1DE52687"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4328050442C740278E4B8CF8C8E5F059"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -634,13 +514,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D352B8A27E5D4DC38A6AB7D757C5CC84"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8CF79D92F09D4FBE8FD59886C464D435"
+        "OwnerKey" = "8:_DEE7B7E4629B47ED8929D310EC0EFF0B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -652,7 +526,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DEE7B7E4629B47ED8929D310EC0EFF0B"
+        "OwnerKey" = "8:_998B4BF2D48C4CDBA2258D3086FFDB29"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8F1EA7E5B60F43A78C7644C45F275282"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8CF79D92F09D4FBE8FD59886C464D435"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -664,31 +550,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A66198E83B290BF41FDA76B9A10E46FA"
+        "OwnerKey" = "8:_8A71AD26AC9449ACA22F28362C64226B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_40507B90FF135F29013A23C30A4DE518"
+        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4687EE21E34548D383662B8C1F0DF137"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_998B4BF2D48C4CDBA2258D3086FFDB29"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78CB3BE9C93BBC174FFC4F7002958B51"
+        "OwnerKey" = "8:_35C00EA44D226EA0C9DD560D1DE52687"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -700,7 +574,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2F685FAC854ACFE1B3D948DD3CF18D05"
+        "OwnerKey" = "8:_55B228F2EEC24131813FBA6DACF85AC3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4687EE21E34548D383662B8C1F0DF137"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4328050442C740278E4B8CF8C8E5F059"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2ACC87AEE57C45ACBDDCC07C21630DE8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -802,6 +694,11 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
+                    {
+                    "Name" = "8:.NET Framework 2.0"
+                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    }
                 }
             }
         }
@@ -1122,11 +1019,6 @@
             "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_06FC703C167F47E3A9598E35655AC54C"
-                    {
-                    "Name" = "8:Vibz.Web.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:..\\binaries\\plugin\\instruction\\web\\Vibz.Web.dll"
             "TargetName" = "8:"
@@ -1146,42 +1038,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D8A6F054EDE6C2853A244EB6FB7821F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0D8A6F054EDE6C2853A244EB6FB7821F"
-                    {
-                    "Name" = "8:Vibz.Contract.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Contract.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B28D3663705A48B4809FDE99F874FBEB"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_128B531D05060BE493B7A53B544D6CB3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Plugin, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Plugin, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_128B531D05060BE493B7A53B544D6CB3"
@@ -1259,37 +1120,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2F685FAC854ACFE1B3D948DD3CF18D05"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2F685FAC854ACFE1B3D948DD3CF18D05"
-                    {
-                    "Name" = "8:Vibz.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_232401DFD82244BD85E074B64C183A09"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_35C00EA44D226EA0C9DD560D1DE52687"
             {
             "AssemblyRegister" = "3:1"
@@ -1325,7 +1155,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3B2052E4FA56EE1B9D9362BC8067B67D"
@@ -1356,7 +1186,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3B557CA5660892977FB5BEEA4F2587AB"
@@ -1369,37 +1199,6 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_40507B90FF135F29013A23C30A4DE518"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_40507B90FF135F29013A23C30A4DE518"
-                    {
-                    "Name" = "8:Vibz.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_92AA0347952B495095C47119BDEEC2E7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1587,37 +1386,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_552F4D92E04BBBC58F440ECC38038F57"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_552F4D92E04BBBC58F440ECC38038F57"
-                    {
-                    "Name" = "8:Vibz.Contract.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Contract.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C560570D7EDC4A99BB79038F7D9B9C78"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_55B228F2EEC24131813FBA6DACF85AC3"
             {
             "AssemblyRegister" = "3:1"
@@ -1740,37 +1508,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78CB3BE9C93BBC174FFC4F7002958B51"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_78CB3BE9C93BBC174FFC4F7002958B51"
-                    {
-                    "Name" = "8:Vibz.Contract.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Contract.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_232401DFD82244BD85E074B64C183A09"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7A298B0A95F340C5B643EF95A52EAF46"
             {
             "AssemblyRegister" = "3:1"
@@ -1806,7 +1543,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Zip, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Zip, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7B429E28A67741EFC3AFC88FE6ADE374"
@@ -1981,7 +1718,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Interpreter, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Interpreter, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9265556C4FF217756BC43CA28827CECE"
@@ -2057,37 +1794,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A66198E83B290BF41FDA76B9A10E46FA"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_A66198E83B290BF41FDA76B9A10E46FA"
-                    {
-                    "Name" = "8:Vibz.Contract.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Contract.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_92AA0347952B495095C47119BDEEC2E7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ACBBD2D74458427283F871BD5E0E83D9"
@@ -2250,68 +1956,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D352B8A27E5D4DC38A6AB7D757C5CC84"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_D352B8A27E5D4DC38A6AB7D757C5CC84"
-                    {
-                    "Name" = "8:Vibz.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C560570D7EDC4A99BB79038F7D9B9C78"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D8F1E657FBA4CFC285E84403CC7CCAFB"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_D8F1E657FBA4CFC285E84403CC7CCAFB"
-                    {
-                    "Name" = "8:Vibz.Web.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Web.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C560570D7EDC4A99BB79038F7D9B9C78"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DEE7B7E4629B47ED8929D310EC0EFF0B"
@@ -2516,37 +2160,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F49C545F8C7E2517D958383221507D1A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F49C545F8C7E2517D958383221507D1A"
-                    {
-                    "Name" = "8:Vibz.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B28D3663705A48B4809FDE99F874FBEB"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }

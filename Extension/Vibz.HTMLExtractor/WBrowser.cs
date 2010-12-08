@@ -19,10 +19,12 @@ namespace Vibz.HTMLExtractor
 {
     public partial class WBrowser : Form, IWebDocument
     {
+        const string Title = "Vibz Automation Browser";
         string _docText = "";
         Uri _baseUrl;
         string _currentUrl = "";
         const string NodeId = "__nodeId";
+        object _padLock = new object();
         WebBrowserReadyState _readyState = WebBrowserReadyState.Uninitialized;
         internal WBrowser()
         {
@@ -67,22 +69,46 @@ namespace Vibz.HTMLExtractor
             wb.Dock = DockStyle.Fill;
             wb.AllowNavigation = true;
             wb.ScriptErrorsSuppressed = true;
+            wb.ProgressChanged += new WebBrowserProgressChangedEventHandler(wb_ProgressChanged);
             wb.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(wb_DocumentCompleted);
             wb.Navigating += new WebBrowserNavigatingEventHandler(wb_Navigating);
+            wb.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
             this.Controls.Add(wb);
+        }
+
+        void wb_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            toolStripProgressBar1.Minimum = 0;
+            toolStripProgressBar1.Maximum = (int)e.MaximumProgress;
+            toolStripProgressBar1.Value = (int)e.CurrentProgress;
+
+            toolStripStatusLabel1.Text = wb.ReadyState == WebBrowserReadyState.Loading ? "Loading " + wb.Url.ToString() :
+                (wb.ReadyState == WebBrowserReadyState.Complete ? "Done" : "Website found." + wb.Url.ToString());
+        }
+
+        void wb_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            CheckStatus();
         }
         void wb_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
-            _readyState = WebBrowserReadyState.Loading;
+            // TODO: 
         }
         void wb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            CheckStatus();
+        }
+        void CheckStatus()
         {
             if (wb.ReadyState == WebBrowserReadyState.Complete)
             {
                 if (_reloadingSGML)
                 {
-                    _readyState = WebBrowserReadyState.Complete;
-                    _reloadingSGML = false;
+                    lock (_padLock)
+                    {
+                        _readyState = WebBrowserReadyState.Complete;
+                        _reloadingSGML = false;
+                    }
                 }
                 else
                 {
@@ -93,6 +119,7 @@ namespace Vibz.HTMLExtractor
                     _reloadingSGML = true;
                     _docText = doc.OuterXml;
                     NavigateHTML(_docText);
+                    this.Text = wb.DocumentTitle + " - " + Title;
                 }
             }
         }
@@ -674,7 +701,7 @@ namespace Vibz.HTMLExtractor
             int cnt = nc.Count;
             for (int i = 1; i <= cnt; i++)
             {
-                Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Fetching data in row " + i.ToString(), Vibz.Contract.Log.LogSeverity.Info)); 
+                Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Fetching data in row " + i.ToString(), Vibz.Contract.Log.LogSeverity.Trace)); 
                 System.Data.DataRow dr = dt.RowTemplate;
                 foreach (string key in offsetXPath.Keys)
                 {

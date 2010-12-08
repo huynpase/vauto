@@ -45,7 +45,7 @@ namespace Vibz.Options
 
                 lblStatus.Click += new EventHandler(lblStatus_Click);
 
-                LogQueue.Instance.Enqueue(new LogQueueElement("Plugin information loaded successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Plugin information loaded successfully.", LogSeverity.Trace));
             }
             catch (Exception exception)
             {
@@ -68,7 +68,7 @@ namespace Vibz.Options
                 lblStatus.Text = ele.Message;
                 switch (ele.Severity)
                 {
-                    case LogSeverity.Info:
+                    case LogSeverity.Trace:
                     case LogSeverity.Warn:
                         break;
                     case LogSeverity.Error:

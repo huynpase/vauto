@@ -153,7 +153,7 @@ namespace Vibz.Solution.Element
         public override string GetCompiledText() 
         {
             string retValue = "";
-            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Compiling suite '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Info));
+            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Compiling suite '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
             foreach (SuiteElement se in this.SuiteElements)
             {
                 switch (se.Type)

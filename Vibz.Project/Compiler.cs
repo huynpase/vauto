@@ -103,7 +103,7 @@ namespace Vibz.Solution
             }
             catch (Exception ex)
             {
-                return string.Empty;
+                throw new Exception("Error occured while indenting script. " + ex.Message);
             }
         }
         

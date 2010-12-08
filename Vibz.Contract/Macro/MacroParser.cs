@@ -20,7 +20,12 @@ namespace Vibz.Contract.Macro
         Log.LogElement _progress = null;
         Log.LogElement Progress
         {
-            get { if (_progress == null) _progress = new LogElement("Parsing Macro."); return _progress; }
+            get 
+            { 
+                if (_progress == null) 
+                    _progress = new LogElement("Parsing Macro."); 
+                return _progress; 
+            }
         }
         public Vibz.Contract.Log.LogElement Parse(InstructionBase inst)
         {

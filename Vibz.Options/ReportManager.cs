@@ -40,7 +40,7 @@ namespace Vibz.Options
 
                 tvPlugin.ImageList = imageList1;
 
-                LogQueue.Instance.Enqueue(new LogQueueElement("Report plugins loaded successfully.", LogSeverity.Info));
+                LogQueue.Instance.Enqueue(new LogQueueElement("Report plugins loaded successfully.", LogSeverity.Trace));
 
             }
             catch (Exception exc)

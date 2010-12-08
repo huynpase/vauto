@@ -51,7 +51,7 @@ namespace Vibz.Interpreter.Script.FlowController
         }
         public void Execute(DataHandler vList)
         {
-            _progress = new Vibz.Contract.Log.LogElement("Function start.");
+            _progress = new Vibz.Contract.Log.LogElement("Executing function '" + Name + "'.");
             try
             {
                 MacroParser macro = new MacroParser(Configuration.MacroManager.Instance, vList);

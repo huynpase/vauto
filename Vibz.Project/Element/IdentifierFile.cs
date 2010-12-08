@@ -83,7 +83,7 @@ namespace Vibz.Solution.Element
         public void Save() { }
         public void Load()
         {
-            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading identifier file '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Info));
+            this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading identifier file '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
             XmlDocument doc = new XmlDocument();
             try
             {

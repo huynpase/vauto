@@ -45,7 +45,8 @@ namespace Vibz.Interpreter
                     throw new Exception("The current automation framework does not support the version of VACS (compiled script). \r\n This is because the script is generated using lower version of framework.");
 
                 if (frameworkVersion.CompareTo(scriptVersion) == -1)
-                    throw new Exception("The current automation framework does not support the version of VACS (compiled script). \r\n This is because the script is generated using higher version of framework.");
+                    LogQueue.Instance.Enqueue(new LogQueueElement("This script is generated using higher version of framework. It will continue to execute. In case it fails, you may need to upgrade to higher version of the tool.", LogSeverity.Warn));
+                //throw new Exception("The current automation framework does not support the version of VACS (compiled script). \r\n This is because the script is generated using higher version of framework.");
 
                 System.IO.FileInfo fi = new System.IO.FileInfo(filePath);
                 CommonMacroVariables.Set("__currentpath", fi.DirectoryName);
@@ -65,6 +66,7 @@ namespace Vibz.Interpreter
                     try
                     {
                         function.Execute(function.DataSet);
+                        fncLog.Add(function.Name + ": Executed.", LogSeverity.Info);
                         fncLog.Add(function.InfoEnd);
                     }
                     catch (Exception exc)
@@ -82,7 +84,7 @@ namespace Vibz.Interpreter
                         }
                         catch (Exception exc)
                         {
-                            LogQueue.Instance.Enqueue(new LogQueueElement("Unable to export function report. Processor: " + report.GetType().FullName + ". " + LogException.GetFullException(exc), LogSeverity.Info)); 
+                            LogQueue.Instance.Enqueue(new LogQueueElement("Unable to export function report. Processor: " + report.GetType().FullName + ". " + LogException.GetFullException(exc), LogSeverity.Trace)); 
                         }
                     }
                 }

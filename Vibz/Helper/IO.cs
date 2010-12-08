@@ -50,8 +50,13 @@ namespace Vibz.Helper
                 else
                     break; 
             //If we didn't find a common prefix then throw   
-            if (lastCommonRoot == -1) 
-                throw new ArgumentException("Paths do not have a common base");
+            if (lastCommonRoot == -1)
+            {
+                if (relativeDirectories.Length == 1)
+                    return Path.Combine(absolutePath, relativeTo);
+                else
+                    throw new ArgumentException("Paths do not have a common base");
+            }
             //Build up the relative path 
             StringBuilder relativePath = new StringBuilder();
             //Add on the ..       
