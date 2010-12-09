@@ -1,1 +1,27 @@
---coming soon
+[http://vauto.googlecode.com/files/StockMarket.zip Download Source] - [http://vauto.googlecode.com/files/StockMarketVacs.zip Download VACS]
+
+===Pre-requisite===
+  * Vibz Automation Framework. [http://code.google.com/p/vauto/downloads/list Download here]
+
+===Description===
+The source files can be viewed through Vibz Automation Studio or in any editor. The source contains project files, a script folder and a suite folder. Script folder is where you can find the case file and identifier files. Suite folder contains the test suite file. There is a bin/Debug in the source folder which has compiled script (VACS) file.<br/>
+The Vacs (Vibz automation compiled script), is portable, self contained executable file that can be executed on any remote machine where Vibz Automation framework (VAF) is installed.<br/>
+Lets see the code in detail;<br/> 
+  * <b>Case file</b>
+{{{
+}}}
+<br/>
+  * <b>Identifier file</b>
+    * There is no identifier for the current test case, hence no control node is needed.
+<br/>
+  * <b>Suite file</b>
+{{{
+}}}
+
+===Output===
+Above example collects stock data from host site.
+<br/>
+
+===You may need to know===
+  * [http://code.google.com/p/vauto/wiki/BuildingTestSuite What happens when suite file is compiled.]
+  * [http://code.google.com/p/vauto/wiki/Examples Other Examples]
