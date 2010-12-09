@@ -100,4 +100,8 @@ Lets see the code in detail;<br/>
 }}}
 ===Output===
 Above example collects images from the given url.
-<br/><br/>
+<br/> 
+
+===You may need to know===
+  * [http://code.google.com/p/vauto/wiki/BuildingTestSuite What happens when suite file is compiled.]
+  * [http://code.google.com/p/vauto/wiki/Examples Other Examples]
