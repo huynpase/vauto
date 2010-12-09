@@ -107,9 +107,46 @@ Lets see the code in detail;<br/>
 }}}
 <br/>
   * <b>Suite file</b>
-{{{
-}}}
+    * <b>CompanyUpdate.ts</b>
+    {{{
+<function name="ProcessSourceStocks" ref="Script/case1/ProcessSourceStocks">
+    <data>
+      <var name="url" source="Internal" type="Scalar">http://money.rediff.com/companies/{comp_name}/{comp_code}</var>
+      <var name="stockSource" source="text" type="datatable">
+        <param name="path">parse(concat(__currentpath,/company.txt))</param>
+        <param name="rowseperationchar">parse(__newline)</param>
+        <param name="colseperationchar">parse(__tab)</param>
+      </var>
+      <var name="dataDestination" source="text" type="datatable">
+        <param name="path">parse(concat(__currentpath,/data.txt))</param>
+        <param name="rowseperationchar">parse(__newline)</param>
+        <param name="colseperationchar">parse(__tab)</param>
+      </var>
+    </data>
+  </function>
+    }}}
 
+    * <b>AllCompanyDetailedReport.ts</b>
+    {{{
+ <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+    <data>
+      <var name="url" source="Internal" type="Scalar">
+        <Value><![CDATA[http://money.rediff.com/gainers/bse/daily/groupa]]></Value>
+      </var>
+      <var name="mode" source="Internal" type="Scalar">
+        <Value><![CDATA[update]]></Value>
+      </var>
+      <var name="dataDestination" source="text" type="datatable">
+        <param name="path">parse(concat(__currentpath,/CompanyDetailedReport.txt))</param>
+        <param name="rowseperationchar">parse(__newline)</param>
+        <param name="colseperationchar">parse(__tab)</param>
+        <Value><![CDATA[]]></Value>
+      </var>
+    </data>
+  </function>
+  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  ...
+    }}}
 ===Output===
 Above example collects stock data from host site.
 <br/>
