@@ -104,7 +104,7 @@ Lets see the code in detail;<br/>
 	 <control name="perchangeVal"><![CDATA[//span[@id='ChangePercent']]]></control>
 	 <control name="perfImgLoc"><![CDATA[//img[@width='154' and @height='89']/@src]]></control>
 </controls>
-}}}
+    }}}
 <br/>
   * <b>Suite file</b>
     * <b>CompanyUpdate.ts</b>
