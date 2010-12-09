@@ -1,7 +1,7 @@
 [http://vauto.googlecode.com/files/ImageCollection.zip Download Source] - [http://vauto.googlecode.com/files/ImageCollectionVacs.zip Download VACS]
 
 ===Pre-requisite===
-  * Vibz Automation Framework. [http://code.google.com/p/vauto/downloads/list Download here]
+  * Vibz Automation Framework. [http://code.google.com/p/vauto/downloads/list?can=3&q=&colspec=Filename+Summary+Uploaded+Size+DownloadCount Download here]
 
 ===Description===
 The source files can be viewed through Vibz Automation Studio or in any editor. The source contains project files, a script folder and a suite folder. Script folder is where you can find the case file and identifier files. Suite folder contains the test suite file. There is a bin/Debug in the source folder which has compiled script (VACS) file.<br/>
