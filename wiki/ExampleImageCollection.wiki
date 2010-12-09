@@ -22,6 +22,9 @@ Lets see the code in detail;<br/>
     </body>
   </function>
 }}}
+    * The function 'Extract All Image From URL' accepts the url as an argument.
+    * OpenURL is the web function defined in Vibz.Web (included in the suite) module. It opens up the url into a browser.
+    * downloadimages downloads all the images in the current page to the given folder location.
 <br/>
    
   * <b>Identifier file</b>
@@ -47,6 +50,8 @@ Lets see the code in detail;<br/>
   </function>
 </suite>
 }}}
+    * The suite calls the function 'Extract All Image From URL' multiple times with different urls. (i.e. Same function is reused.)
+    * In order to process 10 urls either we need to call the same function 10 times with different url or can loop through list of urls as explained in next section.
 <br/>
 
   * <b>Case file - Added function</b>
@@ -74,6 +79,10 @@ Lets see the code in detail;<br/>
     </body>
   </function>
 }}}
+    * Further to simplify the scripting, I have added another function 'Extract All Image From all URLs' (in the same case file) which loops through the array of urls and each time makes a call to the previous function to process the url individually. <b>(Function re-usability)</b>
+    * The data section defines the incoming argument as the array. It doesn't say any thing about the source of the data. Source of data needs to be defined at suite level. This gives the flexibility to change the source of incoming data any time without changing the functional logic. <b>(Data completely separated out from logic)</b>
+    * Based on type of data, the function can use its properties and methods to access and modify the data at granular level.
+    * The function uses a for loop with a loop count equal to the count of array items.
 <br/>
 
   * <b>Suite file - 2</b>
@@ -89,6 +98,10 @@ Lets see the code in detail;<br/>
   </function>
 </suite>
 }}}
+    _Note: Although I could have called the new function with the previous suite file but I opted to create a new suite file, considering this to be a new scenario. A suite is a real executable unit. Every time we have a new execution scenario we should create a new suite file._
+    * The suite calls the function 'Extract All Image From all URLs' with the required argument 'urls'. The type of the arguments should be same as in the function else the case will fail. 
+    * Since we are using an external file we need to provide the connection parameters along with. In above example we are using a text file to store the list of urls. 
+    _Note: Framework supports the extension of any custom data source. [http://code.google.com/p/vauto/wiki/ExtendingDataSource Read more]_
 <br/>
 
   * <b>External Data File</b>
@@ -98,8 +111,11 @@ Lets see the code in detail;<br/>
   http://sify.com/finance/search-car-imagegallery.html
   http://sify.com/finance/search-bike-imagegallery.html
 }}}
+    * This is the external data file 'data.txt' which can be placed any where on the system. The same path need to be passed given in the suite file.
+    * If the requirement goes on increasing with more number of urls to be processed then we just need to keep on adding urls in the data.txt file providing <b>low maintenance cost</b>.
+<br/>
 ===Output===
-Above example collects images from the given url.
+Above example collects images from the given url or list of urls.
 <br/> 
 
 ===You may need to know===
