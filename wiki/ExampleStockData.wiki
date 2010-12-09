@@ -35,7 +35,6 @@ Lets see the code in detail;<br/>
     </body>
   </function>
     }}}
-
     * Function <b>ProcessSourceStocks</b>.
     {{{
   <function name="ProcessSourceStocks">
@@ -62,7 +61,6 @@ Lets see the code in detail;<br/>
     </body>
   </function>
     }}}
-
     * Function <b>ProcessAllStocks</b>.
     {{{
   <function name="ProcessAllStocks">
