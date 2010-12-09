@@ -9,20 +9,18 @@ The Vacs (Vibz automation compiled script), is portable, self contained executab
 Lets see the code in detail;<br/> 
   * <b>Case file</b>
 {{{
-<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <include ref="Vibz.IO"/>
   <include ref="Vibz.Web"/>
-  <function name="Extract All Image">
+  <function name="Extract All Image From URL">
     <include id="case1.id"></include>
     <data>
-	<var name="url" />
+      <var name="url"/>
     </data>
     <body>
-	<openurl url="@url" />
-	<DownloadImages folderpath="images" />
+      <openurl url="@url" maxwait="120000"/>
+      <downloadimages folderpath="images"/>
     </body>
   </function>
-</section>
 }}}
 <br/>
    
@@ -30,19 +28,77 @@ Lets see the code in detail;<br/>
     * There is no identifier for the current test case, hence no control node is needed.
 <br/>
 
-  * <b>Suite file</b>
+  * <b>Suite file - 1</b>
 {{{
 <suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="suite1" ref="Suite/suite1">
+  <function name="Extract All Image From URL" ref="Script/case1/Extract All Image From URL">
+    <data>
+      <var name="url" source="Internal" type="Scalar">
+        <Value><![CDATA[http://sify.com/finance/search-car-imagegallery.html]]></Value>
+      </var>
+    </data>
+  </function>
   <function name="Extract All Image" ref="Script/case1/Extract All Image">
     <data>
       <var name="url" source="Internal" type="Scalar">
-        <Value><![CDATA[http://www.rosecomparison.com/]]></Value>
+        <Value><![CDATA[http://sify.com/finance/search-bike-imagegallery.html]]></Value>
       </var>
     </data>
   </function>
 </suite>
 }}}
+<br/>
 
+  * <b>Case file - Added function</b>
+{{{
+  <include ref="Vibz.IO"/>
+  <include ref="Vibz.Web"/>
+  <function name="Extract All Image From URL">
+    ... See above ...
+  </function>
+  <function name="Extract All Image From all URLs">
+    <include id="case1.id"></include>
+    <data>
+      <var name="urls" type="array"/>
+    </data>
+    <body>
+      <for count="@urls.length">
+        <body>
+          <call name="Extract All Image From URL" onerror="continue">
+            <data>
+              <var name="url">@urls[@index]</var>
+            </data>
+          </call>
+        </body>
+      </for>
+    </body>
+  </function>
+}}}
+<br/>
+
+  * <b>Suite file - 2</b>
+{{{
+<suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="suite1" ref="Suite/suite1">
+  <function name="Extract All Image From all URLs" ref="Script/case1/Extract All Image From all URLs">
+    <data>
+      <var name="urls" source="text" type="array">
+        <param name="path">parse(concat(__currentpath,/data.txt))</param>
+        <param name="seperationchar">parse(__newline)</param>
+        <Value><![CDATA[]]></Value>
+      </var>
+    </data>
+  </function>
+</suite>
+}}}
+<br/>
+
+  * <b>External Data File</b>
+{{{
+http://photo.net/editors-picks/2010/landscape-photography/
+http://photo.net/editors-picks/2010/dance-photography/
+http://sify.com/finance/search-car-imagegallery.html
+http://sify.com/finance/search-bike-imagegallery.html
+}}}
 ===Output===
 Above example collects images from the given url.
 <br/><br/>
