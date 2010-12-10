@@ -103,6 +103,10 @@ Lets see the code in detail;<br/>
   </function>
     }}}
       * Function 'ProcessAllStocks' is an extension to 'ProcessSourceStocks' where it doesnt depend on the input urls. Rather it fetches the urls from the site itself and then processes each url sequentially.
+      * Instruction Export has three properties. 
+        * The source of data. This can be a variable or a external source.
+        * Destination where data need to be exported.
+        * Mode: When insert with append to existing recordset and when update will overwrite new recordset to the destination specified. 
 <br/>
   * <b>Identifier file</b>
     {{{
@@ -139,6 +143,7 @@ Lets see the code in detail;<br/>
     </data>
   </function>
     }}}
+      * Suite file 'CompanyUpdate.ts' calls the test case 'ProcessSourceStocks' with argument values being passed to it.
     * <b>AllCompanyDetailedReport.ts</b>
     {{{
  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
@@ -160,8 +165,9 @@ Lets see the code in detail;<br/>
   <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
   ...
     }}}
+      * Suite file 'AllCompanyDetailedReport.ts' calls the test case 'ProcessAllStocks' multiple times with different base urls where it can look for url of the companies.
 ===Output===
-Above example collects stock data from host site.
+Above example collects stock data from the host site.
 <br/>
 
 ===You may need to know===
