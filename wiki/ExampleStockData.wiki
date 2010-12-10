@@ -18,23 +18,32 @@ Lets see the code in detail;<br/>
 	<var name="result" type="datatable"></var>
     </data>
     <body>
-	<openurl url="@url"/>
-	<set var="comp_name" value="@comp_name" />
-	<getattribute locator="$perfImgLoc" assignto="perfImgLoc" />
-	<invoke assignto="index1" method="@perfImgLoc.lastindexof(/)" />
-	<set var="index1" value="parse(sum(@index1,1))" />
-	<invoke assignto="index2" method="@perfImgLoc.lastindexof(.)" />
-	<set var="length" value="parse(substract(@index2,@index1))" />
-	<invoke method="@perfImgLoc.substring(@index1, @length)" assignto="abc" />			
-	<getattribute locator="$iframeLoc" assignto="iframeSrc" />
-	<openurl url="@iframeSrc" />
-	<getinnertext locator="$curVal" assignto="curVal" />
-	<getinnertext locator="$changeVal" assignto="changeVal" />
-	<getinnertext locator="$perchangeVal" assignto="perchangeVal" />
-	<invoke method="@result.AddRow(@comp_name,@curVal, @changeVal,@perchangeVal , @abc)" />
+1.	<openurl url="@url"/>
+2.	<set var="comp_name" value="@comp_name" />
+3.	<getattribute locator="$perfImgLoc" assignto="perfImgLoc" />
+4.	<invoke assignto="index1" method="@perfImgLoc.lastindexof(/)" />
+5.	<set var="index1" value="parse(sum(@index1,1))" />
+6.	<invoke assignto="index2" method="@perfImgLoc.lastindexof(.)" />
+7.	<set var="length" value="parse(substract(@index2,@index1))" />
+8.	<invoke method="@perfImgLoc.substring(@index1, @length)" assignto="abc" />			
+9.	<getattribute locator="$iframeLoc" assignto="iframeSrc" />
+10.	<openurl url="@iframeSrc" />
+11.	<getinnertext locator="$curVal" assignto="curVal" />
+12.	<getinnertext locator="$changeVal" assignto="changeVal" />
+13.	<getinnertext locator="$perchangeVal" assignto="perchangeVal" />
+14.	<invoke method="@result.AddRow(@comp_name,@curVal, @changeVal,@perchangeVal , @abc)" />
     </body>
   </function>
     }}}
+      * Function _GetStockDetailedData_ goes through rediff finance page to extract the required data.
+      * The function accepts three arguments: page url, company name and the destination point.
+      * All the used instructions are available either in Vibz.Web or Vibz.IO. The suite has referenced these modules.
+      * First instruction opens the url in a browser and successive instructions goes to fetch the data from the page.
+      * The value for 'How hot is the stock' is being derived from an image url. Instructions 2 - 8 does some string manipulations to get the value from the url. (This string manipulation doesn't fall in the plain logic of the testcase. So we may move this function as a separate function.)
+      * Next data is into an iframe. Instruction at 9 fetches the iframe url.
+      * Line 10 - 13 fetches the data from the iframe. 
+      * Line 14 pushes all the fetched data into a datatable.
+      * The objective of the function is collect the data and push it into a datatable which acts as out variable. 
     * Function <b>ProcessSourceStocks</b>.
     {{{
   <function name="ProcessSourceStocks">
