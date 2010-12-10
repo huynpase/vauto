@@ -12,7 +12,6 @@
     [CreatingExtendedModule#Extending_Macro_module Read more]
     # <b>[CreatingExtendedModule#Extending_External_Data_module Extended Input data].</b> Although input data to a test case can be provided inline to a script. However, sometime you may decide to take the input data or export the processed data to/from some external source (say Excel, XML, DB etc). In that case the data retrieval or even exporting technique need to be extended. The framework can be extended to do data processing over a wide range of external file.<br/>
     [CreatingExtendedModule#Extending_External_Data_module Read more]
-    # <b>[CreatingExtendedModule#Extending_Reports_module Extended Reporting].</b> Reporting is the final outcome of the automation process. One may like to provide it in HTML/XML format or export the result to some repository. The framework can be extended easily to customize the reporting process.
-<br/>
+    # <b>[CreatingExtendedModule#Extending_Reports_module Extended Reporting].</b> Reporting is the final outcome of the automation process. One may like to provide it in HTML/XML format or export the result to some repository. The framework can be extended easily to customize the reporting process.<br/>
     [CreatingExtendedModule#Extending_Reports_module Read more]
 [http://code.google.com/p/vauto/wiki/CreatingExtendedModule Know how to write your extended module.]
