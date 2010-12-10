@@ -70,6 +70,10 @@ Lets see the code in detail;<br/>
     </body>
   </function>
     }}}
+      * Function 'ProcessSourceStocks' uses an input file that contains the company information in a table structure.
+      * It uses the information to create a url and passes the url to previous function which then extracts the required data.
+      * One can put all the companies info at one single file to fetch the data.
+      * _export_ instruction exports the fetched data into the destination location.
     * Function <b>ProcessAllStocks</b>.
     {{{
   <function name="ProcessAllStocks">
@@ -98,6 +102,7 @@ Lets see the code in detail;<br/>
     </body>
   </function>
     }}}
+      * Function 'ProcessAllStocks' is an extension to 'ProcessSourceStocks' where it doesnt depend on the input urls. Rather it fetches the urls from the site itself and then processes each url sequentially.
 <br/>
   * <b>Identifier file</b>
     {{{
@@ -112,6 +117,8 @@ Lets see the code in detail;<br/>
 	 <control name="perfImgLoc"><![CDATA[//img[@width='154' and @height='89']/@src]]></control>
 </controls>
     }}}
+      * The identifier file defines the locators that were used by the testcase to reach a control.
+      * The module 'Vibz.Web' supports xpath to access a control, hence the locators defined here are XPaths.
 <br/>
   * <b>Suite file</b>
     * <b>CompanyUpdate.ts</b>
