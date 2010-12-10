@@ -1,2 +1,12 @@
 ==How to extend a module?==
---coming soon.
+ _Note: Vibz Automation framework can be extended in four different directions. [http://code.google.com/p/vauto/wiki/ExtensibleFrameworkConcept Read here]_
+
+This article will explain the process to extend each of these modules.
+
+===Extending Instruction module===
+
+===Extending Macro module===
+
+===Extending External Data module===
+
+===Extending Reports module===
