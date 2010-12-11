@@ -1,9 +1,15 @@
 ==How to extend a module?==
- _Note: Vibz Automation framework can be extended in four different directions. [http://code.google.com/p/vauto/wiki/ExtensibleFrameworkConcept Read here]_
+_Note: Vibz Automation framework can be extended in four different directions. [http://code.google.com/p/vauto/wiki/ExtensibleFrameworkConcept Read here]_
 
 This article will explain the process to extend each of these modules.
 
 ===Extending Instruction module===
+[http://vauto.googlecode.com/files/Ext_Instruction.zip Download Demo Source]
+Framework identifies three types of instructions based on their behavior.
+  * Action:
+  * Assert:
+  * Fetch:
+The example has a extension project 'demo_ext_instruction' that demonstrates extension to each type of instruction. Along with extended module there is a test project 'test_demo_ext_inst' which shows the usage of the new module.
 
 ===Extending Macro module===
 
