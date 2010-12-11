@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <appglobal><![CDATA[global.ag]]></appglobal>
+  <appconfig><![CDATA[app.config]]></appconfig>
+  <buildpath><![CDATA[bin/debug]]></buildpath>
+  <reportpath><![CDATA[C:\logs\stocklogs\{DATETIMESTAMP}]]></reportpath>
+</project>
