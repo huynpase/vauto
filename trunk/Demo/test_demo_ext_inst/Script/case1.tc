@@ -1,0 +1,34 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+  <include ref="demo_ext"/>
+  <function name="tc1">
+    <include id="case1.id"></include>
+    <data>
+    </data>
+    <body>
+	<getsystemdate assignto="actDate"/>
+	<if>
+        		<case>
+          			<condition expected="true">
+            				<isdaytoday day="mon"/>
+          			</condition>
+          			<body>
+            				<changedate date="1" month="1" year="2011"/>
+				<getsystemdate assignto="newDate"/>
+			 	<textalert message="parse(concat(Its Monday : Date changed to,__space,__newline,@newDate))" display="fadecrawlin" direction="bottomtotop" position="bottomright" exit="autoclose" duration="10000"/>
+          			</body>
+        		</case>
+         		<else>
+          			<body>
+            				<changedate date="2" month="2" year="2012"/>
+				<getsystemdate assignto="newDate"/>
+			 	<textalert message="parse(concat(Its not Monday : Date changed to,__space,__newline,@newDate))" display="fadecrawlin" direction="bottomtotop" position="bottomright" exit="autoclose" duration="10000"/>
+          			</body>
+        		</else>
+      	</if>
+	<changedate datestring="@actDate"/>
+	<getsystemdate assignto="actDate"/>
+	<textalert message="parse(concat(Date reverted to,__space,@actDate))" display="fadecrawlin" direction="bottomtotop" position="center" exit="autoclose" duration="10000"/>
+    </body>
+  </function>
+</section>

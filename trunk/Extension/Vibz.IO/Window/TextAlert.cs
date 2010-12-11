@@ -127,7 +127,7 @@ namespace Vibz.IO.Window
         }
         public void Execute(Vibz.Contract.Data.DataHandler vList)
         {
-            TextAlertForm frm = new TextAlertForm(Message, _dmode, _emode, _direction, _position, _duration);
+            TextAlertForm frm = new TextAlertForm(vList.Evaluate(Message), _dmode, _emode, _direction, _position, _duration);
             frm.ShowDialog();
         }
 
