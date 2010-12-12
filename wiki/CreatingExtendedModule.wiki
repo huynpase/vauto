@@ -6,13 +6,35 @@ This article will explain the process to extend each of these modules.
 ===Extending Instruction module===
 [http://vauto.googlecode.com/files/Ext_Instruction.zip Download Demo Source]
 
+ *Types of Instructions*
 Framework identifies three types of instructions based on their behavior.
   * Action:
   * Assert:
   * Fetch:
+
+ *About Demo*
 The example has a extension project 'demo_ext_instruction' that demonstrates extension to each type of instruction. Along with extended module there is a test project 'test_demo_ext_inst' which shows the usage of the new module.
 
+ *Steps*
+ * Create a new class library project.
+ * Add reference to following Vibz.Contract.dll. [http://vauto.googlecode.com/files/Vibz.Contract.dll.zip Download here]
+ * to be continued
+
 ===Extending Macro module===
+[http://vauto.googlecode.com/files/Ext_Macro.zip Download Demo Source]
+
+ *Types of Macros*
+Framework identifies two types of macro based on their behavior.
+  * Macro Function:
+  * Macro Variable:
+
+ *About Demo*
+The example has a extension project 'demo_ext_macro' that demonstrates extension to each type of macro. Along with extended module there is a test project 'test_demo_ext_macro' which shows the usage of the new module.
+
+ *Steps*
+ * Create a new class library project.
+ * Add reference to following Vibz.Contract.dll. [http://vauto.googlecode.com/files/Vibz.Contract.dll.zip Download here]
+ * to be continued
 
 ===Extending External Data module===
 
