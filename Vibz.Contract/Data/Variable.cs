@@ -13,9 +13,7 @@ namespace Vibz.Contract.Data
         public const string nName = "name";
         public const string nSource = "source";
         public const string nType = "type";
-
-        // public static readonly string SourceDefault = Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower();
-        // public static readonly string TypeDefault = Vibz.Contract.Data.Type.DataType.Scalar.ToString().ToLower();
+        public const string nValue = "value";
 
         [XmlAttribute(Variable.nName)]
         public string Name;
@@ -33,12 +31,10 @@ namespace Vibz.Contract.Data
             get { if (_type == null && Data != null) _type = Data.Type; return _type; }
             set { _type = value; }
         }
-        //[XmlText()]
-        //public string InnerText;
 
         [XmlIgnore()]
         public string InnerText = "";
-        [XmlElement("Value")]
+        [XmlElement(Variable.nValue)]
         public XmlCDataSection InnerTextNode
         {
             get
@@ -119,23 +115,18 @@ namespace Vibz.Contract.Data
         }
         public string GetCompiledText()
         {
-            //if (ParamList == null || ParamList.Count == 0)
-            //    return "";
-            
             string innerXml = "";
             foreach (Parameter param in ParamList)
             {
                 innerXml += param.GetCompiledText();
             }
-            //if (innerXml == "")
-            //    return "";
 
             string retValue = "<" + nNodeName + " " + nName + "='" + Name + "' " +
                 nSource + "='" + Source + "' " + nType + "='" + Type + "'>";
             if (innerXml.Trim() == "")
             {
                 if (InnerText != null || InnerText != "")
-                    retValue += "<![CDATA[" + InnerText + "]]>";
+                    retValue += "<" + Variable.nValue + "><![CDATA[" + InnerText + "]]></" + Variable.nValue + ">";
             }
             else
                 retValue += innerXml;

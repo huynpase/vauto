@@ -1,0 +1,47 @@
+<section version="2.0.1.2">
+  <include ref="Vibz.IO" />
+  <basepath><![CDATA[C:\Amit\Auto mate\Demo\test_demo_ext_macro]]></basepath>
+  <reportpath><![CDATA[C:\logs\{DATETIMESTAMP}]]></reportpath>
+  <global>
+    <function name="OnTestcaseFail" ref="global/OnTestcaseFail">
+      <body>
+        <snapshot filepath="@{reportpath}/img/imgFail_{DATETIMESTAMP}.jpg" />
+      </body>
+    </function>
+    <function name="OnTestcaseComplete" ref="global/OnTestcaseComplete">
+      <body>
+        <snapshot filepath="@{reportpath}/img/imgComplete_{DATETIMESTAMP}.jpg" />
+      </body>
+    </function>
+    <function name="OnInstructionFail" ref="global/OnInstructionFail">
+      <body>
+      </body>
+    </function>
+    <function name="OnInstructionComplete" ref="global/OnInstructionComplete">
+      <body>
+      </body>
+    </function>
+  </global>
+  <app>
+    <configuration>
+      <report>
+        <include name="TextReport" status="active">
+          <param name="FilePath" value="@{reportpath}/Report.txt">
+          </param>
+          <param name="Format" value="{DateTime}:: {Severity} - {Indent}{Message}">
+          </param>
+        </include>
+      </report>
+    </configuration>
+  </app>
+  <function name="tc1" ref="Script/case1/tc1">
+    <data>
+      <var name="number" source="Internal" type="Scalar">
+        <value><![CDATA[81]]></value>
+      </var>
+    </data>
+    <body>
+      <textalert message="parse(concat(You are logged in as: ,UserName,__newline,Square root of 81 is:,sqrt(@number)))" display="fadecrawlin" direction="bottomtotop" position="bottomright" exit="autoclose" duration="10000" />
+    </body>
+  </function>
+</section>

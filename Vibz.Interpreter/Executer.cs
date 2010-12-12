@@ -8,7 +8,8 @@ using System.Reflection;
 using Vibz.Contract.Log;
 using Vibz.Contract.Macro;
 namespace Vibz.Interpreter
-{    public class Executer : ITask
+{
+    public class Executer : ITask
     {
         TaskState _state = TaskState.NotStarted;
         public TaskState State
@@ -26,21 +27,27 @@ namespace Vibz.Interpreter
         FileParser _fParser;
         public Executer()
         {
-            _state = TaskState.NotStarted;        
+            _state = TaskState.NotStarted;
+        }
+        public void Process_Init()
+        {
+            Vibz.Interpreter.Data.DataProcessor.Reset();
+            Vibz.Interpreter.Configuration.InstructionManager.Reset();
+            Vibz.Interpreter.Configuration.ReportManager.Reset();
+            _state = TaskState.Processing;
         }
         public void Process(object param)
         {
             try
             {
-                Vibz.Interpreter.Data.DataProcessor.Reset();
-                _state = TaskState.Processing;
+                Process_Init();
                 string filePath = ((object[])param).GetValue(0).ToString();
                 if (!System.IO.File.Exists(filePath))
                     throw new Exception("Invalid path '" + filePath + "'.");
                 _fParser = new FileParser(filePath);
                 Version scriptVersion = new Version(_fParser.Version);
                 Version frameworkVersion = new Version(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-                
+
                 if (scriptVersion.CompareTo(Plugin.PluginManager.SupportedVersion) == -1)
                     throw new Exception("The current automation framework does not support the version of VACS (compiled script). \r\n This is because the script is generated using lower version of framework.");
 
@@ -84,7 +91,7 @@ namespace Vibz.Interpreter
                         }
                         catch (Exception exc)
                         {
-                            LogQueue.Instance.Enqueue(new LogQueueElement("Unable to export function report. Processor: " + report.GetType().FullName + ". " + LogException.GetFullException(exc), LogSeverity.Trace)); 
+                            LogQueue.Instance.Enqueue(new LogQueueElement("Unable to export function report. Processor: " + report.GetType().FullName + ". " + LogException.GetFullException(exc), LogSeverity.Trace));
                         }
                     }
                 }

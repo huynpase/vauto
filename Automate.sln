@@ -95,6 +95,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{39D3FCF2-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo_ext_instruction", "Demo\demo_ext_instruction\demo_ext_instruction.csproj", "{C0487268-44B6-4EC3-8D5D-98E2BB0AE1C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo_ext_macro", "Demo\demo_ext_macro\demo_ext_macro.csproj", "{10CA53EC-0135-40F9-85C1-AEE88B5E437A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -182,9 +184,11 @@ Global
 		{CC9B1BA0-61D9-4B45-B8CC-4485BA915C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC9B1BA0-61D9-4B45-B8CC-4485BA915C3E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0487268-44B6-4EC3-8D5D-98E2BB0AE1C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0487268-44B6-4EC3-8D5D-98E2BB0AE1C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0487268-44B6-4EC3-8D5D-98E2BB0AE1C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0487268-44B6-4EC3-8D5D-98E2BB0AE1C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CA53EC-0135-40F9-85C1-AEE88B5E437A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CA53EC-0135-40F9-85C1-AEE88B5E437A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CA53EC-0135-40F9-85C1-AEE88B5E437A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -205,5 +209,6 @@ Global
 		{DF496459-386E-4C51-999A-009CA3373850} = {7ACC50F8-B7BC-4152-9D7E-AD184CDD95BA}
 		{FC55DC4E-30C0-4BB8-AF3F-21BA5BC83EE0} = {7ACC50F8-B7BC-4152-9D7E-AD184CDD95BA}
 		{C0487268-44B6-4EC3-8D5D-98E2BB0AE1C4} = {39D3FCF2-A5BC-4A2C-A8A1-DB1F6EB735ED}
+		{10CA53EC-0135-40F9-85C1-AEE88B5E437A} = {39D3FCF2-A5BC-4A2C-A8A1-DB1F6EB735ED}
 	EndGlobalSection
 EndGlobal

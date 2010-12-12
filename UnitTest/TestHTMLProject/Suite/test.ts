@@ -3,31 +3,31 @@
   <function name="main" ref="Script/HTML/testhtml/main">
     <data>
       <var name="url" source="internal" type="scalar">
-        <Value><![CDATA[C:\Amit\Auto mate\UnitTest\TestWebSite\Controls.htm]]></Value>
+        <value><![CDATA[C:\Amit\Auto mate\UnitTest\TestWebSite\Controls.htm]]></value>
       </var>
       <var name="file1" source="internal" type="scalar">
-        <Value><![CDATA[C://Amit/write_a.htm]]></Value>
+        <value><![CDATA[C://Amit/write_a.htm]]></value>
       </var>
       <var name="data1" source="internal" type="scalar">
-        <Value><![CDATA[text1]]></Value>
+        <value><![CDATA[text1]]></value>
       </var>
       <var name="data2" source="internal" type="scalar">
-        <Value><![CDATA[text2]]></Value>
+        <value><![CDATA[text2]]></value>
       </var>
       <var name="data3" source="internal" type="scalar">
-        <Value><![CDATA[pass1]]></Value>
+        <value><![CDATA[pass1]]></value>
       </var>
       <var name="data4" source="internal" type="scalar">
-        <Value><![CDATA[pass2]]></Value>
+        <value><![CDATA[pass2]]></value>
       </var>
       <var name="data5" source="internal" type="scalar">
-        <Value><![CDATA[C://Amit/write_b.htm]]></Value>
+        <value><![CDATA[C://Amit/write_b.htm]]></value>
       </var>
       <var name="data6" source="internal" type="scalar">
-        <Value><![CDATA[3]]></Value>
+        <value><![CDATA[3]]></value>
       </var>
       <var name="data7" source="internal" type="scalar">
-        <Value><![CDATA[4]]></Value>
+        <value><![CDATA[4]]></value>
       </var>
     </data>
   </function>

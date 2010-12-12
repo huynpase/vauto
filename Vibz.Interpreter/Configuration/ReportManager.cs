@@ -11,6 +11,10 @@ namespace Vibz.Interpreter.Configuration
     {
         public const string NodeName = "report";
         static List<IReport> _reports = null;
+        public static void Reset()
+        {
+            _reports = null;
+        }
         static internal List<IReport> ReportList
         {
             get
