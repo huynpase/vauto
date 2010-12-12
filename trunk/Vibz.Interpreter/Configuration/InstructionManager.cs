@@ -11,6 +11,10 @@ namespace Vibz.Interpreter.Configuration
         public const string NodeName = "instruction";
         static FileParser _fParser;
         static Vibz.Interpreter.Plugin.PluginAssembly _instList;
+        public static void Reset()
+        {
+            _instList = null;
+        }
         public static Vibz.Interpreter.Plugin.PluginAssembly Handlers
         {
             get

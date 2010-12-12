@@ -10,6 +10,7 @@
   </instruction>
   <macro>
     <include name="Vibz.Macro" path="plugin\macro\vibz\Vibz.Macro.dll" />
+    <include name="demo_ext" path="plugin\macro\demo\demo_ext_macro.dll" />
   </macro>
   <report>
     <include name="TextReport" ref="plugin\report\vibz\Vibz.Report.dll, Vibz.Report.Text.TextReport">

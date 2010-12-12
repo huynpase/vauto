@@ -127,7 +127,7 @@ namespace Vibz.Contract.Macro
                                 items.Push(Evaluate(val, null));
                             while (true)
                             {
-                                string item = items.Pop();
+                                string item = _vList.Evaluate(items.Pop());
                                 if (IsAFunction(item))
                                 {
                                     object paramObj = new object[param.Count];
@@ -167,7 +167,7 @@ namespace Vibz.Contract.Macro
                 if (CommonMacroVariables.Contains(macro))
                     return CommonMacroVariables.Get(macro);
                 else
-                    return _vList.Evaluate(macro);
+                    return macro;
             }
             // throw new Exception("Macro element '" + macro + "' is undefined. Please verify your macro drivers.");
             object fObj = System.Activator.CreateInstance(ftype.Type);

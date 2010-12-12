@@ -15,31 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0179C46043FA5C7C84B303D7318A7559"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0179C46043FA5C7C84B303D7318A7559"
-        "OwnerKey" = "8:_7B429E28A67741EFC3AFC88FE6ADE374"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_137A263D016643D3ACDAB1F9BA9B25D6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -112,6 +88,12 @@
         "Entry"
         {
         "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
+        "OwnerKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
         "OwnerKey" = "8:_6D6667B40B0145788B95E9C0A184C0FF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -124,13 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
-        "OwnerKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
+        "OwnerKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,13 +184,13 @@
         "Entry"
         {
         "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
-        "OwnerKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
+        "OwnerKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3B557CA5660892977FB5BEEA4F2587AB"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
+        "OwnerKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -249,25 +225,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4564615034EA432893A528A8A98224CB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_4687EE21E34548D383662B8C1F0DF137"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4719AB685D624C0CA58FEDCA37B7079A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4BC10DB4C95B4EF1AC8D7BC3FC0CE2B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -297,6 +255,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7191C01A7DD744479A6DDE56D56B1BE6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_781FBC70F7D74C5DADA155ACF172B7BD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -304,24 +268,6 @@
         "Entry"
         {
         "MsmKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B429E28A67741EFC3AFC88FE6ADE374"
-        "OwnerKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B429E28A67741EFC3AFC88FE6ADE374"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_82B1D3C49933436A8AC29CF94D1EAAB4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -358,12 +304,6 @@
         "Entry"
         {
         "MsmKey" = "8:_9265556C4FF217756BC43CA28827CECE"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9265556C4FF217756BC43CA28827CECE"
         "OwnerKey" = "8:_4547D318C08ED0CD79D76569D6294763"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -371,6 +311,12 @@
         {
         "MsmKey" = "8:_934A822435BA470CA71318F335C82734"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_946E884E4747A4A8298B1A6C6F36B175"
+        "OwnerKey" = "8:_F3172216615BDDB31FB67CA2983C41FF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -399,7 +345,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
+        "MsmKey" = "8:_B30F5B6AD69A493BAABBF0094CA7BCD2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -423,20 +369,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C8C64FCED30D453A9F69AA963C6F69E0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C96A5F6C1C3445C3ACD14E3DD08749DE"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CD61851A3E6C4B9CA25844ACC5A0106B"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
+        "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,44 +387,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E39ECAFBFE034BFA9799F4BAD0B080EF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E66B753C510D448C898BE668FFEF8A49"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E8CCB4583FC343ABA5570CCE8829A7C6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E9D62F78EC1B4D6D9745675723B1D9E3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_EC0DC5B461BB4AD8888A125C414F1213"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F3BC0185A2A84CEBA43C168E8E8FB011"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_F3172216615BDDB31FB67CA2983C41FF"
+        "OwnerKey" = "8:_8B6069E2CC7A42B896B533E4BF78D095"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
+        "MsmKey" = "8:_F3BC0185A2A84CEBA43C168E8E8FB011"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -550,6 +460,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F3172216615BDDB31FB67CA2983C41FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8A71AD26AC9449ACA22F28362C64226B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -557,6 +473,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7A298B0A95F340C5B643EF95A52EAF46"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D8F1E657FBA4CFC285E84403CC7CCAFB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -598,19 +520,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_128B531D05060BE493B7A53B544D6CB3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7B429E28A67741EFC3AFC88FE6ADE374"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0179C46043FA5C7C84B303D7318A7559"
+        "OwnerKey" = "8:_06FC703C167F47E3A9598E35655AC54C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -659,12 +569,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3B2052E4FA56EE1B9D9362BC8067B67D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_01E11E78B3E64C21A2589DBB17F0726F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -757,7 +661,7 @@
             "InstallAction" = "3:2"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
-            "Sequence" = "3:4"
+            "Sequence" = "3:3"
             "Identifier" = "8:_BA403EB8_803F_463B_954F_91DAD60F8488"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
@@ -773,20 +677,6 @@
             "EntryPoint" = "8:"
             "Sequence" = "3:2"
             "Identifier" = "8:_A9CF7579_A0F2_49A8_AA07_EB4975DB006B"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_5BF6E4B42917402E9E3E84AB9F895796"
-            {
-            "Name" = "8:Primary output from Vibz.Options (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-            "FileType" = "3:2"
-            "InstallAction" = "3:3"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:3"
-            "Identifier" = "8:_4B30315A_6025_4D30_B8EF_7C8C4E0AB21A"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -815,20 +705,6 @@
             "EntryPoint" = "8:"
             "Sequence" = "3:2"
             "Identifier" = "8:_884D656B_95AB_4C1B_A6DE_0CB61E9D4712"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_696298E1903840E799AC2B7859CF7116"
-            {
-            "Name" = "8:Primary output from Vibz.Options (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-            "FileType" = "3:2"
-            "InstallAction" = "3:4"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:3"
-            "Identifier" = "8:_F2AA9DA4_20A7_4DC5_8F2B_C5CA156ECFB1"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -897,36 +773,8 @@
             "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
-            "Sequence" = "3:4"
+            "Sequence" = "3:3"
             "Identifier" = "8:_91B04C37_66AA_427D_A2B9_B30AB2D13F10"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_9EB2C15A6D2F4680A7F0B80F2E76F249"
-            {
-            "Name" = "8:Primary output from Vibz.Options (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-            "FileType" = "3:2"
-            "InstallAction" = "3:2"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:3"
-            "Identifier" = "8:_138CD4FC_877B_4E1E_9AC5_569599557447"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_BEC9A573237244DD8FC9816DF5DCCF4D"
-            {
-            "Name" = "8:Primary output from Vibz.Options (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:3"
-            "Identifier" = "8:_886441FD_1C11_42D2_B71F_BA711135E1F7"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -939,7 +787,7 @@
             "InstallAction" = "3:3"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
-            "Sequence" = "3:4"
+            "Sequence" = "3:3"
             "Identifier" = "8:_0DA37FD9_2D5D_4795_A344_158AC9599982"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
@@ -953,7 +801,7 @@
             "InstallAction" = "3:4"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
-            "Sequence" = "3:4"
+            "Sequence" = "3:3"
             "Identifier" = "8:_2FBF9AB1_8886_4B17_8FA7_1C9B7E648647"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
@@ -981,44 +829,18 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0179C46043FA5C7C84B303D7318A7559"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73"
-                "ScatterAssemblies"
-                {
-                    "_0179C46043FA5C7C84B303D7318A7559"
-                    {
-                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_06FC703C167F47E3A9598E35655AC54C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_06FC703C167F47E3A9598E35655AC54C"
+                    {
+                    "Name" = "8:Vibz.Web.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\binaries\\plugin\\instruction\\web\\Vibz.Web.dll"
             "TargetName" = "8:"
@@ -1038,62 +860,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_128B531D05060BE493B7A53B544D6CB3"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Plugin, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_128B531D05060BE493B7A53B544D6CB3"
-                    {
-                    "Name" = "8:Vibz.Plugin.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Plugin.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_137A263D016643D3ACDAB1F9BA9B25D6"
-            {
-            "SourcePath" = "8:..\\icons\\ag.ico"
-            "TargetName" = "8:ag.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2ACC87AEE57C45ACBDDCC07C21630DE8"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_2ACC87AEE57C45ACBDDCC07C21630DE8"
@@ -1155,7 +926,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3B2052E4FA56EE1B9D9362BC8067B67D"
@@ -1186,7 +957,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3B557CA5660892977FB5BEEA4F2587AB"
@@ -1217,7 +988,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4328050442C740278E4B8CF8C8E5F059"
@@ -1268,7 +1039,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Solution, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Solution, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4547D318C08ED0CD79D76569D6294763"
@@ -1295,31 +1066,11 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4564615034EA432893A528A8A98224CB"
-            {
-            "SourcePath" = "8:..\\icons\\cons.ico"
-            "TargetName" = "8:cons.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4687EE21E34548D383662B8C1F0DF137"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4687EE21E34548D383662B8C1F0DF137"
@@ -1346,51 +1097,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4719AB685D624C0CA58FEDCA37B7079A"
-            {
-            "SourcePath" = "8:..\\icons\\Case.ico"
-            "TargetName" = "8:Case.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BC10DB4C95B4EF1AC8D7BC3FC0CE2B9"
-            {
-            "SourcePath" = "8:..\\icons\\Trash.ico"
-            "TargetName" = "8:Trash.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_55B228F2EEC24131813FBA6DACF85AC3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_55B228F2EEC24131813FBA6DACF85AC3"
@@ -1441,7 +1152,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6D6667B40B0145788B95E9C0A184C0FF"
@@ -1512,7 +1223,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.HTMLExtractor, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.HTMLExtractor, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7A298B0A95F340C5B643EF95A52EAF46"
@@ -1539,62 +1250,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7B429E28A67741EFC3AFC88FE6ADE374"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Zip, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7B429E28A67741EFC3AFC88FE6ADE374"
-                    {
-                    "Name" = "8:Vibz.Zip.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Vibz.Zip.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82B1D3C49933436A8AC29CF94D1EAAB4"
-            {
-            "SourcePath" = "8:..\\icons\\alarm.ico"
-            "TargetName" = "8:alarm.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8A71AD26AC9449ACA22F28362C64226B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_8A71AD26AC9449ACA22F28362C64226B"
@@ -1625,7 +1285,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.IO, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.IO, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_8B6069E2CC7A42B896B533E4BF78D095"
@@ -1687,7 +1347,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Macro, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Macro, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_8F1EA7E5B60F43A78C7644C45F275282"
@@ -1718,7 +1378,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Interpreter, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Interpreter, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9265556C4FF217756BC43CA28827CECE"
@@ -1745,11 +1405,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_946E884E4747A4A8298B1A6C6F36B175"
+            {
+            "SourcePath" = "8:SHELL32.dll"
+            "TargetName" = "8:SHELL32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_92AA0347952B495095C47119BDEEC2E7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_998B4BF2D48C4CDBA2258D3086FFDB29"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Data, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Data, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_998B4BF2D48C4CDBA2258D3086FFDB29"
@@ -1816,11 +1496,31 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B30F5B6AD69A493BAABBF0094CA7BCD2"
+            {
+            "SourcePath" = "8:..\\icons\\cons.ico"
+            "TargetName" = "8:cons.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B69D50A8AB8F4E4D9F004BCF122F0BD9"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_B69D50A8AB8F4E4D9F004BCF122F0BD9"
@@ -1871,7 +1571,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Service, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Service, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C1B41F101D452CABE4E68B18B3604C0B"
@@ -1898,12 +1598,23 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C8C64FCED30D453A9F69AA963C6F69E0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D8F1E657FBA4CFC285E84403CC7CCAFB"
             {
-            "SourcePath" = "8:..\\icons\\Briefcase.ico"
-            "TargetName" = "8:Briefcase.ico"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D8F1E657FBA4CFC285E84403CC7CCAFB"
+                    {
+                    "Name" = "8:Vibz.Web.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Vibz.Web.DLL"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
+            "Folder" = "8:_C560570D7EDC4A99BB79038F7D9B9C78"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1915,54 +1626,14 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C96A5F6C1C3445C3ACD14E3DD08749DE"
-            {
-            "SourcePath" = "8:..\\icons\\project.ico"
-            "TargetName" = "8:project.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD61851A3E6C4B9CA25844ACC5A0106B"
-            {
-            "SourcePath" = "8:..\\icons\\App.ico"
-            "TargetName" = "8:App.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DEE7B7E4629B47ED8929D310EC0EFF0B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_DEE7B7E4629B47ED8929D310EC0EFF0B"
@@ -1993,7 +1664,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_E383278C4B0A4FA4AEE64CFF51A59F67"
@@ -2020,91 +1691,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E39ECAFBFE034BFA9799F4BAD0B080EF"
-            {
-            "SourcePath" = "8:..\\icons\\Identifier.ico"
-            "TargetName" = "8:Identifier.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E66B753C510D448C898BE668FFEF8A49"
-            {
-            "SourcePath" = "8:..\\icons\\automate.ico"
-            "TargetName" = "8:automate.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8CCB4583FC343ABA5570CCE8829A7C6"
-            {
-            "SourcePath" = "8:..\\icons\\Suite.ico"
-            "TargetName" = "8:Suite.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E9D62F78EC1B4D6D9745675723B1D9E3"
-            {
-            "SourcePath" = "8:..\\icons\\properties.ico"
-            "TargetName" = "8:properties.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC0DC5B461BB4AD8888A125C414F1213"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Macro, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Macro, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_EC0DC5B461BB4AD8888A125C414F1213"
@@ -2131,11 +1722,42 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F3172216615BDDB31FB67CA2983C41FF"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Interop.Shell32, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F3172216615BDDB31FB67CA2983C41FF"
+                    {
+                    "Name" = "8:Interop.Shell32.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Interop.Shell32.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_92AA0347952B495095C47119BDEEC2E7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F3BC0185A2A84CEBA43C168E8E8FB011"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F3BC0185A2A84CEBA43C168E8E8FB011"
@@ -2351,17 +1973,6 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_EE5E795DD3A64C63B4B1EDF164430347"
-                    {
-                    "Name" = "8:Vibzworld"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_5C79AD6E0CB6440B906FF3C89CA975D3"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
         }
@@ -2380,7 +1991,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Automation Framework"
         "ProductCode" = "8:{4EE87009-1B3D-41B6-91F0-031E4B33E071}"
-        "PackageCode" = "8:{5DB9B755-7EA6-4E1B-8DB9-FED1022B915C}"
+        "PackageCode" = "8:{52F93AC2-B1B6-4832-A6DD-FED11FA8FB4B}"
         "UpgradeCode" = "8:{F6A590AC-B4F3-4CB5-8D18-EB12E6136A61}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -2396,7 +2007,7 @@
         "Keywords" = "8:Vibz Automation Framework"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_4BC10DB4C95B4EF1AC8D7BC3FC0CE2B9"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -2499,62 +2110,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_04031CE15EF8433682EC9D3EAD488847"
-            {
-            "Name" = "8:Automate Scheduler"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_23F692B5466048B1B8289FA02976424E"
-            "Folder" = "8:_EE5E795DD3A64C63B4B1EDF164430347"
-            "WorkingFolder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Icon" = "8:_82B1D3C49933436A8AC29CF94D1EAAB4"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_74B90CE4475B4388BFE91AF478514A72"
-            {
-            "Name" = "8:Extension Manager"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_ACD03614AC6F485ABF3A23D9C31F0362"
-            "Folder" = "8:_EE5E795DD3A64C63B4B1EDF164430347"
-            "WorkingFolder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Icon" = "8:_C8C64FCED30D453A9F69AA963C6F69E0"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7B6E02F9CBC64F81A761F746FC22FD0A"
-            {
-            "Name" = "8:Automate Command Prompt"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_9C15422A7B4A4F62ADEF8E06F74E5E92"
-            "Folder" = "8:_EE5E795DD3A64C63B4B1EDF164430347"
-            "WorkingFolder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Icon" = "8:_4564615034EA432893A528A8A98224CB"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_997FD4B3CF994486823448AD5D12DCDB"
-            {
-            "Name" = "8:Uninstall Automation Framework"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_ACBBD2D74458427283F871BD5E0E83D9"
-            "Folder" = "8:_EE5E795DD3A64C63B4B1EDF164430347"
-            "WorkingFolder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Icon" = "8:_4BC10DB4C95B4EF1AC8D7BC3FC0CE2B9"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -2964,34 +2519,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_01E11E78B3E64C21A2589DBB17F0726F"
-            {
-            "SourcePath" = "8:..\\Vibz.Plugin\\obj\\Debug\\Vibz.Plugin.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{EA74C317-C2E1-4AB1-85E2-F0E7EA376170}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_23F692B5466048B1B8289FA02976424E"
             {
             "SourcePath" = "8:..\\Vibz.Scheduler\\obj\\Debug\\Vibz.Scheduler.exe"
@@ -3071,34 +2598,6 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{67C7AD7F-42FF-4CD7-8306-9AFD2BD58A1A}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ACD03614AC6F485ABF3A23D9C31F0362"
-            {
-            "SourcePath" = "8:..\\Vibz.Options\\obj\\Debug\\Vibz.Options.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5FFFC310A8C340B7956C7A7CA42D9AE7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{9C4474AC-33AE-4B8C-964E-1E8272BE69B3}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
