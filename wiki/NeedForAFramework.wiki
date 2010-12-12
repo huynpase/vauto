@@ -1,5 +1,6 @@
 ==Why do we need a Framework for Automation?==
 _Whether its the god's bony creatures or its a human made buildings, nothing can stand erect and achieve the heights without a framework. Our skeleton may not be performing specific tasks like most of the vital organs do, still it plays the most important role by supporting the organs to do their tasks at the best. On the other hand a house with no pillars can not with stand the natures calamities. Whether its a physical object or a software, there is a need of framework to support individual components doing their specific job._<br/>
+http://vauto.googlecode.com/files/Skeleton.jpg
 
 Many automation tools are available in market. Some for web automation, some for windows, some specific for database and so on. But these tools individually can not with stand diverse requirements. We need some unified framework which can help these tools to bring a collaborative effort to attain the height of success.
 
