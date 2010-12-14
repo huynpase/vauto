@@ -50,9 +50,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
-      <Link>AssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="AboutStudio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +61,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>App.settings</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +95,7 @@
     <Compile Include="Document\XDocument.Designer.cs">
       <DependentUpon>XDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="LangResource\TextManager.cs" />
     <Compile Include="Wizard\ProjectLocation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +147,13 @@
     <EmbeddedResource Include="Document\XDocument.resx">
       <SubType>Designer</SubType>
       <DependentUpon>XDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangResource\Text.en-US.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangResource\Text.hi.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizard\ProjectLocation.resx">
       <SubType>Designer</SubType>

@@ -106,7 +106,6 @@ namespace Vibz.Studio
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Save";
             this.toolStripButton2.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripButton4
@@ -117,7 +116,6 @@ namespace Vibz.Studio
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.ToolTipText = "Search";
             this.toolStripButton4.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -133,7 +131,6 @@ namespace Vibz.Studio
             this.btnCompile.Name = "btnCompile";
             this.btnCompile.Size = new System.Drawing.Size(23, 22);
             this.btnCompile.Text = "toolStripButton1";
-            this.btnCompile.ToolTipText = "Compile";
             this.btnCompile.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
             // 
             // btnRun
@@ -144,7 +141,6 @@ namespace Vibz.Studio
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(23, 22);
             this.btnRun.Text = "toolStripButton3";
-            this.btnRun.ToolTipText = "Run";
             this.btnRun.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
             // tvLeft
@@ -190,7 +186,6 @@ namespace Vibz.Studio
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
-            this.fileToolStripMenuItem.Text = "File";
             // 
             // newProjectToolStripMenuItem
             // 
@@ -198,7 +193,6 @@ namespace Vibz.Studio
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
             this.newProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.newProjectToolStripMenuItem.Text = "New Project";
             this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
             // openProjectToolStripMenuItem
@@ -207,7 +201,6 @@ namespace Vibz.Studio
             this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
             this.openProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.openProjectToolStripMenuItem.Text = "Open Project";
             this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
@@ -221,7 +214,6 @@ namespace Vibz.Studio
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
@@ -230,7 +222,6 @@ namespace Vibz.Studio
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
@@ -244,7 +235,6 @@ namespace Vibz.Studio
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
@@ -253,7 +243,6 @@ namespace Vibz.Studio
             this.searchToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
-            this.toolStripMenuItem2.Text = "Edit";
             // 
             // searchToolStripMenuItem
             // 
@@ -261,7 +250,6 @@ namespace Vibz.Studio
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // buildToolStripMenuItem
@@ -272,7 +260,6 @@ namespace Vibz.Studio
             this.toolStripSeparator4});
             this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
             this.buildToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.buildToolStripMenuItem.Text = "Task";
             // 
             // compileToolStripMenuItem
             // 
@@ -280,7 +267,6 @@ namespace Vibz.Studio
             this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
             this.compileToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.compileToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.compileToolStripMenuItem.Text = "Compile";
             this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
             // 
             // runToolStripMenuItem
@@ -289,7 +275,6 @@ namespace Vibz.Studio
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.runToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.runToolStripMenuItem.Text = "Run";
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
@@ -307,14 +292,12 @@ namespace Vibz.Studio
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
             this.optionsToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(56, 20);
-            this.optionsToolStripMenuItem1.Text = "Options";
             // 
             // configurationToolStripMenuItem
             // 
             this.configurationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configurationToolStripMenuItem.Image")));
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
             this.configurationToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.configurationToolStripMenuItem.Text = "Configuration";
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
             // playSoundToolStripMenuItem
@@ -324,7 +307,6 @@ namespace Vibz.Studio
             this.playSoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.playSoundToolStripMenuItem.Name = "playSoundToolStripMenuItem";
             this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.playSoundToolStripMenuItem.Text = "Play Sound";
             this.playSoundToolStripMenuItem.Click += new System.EventHandler(this.playSoundToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -334,14 +316,12 @@ namespace Vibz.Studio
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutVibzworldAutomationStudioToolStripMenuItem
             // 
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutVibzworldAutomationStudioToolStripMenuItem.Image")));
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Name = "aboutVibzworldAutomationStudioToolStripMenuItem";
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.aboutVibzworldAutomationStudioToolStripMenuItem.Text = "About Vibzworld Automation Studio";
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Click += new System.EventHandler(this.aboutVibzworldAutomationStudioToolStripMenuItem_Click);
             // 
             // ProjectElementIcons
@@ -477,7 +457,6 @@ namespace Vibz.Studio
             this.encodeBuildOutputToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.encodeBuildOutputToolStripMenuItem.Name = "encodeBuildOutputToolStripMenuItem";
             this.encodeBuildOutputToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.encodeBuildOutputToolStripMenuItem.Text = "Encode Build Output";
             this.encodeBuildOutputToolStripMenuItem.Click += new System.EventHandler(this.encodeBuildOutputToolStripMenuItem_Click);
             // 
             // Studio
@@ -493,8 +472,6 @@ namespace Vibz.Studio
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Name = "Studio";
-            this.Text = "Automation Studio : Powered by Vibzworld";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Studio_Load);
             this.toolStrip1.ResumeLayout(false);
