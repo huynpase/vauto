@@ -58,6 +58,33 @@ namespace Vibz.Studio
                 OpenDocument(_initialFilePath);
             }
             playSoundToolStripMenuItem.CheckState = (App.Default.PlaySound ? CheckState.Checked : CheckState.Unchecked);
+            SetLanguageText();      
+        }
+        void SetLanguageText()
+        {
+            this.toolStripButton2.ToolTipText = LangResource.TextManager.GetString("Txt_Save");
+            this.toolStripButton4.ToolTipText = LangResource.TextManager.GetString("Txt_Search");
+            this.btnCompile.ToolTipText = LangResource.TextManager.GetString("Txt_Compile");
+            this.btnRun.ToolTipText = LangResource.TextManager.GetString("Txt_Run");
+            this.fileToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_File");
+            this.newProjectToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_NewProject");
+            this.openProjectToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_OpenProject");
+            this.saveToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Save");
+            this.saveAsToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_SaveAs");
+            this.exitToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Exit");
+            this.toolStripMenuItem2.Text = LangResource.TextManager.GetString("Txt_Edit");
+            this.searchToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Search");
+            this.buildToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Task");
+            this.compileToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Compile");
+            this.runToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Run");
+            this.optionsToolStripMenuItem1.Text = LangResource.TextManager.GetString("Txt_Options");
+            this.configurationToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Configuration");
+            this.playSoundToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_PlaySound");
+            this.helpToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Help");
+            this.aboutVibzworldAutomationStudioToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_AboutStudio");
+            this.encodeBuildOutputToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Encode");
+            this.Name = LangResource.TextManager.GetString("Txt_Studio");
+            this.Text = LangResource.TextManager.GetString("Txt_StudioTitle") + " : " + LangResource.TextManager.GetString("Txt_Copyright");
         }
         public bool ValidateRegistration()
         {
