@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Details = "Refreshes the focussed browser.",
+    [TypeInfo(Author="Vibzworld", Details = "Refreshes the focussed browser.",
         Version = "2.0")]
     public class Refresh : SynchronizeBase
     {

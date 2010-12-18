@@ -28,6 +28,11 @@ namespace Vibz.Studio.Document
             this.dgvArguments = new System.Windows.Forms.DataGridView();
             this.ArgumentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArgumentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlDataParameter = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvDataParameter = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -35,6 +40,8 @@ namespace Vibz.Studio.Document
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArguments)).BeginInit();
+            this.pnlDataParameter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataParameter)).BeginInit();
             this.SuspendLayout();
             // 
             // tvRight
@@ -42,6 +49,7 @@ namespace Vibz.Studio.Document
             this.tvRight.AllowDrop = true;
             this.tvRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvRight.FullRowSelect = true;
+            this.tvRight.HideSelection = false;
             this.tvRight.Location = new System.Drawing.Point(0, 0);
             this.tvRight.Name = "tvRight";
             this.tvRight.Size = new System.Drawing.Size(242, 279);
@@ -89,6 +97,7 @@ namespace Vibz.Studio.Document
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(183, 279);
@@ -97,6 +106,8 @@ namespace Vibz.Studio.Document
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dgvArguments);
+            this.tabPage1.Controls.Add(this.pnlDataParameter);
+            this.tabPage1.Controls.Add(this.dgvDataParameter);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -120,10 +131,12 @@ namespace Vibz.Studio.Document
             this.dgvArguments.Name = "dgvArguments";
             this.dgvArguments.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvArguments.RowHeadersVisible = false;
-            this.dgvArguments.Size = new System.Drawing.Size(169, 247);
+            this.dgvArguments.Size = new System.Drawing.Size(169, 134);
             this.dgvArguments.TabIndex = 1;
             this.dgvArguments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArguments_CellClick);
+            this.dgvArguments.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArguments_CellValidated);
             this.dgvArguments.Leave += new System.EventHandler(this.dgvArguments_Leave);
+            this.dgvArguments.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvArguments_CellValidating);
             // 
             // ArgumentName
             // 
@@ -137,6 +150,58 @@ namespace Vibz.Studio.Document
             this.ArgumentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ArgumentValue.HeaderText = "Value";
             this.ArgumentValue.Name = "ArgumentValue";
+            // 
+            // pnlDataParameter
+            // 
+            this.pnlDataParameter.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlDataParameter.Controls.Add(this.label1);
+            this.pnlDataParameter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlDataParameter.Location = new System.Drawing.Point(3, 137);
+            this.pnlDataParameter.Name = "pnlDataParameter";
+            this.pnlDataParameter.Size = new System.Drawing.Size(169, 24);
+            this.pnlDataParameter.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Data Parameters";
+            // 
+            // dgvDataParameter
+            // 
+            this.dgvDataParameter.AllowUserToAddRows = false;
+            this.dgvDataParameter.AllowUserToDeleteRows = false;
+            this.dgvDataParameter.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvDataParameter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvDataParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgvDataParameter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvDataParameter.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvDataParameter.Location = new System.Drawing.Point(3, 161);
+            this.dgvDataParameter.Name = "dgvDataParameter";
+            this.dgvDataParameter.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvDataParameter.RowHeadersVisible = false;
+            this.dgvDataParameter.Size = new System.Drawing.Size(169, 89);
+            this.dgvDataParameter.TabIndex = 2;
+            this.dgvDataParameter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataParameter_CellClick);
+            this.dgvDataParameter.Leave += new System.EventHandler(this.dgvDataParameter_Leave);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // TestSuite
             // 
@@ -153,6 +218,9 @@ namespace Vibz.Studio.Document
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArguments)).EndInit();
+            this.pnlDataParameter.ResumeLayout(false);
+            this.pnlDataParameter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDataParameter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -169,5 +237,10 @@ namespace Vibz.Studio.Document
         private System.Windows.Forms.DataGridViewTextBoxColumn ArgumentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArgumentValue;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.DataGridView dgvDataParameter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Panel pnlDataParameter;
+        private System.Windows.Forms.Label label1;
     }
 }

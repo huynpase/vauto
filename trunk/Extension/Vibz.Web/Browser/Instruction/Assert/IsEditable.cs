@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Assert
 {
-    [TypeInfo(Details = "Checks if the control associated with given locator is editable or not.",
+    [TypeInfo(Author="Vibzworld", Details = "Checks if the control associated with given locator is editable or not.",
         Version = "2.0")]
     public class IsEditable : AssertBase
     {

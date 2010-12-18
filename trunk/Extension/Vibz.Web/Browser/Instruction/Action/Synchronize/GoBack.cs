@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Details = "Navigates the browser to last navigated url.",
+    [TypeInfo(Author="Vibzworld", Details = "Navigates the browser to last navigated url.",
         Version = "2.0")]
     public class GoBack : SynchronizeBase
     {

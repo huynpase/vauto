@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Assert
 {
-    [TypeInfo(Details = "Checks existance of the control associated with given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Checks existance of the control associated with given locator.",
         Version = "2.0")]
     public class IsExists : AssertBase
     {

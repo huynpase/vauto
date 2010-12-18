@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Details = "Wait till the given text gets loaded.",
+    [TypeInfo(Author="Vibzworld", Details = "Wait till the given text gets loaded.",
         Version = "2.0")]
     public class WaitForTextLoad : SynchronizeBase
     {

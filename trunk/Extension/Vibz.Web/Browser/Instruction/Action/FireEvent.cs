@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Fires javascript even on the given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Fires javascript even on the given locator.",
         Version = "2.0")]
     public class FireEvent : ActionBase
     {

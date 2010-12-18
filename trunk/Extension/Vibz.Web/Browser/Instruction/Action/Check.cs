@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Checks the checkbox associated to the given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Checks the checkbox associated to the given locator.",
         Version = "2.0")]
     public class Check : ActionBase
     {

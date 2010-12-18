@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Selects option in drop down control associated to given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Selects option in drop down control associated to given locator.",
         Version = "2.0")]
     public class SelectOption : ActionBase
     {

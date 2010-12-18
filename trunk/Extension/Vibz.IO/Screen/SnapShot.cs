@@ -10,7 +10,7 @@ using Vibz.Contract;
 using Vibz.Contract.Data;
 namespace Vibz.IO.TextFile.Instruction.Action
 {
-    [TypeInfo(Details = "Captures the screenshot of the desktop at the moment.",
+    [TypeInfo(Author="Vibzworld", Details = "Captures the screenshot of the desktop at the moment.",
         Version = "2.0")]
     public class SnapShot : InstructionBase, IAction
     {

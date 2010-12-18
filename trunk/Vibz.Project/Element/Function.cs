@@ -87,6 +87,20 @@ namespace Vibz.Solution.Element
             else
                 DataSet.DataList.Update(key, new Vibz.Contract.Data.Text(value));
         }
+        public void UpdateData(string key, IData value)
+        {
+            if (!DataSet.DataList.ContainsData(key))
+                throw new Exception("Function " + this.FullName + " has no data argument with name '" + key + "'.");
+            else
+                DataSet.DataList.Update(key, value);
+        }
+        public void UpdateData(Variable data)
+        {
+            if (!DataSet.DataList.ContainsData(data.Name))
+                throw new Exception("Function " + this.FullName + " has no data argument with name '" + data.Name + "'.");
+            else
+                DataSet.DataList.Update(data);
+        }
         public override void UnLoad()
         { }
         public override void Load()

@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Types value into file upload control associated to given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Types value into file upload control associated to given locator.",
         Version = "2.0")]
     public class TypeIntoFileUpload : ActionBase
     {

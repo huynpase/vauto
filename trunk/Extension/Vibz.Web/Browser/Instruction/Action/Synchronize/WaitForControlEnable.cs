@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Details = "Wait till the control associated to the given locator gets enabled.",
+    [TypeInfo(Author="Vibzworld", Details = "Wait till the control associated to the given locator gets enabled.",
         Version = "2.0")]
     public class WaitForControlEnable : SynchronizeBase
     {

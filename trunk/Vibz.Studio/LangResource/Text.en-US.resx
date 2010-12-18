@@ -120,6 +120,12 @@
   <data name="Txt_AboutStudio" xml:space="preserve">
     <value>About Vibzworld Automation Studio</value>
   </data>
+  <data name="Txt_APIDocument" xml:space="preserve">
+    <value>API Document</value>
+  </data>
+  <data name="Txt_APISupport" xml:space="preserve">
+    <value>API Support</value>
+  </data>
   <data name="Txt_Compile" xml:space="preserve">
     <value>Compile</value>
   </data>
@@ -128,6 +134,18 @@
   </data>
   <data name="Txt_Copyright" xml:space="preserve">
     <value>© Powered by Vibzworld</value>
+  </data>
+  <data name="Txt_Doc_Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="Txt_Doc_Note" xml:space="preserve">
+    <value>Note: The list shown here may not be same with another instance of Automation Framework. It totally depends on the Plugins that are registered with the current instance. Also the content of the information is specific to the plugin vendor. In case you do not find sufficient information for an element, you may have to consult the respective vendor.</value>
+  </data>
+  <data name="Txt_Doc_Preface" xml:space="preserve">
+    <value>This document captures the information of all instructions and the macros that are registered with the current instance of Automation Framework.</value>
+  </data>
+  <data name="Txt_Doc_Properties" xml:space="preserve">
+    <value>Properties</value>
   </data>
   <data name="Txt_Edit" xml:space="preserve">
     <value>Edit</value>
@@ -182,5 +200,8 @@
   </data>
   <data name="Txt_Task" xml:space="preserve">
     <value>Task</value>
+  </data>
+  <data name="Txt_Version" xml:space="preserve">
+    <value>Version</value>
   </data>
 </root>

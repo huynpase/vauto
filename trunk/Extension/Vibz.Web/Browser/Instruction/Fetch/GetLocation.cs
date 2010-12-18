@@ -9,7 +9,7 @@ using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
 {
-    [TypeInfo(Details = "Returns url of the document in the focussed window.",
+    [TypeInfo(Author="Vibzworld", Details = "Returns url of the document in the focussed window.",
         Version = "2.0")]
     public class GetLocation : FetchBase
     {

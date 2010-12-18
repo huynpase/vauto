@@ -12,7 +12,7 @@ namespace demo_ext_instruction.Calendar
     // Version can be maintained to distinguish macro releases
     // The class inherit Instruction base and implements IAction as ChangeDate 
     //   is going to do some action (i.e. No fetch no check).
-    [TypeInfo(Details = "Changes the system date.",
+    [TypeInfo(Author="Vibzworld", Details = "Changes the system date.",
         Version = "2.0")]
     public class ChangeDate : InstructionBase, IAction
     {

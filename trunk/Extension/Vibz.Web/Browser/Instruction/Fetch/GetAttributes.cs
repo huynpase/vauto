@@ -8,7 +8,7 @@ using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
 {
-    [TypeInfo(Details = "Returns array of all the attributes of the control node associated with given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Returns array of all the attributes of the control node associated with given locator.",
         Version = "2.0")]
     public class GetAttributes : FetchBase
     {

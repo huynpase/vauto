@@ -10,7 +10,7 @@ namespace demo_ext_instruction.Calendar
     // Version can be maintained to distinguish macro releases
     // The class inherit Instruction base and implements IAssert as IsDayToday 
     //   is going to check some condition (i.e. No action no fetch).
-    [TypeInfo(Details = "Changes the system date.",
+    [TypeInfo(Author="Vibzworld", Details = "Changes the system date.",
         Version = "2.0")]
     public class IsDayToday : InstructionBase, IAssert
     {

@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using Vibz.Contract;
 namespace Vibz.IO.TextFile.Instruction.Action
 {
-    [TypeInfo(Details = "Writes/Overrites the text content in the given text file.",
+    [TypeInfo(Author="Vibzworld", Details = "Writes/Overrites the text content in the given text file.",
         Version = "2.0")]
     public class Write : ActionBase
     {
