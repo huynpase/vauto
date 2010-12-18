@@ -10,7 +10,7 @@ namespace demo_ext_instruction.Calendar
     // Version can be maintained to distinguish macro releases
     // The class inherit Instruction base and implements IFetch as GetSystemDate 
     //   is going to fetch some data (i.e. No action no assert).
-    [TypeInfo(Details = "Fetches the system date.",
+    [TypeInfo(Author="Vibzworld", Details = "Fetches the system date.",
         Version = "2.0")]
     public class GetSystemDate : InstructionBase, IFetch
     {

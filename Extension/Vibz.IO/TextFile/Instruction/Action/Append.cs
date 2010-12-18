@@ -5,7 +5,7 @@ using Vibz.Contract;
 
 namespace Vibz.IO.TextFile.Instruction.Action
 {
-    [TypeInfo(Details = "Appends the text content in the given text file.",
+    [TypeInfo(Author="Vibzworld", Details = "Appends the text content in the given text file.",
        Version = "2.0")]
     public class Append : ActionBase
     {

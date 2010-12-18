@@ -5,7 +5,7 @@ using Vibz.Contract;
 
 namespace Vibz.Desktop
 {
-    [TypeInfo(Details = "Toggles current state of window. Minimizes all windows to show desktop if any open or restores minimized windows to original state.",
+    [TypeInfo(Author="Vibzworld", Details = "Toggles current state of window. Minimizes all windows to show desktop if any open or restores minimized windows to original state.",
         Version = "2.0")]
     public class ToggleDesktop : InstructionBase, IAction
     {

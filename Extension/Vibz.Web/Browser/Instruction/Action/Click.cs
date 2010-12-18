@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details="Performs click event on the given locator.", 
+    [TypeInfo(Author="Vibzworld", Details="Performs click event on the given locator.", 
         Version="2.0")]
     public class Click : ActionBase
     {

@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Performs mouse hovering event on the control associated to given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Performs mouse hovering event on the control associated to given locator.",
         Version = "2.0")]
     public class MouseOver : ActionBase
     {

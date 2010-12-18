@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Closes the focussed window.",
+    [TypeInfo(Author="Vibzworld", Details = "Closes the focussed window.",
         Version = "2.0")]
     public class Close : ActionBase
     {

@@ -55,6 +55,8 @@
     <Compile Include="Configuration\Register.cs" />
     <Compile Include="Configuration\ReportManager.cs" />
     <Compile Include="Data\DataProcessor.cs" />
+    <Compile Include="Document\Doc.cs" />
+    <Compile Include="Plugin\FunctionAttribute.cs" />
     <Compile Include="Plugin\PluginAssemblyInfo.cs" />
     <Compile Include="Plugin\FunctionTypeInfo.cs" />
     <Compile Include="Plugin\PluginManager.cs" />
@@ -83,6 +85,24 @@
     <None Include="vibz.reg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

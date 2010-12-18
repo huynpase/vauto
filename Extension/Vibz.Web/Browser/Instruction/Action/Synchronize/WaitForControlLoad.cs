@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Details = "Wait till the control associated to the given locator gets loaded.",
+    [TypeInfo(Author="Vibzworld", Details = "Wait till the control associated to the given locator gets loaded.",
         Version = "2.0")]
     public class WaitForControlLoad : SynchronizeBase
     {

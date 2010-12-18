@@ -6,7 +6,7 @@ using Vibz.Contract;
 using Vibz.Contract.Data;
 namespace Vibz.IO
 {
-    [TypeInfo(Details = "Exports the data into given file.",
+    [TypeInfo(Author="Vibzworld", Details = "Exports the data into given file.",
         Version = "2.0")]
     public class Export : InstructionBase, IAction
     {

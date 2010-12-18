@@ -10,7 +10,7 @@ using Vibz.Contract;
 using Vibz.Contract.Data;
 namespace Vibz.IO.Window
 {
-    [TypeInfo(Details = "Shows an windows alert with given text message.",
+    [TypeInfo(Author="Vibzworld", Details = "Shows an windows alert with given text message.",
         Version = "2.0")]
     public class TextAlert : InstructionBase, IAction
     {

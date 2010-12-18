@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "UnChecks the checkbox associated to the given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "UnChecks the checkbox associated to the given locator.",
         Version = "2.0")]
     public class UnCheck : ActionBase
     {

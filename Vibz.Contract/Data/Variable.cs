@@ -113,6 +113,24 @@ namespace Vibz.Contract.Data
                 return new Variable(_filePath, Name, Type, Source, Data);
             }
         }
+        public override string ToString()
+        {
+            if ((this.Source==null || this.Type==null) || this.Source.ToLower() == Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower()
+                            && this.Type.ToLower() == Vibz.Contract.Data.DataType.Scalar.ToString().ToLower())
+            {
+                return (this.InnerText == null ? "" : this.InnerText);
+            }
+            else
+            {
+                return "[" + this.Source + ":" + this.Type + "]";
+            }
+        }
+        public bool IsInternal
+        {
+            get {
+                return (this.Source == null || this.Source.ToLower() == Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower());
+            }
+        }
         public string GetCompiledText()
         {
             string innerXml = "";

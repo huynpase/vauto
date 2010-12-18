@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Performs key press event on the control associated to given locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Performs key press event on the control associated to given locator.",
         Version = "2.0")]
     public class KeyPress : ActionBase
     {

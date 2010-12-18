@@ -8,7 +8,7 @@ using Vibz.Contract;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Drags the element on source locator and drops it on destination locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Drags the element on source locator and drops it on destination locator.",
         Version = "2.0")]
     public class DragAndDrop : ActionBase
     {

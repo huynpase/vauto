@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Selects the frame associated to given frame-locator.",
+    [TypeInfo(Author="Vibzworld", Details = "Selects the frame associated to given frame-locator.",
         Version = "2.0")]
     public class SelectFrame : ActionBase
     {

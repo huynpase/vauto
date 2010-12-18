@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Details = "Selects the window associated to given windowid.",
+    [TypeInfo(Author="Vibzworld", Details = "Selects the window associated to given windowid.",
         Version = "2.0")]
     public class SelectWindow : ActionBase
     {

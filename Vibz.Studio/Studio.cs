@@ -83,6 +83,7 @@ namespace Vibz.Studio
             this.helpToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Help");
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_AboutStudio");
             this.encodeBuildOutputToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Encode");
+            this.aPISupportToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_APISupport"); ;
             this.Name = LangResource.TextManager.GetString("Txt_Studio");
             this.Text = LangResource.TextManager.GetString("Txt_StudioTitle") + " : " + LangResource.TextManager.GetString("Txt_Copyright");
         }
@@ -297,7 +298,7 @@ namespace Vibz.Studio
             {
                 if (_docList.Current == null)
                 {
-                    throw new Exception("No document selected.");
+                    ShowMessageBox("No document selected.");
                 }
 
                 IElement element = null;
@@ -789,6 +790,18 @@ namespace Vibz.Studio
         {
             App.Default.EncodeBuild = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
             App.Default.Save();
+        }
+
+        private void rtbLogSummary_TextChanged(object sender, EventArgs e)
+        {
+            pnlLog.Visible = (rtbLogSummary.Text.Trim() != "");
+                
+        }
+
+        private void aPISupportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApiDocument doc = new ApiDocument();
+            doc.Show();
         }
     }
 }

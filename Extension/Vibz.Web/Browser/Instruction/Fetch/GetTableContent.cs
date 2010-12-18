@@ -8,7 +8,7 @@ using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
 {
-    [TypeInfo(Details = "Returns content of HTML table into a datatable object.",
+    [TypeInfo(Author="Vibzworld", Details = "Returns content of HTML table into a datatable object.",
         Version = "2.0")]
     public class GetTableContent : FetchBase
     {
