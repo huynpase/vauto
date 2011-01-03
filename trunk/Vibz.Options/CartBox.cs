@@ -10,6 +10,7 @@ using Vibz.Interpreter;
 using Vibz.Plugin;
 using Vibz.Contract;
 using Vibz.Contract.Log;
+using Vibz.Contract.Attribute;
 
 namespace Vibz.Options
 {

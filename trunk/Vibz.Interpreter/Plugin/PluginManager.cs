@@ -6,6 +6,7 @@ using Vibz.Interpreter.Script;
 using System.Xml;
 using System.IO;
 using System.Reflection;
+using Vibz.Contract.Attribute;
 using Vibz.Contract;
 namespace Vibz.Interpreter.Plugin
 {

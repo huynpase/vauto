@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Helper;
 namespace Vibz.Macro.String
 {
-    [TypeInfo(Details = "Returns result obtained by substracting number 2 from number 1.",
+    [TypeInfo(Author="Vibzworld", Details = "Returns result obtained by substracting number 2 from number 1.",
         Version = "2.0")]
     public class Substract : IMacroFunction
     {

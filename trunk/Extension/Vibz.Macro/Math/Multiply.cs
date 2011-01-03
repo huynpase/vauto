@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Helper;
 namespace Vibz.Macro.String
 {
-    [TypeInfo(Details = "Returns result obtained by multiplying all the given numbers.",
+    [TypeInfo(Author="Vibzworld", Details = "Returns result obtained by multiplying all the given numbers.",
         Version = "2.0")]
     public class Multiply : IMacroFunction
     {

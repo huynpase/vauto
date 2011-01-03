@@ -44,8 +44,14 @@ namespace Vibz.Studio.Document
             BaseDocument doc = null;
             switch (type)
             {
+                case Vibz.Studio.Document.DocumentType.TestCase:
+                    doc = new CaseDocument(path);
+                    break;
+                case Vibz.Studio.Document.DocumentType.Identifier:
+                    doc = new IdentifierDocument(path);
+                    break;
                 case Vibz.Studio.Document.DocumentType.XML:
-                    doc = new XDocument(path);
+                    doc = new ElementDocument(path);
                     break;
                 case Vibz.Studio.Document.DocumentType.TestSuite:
                     doc = TestSuite.Open(path, _project);
@@ -69,11 +75,17 @@ namespace Vibz.Studio.Document
             BaseDocument doc = null;
             switch (type)
             {
+                case Vibz.Studio.Document.DocumentType.TestCase:
+                    doc = new CaseDocument();
+                    break;
+                case Vibz.Studio.Document.DocumentType.Identifier:
+                    doc = new IdentifierDocument();
+                    break;
                 case Vibz.Studio.Document.DocumentType.XML:
-                    doc = new XDocument();
+                    doc = new ElementDocument();
                     break;
                 case Vibz.Studio.Document.DocumentType.TestSuite:
-                    TestSuite ts = TestSuite.Create(_project);
+                    doc = TestSuite.Create(_project);
                     break;
             }
             doc.Activated += new EventHandler(doc_Activated);

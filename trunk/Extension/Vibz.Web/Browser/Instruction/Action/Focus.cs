@@ -4,7 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
  
-using Vibz.Contract;
+using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
@@ -12,7 +12,7 @@ namespace Vibz.Web.Browser.Instruction.Action
         Version = "2.0")]
     public class Focus : ActionBase
     {
-        [XmlAttribute("locator")]
+        [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]
         public string Locator;
         public Focus()
             : base()

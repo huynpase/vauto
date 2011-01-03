@@ -67,6 +67,33 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>App.settings</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Toolbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Toolbox.Designer.cs">
+      <DependentUpon>Toolbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\ElementDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Document\ElementDocument.Designer.cs">
+      <DependentUpon>ElementDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\IdentifierDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Document\IdentifierDocument.Designer.cs">
+      <DependentUpon>IdentifierDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\XDocument.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Document\XDocument.Designer.cs">
+      <DependentUpon>XDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\XDoc\Context.cs" />
+    <Compile Include="Document\XDoc\StringHelper.cs" />
+    <Compile Include="Document\XDoc\XMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuration.cs">
       <SubType>Form</SubType>
@@ -95,13 +122,19 @@
     <Compile Include="Document\Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Document\XDocument.cs">
+    <Compile Include="Document\CaseDocument.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Document\XDocument.Designer.cs">
-      <DependentUpon>XDocument.cs</DependentUpon>
+    <Compile Include="Document\CaseDocument.Designer.cs">
+      <DependentUpon>CaseDocument.cs</DependentUpon>
     </Compile>
     <Compile Include="LangResource\TextManager.cs" />
+    <Compile Include="UserInput\New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInput\New.Designer.cs">
+      <DependentUpon>New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wizard\ProjectLocation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,9 +175,21 @@
       <SubType>Designer</SubType>
       <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Toolbox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Toolbox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Document\BaseDocument.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BaseDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\ElementDocument.resx">
+      <DependentUpon>ElementDocument.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\IdentifierDocument.resx">
+      <DependentUpon>IdentifierDocument.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Document\UserSession.resx">
       <SubType>Designer</SubType>
@@ -153,6 +198,10 @@
     <EmbeddedResource Include="Document\Welcome.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Document\CaseDocument.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CaseDocument.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Document\XDocument.resx">
       <SubType>Designer</SubType>
@@ -164,6 +213,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LangResource\Text.hi.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInput\New.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>New.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizard\ProjectLocation.resx">
       <SubType>Designer</SubType>

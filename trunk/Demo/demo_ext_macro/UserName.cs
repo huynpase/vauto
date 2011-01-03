@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 
 namespace demo_ext_macro
 {

@@ -56,9 +56,7 @@
     <Compile Include="Configuration\ReportManager.cs" />
     <Compile Include="Data\DataProcessor.cs" />
     <Compile Include="Document\Doc.cs" />
-    <Compile Include="Plugin\FunctionAttribute.cs" />
     <Compile Include="Plugin\PluginAssemblyInfo.cs" />
-    <Compile Include="Plugin\FunctionTypeInfo.cs" />
     <Compile Include="Plugin\PluginManager.cs" />
     <Compile Include="Plugin\PluginAssembly.cs" />
     <Compile Include="Executer.cs" />

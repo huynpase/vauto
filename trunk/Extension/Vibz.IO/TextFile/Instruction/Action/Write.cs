@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Vibz.IO;
 using System.Xml.Serialization;
+using Vibz.Contract.Attribute;
 using Vibz.Contract;
 namespace Vibz.IO.TextFile.Instruction.Action
 {

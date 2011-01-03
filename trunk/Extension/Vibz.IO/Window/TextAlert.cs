@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Contract.Data;
 namespace Vibz.IO.Window
 {

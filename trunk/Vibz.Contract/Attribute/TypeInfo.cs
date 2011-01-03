@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Vibz.Contract
+namespace Vibz.Contract.Attribute
 {
     [System.AttributeUsage(System.AttributeTargets.Class |
           System.AttributeTargets.Struct)

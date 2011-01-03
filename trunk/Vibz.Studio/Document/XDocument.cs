@@ -1,94 +1,225 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Text;
-using System.IO;
 using System.Xml;
 using System.Windows.Forms;
 using Vibz.Solution.Element;
+using Vibz.Contract.Attribute;
+using Vibz.Studio.Document.XDoc;
+using System.Runtime.InteropServices;
 
 namespace Vibz.Studio.Document
 {
-    public partial class XDocument : BaseDocument
+    public delegate void DragEvent(object sender, DragEventArgs e);
+    public delegate void ChangeEvent(object sender, EventArgs e);
+    public delegate void KeyEvent(object sender, KeyEventArgs e);
+    public delegate void KeyPressEvent(object sender, KeyPressEventArgs e);
+
+    public partial class XDocument : UserControl
     {
-        public XDocument():
-            this("")
-        {
-        }
-        public XDocument(string filePath)
-            : base(filePath)
+        #region Public fields
+        public DragEvent DragDrop = null;
+        public DragEvent DragEnter = null;
+        public ChangeEvent TextChange = null;
+        public KeyEvent KeyUp = null;
+        public KeyEvent KeyDown = null;
+        public KeyPressEvent KeyPress = null;
+        #endregion
+        #region Constructor
+        public XDocument()
         {
             InitializeComponent();
-            rtbTextArea.TabStop = true;
-            OpenDocument();
-        }
-        void OpenDocument()
-        {
-            this.Text = ((Path == null || Path == "") ? "New Document" : Path);
-
-            XmlTextReader reader = new XmlTextReader(Path);
-            try
-            {
-                LoadStream(reader);
-            }
-            catch (Exception exc)
-            {
-                rtbTextArea.Text = File.ReadAllText(Path);
-                MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public override void Save()
-        {
-            Save(Path);
-        }
-        void Save(string filepath)
-        {
-            try
-            {
-                if (_isModified)
-                {
-                    string err = "";
-                    try
-                    {
-                        XmlDocument doc = new XmlDocument();
-                        doc.LoadXml(rtbTextArea.Text);
-                    }
-                    catch (Exception exc)
-                    {
-                        err = exc.Message;
-                    }
-                    if (err == "" || MessageBox.Show("Document has failed basic Xml validation. \r\nError: " + err + "\r\nDo you still want to save the document.", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
-                    {
-                        rtbTextArea.SaveFile(filepath, RichTextBoxStreamType.PlainText);
-                        _isModified = false;
-                    }
-                }
-            }
-            catch (Exception exc)
-            {
-                throw new Exception("Unable to save. " + exc.Message);
-            }
-        }
-        public override void SaveAs()
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Save(saveFileDialog1.FileName);
-            }
-        }
-        public override void Render()
-        {
+            rtbTextArea.AllowDrop = true;
+            rtbTextArea.DragEnter += new DragEventHandler(rtbTextArea_DragEnter);
+            rtbTextArea.DragDrop += new DragEventHandler(rtbTextArea_DragDrop);
+            rtbTextArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rtbTextArea_MouseUp);
+            rtbTextArea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtbTextArea_KeyDown);
+            rtbTextArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtbTextArea_KeyPress);
+            rtbTextArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.rtbTextArea_KeyUp);
+            rtbTextArea.TextChanged += new System.EventHandler(this.rtbTextArea_TextChanged);
             
+            rtbTextArea.TabStop = true;
         }
-        public override void Add(IElement element)
+        #endregion
+        #region Richtextbox Members
+        public RichTextBox RichTextArea
         {
-            throw new Exception("Invalid command.");
+            get { return rtbTextArea; }
         }
-        public override Document.DocumentType Type { get { return Vibz.Studio.Document.DocumentType.XML; } }
-        public override string DocumentName { get { if (Path == null) return "Untitled Document"; else return Path; } }
-        private void LoadStream(XmlTextReader reader)
+        public string Text
+        {
+            get { return rtbTextArea.Text; }
+            set { rtbTextArea.Text = value; }
+        }
+        public string SelectedText
+        {
+            get { return rtbTextArea.SelectedText; }
+            set { rtbTextArea.SelectedText = value; }
+        }
+        public Color SelectionColor
+        {
+            get { return rtbTextArea.SelectionColor; }
+            set { rtbTextArea.SelectionColor = value; }
+        }
+        public int SelectionStart
+        {
+            get { return rtbTextArea.SelectionStart; }
+            set { rtbTextArea.SelectionStart = value; }
+        }
+        public Point PointToClient(Point p)
+        {
+            return rtbTextArea.PointToClient(p);
+        }
+        public int GetCharIndexFromPosition(Point p)
+        {
+            return rtbTextArea.GetCharIndexFromPosition(p);
+        }
+        public int GetLineFromCharIndex(int index)
+        {
+            return rtbTextArea.GetLineFromCharIndex(index);
+        }
+        public int GetLineIndexAtPoint(Point p)
+        {
+            Point pt = rtbTextArea.PointToClient(p);
+            return rtbTextArea.GetLineFromCharIndex(rtbTextArea.GetCharIndexFromPosition(pt));
+        }
+        public int GetFirstCharIndexFromLine(int lineNumber)
+        {
+            return rtbTextArea.GetFirstCharIndexFromLine(lineNumber);
+        }
+        public string[] Lines
+        {
+            get { return rtbTextArea.Lines; }
+            set { rtbTextArea.Lines = value; }
+        }
+        #endregion
+        public void SaveFile(string filepath, RichTextBoxStreamType streamType)
+        {
+            rtbTextArea.SaveFile(filepath, RichTextBoxStreamType.PlainText);
+        }
+        void rtbTextArea_DragDrop(object sender, DragEventArgs e)
+        {
+            if (DragDrop != null)
+                DragDrop(sender, e);
+        }
+        void rtbTextArea_DragEnter(object sender, DragEventArgs e)
+        {
+            if (DragEnter != null)
+                DragEnter(sender, e);
+        }
+        void rtbTextArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UpdateCaretPosition();
+            this.rtbTextArea.SelectionColor = ContextColor;
+            switch (CurrentContext.Mode)
+            {
+                case XMode.AttributeName:
+                    if (e.KeyChar == '=')
+                    {
+                        this.rtbTextArea.SelectionColor = Color.Blue;
+                        this.rtbTextArea.SelectedText = "=";
+                        this.rtbTextArea.SelectionColor = Color.Black;
+                        this.rtbTextArea.SelectedText = "\"";
+                        this.rtbTextArea.SelectedText = "\"";
+                        this.rtbTextArea.SelectionStart--;
+                        this.rtbTextArea.SelectionColor = Color.Blue;
+                        e.Handled = true;
+                    }
+                    else ProcessEndCharacter(CurrentContext, ref e);
+                    break;
+                case XMode.InnerTextSibling:
+                case XMode.InnerText:
+                    if (e.KeyChar == '<')
+                        this.rtbTextArea.SelectionColor = Color.Blue;
+                    break;
+                case XMode.NodeNameBegin:
+                case XMode.AttributeSeperation:
+                    ProcessEndCharacter(CurrentContext, ref e);
+                    break;
+            }
+            if (KeyPress != null)
+                KeyPress(sender, e);
+        }
+        void rtbTextArea_TextChanged(object sender, EventArgs e)
+        {
+            UpdateCaretPosition();
+
+            if (TextChange != null)
+                TextChange(sender, e);
+        }
+        void rtbTextArea_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    string indentText = "\r\n" + StringHelper.GetLineIndentation(CurrentLine);
+                    rtbTextArea.SelectedText = indentText;
+                    if (CurrentContext.Mode == XMode.InnerText || CurrentContext.Mode == XMode.AttributeSeperation)
+                    {
+                        rtbTextArea.SelectedText = "\t";
+                        int pos = rtbTextArea.SelectionStart;
+                        rtbTextArea.SelectedText = indentText;
+                        rtbTextArea.SelectionStart = pos;
+                    }
+                    e.Handled = true;
+                    break;
+            }
+            if (KeyDown != null)
+                KeyDown(sender, e);
+        }
+        void rtbTextArea_KeyUp(object sender, KeyEventArgs e)
+        {
+            //LoadContext();
+            UpdateCaretPosition();
+            if (KeyUp != null)
+                KeyUp(sender, e);
+            Reset();
+        }
+        void rtbTextArea_MouseUp(object sender, MouseEventArgs e)
+        {
+            //LoadContext();
+            UpdateCaretPosition();
+        }
+        private static int EM_LINEINDEX = 0xbb;
+        void LoadContext()
+        {
+            Context context = CurrentContext;
+            lblPosition.Text = " [" + context.Mode.ToString() + "]";
+        }
+        void UpdateCaretPosition()
+        {
+            //return;
+            int line, col, index;
+            index = rtbTextArea.SelectionStart;
+            line = rtbTextArea.GetLineFromCharIndex(index);
+            col = index - SendMessage(rtbTextArea.Handle, EM_LINEINDEX, -1, 0);
+            lblPosition.Text = "Ln " + (++line).ToString() + ", Ch " + (++col).ToString();
+        }
+        void ProcessEndCharacter(Context context, ref KeyPressEventArgs e)
+        {
+            // TODO: Handle auto indentation for node complete
+            switch (e.KeyChar)
+            {
+                case '/':
+                    this.rtbTextArea.SelectionColor = Color.Blue;
+                    this.rtbTextArea.SelectedText = "/>";
+                    e.Handled = true;
+                    break;
+                case '>':
+                    this.rtbTextArea.SelectionColor = Color.Blue;
+                    this.rtbTextArea.SelectedText = "></";
+                    this.rtbTextArea.SelectionColor = Color.Brown;
+                    this.rtbTextArea.SelectedText = context.Instruction;
+                    this.rtbTextArea.SelectionColor = Color.Blue;
+                    this.rtbTextArea.SelectedText = ">";
+                    e.Handled = true;
+                    break;
+            }
+        }
+        public void LoadStream(XmlTextReader reader)
         {
             this.rtbTextArea.Clear();
             this.rtbTextArea.AcceptsTab = true;
@@ -174,27 +305,201 @@ namespace Vibz.Studio.Document
             {
                 reader.Close();
                 Validate();
-                _isModified = false;
             }
         }
-
-        private void rtbTextArea_KeyPress(object sender, KeyPressEventArgs e)
+        public void SetStatusMessage(string message)
         {
-            switch (e.KeyChar)
+            lblStatusMessage.Text = message;
+        }
+        public void SetCurrentWord(string word)
+        {
+            int currentPosition = rtbTextArea.SelectionStart;
+            if (word == ""
+                || CurrentContext.WordStartIndex == -1
+                || CurrentContext.WordStartIndex > rtbTextArea.SelectionStart)
+                return;
+
+            string currentWord = CurrentContext.Word;
+            //switch (CurrentContext.Mode)
+            //{ 
+            //    case XMode.NodeBeginOpen:
+            //        currentWord = CurrentContext.Instruction;
+            //        break;
+            //    case XMode.AttributeName:
+            //        currentWord = CurrentContext.Word;
+            //        break;
+            //    case XMode.AttributeValue:
+            //        currentWord = CurrentContext.AttributeValue;
+            //        break;
+            //}
+            //rtbTextArea.SelectionStart = rtbTextArea.SelectionStart - currentWord.Length;
+            rtbTextArea.Select(rtbTextArea.SelectionStart - currentWord.Length, currentWord.Length);
+            rtbTextArea.Cut();
+            rtbTextArea.SelectionColor = ContextColor;
+            rtbTextArea.SelectedText = word;
+            //rtbTextArea.Text = rtbTextArea.Text.Remove(CurrentContext.WordStartIndex, rtbTextArea.SelectionStart - CurrentContext.WordStartIndex);
+            //rtbTextArea.Text = rtbTextArea.Text.Insert(CurrentContext.WordStartIndex, word);
+            //rtbTextArea.Focus();
+            //rtbTextArea.
+            //rtbTextArea.SelectionStart = currentPosition;
+            //rtbTextArea.ScrollToCaret();
+        }
+        public Color ContextColor
+        {
+            get
             {
-                case ('<'):
-                    // MessageBox.Show("<");
-                    break;
-
-                case ('>'):
-                    // MessageBox.Show(">");
-                    break;
+                Color retValue = this.rtbTextArea.SelectionColor;
+                switch (CurrentContext.Mode)
+                {
+                    case XMode.CDATA:
+                        retValue = Color.Gray;
+                        break;
+                    case XMode.AttributeValue:
+                    case XMode.AttributeValueEnd:
+                        retValue = Color.Blue;
+                        break;
+                    case XMode.NodeNameBegin:
+                        retValue = Color.Brown;
+                        break;
+                    case XMode.NodeBeginClose:
+                    case XMode.NodeNameEnd:
+                        retValue = Color.Brown;
+                        break;
+                    case XMode.AttributeName:
+                        retValue = Color.Red;
+                        break;
+                    case XMode.AttributeEqual:
+                        retValue = Color.Red;
+                        break;
+                    case XMode.InnerTextSibling:
+                    case XMode.InnerText:
+                        retValue = Color.Black;
+                        break;
+                    case XMode.AttributeValueStart:
+                    case XMode.NodeBeginOpen:
+                    default:
+                        retValue = Color.Black;
+                        break;
+                }
+                return retValue;
             }
         }
-
-        private void rtbTextArea_TextChanged(object sender, EventArgs e)
+        Context _context = null;
+        public Context CurrentContext
         {
-            _isModified = true;
+            get
+            {
+                if (_context == null)
+                {
+                    _context = new Context();
+                    int index = rtbTextArea.SelectionStart;
+                    int cdataStart = rtbTextArea.Text.Substring(0, index).ToLower().LastIndexOf("<![cdata[");
+                    if (cdataStart != -1)
+                    {
+                        int cdataEnd = rtbTextArea.Text.Substring(cdataStart, index).ToLower().LastIndexOf("]]>");
+                        if (cdataEnd == -1)
+                        {
+                            _context.Mode = XMode.CDATA;
+                            return _context;
+                        }
+                    }
+                    _context.Mode = XMode.InnerText;
+                    int startIndex = index - 1;
+                    while (true)
+                    {
+                        if (startIndex == -1)
+                        {
+                            _context.Mode = XMode.PageBegin;
+                            break;
+                        }
+                        char c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                        if (c == '<') // In a node
+                        {
+                            int endIndex = index;
+                            while (true)
+                            {
+                                c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(endIndex));
+                                if (c == '/')
+                                {
+                                    if (rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(endIndex + 1)) == '>')
+                                    {
+                                        endIndex = endIndex + 2;
+                                        break;
+                                    }
+                                }
+                                else if (c == '>')
+                                {
+                                    endIndex = endIndex + 1;
+                                    break;
+                                }
+                                else if (c == '<')
+                                {
+                                    break;
+                                }
+                                else if (endIndex >= rtbTextArea.Text.Length) // End of file
+                                {
+                                    endIndex = endIndex + 1;
+                                    break;
+                                }
+                                endIndex++;
+                            }
+                            string nodeText = rtbTextArea.Text.Substring(startIndex, endIndex - startIndex);
+                            _context.Load(nodeText, index - startIndex);
+                            _context.WordStartIndex = _context.WordStartIndex + startIndex;
+                            break;
+                        }
+                        else if (c == '>') // Inner Text
+                        {
+                            _context.Mode = XMode.InnerText;
+                            startIndex--;
+                            c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                            if (c == '/')
+                            {
+                                _context.Mode = XMode.InnerTextSibling;
+                                break;
+                            }
+                            while (true)
+                            {
+                                c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                                if (c == '<')
+                                    break;
+                                if (c == '/')
+                                {
+                                    startIndex--;
+                                    c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                                    if (c == '<')
+                                    {
+                                        _context.Mode = XMode.InnerTextSibling;
+                                        break;
+                                    }
+                                }
+                                startIndex--;
+                            }
+                            break;
+                        }
+                        else if (startIndex <= 0) // Start of file
+                        {
+                            _context.Mode = XMode.InnerText;
+                            break;
+                        }
+                        startIndex--;
+                    }
+                }
+                return _context;
+            }
         }
+        public void Reset()
+        {
+            _context = null;
+        }
+        public string CurrentLine
+        {
+            get
+            {
+                return rtbTextArea.Lines[rtbTextArea.GetLineFromCharIndex(rtbTextArea.SelectionStart)];
+            }
+        }
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
     }
 }

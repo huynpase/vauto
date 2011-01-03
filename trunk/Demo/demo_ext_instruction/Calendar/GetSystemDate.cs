@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization; // Add this namespace
 using Vibz.Contract; // Add this namespace
+using Vibz.Contract.Attribute;
 
 namespace demo_ext_instruction.Calendar
 {

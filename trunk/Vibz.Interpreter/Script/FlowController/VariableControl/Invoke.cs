@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 
 namespace Vibz.Interpreter.Script.FlowController.VariableControl
 {

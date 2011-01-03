@@ -36,6 +36,9 @@
     <Compile Include="..\Vibz\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Attribute\AttributeInfo.cs" />
+    <Compile Include="Attribute\FunctionAttribute.cs" />
+    <Compile Include="Attribute\FunctionTypeInfo.cs" />
     <Compile Include="Common\IError.cs" />
     <Compile Include="Common\ISynchronize.cs" />
     <Compile Include="Data\DataExportMode.cs" />
@@ -68,7 +71,7 @@
     <Compile Include="Macro\CommonMacroVariables.cs" />
     <Compile Include="Macro\IMacroManager.cs" />
     <Compile Include="Macro\MacroParser.cs" />
-    <Compile Include="TypeInfo.cs" />
+    <Compile Include="Attribute\TypeInfo.cs" />
     <Compile Include="InstructionBase.cs" />
     <Compile Include="IReport.cs" />
     <Compile Include="Log\LogElement.cs" />
