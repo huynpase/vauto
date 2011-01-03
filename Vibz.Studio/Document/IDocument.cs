@@ -5,7 +5,7 @@ using System.IO;
 using Vibz.Solution.Element;
 namespace Vibz.Studio.Document
 {
-    public enum DocumentType { None, TestSuite, XML, Project }
+    public enum DocumentType { None, TestSuite, TestCase, Identifier, XML, Project }
     public interface IDocument
     {
         void Close();

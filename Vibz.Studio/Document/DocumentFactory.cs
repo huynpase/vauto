@@ -13,13 +13,14 @@ namespace Vibz.Studio.Document
             switch (fi.Extension.ToLower())
             {
                 case "." + Vibz.FileType.XML:
-                case "." + Vibz.FileType.TestCase:
-                case "." + Vibz.FileType.Identifier:
                 case "." + Vibz.FileType.TestSuite:
                 case "." + Vibz.FileType.ApplicationGlobal:
                 case "." + Vibz.FileType.Configuration:
                     return DocumentType.XML;
-                    break;
+                case "." + Vibz.FileType.TestCase:
+                    return DocumentType.TestCase;
+                case "." + Vibz.FileType.Identifier:
+                    return DocumentType.Identifier;
                 case "." + Vibz.FileType.Project:
                     return DocumentType.Project;
                 default:
@@ -31,10 +32,12 @@ namespace Vibz.Studio.Document
             switch (element.Type)
             {
                 case ElementType.ApplicationGlobal:
-                case ElementType.Case:
                 case ElementType.Function:
-                case ElementType.Identifier:
                     return DocumentType.XML;
+                case ElementType.Case:
+                    return DocumentType.TestCase;
+                case ElementType.Identifier:
+                    return DocumentType.Identifier;
                 case ElementType.Suite:
                     return DocumentType.TestSuite;
                 case ElementType.Project:

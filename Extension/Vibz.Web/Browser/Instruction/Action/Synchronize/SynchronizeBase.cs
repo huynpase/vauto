@@ -13,6 +13,7 @@ namespace Vibz.Web.Browser.Instruction.Action.Synchronize
         public const int DefaultWait = 60000;
         private int _maxWait;
         [XmlAttribute("maxwait")]
+        [Vibz.Contract.Attribute.AttributeInfo(WebInstructionBase.MaxWaitInfo,null,false)]
         public string MaxWaitToText
         {
             get
@@ -40,7 +41,8 @@ namespace Vibz.Web.Browser.Instruction.Action.Synchronize
             }
         }
         private string _onTimeOut;
-        [XmlAttribute("timeout")]
+        [XmlAttribute("ontimeout")]
+        [Vibz.Contract.Attribute.AttributeInfo(WebInstructionBase.OnTimeOutInfo, typeof(StepToFollow), false)]
         public string OnTimeOut
         {
             get

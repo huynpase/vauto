@@ -5,7 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Vibz.Contract;
 
-namespace Vibz.Interpreter.Plugin
+namespace Vibz.Contract.Attribute
 {
     public class FunctionTypeInfo
     {
@@ -49,10 +49,24 @@ namespace Vibz.Interpreter.Plugin
             System.Reflection.MemberInfo[] mInfos = type.GetMembers();
             foreach (System.Reflection.MemberInfo mInfo in mInfos)
             {
+                string name = "";
+                string detail = "";
+                string[] options = null;
+                bool isRequired = true;
+
                 object[] attribs = mInfo.GetCustomAttributes(typeof(XmlAttributeAttribute), true);
-                foreach (object attrib in attribs)
+                if (attribs.Length > 0)
                 {
-                    Attributes.Add(new FunctionAttribute(((XmlAttributeAttribute)attrib).AttributeName));
+                    name = ((XmlAttributeAttribute)attribs[0]).AttributeName;
+
+                    attribs = mInfo.GetCustomAttributes(typeof(AttributeInfo), true);
+                    if (attribs.Length > 0)
+                    {
+                        detail = ((AttributeInfo)attribs[0]).Details;
+                        options = ((AttributeInfo)attribs[0]).Options;
+                        isRequired = ((AttributeInfo)attribs[0]).IsRequired;
+                    }
+                    Attributes.Add(new FunctionAttribute(name, detail, options, isRequired));
                 }
             }
         }

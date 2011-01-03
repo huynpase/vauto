@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Vibz.Contract;
+using Vibz.Contract.Attribute;
 
 
 namespace Vibz.Web.Browser.Instruction.Action
@@ -13,7 +13,7 @@ namespace Vibz.Web.Browser.Instruction.Action
     
     public class Type : ActionBase
     {
-        [XmlAttribute("locator")]
+        [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]
         public string Locator;
         [XmlAttribute("value")]
         public string Value;

@@ -48,6 +48,8 @@ namespace Vibz.Studio
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolbarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +78,10 @@ namespace Vibz.Studio
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.timerExecution = new System.Windows.Forms.Timer(this.components);
             this.mdiStudio = new Vibz.Forms.MdiTabStrip();
+            this.pnlTool = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pnlToolHead = new System.Windows.Forms.Panel();
+            this.lblDictTitle = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlSol.SuspendLayout();
@@ -83,6 +89,9 @@ namespace Vibz.Studio
             this.pnlLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPnlLog)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.pnlTool.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlToolHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -149,10 +158,10 @@ namespace Vibz.Studio
             this.tvLeft.AllowDrop = true;
             this.tvLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvLeft.LineColor = System.Drawing.Color.SteelBlue;
-            this.tvLeft.Location = new System.Drawing.Point(0, 0);
+            this.tvLeft.Location = new System.Drawing.Point(2, 0);
             this.tvLeft.Name = "tvLeft";
             this.tvLeft.ShowNodeToolTips = true;
-            this.tvLeft.Size = new System.Drawing.Size(189, 286);
+            this.tvLeft.Size = new System.Drawing.Size(187, 261);
             this.tvLeft.TabIndex = 0;
             this.tvLeft.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLeft_NodeMouseDoubleClick);
             this.tvLeft.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.tvLeft_AfterCollapse);
@@ -166,6 +175,7 @@ namespace Vibz.Studio
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolStripMenuItem2,
+            this.toolStripMenuItem1,
             this.buildToolStripMenuItem,
             this.optionsToolStripMenuItem1,
             this.helpToolStripMenuItem});
@@ -253,6 +263,22 @@ namespace Vibz.Studio
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolbarToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            // 
+            // showToolbarToolStripMenuItem
+            // 
+            this.showToolbarToolStripMenuItem.Checked = true;
+            this.showToolbarToolStripMenuItem.CheckOnClick = true;
+            this.showToolbarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showToolbarToolStripMenuItem.Name = "showToolbarToolStripMenuItem";
+            this.showToolbarToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
+            this.showToolbarToolStripMenuItem.Click += new System.EventHandler(this.showToolbarToolStripMenuItem_Click);
+            // 
             // buildToolStripMenuItem
             // 
             this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -337,14 +363,14 @@ namespace Vibz.Studio
             // 
             this.aPISupportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aPISupportToolStripMenuItem.Image")));
             this.aPISupportToolStripMenuItem.Name = "aPISupportToolStripMenuItem";
-            this.aPISupportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aPISupportToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
             this.aPISupportToolStripMenuItem.Click += new System.EventHandler(this.aPISupportToolStripMenuItem_Click);
             // 
             // aboutVibzworldAutomationStudioToolStripMenuItem
             // 
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutVibzworldAutomationStudioToolStripMenuItem.Image")));
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Name = "aboutVibzworldAutomationStudioToolStripMenuItem";
-            this.aboutVibzworldAutomationStudioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutVibzworldAutomationStudioToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Click += new System.EventHandler(this.aboutVibzworldAutomationStudioToolStripMenuItem_Click);
             // 
             // ProjectElementIcons
@@ -366,12 +392,12 @@ namespace Vibz.Studio
             // 
             // pnlSol
             // 
-            this.pnlSol.Controls.Add(this.pictureBox1);
             this.pnlSol.Controls.Add(this.tvLeft);
-            this.pnlSol.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSol.Location = new System.Drawing.Point(0, 49);
+            this.pnlSol.Controls.Add(this.pictureBox1);
+            this.pnlSol.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlSol.Location = new System.Drawing.Point(377, 74);
             this.pnlSol.Name = "pnlSol";
-            this.pnlSol.Size = new System.Drawing.Size(189, 286);
+            this.pnlSol.Size = new System.Drawing.Size(189, 261);
             this.pnlSol.TabIndex = 7;
             this.pnlSol.Visible = false;
             // 
@@ -379,10 +405,10 @@ namespace Vibz.Studio
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Location = new System.Drawing.Point(187, 0);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(2, 286);
+            this.pictureBox1.Size = new System.Drawing.Size(2, 261);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbSolPanel_MouseDown);
@@ -394,7 +420,7 @@ namespace Vibz.Studio
             this.pnlLog.Controls.Add(this.pbPnlLog);
             this.pnlLog.Controls.Add(this.rtbLogSummary);
             this.pnlLog.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlLog.Location = new System.Drawing.Point(189, 234);
+            this.pnlLog.Location = new System.Drawing.Point(0, 234);
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Size = new System.Drawing.Size(377, 101);
             this.pnlLog.TabIndex = 12;
@@ -460,25 +486,83 @@ namespace Vibz.Studio
             this.mdiStudio.InactiveBorderColor = System.Drawing.Color.LightCoral;
             this.mdiStudio.InactiveCloseBoxColor = System.Drawing.Color.LightCoral;
             this.mdiStudio.InactiveForeColor = System.Drawing.Color.DimGray;
-            this.mdiStudio.Location = new System.Drawing.Point(189, 49);
+            this.mdiStudio.Location = new System.Drawing.Point(0, 49);
             this.mdiStudio.Name = "mdiStudio";
             this.mdiStudio.Padding = new System.Windows.Forms.Padding(0);
             this.mdiStudio.SelectedTab = null;
             this.mdiStudio.ShowItemToolTips = false;
-            this.mdiStudio.Size = new System.Drawing.Size(377, 25);
+            this.mdiStudio.Size = new System.Drawing.Size(566, 25);
             this.mdiStudio.Stretch = true;
             this.mdiStudio.TabIndex = 14;
             this.mdiStudio.Text = "mdiTabStrip1";
+            // 
+            // pnlTool
+            // 
+            this.pnlTool.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTool.Controls.Add(this.pictureBox2);
+            this.pnlTool.Controls.Add(this.pnlToolHead);
+            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlTool.Location = new System.Drawing.Point(0, 74);
+            this.pnlTool.Name = "pnlTool";
+            this.pnlTool.Padding = new System.Windows.Forms.Padding(1);
+            this.pnlTool.Size = new System.Drawing.Size(128, 160);
+            this.pnlTool.TabIndex = 16;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox2.Location = new System.Drawing.Point(121, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(2, 132);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseUp);
+            // 
+            // pnlToolHead
+            // 
+            this.pnlToolHead.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pnlToolHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlToolHead.Controls.Add(this.lblDictTitle);
+            this.pnlToolHead.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.pnlToolHead.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlToolHead.ForeColor = System.Drawing.Color.Black;
+            this.pnlToolHead.Location = new System.Drawing.Point(1, 1);
+            this.pnlToolHead.Name = "pnlToolHead";
+            this.pnlToolHead.Size = new System.Drawing.Size(122, 22);
+            this.pnlToolHead.TabIndex = 0;
+            this.pnlToolHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseDown);
+            this.pnlToolHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseMove);
+            this.pnlToolHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseUp);
+            // 
+            // lblDictTitle
+            // 
+            this.lblDictTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDictTitle.AutoSize = true;
+            this.lblDictTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDictTitle.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDictTitle.Location = new System.Drawing.Point(1, 4);
+            this.lblDictTitle.Name = "lblDictTitle";
+            this.lblDictTitle.Size = new System.Drawing.Size(49, 13);
+            this.lblDictTitle.TabIndex = 0;
+            this.lblDictTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseDown);
+            this.lblDictTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseMove);
+            this.lblDictTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseUp);
             // 
             // Studio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 357);
-            this.Controls.Add(this.mdiStudio);
+            this.Controls.Add(this.pnlTool);
             this.Controls.Add(this.pnlLog);
             this.Controls.Add(this.pnlSol);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.mdiStudio);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -496,6 +580,10 @@ namespace Vibz.Studio
             ((System.ComponentModel.ISupportInitialize)(this.pbPnlLog)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.pnlTool.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlToolHead.ResumeLayout(false);
+            this.pnlToolHead.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,5 +637,11 @@ namespace Vibz.Studio
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem encodeBuildOutputToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aPISupportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem showToolbarToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlTool;
+        private System.Windows.Forms.Panel pnlToolHead;
+        private System.Windows.Forms.Label lblDictTitle;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

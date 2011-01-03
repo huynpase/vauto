@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Helper;
 namespace Vibz.Macro.String
 {
-    [TypeInfo(Details = "Formats the date to given format.",
+    [TypeInfo(Author="Vibzworld", Details = "Formats the date to given format.",
         Version = "2.0")]
     public class DateSet : IMacroFunction
     {

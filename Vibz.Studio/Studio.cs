@@ -58,7 +58,13 @@ namespace Vibz.Studio
                 OpenDocument(_initialFilePath);
             }
             playSoundToolStripMenuItem.CheckState = (App.Default.PlaySound ? CheckState.Checked : CheckState.Unchecked);
-            SetLanguageText();      
+            SetLanguageText();
+
+            Controls.Toolbox tb = new Controls.Toolbox();
+            tb.Dock = DockStyle.Fill;
+            pnlTool.Controls.Add(tb);
+
+            pnlToolHead.SendToBack();
         }
         void SetLanguageText()
         {
@@ -72,6 +78,8 @@ namespace Vibz.Studio
             this.saveToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Save");
             this.saveAsToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_SaveAs");
             this.exitToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Exit");
+            this.toolStripMenuItem1.Text = LangResource.TextManager.GetString("Txt_View");
+            this.showToolbarToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_ShowToolbox");
             this.toolStripMenuItem2.Text = LangResource.TextManager.GetString("Txt_Edit");
             this.searchToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Search");
             this.buildToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Task");
@@ -84,6 +92,7 @@ namespace Vibz.Studio
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_AboutStudio");
             this.encodeBuildOutputToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Encode");
             this.aPISupportToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_APISupport"); ;
+            this.lblDictTitle.Text = LangResource.TextManager.GetString("Txt_InstructionDict");
             this.Name = LangResource.TextManager.GetString("Txt_Studio");
             this.Text = LangResource.TextManager.GetString("Txt_StudioTitle") + " : " + LangResource.TextManager.GetString("Txt_Copyright");
         }
@@ -270,14 +279,14 @@ namespace Vibz.Studio
                         break;
                 }
                 parentNode.Nodes.Add(tn);
+                parentNode.ExpandAll();
             }
         }
 
-        private void createSuiteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void showToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            pnlTool.Visible = showToolbarToolStripMenuItem.Checked;
         }
-
         private void compileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IElement ele = CurrentDocumentElement;
@@ -316,12 +325,7 @@ namespace Vibz.Studio
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO : Do Search
-            ShowMessageBox("Search");
-        }
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //TODO : Do Help
-            ShowMessageBox("Help");
+            ShowMessageBox("This feature is not present in this version of tool.");
         }
         private void tvLeft_AfterExpand(object sender, TreeViewEventArgs e)
         {
@@ -362,6 +366,7 @@ namespace Vibz.Studio
                     case ElementType.Space:
                         AddMenuItem("Refresh", ele, new eventDelegate(tsiRefresh_Click));
                         AddMenuItem("New Folder", ele, new eventDelegate(tsiNewFolder_Click));
+                        AddMenuItem("Add new case file", ele, new eventDelegate(tsiNewCase_Click));
                         break;
                     case ElementType.Suite:
                         AddMenuItem("Open", ele, new eventDelegate(tsiEditTestSuite_Click));
@@ -526,14 +531,54 @@ namespace Vibz.Studio
                 }
             }
         }
+        void tsiNewCase_Click(object sender, EventArgs e)
+        {
+            CreateCaseFile(tvLeft.SelectedNode);
+        }
         void tsiNewFolder_Click(object sender, EventArgs e)
         {
             CreateSpaceNode(tvLeft.SelectedNode);
         }
         void CreateSpaceNode(TreeNode node)
         {
-            // TODO
-            MessageBox.Show("New Folder");
+            if (node.Tag == null)
+                return;
+            Space spc = (Space)node.Tag;
+            UserInput.New uNew = new Vibz.Studio.UserInput.New("New folder", "Folder name", "Create");
+            if (uNew.ShowDialog() == DialogResult.OK)
+            {
+                DirectoryInfo dInfo = Directory.CreateDirectory(Path.Combine(spc.Path, uNew.Value));
+                Space newSpace = _project.CreateSpace(dInfo);
+                List<IElement> lst = new List<IElement>();
+                lst.Add(newSpace);
+                AddNodesToProject(node, lst);
+            }
+            
+        }
+        void CreateCaseFile(TreeNode node)
+        {
+            if (node.Tag == null)
+                return;
+            Space spc = (Space)node.Tag;
+            UserInput.New uNew = new Vibz.Studio.UserInput.New("New Case file", "Case file name", "Create");
+            if (uNew.ShowDialog() == DialogResult.OK)
+            {
+                string casePath=Path.Combine(spc.Path, uNew.Value) + "." + Vibz.FileType.TestCase;
+                string idPath=Path.Combine(spc.Path, uNew.Value) + "." + Vibz.FileType.Identifier;
+
+                string baseFolder = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName;
+                File.AppendAllText(casePath, File.ReadAllText(Path.Combine(baseFolder, "Template/NewProject/case1.tc")).Replace("case1", uNew.Value));
+                File.AppendAllText(idPath, File.ReadAllText(Path.Combine(baseFolder, "Template/NewProject/case1.id")).Replace("case1", uNew.Value));
+
+                CaseFile newCaseFile = _project.CreateCase(new FileInfo(casePath));
+                IdentifierFile newIdFile = _project.CreateIdentifier(new FileInfo(idPath));
+                
+                List<IElement> lst = new List<IElement>();
+                lst.Add(newCaseFile);
+                lst.Add(newIdFile);
+
+                AddNodesToProject(node, lst);
+            }
         }
         #endregion
 
@@ -709,7 +754,7 @@ namespace Vibz.Studio
         {
             if (allowResize)
             {
-                this.pnlSol.Width = pictureBox1.Left + e.X;
+                this.pnlSol.Width -= e.X;
             }
         }
         private void pbSolPanel_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -803,5 +848,55 @@ namespace Vibz.Studio
             ApiDocument doc = new ApiDocument();
             doc.Show();
         }
+        #region Panel Toolbox
+        bool allowToolDock = false;
+        int delX = 0;
+        int delY = 0;
+        private void pnlToolHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            allowToolDock = true;
+            delX = e.X; 
+            delY = e.Y;
+            pnlTool.Dock = DockStyle.None;
+        }
+
+        private void pnlToolHead_MouseUp(object sender, MouseEventArgs e)
+        {
+            allowToolDock = false;
+            if (pnlTool.Left < 20)
+                pnlTool.Dock = DockStyle.Left;
+            else
+                pnlTool.Dock = DockStyle.None;
+        }
+
+        private void pnlToolHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (allowToolDock)
+            {
+                pnlTool.Left += e.X - delX;
+                pnlTool.Top += e.Y - delY;
+            }
+        }
+
+
+        bool allowToolResize = false;
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            allowToolResize = true;
+        }
+
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (allowToolResize)
+            {
+                pnlTool.Width += e.X;
+            }
+        }
+
+        private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
+        {
+            allowToolResize = false;
+        }
+        #endregion
     }
 }

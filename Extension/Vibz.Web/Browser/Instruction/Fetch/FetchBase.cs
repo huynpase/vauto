@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
@@ -15,7 +16,7 @@ namespace Vibz.Web.Browser.Instruction.Fetch
             Type = InstructionType.Fetch;
         }
         private string _output = "assignto";
-        [XmlAttribute("assignto")]
+        [XmlAttribute("assignto")][AttributeInfo(WebInstructionBase.AssignToInfo)]
         public string Output
         {
             get { return _output; }

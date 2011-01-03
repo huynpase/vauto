@@ -4,7 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
@@ -14,7 +14,7 @@ namespace Vibz.Web.Browser.Instruction.Fetch
     public class GetValue : FetchBase
     {
 
-        [XmlAttribute("locator")]
+        [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]
         public string Locator;
         public GetValue() 
             : base()

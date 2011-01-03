@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
- using Vibz.Contract;
+ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
@@ -11,7 +11,7 @@ namespace Vibz.Web.Browser.Instruction.Action.Synchronize
         Version = "2.0")]
     public class WaitForControlLoad : SynchronizeBase
     {
-        [XmlAttribute("locator")]
+        [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]
         public string Locator;
         public WaitForControlLoad()
             : base()

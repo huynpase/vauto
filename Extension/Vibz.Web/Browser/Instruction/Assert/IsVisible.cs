@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Vibz.Contract;
+using Vibz.Contract.Attribute;
 
 
 
@@ -14,7 +14,7 @@ namespace Vibz.Web.Browser.Instruction.Assert
     public class IsVisible : AssertBase
     {
 
-        [XmlAttribute("locator")]
+        [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]
         public string Locator;
         public IsVisible()
             : base()

@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Vibz.Contract.Common;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using System.IO;
 using System.Reflection;
 using Vibz;
@@ -12,6 +13,10 @@ namespace Vibz.Web.Browser.Instruction
 {
     public abstract class WebInstructionBase : InstructionBase, IError 
     {
+        public const string OnTimeOutInfo = "This setting determines how the execution should proceed when time out occurs before instruction has completed.";
+        public const string MaxWaitInfo = "Maximum time to wait for the instruction to complete before declaring that instruction has failed. Default value is 60000";
+        public const string AssignToInfo = "Name of the variable where the output from the instruction will be saved.";
+        public const string LocatorInfo = "Identity of the control in context.";
         static IBrowser _browser = null;
         static object _padLock = new object();
         internal static IBrowser Browser

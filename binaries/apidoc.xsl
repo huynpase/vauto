@@ -48,7 +48,7 @@
                    <ul>
                      <xsl:for-each select="element">
                        <li>
-                         <span style="font-family: Arial,Helvetica,sans-serif; font-size: 12px;">
+                         <span style="background-color: #f0f0f0; padding: 2px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; width: 100%">
                            <b><xsl:value-of select="@name"/> - <xsl:value-of select="//Document/version"/>:<xsl:value-of select="@version"/>
                            </b>
                          </span>
@@ -60,18 +60,37 @@
                          </b>
                          <xsl:value-of select="@author"/>
                          <br/>
-                         <xsl:value-of select="."/>
+                         <xsl:value-of select="detail/."/>
                          <br/>
-                         <b>
-                           <xsl:value-of select="//Document/properties"/>:
-                         </b>
-                         <ul>
-                           <xsl:for-each select="attributes/attribute">
-                             <li>
-                               <xsl:value-of select="@name"/>
-                             </li>
-                           </xsl:for-each>
-                         </ul>
+                         <xsl:if test="count(attributes/attribute) &gt; 0">
+                           <b>
+                             <xsl:value-of select="//Document/properties"/>:
+                           </b>
+                           <ul>
+                             <xsl:for-each select="attributes/attribute">
+                               <li>
+                                 <b>
+                                   <xsl:value-of select="@name"/>
+                                 </b>
+                               </li>
+                               <xsl:if test="@required != 'true'">
+                                  [Optional]
+                               </xsl:if>
+                                 : <xsl:value-of select="detail/."/>
+                               <xsl:if test="count(options/option) &gt; 0">
+                                 <br/>
+                                 <b>Allowed options: </b>
+                                 <ul>
+                                   <xsl:for-each select="options/option">
+                                     <li>
+                                       <xsl:value-of select="."/>
+                                     </li>
+                                   </xsl:for-each>
+                                 </ul>
+                               </xsl:if>
+                             </xsl:for-each>
+                           </ul>
+                         </xsl:if>
                          <br/>
                        </span>
                      </xsl:for-each>

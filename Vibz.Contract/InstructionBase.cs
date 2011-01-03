@@ -10,9 +10,10 @@ namespace Vibz.Contract
 {
     public abstract class InstructionBase : IError, IInstruction
     {
+        public const string OnErrorInfo = "This setting determines how the execution should proceed when error occurs in the current statement.";
         InstructionType _type = InstructionType.Action;
         private string _onError;
-        [XmlAttribute("onerror")]
+        [XmlAttribute("onerror")][Attribute.AttributeInfo(InstructionBase.OnErrorInfo, typeof(StepToFollow), false)]
         public string OnError
         {
             get

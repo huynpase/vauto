@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 
 namespace demo_ext_macro
 {
@@ -12,7 +13,6 @@ namespace demo_ext_macro
         public string Evaluate(object paramObj)
         {
             double number = 0;
-            //if()
             if (IsNumber(paramObj))
                 number = Convert.ToDouble(paramObj);
             else
