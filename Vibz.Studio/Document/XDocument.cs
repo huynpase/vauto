@@ -157,6 +157,8 @@ namespace Vibz.Studio.Document
                 case Keys.Enter:
                     string indentText = "\r\n" + StringHelper.GetLineIndentation(CurrentLine);
                     rtbTextArea.SelectedText = indentText;
+                    if (CurrentContext.Mode == XMode.InnerTextSibling)
+                        rtbTextArea.SelectedText = "\t";
                     if (CurrentContext.Mode == XMode.InnerText || CurrentContext.Mode == XMode.AttributeSeperation)
                     {
                         rtbTextArea.SelectedText = "\t";
@@ -450,12 +452,11 @@ namespace Vibz.Studio.Document
                         }
                         else if (c == '>') // Inner Text
                         {
-                            _context.Mode = XMode.InnerText;
+                            _context.Mode = XMode.InnerTextSibling;
                             startIndex--;
                             c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
                             if (c == '/')
                             {
-                                _context.Mode = XMode.InnerTextSibling;
                                 break;
                             }
                             while (true)
@@ -469,7 +470,6 @@ namespace Vibz.Studio.Document
                                     c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
                                     if (c == '<')
                                     {
-                                        _context.Mode = XMode.InnerTextSibling;
                                         break;
                                     }
                                 }

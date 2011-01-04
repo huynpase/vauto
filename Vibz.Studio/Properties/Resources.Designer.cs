@@ -59,5 +59,40 @@ namespace Vibz.Studio.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon assert {
+            get {
+                object obj = ResourceManager.GetObject("assert", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Comments {
+            get {
+                object obj = ResourceManager.GetObject("Comments", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon fetch {
+            get {
+                object obj = ResourceManager.GetObject("fetch", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap NonRequired {
+            get {
+                object obj = ResourceManager.GetObject("NonRequired", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Required {
+            get {
+                object obj = ResourceManager.GetObject("Required", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
