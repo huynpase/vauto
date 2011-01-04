@@ -8,7 +8,7 @@ using Vibz.Contract.Attribute;
 namespace Vibz.Studio.Document.XDoc
 {
     public enum ContextType { None, Instruction, AttributeName, AttributeValue }
-    public enum ContextSubType { Action, Assert, Fetch }
+    public enum ContextSubType { Action = 1, Assert, Fetch, Required, NonRequired }
     public class Context
     {
         public class InstructionNode
@@ -32,8 +32,10 @@ namespace Vibz.Studio.Document.XDoc
         public XMode Mode = XMode.None;
         public ContextType Type = ContextType.None;
         public string Instruction = "";
+        public string Attribute = "";
         public string Word = "";
         public List<XAttribute> LoadedAttribute = new List<XAttribute>();
+
         public int WordStartIndex = -1;
         void SetCurrentItem(XMode mode, string text, int wordPointer)
        {
@@ -70,8 +72,10 @@ namespace Vibz.Studio.Document.XDoc
             bool isFirst = true;
             string attribute="";
             XMode mode = XMode.NodeNameBegin;
+            string curWord = "";
             while (true)
             {
+                curWord = nodeText.Substring(wordPointer, index - wordPointer).Trim();
                 if (index >= nodeText.Length)
                 {
                     if (Mode == XMode.None)
@@ -91,7 +95,7 @@ namespace Vibz.Studio.Document.XDoc
                 {
                     if (mode == XMode.AttributeName)
                     {
-                        attribute = nodeText.Substring(wordPointer, index - wordPointer).Trim();
+                        attribute = curWord;
                         index++;
                         continue;
                     }
@@ -103,13 +107,13 @@ namespace Vibz.Studio.Document.XDoc
                     mode = XMode.AttributeSeperation;
                     if (isFirst)
                     {
-                        Instruction = nodeText.Substring(wordPointer, index - wordPointer).Trim();
+                        Instruction = curWord;
                         wordPointer = index;
                         isFirst = false;
                     }
                     else if (attribute == "")
                     {
-                        attribute = nodeText.Substring(wordPointer, index - wordPointer).Trim();
+                        attribute = curWord;
                         wordPointer = index;
                     }
                 }
@@ -120,7 +124,7 @@ namespace Vibz.Studio.Document.XDoc
                         index++;
                         continue;
                     }
-                    attribute = nodeText.Substring(wordPointer, index - wordPointer).Trim();
+                    attribute = curWord;
                     mode = XMode.AttributeEqual;
                     wordPointer = index;
                 }
@@ -131,18 +135,16 @@ namespace Vibz.Studio.Document.XDoc
                         index++;
                         continue;
                     }
-                    if (attribute != "" && nodeText.Substring(wordPointer, index - wordPointer).Trim() != "=")
+                    if (attribute != "" && curWord != "=")
                     {
-                        LoadedAttribute.Add(new XAttribute(attribute, DeQuoteText(nodeText.Substring(wordPointer, index - wordPointer))));
+                        LoadedAttribute.Add(new XAttribute(attribute, DeQuoteText(curWord)));
                         mode = XMode.AttributeValueEnd;
                         wordPointer = index;
+                        Attribute = attribute;
                         attribute = "";
                     }
                     else
-                    {
                         mode = XMode.AttributeValueStart;
-                        wordPointer = index;                        
-                    }
                 }
                 else if (nodeText[index] == '/')
                 {
@@ -170,7 +172,7 @@ namespace Vibz.Studio.Document.XDoc
                         mode = XMode.NodeEndLeafClose;
                     else if (mode == XMode.NodeNameEnd)
                     {
-                        Instruction = nodeText.Substring(wordPointer, index - wordPointer).Trim();
+                        Instruction = curWord;
                         mode = XMode.NodeEndBranchClose;
                         isFirst = false;
                     }
@@ -182,16 +184,10 @@ namespace Vibz.Studio.Document.XDoc
                         case  XMode.AttributeValueEnd:
                             mode = XMode.AttributeSeperation;
                             break;
-                        //case XMode.NodeNameBegin:
-                        //    Instruction = nodeText.Substring(wordPointer, index - wordPointer).Trim();
-                        //    break;
-                        //case XMode.AttributeName:
-                        //case XMode.AttributeValue:
-                        //    Word
                     }
                 }
                 if (index == currentIndex)
-                    SetCurrentItem(mode, nodeText.Substring(wordPointer, index - wordPointer).Trim(), wordPointer);
+                    SetCurrentItem(mode, curWord, wordPointer);
 
                 index++;
                 switch (mode)
@@ -201,6 +197,7 @@ namespace Vibz.Studio.Document.XDoc
                         break;
                     case XMode.AttributeValueStart:
                         mode = XMode.AttributeValue;
+                        wordPointer = index;
                         break;
                     case XMode.AttributeSeperation:
                         mode = XMode.AttributeName;
@@ -252,19 +249,20 @@ namespace Vibz.Studio.Document.XDoc
                             drInst[InstructionNode.Description] = pInfo[key].Information.Details;
                             switch (pInfo[key].Type.ToLower())
                             {
-                                case "action":
-                                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Action;
-                                    break;
                                 case "assert":
                                     drInst[InstructionNode.Subtype] = (int)ContextSubType.Assert;
                                     break;
                                 case "fetch":
                                     drInst[InstructionNode.Subtype] = (int)ContextSubType.Fetch;
                                     break;
+                                default:
+                                case "action":
+                                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Action;
+                                    break;
                             }
                             _instructions.Rows.Add(drInst);
                             if (pInfo[key].Attributes == null || pInfo[key].Attributes.Count == 0)
-                                break;
+                                continue;
                             foreach (FunctionAttribute atr in pInfo[key].Attributes)
                             {
                                 DataRow drAttrName = _instructions.NewRow();
@@ -272,10 +270,10 @@ namespace Vibz.Studio.Document.XDoc
                                 drAttrName[InstructionNode.Type] = (int)ContextType.AttributeName;
                                 drAttrName[InstructionNode.Owner] = pInfo[key].TypeName;
                                 drAttrName[InstructionNode.Description] = atr.Detail;
-                                drAttrName[InstructionNode.Subtype] = atr.IsRequired.ToString();
+                                drAttrName[InstructionNode.Subtype] = (atr.IsRequired ? ContextSubType.Required : ContextSubType.NonRequired);
                                 _instructions.Rows.Add(drAttrName);
                                 if (atr.Options == null || atr.Options.Length == 0)
-                                    break;
+                                    continue;
                                 foreach (string val in atr.Options)
                                 {
                                     DataRow drAttrVal = _instructions.NewRow();
@@ -293,6 +291,15 @@ namespace Vibz.Studio.Document.XDoc
                 }
                 return _instructions;
             }
+        }
+        public bool ContainsAttribute(string name)
+        {
+            foreach (XAttribute attr in LoadedAttribute)
+            {
+                if (attr.Name.ToLower() == name.ToLower())
+                    return true;
+            }
+            return false;
         }
     }
 }
