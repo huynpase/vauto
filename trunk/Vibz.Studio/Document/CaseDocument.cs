@@ -213,71 +213,79 @@ namespace Vibz.Studio.Document
         #region Context Menu
         ToolStripMenuItem[] GetContextMenu()
         {
-            System.Collections.ArrayList list = new System.Collections.ArrayList();
-            DataRow[] dlist = null;
-            switch (CurrentContext.Mode)
-            { 
-                case XMode.NodeNameBegin:
-                    dlist = GetMatchingInsructions(CurrentContext.Instruction);
-                    if (dlist == null)
-                        return new ToolStripMenuItem[0];
-                    foreach (DataRow dr in dlist)
-                    {
-                        ToolStripMenuItem tsi = new ToolStripMenuItem(dr[Context.InstructionNode.Name].ToString());
-                        switch ((ContextSubType)Enum.Parse(typeof(ContextSubType), dr[Context.InstructionNode.Subtype].ToString()))
-                        { 
-                            case ContextSubType.Action:
-                                tsi.Image = Vibz.Studio.Properties.Resources.Comments;
-                                break;
-                            case ContextSubType.Assert:
-                                tsi.Image = Vibz.Studio.Properties.Resources.assert.ToBitmap();
-                                break;
-                            case ContextSubType.Fetch:
-                                tsi.Image = Vibz.Studio.Properties.Resources.fetch.ToBitmap();
-                                break;
-                        }
-                        tsi.ToolTipText = dr[Context.InstructionNode.Description].ToString();
-                        list.Add(tsi);
-                    }
-                    break;
-                case XMode.AttributeName:
-                    dlist = GetMatchingAttributeNames(CurrentContext.Word, CurrentContext.Instruction);
-                    if (dlist == null)
-                        return new ToolStripMenuItem[0];
-                    foreach (DataRow dr in dlist)
-                    {
-                        if (CurrentContext.ContainsAttribute(dr[Context.InstructionNode.Name].ToString()))
-                            continue;
-                        ToolStripMenuItem tsi = new ToolStripMenuItem(dr[Context.InstructionNode.Name].ToString());
-                        switch ((ContextSubType)Enum.Parse(typeof(ContextSubType), dr[Context.InstructionNode.Subtype].ToString()))
+            try
+            {
+                System.Collections.ArrayList list = new System.Collections.ArrayList();
+                DataRow[] dlist = null;
+                switch (CurrentContext.Mode)
+                {
+                    case XMode.NodeNameBegin:
+                        dlist = GetMatchingInsructions(CurrentContext.Instruction);
+                        if (dlist == null)
+                            return new ToolStripMenuItem[0];
+                        foreach (DataRow dr in dlist)
                         {
-                            case ContextSubType.Required:
-                                tsi.Image = Vibz.Studio.Properties.Resources.Required;
-                                break;
-                            case ContextSubType.NonRequired:
-                                tsi.Image = Vibz.Studio.Properties.Resources.NonRequired;
-                                break;
+                            ToolStripMenuItem tsi = new ToolStripMenuItem(dr[Context.InstructionNode.Name].ToString());
+                            switch ((ContextSubType)Enum.Parse(typeof(ContextSubType), dr[Context.InstructionNode.Subtype].ToString()))
+                            {
+                                case ContextSubType.Action:
+                                    tsi.Image = Vibz.Studio.Properties.Resources.Comments;
+                                    break;
+                                case ContextSubType.Assert:
+                                    tsi.Image = Vibz.Studio.Properties.Resources.assert.ToBitmap();
+                                    break;
+                                case ContextSubType.Fetch:
+                                    tsi.Image = Vibz.Studio.Properties.Resources.fetch.ToBitmap();
+                                    break;
+                            }
+                            tsi.ToolTipText = dr[Context.InstructionNode.Description].ToString();
+                            list.Add(tsi);
                         }
-                        tsi.ToolTipText = dr[Context.InstructionNode.Description].ToString();
-                        list.Add(tsi);
-                    }
-                    break;
-                case XMode.AttributeValue:
-                case XMode.AttributeValueEnd:
-                    dlist = GetMatchingAttributeValues(CurrentContext.Word, CurrentContext.Instruction, CurrentContext.Attribute);
-                    if (dlist == null)
-                        return new ToolStripMenuItem[0];
-                    foreach (DataRow dr in dlist)
-                    {
-                        ToolStripMenuItem tsi = new ToolStripMenuItem(dr[Context.InstructionNode.Name].ToString());
-                        tsi.ToolTipText = dr[Context.InstructionNode.Description].ToString();
-                        list.Add(tsi);
-                    }
-                    break;
+                        break;
+                    case XMode.AttributeName:
+                        dlist = GetMatchingAttributeNames(CurrentContext.Word, CurrentContext.Instruction);
+                        if (dlist == null)
+                            return new ToolStripMenuItem[0];
+                        foreach (DataRow dr in dlist)
+                        {
+                            if (CurrentContext.ContainsAttribute(dr[Context.InstructionNode.Name].ToString()))
+                                continue;
+                            ToolStripMenuItem tsi = new ToolStripMenuItem(dr[Context.InstructionNode.Name].ToString());
+                            switch ((ContextSubType)Enum.Parse(typeof(ContextSubType), dr[Context.InstructionNode.Subtype].ToString()))
+                            {
+                                case ContextSubType.Required:
+                                    tsi.Image = Vibz.Studio.Properties.Resources.Required;
+                                    break;
+                                case ContextSubType.NonRequired:
+                                    tsi.Image = Vibz.Studio.Properties.Resources.NonRequired;
+                                    break;
+                            }
+                            tsi.ToolTipText = dr[Context.InstructionNode.Description].ToString();
+                            list.Add(tsi);
+                        }
+                        break;
+                    case XMode.AttributeValue:
+                    case XMode.AttributeValueEnd:
+                        dlist = GetMatchingAttributeValues(CurrentContext.Word, CurrentContext.Instruction, CurrentContext.Attribute);
+                        if (dlist == null)
+                            return new ToolStripMenuItem[0];
+                        foreach (DataRow dr in dlist)
+                        {
+                            ToolStripMenuItem tsi = new ToolStripMenuItem(dr[Context.InstructionNode.Name].ToString());
+                            tsi.ToolTipText = dr[Context.InstructionNode.Description].ToString();
+                            list.Add(tsi);
+                        }
+                        break;
+                }
+                ToolStripMenuItem[] tsic = new ToolStripMenuItem[list.Count];
+                list.CopyTo(tsic);
+                return tsic;
             }
-            ToolStripMenuItem[] tsic = new ToolStripMenuItem[list.Count];
-            list.CopyTo(tsic);
-            return tsic;
+            catch (Exception exc)
+            {
+                return new ToolStripMenuItem[0];
+            }
+
         }
 
         DataRow[] GetMatchingInsructions(string pattern)

@@ -43,10 +43,10 @@ namespace Vibz.Studio
         
         private void Studio_Load(object sender, EventArgs e)
         {
-            // Document.Welcome wel = new Vibz.Studio.Document.Welcome();
-            // wel.MdiParent = this;
-            // wel.Show();
-            // menuStrip1.Enabled = ValidateRegistration();
+            Document.Welcome wel = new Vibz.Studio.Document.Welcome();
+            wel.MdiParent = this;
+            wel.Show();
+            //menuStrip1.Enabled = ValidateRegistration();
             this.MainMenuStrip = new MenuStrip();
             configurationToolStripMenuItem.Enabled = false;
             compileToolStripMenuItem.Enabled = false;
@@ -656,7 +656,7 @@ namespace Vibz.Studio
                     {
                         LogQueueElement ele = Vibz.Contract.Log.LogQueue.Instance.Dequeue();
                         rtbLogSummary.SelectionFont = new Font("Arial", (float)8, FontStyle.Regular);
-                        lblStatus.Text = ele.Message;
+                        lblStatus.Text = ele.Message.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
                         switch (ele.Severity)
                         {
                             case LogSeverity.Info:
