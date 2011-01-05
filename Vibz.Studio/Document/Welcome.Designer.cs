@@ -30,12 +30,12 @@ namespace Vibz.Studio.Document
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlUserSession = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnRecentProject = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlUserSession = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -45,7 +45,7 @@ namespace Vibz.Studio.Document
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel1.BackColor = System.Drawing.Color.Azure;
             this.panel1.Controls.Add(this.btnRecentProject);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblVersion);
@@ -56,58 +56,6 @@ namespace Vibz.Studio.Document
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(389, 262);
             this.panel1.TabIndex = 0;
-            // 
-            // pnlUserSession
-            // 
-            this.pnlUserSession.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlUserSession.BackColor = System.Drawing.Color.Transparent;
-            this.pnlUserSession.Location = new System.Drawing.Point(10, 71);
-            this.pnlUserSession.Name = "pnlUserSession";
-            this.pnlUserSession.Size = new System.Drawing.Size(369, 122);
-            this.pnlUserSession.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(45, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 27);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Vibz Automation Studio";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(37, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(56, 51);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(0, 13);
-            this.lblVersion.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 240);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Recent Project:";
             // 
             // btnRecentProject
             // 
@@ -124,6 +72,58 @@ namespace Vibz.Studio.Document
             this.btnRecentProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecentProject.UseVisualStyleBackColor = true;
             this.btnRecentProject.Click += new System.EventHandler(this.btnRecentProject_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(11, 240);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Recent Project:";
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(56, 51);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(0, 13);
+            this.lblVersion.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(37, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(45, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(257, 27);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Vibz Automation Studio";
+            // 
+            // pnlUserSession
+            // 
+            this.pnlUserSession.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlUserSession.BackColor = System.Drawing.Color.Transparent;
+            this.pnlUserSession.Location = new System.Drawing.Point(10, 71);
+            this.pnlUserSession.Name = "pnlUserSession";
+            this.pnlUserSession.Size = new System.Drawing.Size(369, 122);
+            this.pnlUserSession.TabIndex = 0;
             // 
             // Welcome
             // 

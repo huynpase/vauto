@@ -39,7 +39,10 @@ namespace Vibz.HTMLExtractor
 
         internal HtmlDocument Document
         {
-            get { return wb.Document; }
+            get 
+            {
+                return wb.Document; 
+            }
         }
         public string DocumentText
         {
@@ -113,6 +116,9 @@ namespace Vibz.HTMLExtractor
                 else
                 {
                     _currentUrl = wb.Url.AbsoluteUri;
+                    if (wb.DocumentText == null)
+                        throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
                     byte[] byteArray = Encoding.ASCII.GetBytes(wb.DocumentText);
                     MemoryStream stream = new MemoryStream(byteArray);
                     XmlDocument doc = FromHtml(new StreamReader(stream));
@@ -217,6 +223,8 @@ namespace Vibz.HTMLExtractor
         }
         private HtmlElement GetElement(string locator, bool throwExceptionWhenNotFound)
         {
+            if (wb.Document == null)
+                throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
             HtmlElement retValue = null;
             switch (GetLoacatorType(locator))
             { 
@@ -248,6 +256,9 @@ namespace Vibz.HTMLExtractor
         }
         private HtmlElement GetElement(int index)
         {
+            if (wb.Document == null)
+                throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
             return (index < 0 ? null : wb.Document.All[index]);        
         }
         private HtmlElement WSelectSingleNode(string xpath)
@@ -268,6 +279,9 @@ namespace Vibz.HTMLExtractor
         }
         internal XmlNode GetNode(string locator, ref int nodeId, bool throwExceptionOnNotFound)
         {
+            if (wb.Document == null)
+                throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
             XmlDocument xDoc = new XmlDocument();
             xDoc.LoadXml(wb.DocumentText);
                     
@@ -301,6 +315,9 @@ namespace Vibz.HTMLExtractor
         }
         internal List<XmlNode> SelectNodes(string xpath)
         {
+            if (wb.Document == null)
+                throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
             XmlDocument xDoc = new XmlDocument();
             xDoc.LoadXml(wb.DocumentText);
             XmlNodeList xnodes = xDoc.SelectNodes(xpath);
@@ -510,6 +527,9 @@ namespace Vibz.HTMLExtractor
         {
             get
             {
+                if (wb.Document == null)
+                    throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
                 URLList retValue = new URLList();
                 foreach (HtmlElement ele in wb.Document.Links)
                 {
@@ -529,6 +549,9 @@ namespace Vibz.HTMLExtractor
         {
             get
             {
+                if (wb.Document == null)
+                    throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
                 Dictionary<string, string> retValue = new Dictionary<string, string>();
                 foreach (HtmlElement ele in wb.Document.Images)
                 {
@@ -579,6 +602,9 @@ namespace Vibz.HTMLExtractor
         {
             get
             {
+                if (wb.Document == null)
+                    throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
                 if (wb.DocumentText != null)
                 {
                     int stIndex = wb.DocumentText.ToLower().IndexOf("<body");
@@ -599,6 +625,9 @@ namespace Vibz.HTMLExtractor
         {
             get
             {
+                if (wb.Document == null)
+                    throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
                 HtmlElementCollection eleCol = wb.Document.GetElementsByTagName("script");
                 ArrayList retValue = new ArrayList();
                 foreach (HtmlElement ele in eleCol)
@@ -761,6 +790,9 @@ namespace Vibz.HTMLExtractor
         }
         public string GetTitle()
         {
+            if (wb.Document == null)
+                throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
             return wb.Document.Title;
         }
         public string GetValue(string locator)
@@ -782,6 +814,9 @@ namespace Vibz.HTMLExtractor
         }
         public bool IsTextPresent(string text)
         {
+            if (wb.Document == null)
+                throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+            
             return wb.Document.Body.InnerText.Contains(text);
         }
         public bool IsEditable(string locator)

@@ -63,8 +63,9 @@ namespace Vibz.Interpreter.Script.FlowController
             {
                 string message = "Error occured while executing function '" + this.Name + "'. " + Vibz.Contract.Log.LogException.GetFullException(exc);
 
-                //if (inst.OnError == StepToFollow.Break.ToString().ToLower())
-                //    throw new Exception(message);
+                if (this.OnError == StepToFollow.Break.ToString().ToLower())
+                    throw new Exception(message);
+
                 _progress.Add(message, Vibz.Contract.Log.LogSeverity.Warn);
             }
         }

@@ -21,7 +21,9 @@ namespace Vibz.Studio.Document
         }
         private void LoadSession()
         {
-            if (App.Default.ProductKey == null || App.Default.ProductKey.Trim() == "")
+            // TODO: Do Licence Check
+            // if (App.Default.ProductKey == null || App.Default.ProductKey.Trim() == "")
+            if(false)
             {
                 pnlRegKey.Visible = true;
                 txtUser.Text = Environment.UserName;
@@ -34,10 +36,13 @@ namespace Vibz.Studio.Document
                 {
                     pnlRegKey.Visible = false;
                     pnlUserWelcome.Visible = true;
-                    lblUser.Text = "This product is licensed to " + App.Default.RegisteredUser;
-                    RegistryElement regEle = RegistryManager.GetDetailsForRegKey(App.Default.ProductKey);
-                    int used = (int)((TimeSpan)DateTime.Now.Subtract(DateTime.Parse(App.Default.ProductDate))).TotalDays;
-                    lblDate.Text = regEle.Description + "\r\nThe product will expire after " + Convert.ToString(regEle.Days - used) + " days.";
+                    lblUser.Text = (App.Default.RegisteredUser == "" ? "This is an evaluation version software. You are free to use it \r\nfor unlimited time period." : "This product is licensed to " + App.Default.RegisteredUser);
+                    //RegistryElement regEle = RegistryManager.GetDetailsForRegKey(App.Default.ProductKey);
+                    //int used = (int)((TimeSpan)DateTime.Now.Subtract(DateTime.Parse(App.Default.ProductDate))).TotalDays;
+                    //lblDate.Text = regEle.Description + "\r\nThe product will expire after " + Convert.ToString(regEle.Days - used) + " days.";
+
+                    btnUpdate.Visible = false;
+                    lblDate.Visible = false;
                     pnlUserWelcome.Location = new Point(3, 10);
                 }
                 catch (Exception exc)
