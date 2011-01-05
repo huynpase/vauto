@@ -32,9 +32,9 @@ namespace Vibz.Studio.Document
             switch (element.Type)
             {
                 case ElementType.ApplicationGlobal:
-                case ElementType.Function:
                     return DocumentType.XML;
                 case ElementType.Case:
+                case ElementType.Function:
                     return DocumentType.TestCase;
                 case ElementType.Identifier:
                     return DocumentType.Identifier;
