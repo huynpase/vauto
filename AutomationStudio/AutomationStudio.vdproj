@@ -429,6 +429,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6FAFCA0020C1443B979A33655FAAF007"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7159FA56E6FD4BCB971F5F3D36D42B6B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -567,6 +573,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B29EFA335D894ECD969217D7B6C72284"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B716FF4381A6463594B89778E43B4E11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -665,6 +677,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1D448A991DEE4B83A94651B133FBE116"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B29EFA335D894ECD969217D7B6C72284"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6FAFCA0020C1443B979A33655FAAF007"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1276,7 +1300,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_02AA691D2836453092957BB76BC161B9"
@@ -1307,7 +1331,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Options, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Options, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_067FF61F685F1D1D822F7252D3A06AA6"
@@ -1358,7 +1382,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Plugin, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Plugin, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_128B531D05060BE493B7A53B544D6CB3"
@@ -1409,7 +1433,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Data, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Data, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_309951A94D9E435BA4C092BE52030CAA"
@@ -1440,7 +1464,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3B2052E4FA56EE1B9D9362BC8067B67D"
@@ -1471,7 +1495,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3B557CA5660892977FB5BEEA4F2587AB"
@@ -1542,7 +1566,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Solution, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Solution, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4547D318C08ED0CD79D76569D6294763"
@@ -1633,7 +1657,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4BF9042D64D14319AB9B9486182AB75F"
@@ -1664,7 +1688,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Forms, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Forms, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_54B42B808296F3AB2C2E74693C1AE888"
@@ -1695,7 +1719,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_5688B54E027544D08CDBF1009EF522B5"
@@ -1726,7 +1750,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_569781E61C74447E9D62FC83FBD70D67"
@@ -1757,7 +1781,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_5703B252F1884179BC5DB634F0C8EB8F"
@@ -1839,7 +1863,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6988E539EB514763BB7FE1F05120207D"
@@ -1870,7 +1894,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6CDF7BA771E04389A7CFA93CE2BAB118"
@@ -1937,11 +1961,42 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6FAFCA0020C1443B979A33655FAAF007"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Vibz.Studio.resources, Version=2.0.1.40111, Culture=en-US, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_6FAFCA0020C1443B979A33655FAAF007"
+                    {
+                    "Name" = "8:Vibz.Studio.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\binaries\\en-US\\Vibz.Studio.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_EB47FF4121584D789C5F2F0444D9D9C3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7159FA56E6FD4BCB971F5F3D36D42B6B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Contract, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7159FA56E6FD4BCB971F5F3D36D42B6B"
@@ -1972,7 +2027,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.IO, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.IO, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_71EDAE9734264F70802CD746CE6C45AC"
@@ -2023,7 +2078,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Zip, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Zip, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7B429E28A67741EFC3AFC88FE6ADE374"
@@ -2105,7 +2160,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Interpreter, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Interpreter, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9265556C4FF217756BC43CA28827CECE"
@@ -2176,7 +2231,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9DAA4502362C4471B728BFC8D4C5CF5C"
@@ -2207,7 +2262,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_A703739F53D649A28B9C872D68A0EB75"
@@ -2258,7 +2313,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Report, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Report, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_ADA31CE90E0F4D4A9AC4DE644767FF85"
@@ -2271,6 +2326,37 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_044EBAED944541F0B75A71CC7F5D996B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B29EFA335D894ECD969217D7B6C72284"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Vibz.Studio.resources, Version=2.0.1.40111, Culture=hi, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B29EFA335D894ECD969217D7B6C72284"
+                    {
+                    "Name" = "8:Vibz.Studio.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\binaries\\hi\\Vibz.Studio.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_98FB43A916DF482E983760A5B55D3A29"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2329,7 +2415,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Service, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Service, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C1B41F101D452CABE4E68B18B3604C0B"
@@ -2360,7 +2446,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C3E51DEE7C6741C09594C3B97985725F"
@@ -2431,7 +2517,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.HTMLExtractor, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.HTMLExtractor, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C9F26A47F2A64BF1B05080886513D092"
@@ -2502,7 +2588,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Web, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_CFE249FDC8002ED7264C7292A6FD94FD"
@@ -2593,7 +2679,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Vibz.Macro, Version=2.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Vibz.Macro, Version=2.0.3.40111, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_E70148A8ED294937A3429332AF812E39"
@@ -2888,6 +2974,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_98FB43A916DF482E983760A5B55D3A29"
+                    {
+                    "Name" = "8:hi"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_6F053862CDA84A60B6DE5860C1584C52"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_E2C33A3CC79748CDB90C64E2E84701B6"
                     {
                     "Name" = "8:plugin"
@@ -2998,6 +3095,17 @@
                             }
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_EB47FF4121584D789C5F2F0444D9D9C3"
+                    {
+                    "Name" = "8:en-US"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_9806F32B1FC84F6F8DE6DA38BBFDAD19"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_FCC63FA0CCCD4D50AF5B47A65BD690D1"
@@ -3038,7 +3146,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Automation Studio"
         "ProductCode" = "8:{4FA3AF24-F586-4913-9236-2C7CB0991906}"
-        "PackageCode" = "8:{B5A12965-9ED1-477B-A32C-A82C12F0ABA7}"
+        "PackageCode" = "8:{0D156262-E389-426D-B923-DABAC3EDDC3B}"
         "UpgradeCode" = "8:{F5E6ABAE-17EB-4FDF-9A46-4E0D3890BA2B}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
