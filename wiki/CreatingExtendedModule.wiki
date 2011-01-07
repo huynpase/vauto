@@ -8,9 +8,12 @@ This article will explain the process to extend each of these modules.
 
 ====Types of Instructions====
 Framework identifies three types of instructions based on their behavior.
-  * Action:
+  * Action: 
+  Actions are instructions which interferes with Application under test (AUT) to do some task. It returns a bool stating whether the instruction failed or passed.
   * Assert:
-  * Fetch:
+  Assert instructions does not perform any operation on the AUT. Rather it does some checks and returns a boolean stating whether the check condition passed or failed.
+  * Fetch: 
+  Fetch instruction retrieves some value from the AUT and assigns it to a variable given.
 
 ====About Demo====
 The example has a extension project 'demo_ext_instruction' that demonstrates extension to each type of instruction. Along with extended module there is a test project 'test_demo_ext_inst' which shows the usage of the new module.
