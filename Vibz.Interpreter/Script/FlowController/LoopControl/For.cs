@@ -5,8 +5,13 @@ using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 namespace Vibz.Interpreter.Script.FlowController.LoopControl
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+        Details = "For is a loop instruction which allows instruction or group of instructions to be executed for a specific number of times depending on the value of a loop counter.",
+       Version = ScriptInfo.Version,
+        HasIndeviduality = true)]
     public class For : InstructionBase, IAction
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -16,6 +21,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
         }
 
         [XmlAttribute("count")]
+        [AttributeInfo("Number of iterations to perform. Count must be a valid integer.")]
         public string Count;
 
         Body _body;
@@ -26,7 +32,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
             {
                 if (_body == null)
                 {
-                    _body = (Body)Serializer.ConvertXmlElementToInstruction(XBody);
+                    _body = (Body)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XBody);
                 }
                 return _body;
             }

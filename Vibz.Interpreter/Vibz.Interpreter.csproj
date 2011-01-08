@@ -76,7 +76,7 @@
     <Compile Include="Script\FlowController\Function.cs" />
     <Compile Include="Script\FlowController\Include.cs" />
     <Compile Include="Script\FlowController\Section.cs" />
-    <Compile Include="Script\Serializer.cs" />
+    <Compile Include="Script\ScriptInfo.cs" />
     <Compile Include="FileParser.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,8 +36,11 @@ namespace Vibz.Studio.Document
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlUserSession = new System.Windows.Forms.Panel();
+            this.pnlWeb = new System.Windows.Forms.Panel();
+            this.wbVauto = new System.Windows.Forms.WebBrowser();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlWeb.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -45,7 +48,8 @@ namespace Vibz.Studio.Document
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.pnlWeb);
             this.panel1.Controls.Add(this.btnRecentProject);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblVersion);
@@ -86,19 +90,19 @@ namespace Vibz.Studio.Document
             // 
             // lblVersion
             // 
-            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(56, 51);
+            this.lblVersion.Location = new System.Drawing.Point(91, 36);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 4;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(45, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(37, 35);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -107,10 +111,10 @@ namespace Vibz.Studio.Document
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(45, 22);
+            this.label1.Location = new System.Drawing.Point(80, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(257, 27);
             this.label1.TabIndex = 1;
@@ -118,12 +122,34 @@ namespace Vibz.Studio.Document
             // 
             // pnlUserSession
             // 
-            this.pnlUserSession.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlUserSession.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlUserSession.BackColor = System.Drawing.Color.Transparent;
-            this.pnlUserSession.Location = new System.Drawing.Point(10, 71);
+            this.pnlUserSession.Location = new System.Drawing.Point(10, 54);
             this.pnlUserSession.Name = "pnlUserSession";
-            this.pnlUserSession.Size = new System.Drawing.Size(369, 122);
+            this.pnlUserSession.Size = new System.Drawing.Size(369, 82);
             this.pnlUserSession.TabIndex = 0;
+            // 
+            // pnlWeb
+            // 
+            this.pnlWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlWeb.BackColor = System.Drawing.Color.Transparent;
+            this.pnlWeb.Controls.Add(this.wbVauto);
+            this.pnlWeb.Location = new System.Drawing.Point(10, 142);
+            this.pnlWeb.Name = "pnlWeb";
+            this.pnlWeb.Size = new System.Drawing.Size(369, 87);
+            this.pnlWeb.TabIndex = 7;
+            // 
+            // wbVauto
+            // 
+            this.wbVauto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wbVauto.Location = new System.Drawing.Point(0, 0);
+            this.wbVauto.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbVauto.Name = "wbVauto";
+            this.wbVauto.Size = new System.Drawing.Size(369, 87);
+            this.wbVauto.TabIndex = 0;
             // 
             // Welcome
             // 
@@ -140,6 +166,7 @@ namespace Vibz.Studio.Document
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlWeb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -153,5 +180,7 @@ namespace Vibz.Studio.Document
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRecentProject;
+        private System.Windows.Forms.Panel pnlWeb;
+        private System.Windows.Forms.WebBrowser wbVauto;
     }
 }

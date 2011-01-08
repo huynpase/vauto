@@ -12,30 +12,41 @@ namespace Vibz.Contract.Attribute
         public string Author;
         public string Details;
         public string Version;
-
+        public bool HasIndeviduality;
         public TypeInfo()
         {
             this.Author = "Unknown";
-            this.Details = "Not Available.";
+            this.Details = "Information not available.";
             Version = "1.0";
+            HasIndeviduality = true;
         }
         public TypeInfo(string details)
         {
             this.Author = "Unknown";
             this.Details = details;
             Version = "1.0";
+            HasIndeviduality = true;
         }
         public TypeInfo(string author, string details)
         {
             this.Author = author;
             this.Details = details;
             Version = "1.0";
+            HasIndeviduality = true;
         }
         public TypeInfo(string author, string details, string version)
         {
             this.Author = author;
             this.Details = details;
             this.Version = version;
+            HasIndeviduality = true;
+        }
+        public TypeInfo(string author, string details, string version, bool hasIndeviduality)
+        {
+            this.Author = author;
+            this.Details = details;
+            this.Version = version;
+            HasIndeviduality = hasIndeviduality;
         }
     }
 

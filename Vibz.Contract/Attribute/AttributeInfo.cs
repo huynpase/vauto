@@ -13,31 +13,53 @@ namespace Vibz.Contract.Attribute
         public string Details;
         public string[] Options;
         public AttributeInfo()
-        {
-            this.Details = "Not Available.";
-            Options = new string[] { };
-        }
+            : this("Information not available.")
+        { }
         public AttributeInfo(string details)
-        {
-            this.Details = details;
-            Options = new string[] { };
-        }
+            : this(details, new string[] { })
+        { }
         public AttributeInfo(string details, string[] options)
-        {
-            this.Details = details;
-            Options = options;
-        }
+            : this(details, options, true)
+        { }
         public AttributeInfo(string details, Type enumType)
-        {
-            this.Details = details;
-            Options = Enum.GetNames(enumType);
-        }
+            : this(details, enumType, true)
+        { }
+        public AttributeInfo(string details, bool isRequired)
+            : this(details, new string[] { }, isRequired)
+        { }
         public AttributeInfo(string details, Type enumType, bool isRequired)
         {
-            this.Details = details;
+            if (details == null)
+                Details = "";
+            else
+                Details = details;
+
             if (enumType != null)
                 Options = Enum.GetNames(enumType);
-            IsRequired = isRequired;
+            else
+                Options = new string[] { };
+
+            if (isRequired == null)
+                IsRequired = true;
+            else
+                IsRequired = isRequired;
+        }
+        public AttributeInfo(string details, string[] options, bool isRequired)
+        {
+            if (details == null)
+                Details = "";
+            else
+                Details = details;
+            
+            if (options == null)
+                Options = new string[] { };
+            else
+                Options = options;
+
+            if (isRequired == null)
+                IsRequired = true;
+            else
+                IsRequired = isRequired;
         }
     }
 }

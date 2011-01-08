@@ -14,7 +14,12 @@ namespace Vibz.Studio.Document
     {
         protected bool _isModified = false;
         bool _doClose = true;
-
+        public bool DoClose
+        {
+            get {
+                return _doClose;
+            }
+        }
         public BaseDocument(string path)
         {
             InitializeComponent();

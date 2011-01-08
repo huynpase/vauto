@@ -242,54 +242,61 @@ namespace Vibz.Studio.Document.XDoc
                     {
                         foreach (string key in pInfo.Keys)
                         {
-                            DataRow drInst = _instructions.NewRow();
-                            drInst[InstructionNode.Name] = pInfo[key].TypeName.ToLower();
-                            drInst[InstructionNode.Type] = (int)ContextType.Instruction;
-                            drInst[InstructionNode.Owner] = null;
-                            drInst[InstructionNode.Description] = pInfo[key].Information.Details;
-                            switch (pInfo[key].Type.ToLower())
-                            {
-                                case "assert":
-                                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Assert;
-                                    break;
-                                case "fetch":
-                                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Fetch;
-                                    break;
-                                default:
-                                case "action":
-                                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Action;
-                                    break;
-                            }
-                            _instructions.Rows.Add(drInst);
-                            if (pInfo[key].Attributes == null || pInfo[key].Attributes.Count == 0)
-                                continue;
-                            foreach (FunctionAttribute atr in pInfo[key].Attributes)
-                            {
-                                DataRow drAttrName = _instructions.NewRow();
-                                drAttrName[InstructionNode.Name] = atr.Name.ToLower();
-                                drAttrName[InstructionNode.Type] = (int)ContextType.AttributeName;
-                                drAttrName[InstructionNode.Owner] = pInfo[key].TypeName;
-                                drAttrName[InstructionNode.Description] = atr.Detail;
-                                drAttrName[InstructionNode.Subtype] = (atr.IsRequired ? ContextSubType.Required : ContextSubType.NonRequired);
-                                _instructions.Rows.Add(drAttrName);
-                                if (atr.Options == null || atr.Options.Length == 0)
-                                    continue;
-                                foreach (string val in atr.Options)
-                                {
-                                    DataRow drAttrVal = _instructions.NewRow();
-                                    drAttrVal[InstructionNode.Name] = val.ToLower();
-                                    drAttrVal[InstructionNode.Type] = (int)ContextType.AttributeValue;
-                                    drAttrVal[InstructionNode.Owner] = pInfo[key].TypeName + "|" + atr.Name;
-                                    drAttrVal[InstructionNode.Description] = "Supported value.";
-                                    drAttrVal[InstructionNode.Subtype] = null;
-                                    _instructions.Rows.Add(drAttrVal);
-                                }
-                            }
+                            CreateDataRow(pInfo[key]);
                         }
                     }
-
+                    foreach (FunctionTypeInfo fType in Vibz.Interpreter.Configuration.InstructionManager.InternalInstructions)
+                    {
+                        CreateDataRow(fType);
+                    }
                 }
                 return _instructions;
+            }
+        }
+        static void CreateDataRow(FunctionTypeInfo inst)
+        {
+            DataRow drInst = _instructions.NewRow();
+            drInst[InstructionNode.Name] = inst.TypeName.ToLower();
+            drInst[InstructionNode.Type] = (int)ContextType.Instruction;
+            drInst[InstructionNode.Owner] = null;
+            drInst[InstructionNode.Description] = inst.Information.Details;
+            switch (inst.Type.ToLower())
+            {
+                case "assert":
+                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Assert;
+                    break;
+                case "fetch":
+                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Fetch;
+                    break;
+                default:
+                case "action":
+                    drInst[InstructionNode.Subtype] = (int)ContextSubType.Action;
+                    break;
+            }
+            _instructions.Rows.Add(drInst);
+            if (inst.Attributes == null || inst.Attributes.Count == 0)
+                return;
+            foreach (FunctionAttribute atr in inst.Attributes)
+            {
+                DataRow drAttrName = _instructions.NewRow();
+                drAttrName[InstructionNode.Name] = atr.Name.ToLower();
+                drAttrName[InstructionNode.Type] = (int)ContextType.AttributeName;
+                drAttrName[InstructionNode.Owner] = inst.TypeName;
+                drAttrName[InstructionNode.Description] = atr.Information.Details;
+                drAttrName[InstructionNode.Subtype] = (atr.Information.IsRequired ? ContextSubType.Required : ContextSubType.NonRequired);
+                _instructions.Rows.Add(drAttrName);
+                if (atr.Information.Options == null || atr.Information.Options.Length == 0)
+                    continue;
+                foreach (string val in atr.Information.Options)
+                {
+                    DataRow drAttrVal = _instructions.NewRow();
+                    drAttrVal[InstructionNode.Name] = val.ToLower();
+                    drAttrVal[InstructionNode.Type] = (int)ContextType.AttributeValue;
+                    drAttrVal[InstructionNode.Owner] = inst.TypeName + "|" + atr.Name;
+                    drAttrVal[InstructionNode.Description] = "Supported value.";
+                    drAttrVal[InstructionNode.Subtype] = null;
+                    _instructions.Rows.Add(drAttrVal);
+                }
             }
         }
         public bool ContainsAttribute(string name)

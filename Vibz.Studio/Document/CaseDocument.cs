@@ -44,29 +44,50 @@ namespace Vibz.Studio.Document
             if (e.Data.GetDataPresent(typeof(FunctionTypeInfo)))
             {
                 FunctionTypeInfo inst = (FunctionTypeInfo)e.Data.GetData(typeof(FunctionTypeInfo));
-                int lineIndex = _doc.GetLineIndexAtPoint(new Point(e.X, e.Y)); 
+                int lineIndex = _doc.GetLineIndexAtPoint(new Point(e.X, e.Y));
                 int index = _doc.GetFirstCharIndexFromLine(lineIndex);
-
                 _doc.SelectionStart = index;
-
-                _doc.SelectedText = StringHelper.GetLineIndentation(_doc.Lines[lineIndex]);
-                _doc.SelectionColor = Color.Blue;
-                _doc.SelectedText = "<";
-                _doc.SelectionColor = Color.Brown;
-                _doc.SelectedText = inst.TypeName;
-                foreach (FunctionAttribute attr in inst.Attributes)
+                string indentText = StringHelper.GetLineIndentation(_doc.Lines[lineIndex]);
+                RenderFunctionNode(inst, indentText);
+            }
+        }
+        void RenderFunctionNode(FunctionTypeInfo inst, string indentText)
+        {
+            _doc.SelectedText = indentText;
+            _doc.SelectionColor = Color.Blue;
+            _doc.SelectedText = "<";
+            _doc.SelectionColor = Color.Brown;
+            _doc.SelectedText = inst.TypeName.ToLower();
+            foreach (FunctionAttribute attr in inst.Attributes)
+            {
+                if (attr.Information.IsRequired)
                 {
-                    if (attr.IsRequired)
-                    {
-                        _doc.SelectionColor = Color.Red;
-                        _doc.SelectedText = " " + attr.Name;
-                        _doc.SelectionColor = Color.Blue;
-                        _doc.SelectedText = "=";
-                        _doc.SelectionColor = Color.Black;
-                        _doc.SelectedText = "\"\"";
-                    }
+                    _doc.SelectionColor = Color.Red;
+                    _doc.SelectedText = " " + attr.Name;
+                    _doc.SelectionColor = Color.Blue;
+                    _doc.SelectedText = "=";
+                    _doc.SelectionColor = Color.Black;
+                    _doc.SelectedText = "\"\"";
                 }
+            }
+            _doc.SelectionColor = Color.Blue;
+            if (!inst.IsContainer)
                 _doc.SelectedText = " />\r\n";
+            else
+                _doc.SelectedText = ">\r\n";
+            foreach (FunctionTypeInfo node in inst.ChildNodes)
+            {
+                RenderFunctionNode(node, indentText + "\t");
+            }
+            if (inst.IsContainer)
+            {
+                _doc.SelectedText = indentText;
+                _doc.SelectionColor = Color.Blue;
+                _doc.SelectedText = "</";
+                _doc.SelectionColor = Color.Brown;
+                _doc.SelectedText = inst.TypeName.ToLower();
+                _doc.SelectionColor = Color.Blue;
+                _doc.SelectedText = ">\r\n";
             }
         }
         public override void Document_DragEnter(object sender, DragEventArgs e)

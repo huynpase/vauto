@@ -117,7 +117,7 @@ namespace Vibz.Studio.Document
             switch (CurrentContext.Mode)
             {
                 case XMode.AttributeName:
-                    if (e.KeyChar == '=')
+                    if (CurrentContext.Word.Trim() != "" && e.KeyChar == '=')
                     {
                         this.rtbTextArea.SelectionColor = Color.Blue;
                         this.rtbTextArea.SelectedText = "=";

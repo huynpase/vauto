@@ -68,20 +68,20 @@ namespace Vibz.Interpreter.Document
                                 aEle.Attributes.Append(aattr);
 
                                 aattr = doc.CreateAttribute("required");
-                                aattr.Value = attr.IsRequired.ToString().ToLower();
+                                aattr.Value = attr.Information.IsRequired.ToString().ToLower();
                                 aEle.Attributes.Append(aattr);
 
                                 XmlElement adEle = doc.CreateElement("detail");
 
-                                XmlCDataSection adetail = doc.CreateCDataSection(attr.Detail);
+                                XmlCDataSection adetail = doc.CreateCDataSection(attr.Information.Details);
                                 adEle.AppendChild(adetail);
 
                                 aEle.AppendChild(adEle);
-                                if (attr.Options != null)
+                                if (attr.Information.Options != null)
                                 {
                                     XmlElement aosEle = doc.CreateElement("options");
 
-                                    foreach (string opt in attr.Options)
+                                    foreach (string opt in attr.Information.Options)
                                     {
                                         XmlElement aoEle = doc.CreateElement("option");
 

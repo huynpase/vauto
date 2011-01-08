@@ -102,7 +102,10 @@ namespace Vibz.Studio.Document
 
         void doc_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            this.Remove((Document.IDocument)sender);
+            if (((Document.IDocument)sender).DoClose)
+                this.Remove((Document.IDocument)sender);
+            else
+                e.Cancel = true;
         }
     }
 }

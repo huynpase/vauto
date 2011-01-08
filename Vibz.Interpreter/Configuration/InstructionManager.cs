@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 
 namespace Vibz.Interpreter.Configuration
 {
@@ -19,6 +20,8 @@ namespace Vibz.Interpreter.Configuration
         {
             get
             {
+                if (_fParser == null)
+                    return null;
                 if (_instList == null)
                 {
                     _instList = new Vibz.Interpreter.Plugin.PluginAssembly("Instruction Set");
@@ -46,20 +49,49 @@ namespace Vibz.Interpreter.Configuration
         internal static void LoadInternalClasses(FileParser fParser)
         {
             _fParser = fParser;
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.Condition), typeof(IAssert));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.Case), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.Body), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.If), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.Else), typeof(IAction));
+            foreach (FunctionTypeInfo fType in InternalInstructions)
+            {
+                AddType(fType.FunctionType, fType.InterfaceType);
+            }
+        }
+        static List<FunctionTypeInfo> _internalInstructions = null;
+        public static List<FunctionTypeInfo> InternalInstructions
+        {
+            get {
+                if (_internalInstructions == null)
+                {
+                    //
+                    // Sequence does matter. 
+                    // Put the lowest leaf instruction prior to a container instruction.
+                    //
+                    _internalInstructions = new List<FunctionTypeInfo>();
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Body), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Condition), typeof(IAssert)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Else), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Case), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.If), typeof(IAction)));
 
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.LoopControl.DoWhile), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.LoopControl.While), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.LoopControl.For), typeof(IAction));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.LoopControl.DoWhile), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.LoopControl.While), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.LoopControl.For), typeof(IAction)));
 
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Define), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Set), typeof(IAction));
-            AddType(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Invoke), typeof(IFetch));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Define), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Set), typeof(IAction)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Invoke), typeof(IFetch)));
+                    _preLoadHandler = null;
+                }
+                return _internalInstructions;
+            }
+        }
+        static Dictionary<string, FunctionType> _preLoadHandler = null;
+        static FunctionTypeInfo CreateFunctionInfo(Type type, Type iFace)
+        {
+            if (_preLoadHandler == null)
+                _preLoadHandler = new Dictionary<string, FunctionType>();
+            
+            _preLoadHandler.Add(type.FullName.ToLower(), new FunctionType(type, iFace));
 
+            return new FunctionTypeInfo(type, iFace, _preLoadHandler);
         }
         static void AddType(Type type, Type iFace)
         {

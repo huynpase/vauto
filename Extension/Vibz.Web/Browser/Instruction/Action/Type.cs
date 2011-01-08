@@ -16,6 +16,7 @@ namespace Vibz.Web.Browser.Instruction.Action
         [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]
         public string Locator;
         [XmlAttribute("value")]
+        [AttributeInfo("Value to be inserted.")]
         public string Value;
         public Type()
             : base()

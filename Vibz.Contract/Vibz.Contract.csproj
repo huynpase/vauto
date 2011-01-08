@@ -37,6 +37,8 @@
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Attribute\AttributeInfo.cs" />
+    <Compile Include="Attribute\FunctionNode.cs" />
+    <Compile Include="Attribute\NodeInfo.cs" />
     <Compile Include="Attribute\FunctionAttribute.cs" />
     <Compile Include="Attribute\FunctionTypeInfo.cs" />
     <Compile Include="Common\IError.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Log\LogElement.cs" />
     <Compile Include="Log\LogException.cs" />
     <Compile Include="Log\LogQueue.cs" />
+    <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
