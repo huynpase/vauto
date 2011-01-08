@@ -1,5 +1,30 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="web.xsl"?>
-<vibz>
-	Web assistant.
+<vibz heading="On the web">
+  <section color="000066">
+    <header>Headlines</header>
+    <content>
+      <item type="text" date="08/01/2011">Vibz Automation Studio (v2.2.11.01080 now has Context help system.</item>
+      <item type="text" date="08/01/2011">Vibz Automation Studio now instruction dictionary to directly drag drop instructions in your script.</item>
+    </content>
+  </section>
+  <section color="990000">
+    <header>Online Assistance</header>
+    <content>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/ComponentsOfTestscript"  date="08/01/2011">Online help for writing automation script.</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/CreatingExtendedModule"  date="08/01/2011">Learn how to extend a module.</item>
+    </content>
+  </section>
+  <section color="C89800">
+    <header>Open Scripts</header>
+    <content>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/Examples"  date="08/01/2011">Beginers samples.</item>
+    </content>
+  </section>
+  <section color="2060a7">
+    <header>Open Modules</header>
+    <content>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/CreatingExtendedModule"  date="08/01/2011">Beginers samples.</item>
+    </content>
+  </section>
 </vibz>
