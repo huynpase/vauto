@@ -77,7 +77,7 @@
               </tr>
             </table>
           </div>
-          <div style="float: left; width: 20px;"></div>
+          <div style="float: left; width: 5px;"></div>
         </xsl:for-each>
       </div>
   	</body>
