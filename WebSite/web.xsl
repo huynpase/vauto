@@ -51,7 +51,21 @@
                         <ul>
                           <xsl:for-each select="content/item">
                             <li>
-                              <xsl:value-of select="."/>
+                              <xsl:choose>
+                                <xsl:when test="@type='link'">
+                                  <a style="cursor: pointer;">
+                                    <xsl:attribute name="onclick">
+                                      javascript:window.open('<xsl:value-of select="@url" />','');
+                                    </xsl:attribute>
+                                    <font color="blue">
+                                      <xsl:value-of select="."/>
+                                    </font>
+                                  </a>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <xsl:value-of select="."/>
+                                </xsl:otherwise>
+                              </xsl:choose>
                             </li>
                           </xsl:for-each>
                         </ul>
