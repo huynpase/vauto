@@ -36,7 +36,7 @@ namespace Vibz.Studio.Document
                 {
                     pnlRegKey.Visible = false;
                     pnlUserWelcome.Visible = true;
-                    lblUser.Text = (App.Default.RegisteredUser == "" ? "This is an evaluation version software. You are free to use it \r\nfor unlimited time period." : "This product is licensed to " + App.Default.RegisteredUser);
+                    lblUser.Text = (App.Default.RegisteredUser == "" ? "This is an evaluation version software. You are free to use it for unlimited time period." : "This product is licensed to " + App.Default.RegisteredUser);
                     //RegistryElement regEle = RegistryManager.GetDetailsForRegKey(App.Default.ProductKey);
                     //int used = (int)((TimeSpan)DateTime.Now.Subtract(DateTime.Parse(App.Default.ProductDate))).TotalDays;
                     //lblDate.Text = regEle.Description + "\r\nThe product will expire after " + Convert.ToString(regEle.Days - used) + " days.";

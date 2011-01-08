@@ -5,8 +5,13 @@ using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 namespace Vibz.Interpreter.Script.FlowController
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+    Details = "Else is a container instruction, that holds the body instruction to be executed when all other cases have failed with their conditional logic.",
+     Version = ScriptInfo.Version,
+      HasIndeviduality = true)]
     public class Else : InstructionBase, IAction
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -22,7 +27,7 @@ namespace Vibz.Interpreter.Script.FlowController
             {
                 if (_body == null)
                 {
-                    _body = (Body)Serializer.ConvertXmlElementToInstruction(XBody);
+                    _body = (Body)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XBody);
                 }
                 return _body;
             }

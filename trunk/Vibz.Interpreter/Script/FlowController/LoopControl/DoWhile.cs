@@ -5,9 +5,14 @@ using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 
 namespace Vibz.Interpreter.Script.FlowController.LoopControl
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+        Details = "DoWhile is a loop instruction which allows code to be executed repeatedly based on a given Boolean condition. It differs from while loop in the sence it executes instruction first and then checks the condition.",
+        Version = ScriptInfo.Version, 
+        HasIndeviduality=true)]
     public class DoWhile : InstructionBase, IAction
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -25,7 +30,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
             {
                 if (_condition == null)
                 {
-                    _condition = (ICondition)Serializer.ConvertXmlElementToInstruction(XCondition);
+                    _condition = (ICondition)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XCondition);
                 }
                 return _condition;
             }
@@ -45,7 +50,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
             {
                 if (_body == null)
                 {
-                    _body = (Body)Serializer.ConvertXmlElementToInstruction(XBody);
+                    _body = (Body)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XBody);
                 }
                 return _body;
             }

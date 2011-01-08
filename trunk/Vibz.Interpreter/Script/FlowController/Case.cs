@@ -5,8 +5,14 @@ using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 namespace Vibz.Interpreter.Script.FlowController
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+    Details = "Case instruction goes within if statement. It perform conditional execution of specific set of instruction. " +
+        "A case instruction has one condition block and a body section.",
+     Version = ScriptInfo.Version,
+      HasIndeviduality = true)]
     public class Case : InstructionBase, IAssert
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -24,7 +30,7 @@ namespace Vibz.Interpreter.Script.FlowController
             {
                 if (_condition == null)
                 {
-                    _condition = (ICondition)Serializer.ConvertXmlElementToInstruction(XCondition);
+                    _condition = (ICondition)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XCondition);
                 }
                 return _condition;
             }
@@ -44,7 +50,7 @@ namespace Vibz.Interpreter.Script.FlowController
             {
                 if (_body == null)
                 {
-                    _body = (Body)Serializer.ConvertXmlElementToInstruction(XBody);
+                    _body = (Body)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XBody);
                 }
                 return _body;
             }

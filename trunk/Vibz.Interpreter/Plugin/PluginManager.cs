@@ -89,7 +89,7 @@ namespace Vibz.Interpreter.Plugin
                     new PluginAssemblyInfo(pAss.Name, pAss.Settings.Clone));
                 foreach (string fKey in pAss.Keys)
                 {
-                    FunctionTypeInfo fTypeInfo = new FunctionTypeInfo(pAss[fKey].Type, pAss[fKey].Interface);
+                    FunctionTypeInfo fTypeInfo = new FunctionTypeInfo(pAss[fKey].Type, pAss[fKey].Interface, Configuration.InstructionManager.Handlers);
                     pInfo.Add(fKey, fTypeInfo);
                 }
                 retValue.SetValue(pInfo, i);

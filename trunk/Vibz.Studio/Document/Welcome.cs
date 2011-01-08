@@ -25,6 +25,8 @@ namespace Vibz.Studio.Document
             lblVersion.Text = "Version : " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             btnRecentProject.Text = App.Default.ProjectLocation;
             btnRecentProject.Tag = App.Default.ProjectLocation;
+            
+            wbVauto.Navigate(System.Configuration.ConfigurationManager.AppSettings["webhelp"]);
         }
 
         private void btnRecentProject_Click(object sender, EventArgs e)

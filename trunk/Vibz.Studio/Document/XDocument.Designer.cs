@@ -28,12 +28,10 @@ namespace Vibz.Studio.Document
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XDocument));
             this.rtbTextArea = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +48,6 @@ namespace Vibz.Studio.Document
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblPosition,
-            this.toolStripSplitButton1,
             this.lblStatusMessage});
             this.statusStrip1.Location = new System.Drawing.Point(0, 341);
             this.statusStrip1.Name = "statusStrip1";
@@ -68,17 +65,7 @@ namespace Vibz.Studio.Document
             // lblStatusMessage
             // 
             this.lblStatusMessage.Name = "lblStatusMessage";
-            this.lblStatusMessage.Size = new System.Drawing.Size(11, 17);
-            this.lblStatusMessage.Text = ":";
-            // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 20);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            this.lblStatusMessage.Size = new System.Drawing.Size(0, 17);
             // 
             // XDocument
             // 
@@ -101,6 +88,5 @@ namespace Vibz.Studio.Document
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblPosition;
         private System.Windows.Forms.ToolStripStatusLabel lblStatusMessage;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
     }
 }

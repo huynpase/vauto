@@ -14,6 +14,7 @@ namespace Vibz.Studio.Document
         void Focus();
         bool IsModified { get; }
         string Path { get; }
+        bool DoClose { get; }
         DocumentType Type { get; }
         string DocumentName { get; }
         void Add(IElement element);

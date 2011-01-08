@@ -5,8 +5,16 @@ using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 namespace Vibz.Interpreter.Script.FlowController
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+    Details = "If statement hold a set of conditional logic defined with one or more case statement. " + 
+        "The first case whose condition passes will have its instructions executed. " +
+        "An if can also have an else section to be executed when all other cases have failed " + 
+        "with their conditional logic.",
+     Version = ScriptInfo.Version,
+      HasIndeviduality = true)]
     public class If : InstructionBase, IAction
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -27,7 +35,7 @@ namespace Vibz.Interpreter.Script.FlowController
                     {
                         foreach (XmlElement ele in XCases)
                         {
-                            _caseList.Add((Case)Serializer.ConvertXmlElementToInstruction(ele));
+                            _caseList.Add((Case)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, ele));
                         }
                     }
                     else
@@ -51,7 +59,7 @@ namespace Vibz.Interpreter.Script.FlowController
             {
                 if (_else == null)
                 {
-                    _else = (Else)Serializer.ConvertXmlElementToInstruction(XElse);
+                    _else = (Else)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XElse);
                 }
                 return _else;
             }

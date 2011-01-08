@@ -9,8 +9,13 @@ using Vibz.Contract.Common;
 using Vibz.Contract.Log;
 using Vibz.Contract.Data;
 using Vibz.Contract.Macro;
+using Vibz.Contract.Attribute;
 namespace Vibz.Interpreter.Script.FlowController
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+     Details = "Body is a container instruction that hold one or more instructions in it.",
+      Version = ScriptInfo.Version,
+       HasIndeviduality = false)]
     public class Body : InstructionBase
     {
         bool _resetInstruction = false;
@@ -40,7 +45,7 @@ namespace Vibz.Interpreter.Script.FlowController
                         foreach (XmlElement ele in XInstructions)
                         {
                             LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading Instructions : " + ele.Name, Vibz.Contract.Log.LogSeverity.Trace));
-                            _instructions.Add((IInstruction)Serializer.ConvertXmlElementToInstruction(ele));
+                            _instructions.Add((IInstruction)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, ele));
                         }
                     }
                 }

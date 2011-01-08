@@ -4,10 +4,15 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
+using Vibz.Contract.Attribute;
 using Vibz.Contract.Log;
 using Vibz.Contract.Data;
 namespace Vibz.Interpreter.Script.FlowController.LoopControl
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+        Details = "While is a loop instruction which allows code to be executed repeatedly based on a given Boolean condition.",
+       Version = ScriptInfo.Version,
+        HasIndeviduality = true)]
     public class While : InstructionBase, IAction
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -25,7 +30,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
             {
                 if (_condition == null)
                 {
-                    _condition = (ICondition)Serializer.ConvertXmlElementToInstruction(XCondition);
+                    _condition = (ICondition)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XCondition);
                 }
                 return _condition;
             }
@@ -45,7 +50,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
             {
                 if (_body == null)
                 {
-                    _body = (Body)Serializer.ConvertXmlElementToInstruction(XBody);
+                    _body = (Body)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XBody);
                 }
                 return _body;
             }

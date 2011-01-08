@@ -5,9 +5,15 @@ using System.Xml.Serialization;
 using System.Xml;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using Vibz.Contract.Attribute;
 
 namespace Vibz.Interpreter.Script.FlowController
 {
+    [TypeInfo(Author = ScriptInfo.Author,
+    Details = "Condition instruction acts as container to hold one or more assert instructions. " +
+        "The output is a boolean, calculated over varios assert statements operated with 'AND' or 'OR' operator",
+     Version = ScriptInfo.Version,
+      HasIndeviduality = true)]
     public class Condition : InstructionBase, ICondition
     {
         Vibz.Contract.Log.LogElement _progress;
@@ -24,6 +30,7 @@ namespace Vibz.Interpreter.Script.FlowController
 
         ConditionOperator _operator = ConditionOperator.And;
         [XmlAttribute("operator")]
+        [AttributeInfo("Operator defines the logical grouping of its indevidual assert statements. \r\nDefault: And", typeof(ConditionOperator), false)]
         public ConditionOperator Operator 
         {
             get { return _operator; }
@@ -32,6 +39,7 @@ namespace Vibz.Interpreter.Script.FlowController
 
         bool _expected = true;
         [XmlAttribute("expected")]
+        [AttributeInfo("Expected boolean output resulting out of operated assertions. \r\nDefault: true", false)]
         public bool Expected 
         {
             get { return _expected; }
@@ -51,7 +59,7 @@ namespace Vibz.Interpreter.Script.FlowController
                     {
                         foreach (XmlElement ele in XChecks)
                         {
-                            _checks.Add((IAssert)Serializer.ConvertXmlElementToInstruction(ele));
+                            _checks.Add((IAssert)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, ele));
                         }
                     }
                 }

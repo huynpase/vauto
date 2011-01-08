@@ -8,8 +8,10 @@ using Vibz.Contract.Data;
 using Vibz.Contract.Attribute;
 namespace Vibz.Interpreter.Script.FlowController.VariableControl
 {
-    [TypeInfo(Details = "Stores the data into given variable.",
-        Version = "2.0")]
+    [TypeInfo(Author = ScriptInfo.Author,
+     Details = "Stores the data into given variable.",
+      Version = ScriptInfo.Version,
+       HasIndeviduality = true)]
     public class Set : InstructionBase, IAction
     {
         [XmlAttribute("var")]
