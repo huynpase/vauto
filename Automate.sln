@@ -118,6 +118,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Macro", "Macro", "{30FA70B4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{A5259831-0A38-4747-AC28-374B52ADACE7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSite", "WebSite", "{8B77C433-950E-4D2D-BB82-B31279C689C3}"
+	ProjectSection(SolutionItems) = preProject
+		WebSite\web.xml = WebSite\web.xml
+		WebSite\web.xsl = WebSite\web.xsl
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
