@@ -19,13 +19,26 @@ The example has a extension project 'demo_ext_instruction' that demonstrates ext
 ====Steps====
  * Create a new class library project.
  * Add reference to following Vibz.Contract.dll. [http://vauto.googlecode.com/files/Vibz.Contract.dll.zip Download here]
- * One can define as many instruction in single instruction library project. However, as a best practice use related instructions basing on target of usage (lets say instruction dealing with database activity should be bundled in one library package). 
+ * One can define as many instruction in an instruction library project. However, as a best practice, use related instructions basing on target of usage (say instruction dealing with database activity should be bundled in one library package). 
  * For each instruction, define a seperate class. 
  * Add reference to following namespace in your class.
   * System.Xml.Serialization; 
   * Vibz.Contract; 
   * Vibz.Contract.Attribute;
+ * Add TypeInfo class attribute before the class begin (shown below). 
+{{{
+namespace demo_ext_instruction.Calendar
+{
+    [TypeInfo(Author="Vibzworld", Details = "Changes the system date.",
+        Version = "2.0")]
+    public class IsDayToday : InstructionBase, IAssert
+    {
+        bool _assertValue = false;
+}}}
+  The Studio uses informations stored in TypeInfo to help script writers during scripting. These informations are displayed as context help.
  * All class must inherit '<font color='green'>InstructionBase</font>'. 
+ * Steps till now is common to all types of instruction. Now, it's the to decide upon the type of instruction and follow some specific step.
+ *
 
 ===Extending Macro module===
 [http://vauto.googlecode.com/files/Ext_Macro.zip Download Demo Source]
