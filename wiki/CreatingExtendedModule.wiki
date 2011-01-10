@@ -36,9 +36,29 @@ namespace demo_ext_instruction.Calendar
         bool _assertValue = false;
 }}}
   The Studio uses informations stored in TypeInfo to help script writers during scripting. These informations are displayed as context help.
- * All class must inherit '<font color='green'>InstructionBase</font>'. 
- * Steps till now is common to all types of instruction. Now, it's the to decide upon the type of instruction and follow some specific step.
- *
+ * All class must inherit '<font color='green'>InstructionBase</font>' from namespace Vibz.Contract. 
+ * Steps till now is common to all types of instruction. Now, it's the to decide upon the [http://code.google.com/p/vauto/wiki/CreatingExtendedModule#Types_of_Instructions type of instruction] and follow some specific step.
+  * *Action instruction*: If the instruction is going to perform some action, the class should implement <font color='green'>IAction</font> interface. To implement IAction you need to provide defination for <font color='green'>Execute</font> function as shown below.
+{{{
+public void Execute(Vibz.Contract.Data.DataHandler vList)
+{
+  // Your code block of action
+}
+}}}
+  * *Assert instruction*: If the instruction is going to do some check, the class should implement <font color='green'>IAssert</font> interface. To implement IAssert you need to provide defination for <font color='green'>Assert</font> function as shown below.
+{{{
+public bool Assert(Vibz.Contract.Data.DataHandler vList)
+{
+  // Your code block of assertion
+}
+}}}
+  * *Fetch instruction*: If the instruction is going to fetch some value, the class should implement <font color='green'>IFetch</font> interface. To implement IFetch you need to provide defination for <font color='green'>Fetch</font> function as shown below.
+{{{
+public Vibz.Contract.Data.IData Fetch(Vibz.Contract.Data.DataHandler vList)
+{
+  // Your code block for fetching
+}
+}}}
 
 ===Extending Macro module===
 [http://vauto.googlecode.com/files/Ext_Macro.zip Download Demo Source]
