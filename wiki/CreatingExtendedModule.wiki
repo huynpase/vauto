@@ -8,12 +8,10 @@ This article will explain the process to extend each of these modules.
 
 ====Types of Instructions====
 Framework identifies three types of instructions based on their behavior.
-  * Action: 
-    Actions are instructions which interferes with Application under test (AUT) to do some task. It returns a bool stating whether the instruction failed or passed.
-  * Assert:
-    Assert instructions does not perform any operation on the AUT. Rather it does some checks and returns a boolean stating whether the check condition passed or failed.
-  * Fetch: 
-    Fetch instruction retrieves some value from the AUT and assigns it to a variable given.
+  * *Action*: Actions are instructions which interferes with Application under test (AUT) to do some task. It returns a bool stating whether the instruction failed or passed.
+  * *Assert*: Assert instructions does not perform any operation on the AUT. Rather it does some checks and returns a boolean stating whether the check condition passed or failed.
+  * *Fetch*: Fetch instruction retrieves some value from the AUT and assigns it to a variable given.
+  Based on the type of instruction, a module developer has to follow some specific steps given below.
 
 ====About Demo====
 The example has a extension project 'demo_ext_instruction' that demonstrates extension to each type of instruction. Along with extended module there is a test project 'test_demo_ext_inst' which shows the usage of the new module.
@@ -21,7 +19,13 @@ The example has a extension project 'demo_ext_instruction' that demonstrates ext
 ====Steps====
  * Create a new class library project.
  * Add reference to following Vibz.Contract.dll. [http://vauto.googlecode.com/files/Vibz.Contract.dll.zip Download here]
- * to be continued
+ * One can define as many instruction in single instruction library project. However, as a best practice use related instructions basing on target of usage (lets say instruction dealing with database activity should be bundled in one library package). 
+ * For each instruction, define a seperate class. 
+ * Add reference to following namespace in your class.
+  * System.Xml.Serialization; 
+  * Vibz.Contract; 
+  * Vibz.Contract.Attribute;
+ * All class must inherit '<font color='green'>InstructionBase</font>'. 
 
 ===Extending Macro module===
 [http://vauto.googlecode.com/files/Ext_Macro.zip Download Demo Source]
