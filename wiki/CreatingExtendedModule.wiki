@@ -73,7 +73,7 @@ public string Output
 }
 }}}
   Every field or the property must have XmlAttribute with the desired argument name associated to it. AttributeInfo is optional, to define information regarding the argument. The information will be used by the studio to help script writers with context sensitive help.
- *(Optional)You may want to see the instructions success-failure or fetched value or assertion result in your final report. To achieve this you need to override InfoEnd property as shown below.
+ * (Optional)You may want to see the instructions success-failure or fetched value or assertion result in your final report. To achieve this you need to override InfoEnd property as shown below.
 {{{
 public override Vibz.Contract.Log.LogElement InfoEnd
 {
@@ -83,7 +83,9 @@ public override Vibz.Contract.Log.LogElement InfoEnd
     }
 }
 }}}
+ * Last step is to build the instruction library and obtain the assembly file (dll).
 
+  Following above steps one can create their own instruction library. Once the module is created next step is to [RegisterModule register the new library with the framework]. 
 ===Extending Macro module===
 [http://vauto.googlecode.com/files/Ext_Macro.zip Download Demo Source]
 
