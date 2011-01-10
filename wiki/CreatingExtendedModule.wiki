@@ -25,7 +25,7 @@ The example has a extension project 'demo_ext_instruction' that demonstrates ext
   * System.Xml.Serialization; 
   * Vibz.Contract; 
   * Vibz.Contract.Attribute;
- * Add TypeInfo class attribute before the class begin (shown below). 
+ * Add TypeInfo class attribute before the class begin (sample shown below). 
 {{{
 namespace demo_ext_instruction.Calendar
 {
@@ -59,6 +59,20 @@ public Vibz.Contract.Data.IData Fetch(Vibz.Contract.Data.DataHandler vList)
   // Your code block for fetching
 }
 }}}
+
+ * Your instruction may need one or more input parameters. For example the demonstrated sample action instruction <font color='green'>ChangeDate</font> accepts three arguments i.e. <font color='green'>date, month, year</font>. Similarly, sample fetch instruction <font color='green'>GetSystemDate</font> accepts one argument i.e. <font color='green'>assignto</font> These arguments can be defined as a public field or a get-set property as shown below.
+{{{
+[XmlAttribute("date")]
+public string Date;
+
+[XmlAttribute("assignto")]
+public string Output
+{
+    get { return _output; }
+    set { _output = value; }
+}
+}}}
+Every property must have XmlAttribute with the desired argument name associated to it.
 
 ===Extending Macro module===
 [http://vauto.googlecode.com/files/Ext_Macro.zip Download Demo Source]
