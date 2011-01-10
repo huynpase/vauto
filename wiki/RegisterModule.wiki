@@ -1,11 +1,11 @@
 ==Registering an instruction module==
   --coming soon
 
-==Registering an macro module==
+==Registering a macro module==
   --coming soon
 
-==Registering an report module==
+==Registering a report module==
   --coming soon
 
-==Registering an data module==
+==Registering a data module==
   --coming soon
