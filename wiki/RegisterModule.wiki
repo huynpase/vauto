@@ -24,7 +24,8 @@
    ...  
   </report>
 </configuration>
-    }}}<br/>
+    }}}
+<br/>
    The name is the identity for the library. This name is displayed on Studio and Extension manager.
   * *Through a zipped file*: In case you want to share your module with other user you can create a zip file. The installed Studio has a the Extension manager through which a user can easily register your module. This furthers supresses the complexity when your module itself is a big projects with multiple referenced files.
   To create a zip file you need to follow these steps.
@@ -32,3 +33,7 @@
    * Create a {name}.plg (any name) file in the same folder.
     [http://vauto.googlecode.com/files/web.plg Example] - To be discused.
    * Zip the folder.
+<p/>
+   To verify whether your module is installed correctly you may check either of following.
+   * Open Extension Manager. Under module specific tab you will be seeing your registered module.
+   * Open Automation Studio. In Instruction dictionary you will see additional section with your extended functions in it. 
