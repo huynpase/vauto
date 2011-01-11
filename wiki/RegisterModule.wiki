@@ -8,7 +8,7 @@
    * Open the file in any text editor
    * The file basically has four sections: data, instruction, macro and report. Based on the type of module you need to add the reference to your module assembly under specific section. 
 Example: For above consideration you will add the entry as shown below:
-{{{
+   {{{
 <configuration versionsupport="...">
   <data>
     ...
@@ -24,7 +24,7 @@ Example: For above consideration you will add the entry as shown below:
    ...  
   </report>
 </configuration>
-}}}
+   }}}
   * *Through a zipped file*: In case you want to share your module with other user you can create a zip file. The installed Studio has a the Extension manager through which a user can easily register your module. This furthers supresses the complexity when your module itself is a big projects with multiple referenced files.
   To create a zip file you need to follow these steps.
    * Bundle all the module files in a folder.
