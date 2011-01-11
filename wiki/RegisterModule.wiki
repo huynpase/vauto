@@ -1,9 +1,11 @@
 ==Registering an module==
   There are two modes of registering a module to a framework.
   * *Manual*: Adding an entry into vibz.reg file.
+   * vibz.reg file will be located at your installed location (i.e where you have installed Vibz automation). example: for me its *C:\Program Files\Vibzworld\Automation Studio*.
+   * Open this file and add the reference to your module under specific section.
   * *Through a zipped file*: In case you want to share your module with other user you can create a zip file. The installed Studio has a the Extension manager through which a user can easily register your module. This furthers supresses the complexity when your module itself is a big projects with multiple referenced files.
   To create a zip file you need to follow these steps.
    * Bundle all the module files in a folder.
-   * Create a *.plg (any name) file in the same folder.
+   * Create a <name>.plg (any name) file in the same folder.
     [http://vauto.googlecode.com/files/web.plg Example] - To be discused.
    * Zip the folder.
