@@ -2,8 +2,8 @@
   There are two modes of registering a module to a framework.
   * *Manual*: Adding an entry into vibz.reg file.
    * While manually registering your module you need to place your assembly at your installed location(i.e where you have installed Vibz automation). example: for me its *C:\Program Files\Vibzworld\Automation Studio*.
-    - The installed folder will have plugin folder. Plugin folder has sub folders specific for each type of modules. Consider the new module is an instruction library say 'inst_lib.dll'. To register this dll create a new folder say 'my_lib' inside [Install_loc]/plugin/instruction. 
-    _ Then place your assembly and all its references under this folder.
+    - The installed folder will have plugin folder. Plugin folder has sub folders specific for each type of modules. Consider the new module is an instruction library say 'inst_lib.dll'. To register this dll create a new folder say 'my_lib' inside [Install_loc]/plugin/instruction. <p/>
+    - Then place your assembly and all its references under this folder.
    * Now you need to update vibz.reg file. vibz.reg file will be located at your installed location. 
    * Open the file in any text editor
    * The file basically has four sections: data, instruction, macro and report. Based on the type of module you need to add the reference to your module assembly under specific section. 
