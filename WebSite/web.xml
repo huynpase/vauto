@@ -4,9 +4,9 @@
   <section color="000066">
     <header>Headlines</header>
     <content>
-      <item type="text" date="12/01/2011" highlight="true">Now source code is available.</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/GetSourceCode" date="12/01/2011" highlight="true">Now source code is available.</item>
       <item type="text" date="08/01/2011" highlight="true">Vibz Automation Studio (v2.2.11.01080 now has Context help system.</item>
-      <item type="link" url="http://code.google.com/p/vauto/wiki/GetSourceCode" date="08/01/2011" highlight="true">Vibz Automation Studio has Instruction dictionary to directly drag drop instructions in your script.</item>
+      <item type="text" date="08/01/2011" highlight="true">Vibz Automation Studio has Instruction dictionary to directly drag drop instructions in your script.</item>
     </content>
   </section>
   <section color="990000">
