@@ -1,0 +1,6 @@
+*Vibz automation framework* is a complete solution for end to end testing methodology, going out of box to develop full blown crawler / spider / bot application. This is an outcome of years of expertise of automation over dozons of web / windows based application. It is in a state where any automation requirement can have their way in by means of simple pluggable module.<br/>
+*Vibz automation framework* provides distributed architecture for automation script development. It entertains modular and reusable approach to programing paradigm. Further it fascilitates remote execution of built script.<br/>
+*Vibz automation framework* provides custom scheduling mechinary.
+when you can get an implementation that’s already optimized by experts in
+
+      ==vibzauto@gmail.com==
