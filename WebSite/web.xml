@@ -4,8 +4,8 @@
   <section color="000066">
     <header>Headlines</header>
     <content>
-      <item type="text" date="08/01/2011">Vibz Automation Studio (v2.2.11.01080 now has Context help system.</item>
-      <item type="text" date="08/01/2011">Vibz Automation Studio has Instruction dictionary to directly drag drop instructions in your script.</item>
+      <item type="text" date="08/01/2011" highlight="true">Vibz Automation Studio (v2.2.11.01080 now has Context help system.</item>
+      <item type="text" date="08/01/2011" highlight="true">Vibz Automation Studio has Instruction dictionary to directly drag drop instructions in your script.</item>
     </content>
   </section>
   <section color="990000">
@@ -35,6 +35,7 @@
     <content>
       <item type="link" url="http://groups.google.com/group/vauto-discuss?pli=1"  date="10/01/2011">Share your views</item>
       <item type="link" url="http://code.google.com/p/vauto/issues/list"  date="10/01/2011">Report issue and bugs</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/GetSourceCode"  date="11/01/2011">Send request for Source code</item>
     </content>
   </section>
   <section color="68670c">

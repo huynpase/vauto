@@ -47,10 +47,13 @@
                   <table width="100%" border="0" cellspacing="0" cellpadding="3" height="180">
                     <tr bgcolor="#FFFFFF" valign="top">
                       <td>
-                        <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="2">
                         <ul>
                           <xsl:for-each select="content/item">
                             <li>
+				<xsl:if test="@highlight='true'">
+			    		<img src="new.jpg" alt="New" />
+				</xsl:if>
                               <xsl:choose>
                                 <xsl:when test="@type='link'">
                                   <a style="cursor: pointer;">
