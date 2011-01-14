@@ -8,8 +8,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Author="Vibzworld", Details = "Fires javascript even on the given locator.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Fires javascript even on the given locator.",
+        Version = WebInstructionBase.Vesrion)]
     public class FireEvent : ActionBase
     {
         [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]

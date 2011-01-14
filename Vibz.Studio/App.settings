@@ -20,5 +20,14 @@
     <Setting Name="EncodeBuild" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="LogEvents" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LogPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:/logs/vauto.log</Value>
+    </Setting>
+    <Setting Name="LogSeverity" Type="Vibz.Contract.Log.LogSeverity" Scope="User">
+      <Value Profile="(Default)">Trace</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

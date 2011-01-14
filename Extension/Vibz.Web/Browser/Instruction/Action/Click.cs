@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Author="Vibzworld", Details="Performs click event on the given locator.", 
-        Version="2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details="Performs click event on the given locator.", 
+        Version = WebInstructionBase.Vesrion)]
     public class Click : ActionBase
     {
         [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]

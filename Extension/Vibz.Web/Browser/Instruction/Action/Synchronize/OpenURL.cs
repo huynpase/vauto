@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Author="Vibzworld", Details = "Opens the given url in current browser.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Opens the given url in current browser.",
+        Version = WebInstructionBase.Vesrion)]
     public class OpenURL : SynchronizeBase
     {
         string _actUrl = "";

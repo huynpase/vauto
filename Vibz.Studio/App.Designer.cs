@@ -94,5 +94,41 @@ namespace Vibz.Studio {
                 this["EncodeBuild"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LogEvents {
+            get {
+                return ((bool)(this["LogEvents"]));
+            }
+            set {
+                this["LogEvents"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:/logs/vauto.log")]
+        public string LogPath {
+            get {
+                return ((string)(this["LogPath"]));
+            }
+            set {
+                this["LogPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Trace")]
+        public global::Vibz.Contract.Log.LogSeverity LogSeverity {
+            get {
+                return ((global::Vibz.Contract.Log.LogSeverity)(this["LogSeverity"]));
+            }
+            set {
+                this["LogSeverity"] = value;
+            }
+        }
     }
 }

@@ -7,8 +7,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Assert
 {
-    [TypeInfo(Author="Vibzworld", Details = "Checks if the given text is present or not.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Checks if the given text is present or not.",
+        Version = WebInstructionBase.Vesrion)]
     public class IsTextPresent : AssertBase
     {
 

@@ -1,0 +1,12 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+  <function name="Say Hello">
+    <include id="case1.id"></include>
+    <data>
+	<var name="message"></var>
+    </data>
+    <body>
+	<textalert message="@message" display="fadecrawlin" direction="toptobottom" position="center" exit="autoclose" duration="10000"/>
+    </body>
+  </function>
+</section>

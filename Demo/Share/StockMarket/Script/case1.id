@@ -1,0 +1,10 @@
+<controls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	 <control name="repeaterXPath"><![CDATA[//table[@class='dataTable']/tbody/tbody/tr]]></control>
+	 <control name="columnXPathSet"><![CDATA[{td[1]/a/text()}{td[4]/text()}{td[5]/font/text()}{td[1]/a/@href}]]></control>
+	 <control name="xPathSeperator"><![CDATA[{,}]]></control>
+	 <control name="iframeLoc"><![CDATA[//iframe[@id='current']/@src]]></control>
+	 <control name="curVal"><![CDATA[//span[@id='ltpid']]]></control>
+	 <control name="changeVal"><![CDATA[//span[@id='change']]]></control>
+	 <control name="perchangeVal"><![CDATA[//span[@id='ChangePercent']]]></control>
+	 <control name="perfImgLoc"><![CDATA[//img[@width='154' and @height='89']/@src]]></control>
+</controls>

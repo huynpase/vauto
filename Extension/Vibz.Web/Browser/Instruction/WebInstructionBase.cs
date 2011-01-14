@@ -13,20 +13,23 @@ namespace Vibz.Web.Browser.Instruction
 {
     public abstract class WebInstructionBase : InstructionBase, IError 
     {
+        public const string Author = "Vibzworld";
+        public const string Vesrion = "2.1";
         public const string OnTimeOutInfo = "This setting determines how the execution should proceed when time out occurs before instruction has completed.";
         public const string MaxWaitInfo = "Maximum time to wait for the instruction to complete before declaring that instruction has failed. Default value is 60000";
         public const string AssignToInfo = "Name of the variable where the output from the instruction will be saved.";
         public const string LocatorInfo = "Identity of the control in context.";
         static IBrowser _browser = null;
         static object _padLock = new object();
+        static System.Threading.Thread _ownerThread = null;
         internal static IBrowser Browser
         {
             get {
-                if (_browser == null)
+                if (_browser == null || _ownerThread == null || !_ownerThread.IsAlive)
                 {
                     lock (_padLock)
                     {
-                        if (_browser == null)
+                        if (_browser == null || _ownerThread == null || !_ownerThread.IsAlive)
                         {
                             Vibz.Contract.Log.LogElement progress = new Vibz.Contract.Log.LogElement("Initiating Browser.");
                             string configPath = new System.IO.FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName + "/browser.config";
@@ -37,6 +40,7 @@ namespace Vibz.Web.Browser.Instruction
                             bool showBrowser = true;
                             Boolean.TryParse(manager.Settings["ShowBrowser"], out showBrowser);
                             _browser = (IBrowser)Reflection.Runtime.CreateInstanceAndInitialize(assembly, clas, init, new object[] { showBrowser });
+                            _ownerThread = System.Threading.Thread.CurrentThread;
                         }
                     }
                 }

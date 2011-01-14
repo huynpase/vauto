@@ -8,8 +8,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Author="Vibzworld", Details = "Types value into file upload control associated to given locator.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Types value into file upload control associated to given locator.",
+        Version = WebInstructionBase.Vesrion)]
     public class TypeIntoFileUpload : ActionBase
     {
         [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]

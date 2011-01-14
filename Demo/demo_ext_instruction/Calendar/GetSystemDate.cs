@@ -22,6 +22,7 @@ namespace demo_ext_instruction.Calendar
         }
         private string _output = "assignto";
         [XmlAttribute("assignto")]
+        [AttributeInfo("Variable where the instruction output will be stored.")]
         public string Output
         {
             get { return _output; }

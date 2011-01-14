@@ -8,8 +8,8 @@ using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
 {
-    [TypeInfo(Author="Vibzworld", Details = "Returns title of the document in the focussed window.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Returns title of the document in the focussed window.",
+        Version = WebInstructionBase.Vesrion)]
     public class GetTitle : FetchBase
     {
         public GetTitle()

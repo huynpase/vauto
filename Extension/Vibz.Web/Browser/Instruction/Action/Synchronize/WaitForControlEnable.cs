@@ -8,8 +8,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Author="Vibzworld", Details = "Wait till the control associated to the given locator gets enabled.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Wait till the control associated to the given locator gets enabled.",
+        Version = WebInstructionBase.Vesrion)]
     public class WaitForControlEnable : SynchronizeBase
     {
         [XmlAttribute("locator")][AttributeInfo(WebInstructionBase.LocatorInfo)]

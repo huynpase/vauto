@@ -82,6 +82,7 @@ namespace Vibz.Studio
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlToolHead = new System.Windows.Forms.Panel();
             this.lblDictTitle = new System.Windows.Forms.Label();
+            this.loggerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlSol.SuspendLayout();
@@ -315,7 +316,8 @@ namespace Vibz.Studio
             this.configurationToolStripMenuItem,
             this.playSoundToolStripMenuItem,
             this.toolStripSeparator5,
-            this.encodeBuildOutputToolStripMenuItem});
+            this.encodeBuildOutputToolStripMenuItem,
+            this.loggerToolStripMenuItem});
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
             this.optionsToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
@@ -324,7 +326,7 @@ namespace Vibz.Studio
             // 
             this.configurationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configurationToolStripMenuItem.Image")));
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
             // playSoundToolStripMenuItem
@@ -333,13 +335,13 @@ namespace Vibz.Studio
             this.playSoundToolStripMenuItem.CheckOnClick = true;
             this.playSoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.playSoundToolStripMenuItem.Name = "playSoundToolStripMenuItem";
-            this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
+            this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.playSoundToolStripMenuItem.Click += new System.EventHandler(this.playSoundToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(75, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // encodeBuildOutputToolStripMenuItem
             // 
@@ -347,7 +349,7 @@ namespace Vibz.Studio
             this.encodeBuildOutputToolStripMenuItem.CheckOnClick = true;
             this.encodeBuildOutputToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.encodeBuildOutputToolStripMenuItem.Name = "encodeBuildOutputToolStripMenuItem";
-            this.encodeBuildOutputToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
+            this.encodeBuildOutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.encodeBuildOutputToolStripMenuItem.Click += new System.EventHandler(this.encodeBuildOutputToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -547,11 +549,20 @@ namespace Vibz.Studio
             this.lblDictTitle.ForeColor = System.Drawing.Color.DimGray;
             this.lblDictTitle.Location = new System.Drawing.Point(1, 4);
             this.lblDictTitle.Name = "lblDictTitle";
-            this.lblDictTitle.Size = new System.Drawing.Size(49, 13);
+            this.lblDictTitle.Size = new System.Drawing.Size(0, 13);
             this.lblDictTitle.TabIndex = 0;
             this.lblDictTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseDown);
             this.lblDictTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseMove);
             this.lblDictTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseUp);
+            // 
+            // loggerToolStripMenuItem
+            // 
+            this.loggerToolStripMenuItem.Checked = true;
+            this.loggerToolStripMenuItem.CheckOnClick = true;
+            this.loggerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.loggerToolStripMenuItem.Name = "loggerToolStripMenuItem";
+            this.loggerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loggerToolStripMenuItem.Click += new System.EventHandler(this.loggerToolStripMenuItem_Click);
             // 
             // Studio
             // 
@@ -643,5 +654,6 @@ namespace Vibz.Studio
         private System.Windows.Forms.Panel pnlToolHead;
         private System.Windows.Forms.Label lblDictTitle;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem loggerToolStripMenuItem;
     }
 }

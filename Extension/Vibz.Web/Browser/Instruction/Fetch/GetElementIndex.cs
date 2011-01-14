@@ -8,8 +8,8 @@ using Vibz.Contract.Data;
 
 namespace Vibz.Web.Browser.Instruction.Fetch
 {
-    [TypeInfo(Author="Vibzworld", Details = "Returns index of the control node associated with given locator.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Returns index of the control node associated with given locator.",
+        Version = WebInstructionBase.Vesrion)]
     public class GetElementIndex : FetchBase
     {
 

@@ -46,6 +46,7 @@
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Extractor.cs" />
+    <Compile Include="ScriptCallBack.cs" />
     <Compile Include="WBrowser.cs">
       <SubType>Form</SubType>
     </Compile>

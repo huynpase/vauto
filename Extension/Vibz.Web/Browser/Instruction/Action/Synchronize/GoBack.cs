@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Author="Vibzworld", Details = "Navigates the browser to last navigated url.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Navigates the browser to last navigated url.",
+        Version = WebInstructionBase.Vesrion)]
     public class GoBack : SynchronizeBase
     {
         public GoBack()
