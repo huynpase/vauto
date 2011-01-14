@@ -7,10 +7,12 @@ namespace Vibz.Contract.Log
     public struct LogQueueElement {
         public string Message;
         public LogSeverity Severity;
+        public string ThreadId;
         public LogQueueElement(string message, LogSeverity severity)
         {
             Message = message;
             Severity = severity;
+            ThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId.ToString();
         }
     }
     public class LogQueue : Queue<LogQueueElement>

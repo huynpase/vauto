@@ -7,8 +7,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action.Synchronize
 {
-    [TypeInfo(Author="Vibzworld", Details = "Wait till the given text gets loaded.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Wait till the given text gets loaded.",
+        Version = WebInstructionBase.Vesrion)]
     public class WaitForTextLoad : SynchronizeBase
     {
         [XmlAttribute("text")]

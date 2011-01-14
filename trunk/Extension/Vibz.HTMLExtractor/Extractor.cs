@@ -20,14 +20,13 @@ namespace Vibz.HTMLExtractor
         HttpWebResponse _response;
         Uri _baseUrl;
         Dictionary<string, string> _pageHeaders = new Dictionary<string, string>();
-        WBrowser _webControl;
         bool _showBrowser = true;
         public void Init(bool showBrowser)
         {
             try
             {
+                Log("Init");
                 _showBrowser = showBrowser;
-                SetDocument();
             }
             catch (Exception exc)
             {
@@ -38,7 +37,7 @@ namespace Vibz.HTMLExtractor
         {
             try
             {
-                SetDocument();
+                Log("Init: url:" + url.AbsolutePath + ".");
                 ((WBrowser)Document).LoadDocument(htmlSource, MaxWait);
                 _baseUrl = url;
             }
@@ -52,7 +51,7 @@ namespace Vibz.HTMLExtractor
         {
             try
             {
-                SetDocument();
+                Log("LoadUrl: Url '" + url + "' load complete.");
                 _baseUrl = new Uri(url);
                 Document.Navigate(url, maxWait);
             }
@@ -95,13 +94,14 @@ namespace Vibz.HTMLExtractor
         {
             get
             {
-                SetDocument();
-                return _webControl;
+                return GetDocument();
             }
         }
-        delegate void SetDocumentDelegate();
-        public void SetDocument()
+        WBrowser _webControl;
+        delegate WBrowser SetDocumentDelegate();
+        WBrowser GetDocument()
         {
+            Log("GetDocument");
             if (_webControl == null || _webControl.IsDisposed)
             {
                 _webControl = new WBrowser();
@@ -113,21 +113,14 @@ namespace Vibz.HTMLExtractor
                     _webControl.Visible = false;
                 }
                 _webControl.Show();
-                return;
+                Log("GetDocument: Document Initialized.");
             }
-            if (this._webControl.InvokeRequired)
+            else if (this._webControl.InvokeRequired)
             {
-                try
-                {
-                    this._webControl.Invoke(new SetDocumentDelegate(SetDocument), null);
-                }
-                catch (Exception exc)
-                {
-                    _webControl = new WBrowser();
-                    _webControl.Show();
-                    return;
-                }
+                Log("GetDocument: Document Invokation Required.");
+                _webControl = (WBrowser)_webControl.Invoke(new SetDocumentDelegate(GetDocument), null);
             }
+            return _webControl;
         }
         private bool _disposed;
         public void Dispose()
@@ -144,7 +137,13 @@ namespace Vibz.HTMLExtractor
                     _webControl.Dispose();
                 }
                 _disposed = true;
+                Log("Dispose: Extractor disposed");
             }
+        }
+
+        void Log(string message)
+        {
+            Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("[Extractor] - " + message, Vibz.Contract.Log.LogSeverity.Trace));
         }
     }
 }

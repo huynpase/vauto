@@ -1,0 +1,31 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+  <include ref="Vibz.Web"/>
+  <function name="Extract All Image From URL">
+    <include id="case1.id"></include>
+    <data>
+      <var name="url"/>
+    </data>
+    <body>
+      <openurl url="@url" maxwait="120000"/>
+      <downloadimages folderpath="images"/>
+    </body>
+  </function>
+  <function name="Extract All Image From all URLs">
+    <include id="case1.id"></include>
+    <data>
+      <var name="urls" type="array"/>
+    </data>
+    <body>
+      <for count="@urls.length">
+        <body>
+          <call name="Extract All Image From URL" onerror="continue">
+            <data>
+              <var name="url">@urls[@index]</var>
+            </data>
+          </call>
+        </body>
+      </for>
+    </body>
+  </function>
+</section>

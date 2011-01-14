@@ -22,6 +22,7 @@ namespace demo_ext_instruction.Calendar
         const string minMonth = "1";
 
         [XmlAttribute("date")]
+        [AttributeInfo("Date to which the system date should be changed.")]
         public string Date = minDate;
         [XmlAttribute("month")]
         public string Month = minMonth;

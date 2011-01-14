@@ -8,8 +8,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Author="Vibzworld", Details = "Types the given text on the control associated to given locator.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Types the given text on the control associated to given locator.",
+        Version = WebInstructionBase.Vesrion)]
     
     public class Type : ActionBase
     {

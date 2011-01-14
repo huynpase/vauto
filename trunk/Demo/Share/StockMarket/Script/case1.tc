@@ -1,0 +1,88 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+  <include ref="Vibz.Web"/>
+  <function name="RecordDayData">
+    <include id="case1.id"></include>
+    <data>
+	<var name="url"></var>
+	<var name="dataDestination" type="datatable"></var>
+    </data>
+    <body>
+	<openurl url="@url"/>
+	<gettablecontent repeaterxpath="$repeaterXPath" columnxpathset="$columnXPathSet" xpathseperator="$xPathSeperator" assignto="data"/>
+	<export destination="@dataDestination" source="@data" mode="update" onerror="continue"/>
+    </body>
+  </function>
+  <function name="ProcessAllStocks">
+    <include id="case1.id"></include>
+    <data>
+	<var name="url"></var>
+	<var name="mode">insert</var>
+	<var name="dataDestination" type="datatable"></var>
+    </data>
+    <body>
+	<openurl url="@url" onerror="continue"/>
+	<gettablecontent repeaterxpath="$repeaterXPath" columnxpathset="$columnXPathSet" xpathseperator="$xPathSeperator" assignto="data" onerror="continue"/>
+	<define var="result" type="datatable" />
+	<for count="@data.rowcount">
+        	<body>
+			<call name="GetStockDetailedData" onerror="continue">
+        			<data>
+			        	<var name="url">@data[@index][3]</var>
+			        	<var name="comp_name">@data[@index][0]</var>
+					<var name="result">@result</var>
+        			</data>
+      			</call>
+	        </body>
+      	</for>
+	<export destination="@dataDestination" source="@result" mode="@mode"/>
+    </body>
+  </function>
+  <function name="ProcessSourceStocks">
+    <include id="case1.id"></include>
+    <data>
+	<var name="url"></var>
+	<var name="stockSource" type="datatable"></var>
+	<var name="dataDestination" type="datatable"></var>
+    </data>
+    <body>
+	<define var="result" type="datatable" />
+	<for count="@stockSource.rowcount">
+        	<body>
+			<call name="GetStockDetailedData">
+        			<data>
+			        	<var name="url">parse(replace(replace(@url, {comp_name},@stockSource[@index][0] ), {comp_code},@stockSource[@index][1] ))</var>
+			        	<var name="comp_name">@stockSource[@index][0]</var>
+					<var name="result">@result</var>
+        			</data>
+      			</call>
+	        </body>
+      	</for>
+	<export destination="@dataDestination" source="@result" mode="update"/>
+    </body>
+  </function>
+  <function name="GetStockDetailedData">
+    <include id="case1.id"></include>
+    <data>
+	<var name="url"></var>
+	<var name="comp_name"></var>
+	<var name="result" type="datatable"></var>
+    </data>
+    <body>
+	<openurl url="@url"/>
+	<set var="comp_name" value="@comp_name" />
+	<getattribute locator="$perfImgLoc" assignto="perfImgLoc" />
+	<invoke assignto="index1" method="@perfImgLoc.lastindexof(/)" />
+	<set var="index1" value="parse(sum(@index1,1))" />
+	<invoke assignto="index2" method="@perfImgLoc.lastindexof(.)" />
+	<set var="length" value="parse(substract(@index2,@index1))" />
+	<invoke method="@perfImgLoc.substring(@index1, @length)" assignto="abc" />			
+	<getattribute locator="$iframeLoc" assignto="iframeSrc" />
+	<openurl url="@iframeSrc" />
+	<getinnertext locator="$curVal" assignto="curVal" />
+	<getinnertext locator="$changeVal" assignto="changeVal" />
+	<getinnertext locator="$perchangeVal" assignto="perchangeVal" />
+	<invoke method="@result.AddRow(@comp_name,@curVal, @changeVal,@perchangeVal , @abc)" />
+    </body>
+  </function>
+</section>

@@ -171,6 +171,9 @@
   <data name="Txt_License" xml:space="preserve">
     <value>The product is licensed under GPL2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)</value>
   </data>
+  <data name="Txt_Logger" xml:space="preserve">
+    <value>Logger</value>
+  </data>
   <data name="Txt_NewProject" xml:space="preserve">
     <value>New Project</value>
   </data>

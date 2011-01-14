@@ -19,13 +19,16 @@ namespace Vibz.HTMLExtractor
 {
     public partial class WBrowser : Form, IWebDocument
     {
-        const string Title = "Vibz Automation Browser";
+        const string Title = "Vibz Browser";
         string _docText = "";
         Uri _baseUrl;
         string _currentUrl = "";
         const string NodeId = "__nodeId";
         object _padLock = new object();
         WebBrowserReadyState _readyState = WebBrowserReadyState.Uninitialized;
+        public int NavigationCounter; 
+        ScriptCallback scriptCallback;
+
         internal WBrowser()
         {
             //ShowInTaskbar = false; 
@@ -33,6 +36,8 @@ namespace Vibz.HTMLExtractor
             InitializeComponent();
             Load += new EventHandler(Browser_Load);
             _disposed = false;
+            Log("Constructor");
+            NavigationCounter = 0;
         }
         bool _reloadingSGML = false;
         public int SleepTime = 250;
@@ -69,6 +74,7 @@ namespace Vibz.HTMLExtractor
         Vibz.Web.Browser.Collection.ImageList _images = null;
         void Browser_Load(object sender, EventArgs e)
         {
+            Log("Browser Loading");
             wb.Dock = DockStyle.Fill;
             wb.AllowNavigation = true;
             wb.ScriptErrorsSuppressed = true;
@@ -77,10 +83,12 @@ namespace Vibz.HTMLExtractor
             wb.Navigating += new WebBrowserNavigatingEventHandler(wb_Navigating);
             wb.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
             this.Controls.Add(wb);
+            scriptCallback = new ScriptCallback(this);
         }
 
         void wb_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
+            Log("Progressed to " + _readyState.ToString());
             toolStripProgressBar1.Minimum = 0;
             toolStripProgressBar1.Maximum = (int)e.MaximumProgress;
             toolStripProgressBar1.Value = (int)e.CurrentProgress;
@@ -91,51 +99,65 @@ namespace Vibz.HTMLExtractor
 
         void wb_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
-            CheckStatus();
+            Log("Navigated");
         }
         void wb_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
-            // TODO: 
+            Log("Navigating");
+            NavigationCounter++; 
         }
         void wb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            CheckStatus();
+            //Ref: http://www.codeproject.com/KB/aspnet/WebBrowser.aspx
+            Log("Document load completed");
+            HtmlDocument doc = ((WebBrowser)sender).Document;
+
+            doc.InvokeScript("setTimeout", new object[] {
+            string.Format("window.external.getHtmlResult({0})",
+            NavigationCounter), 10 });
+
+            NavigationCounter = 0;
+
+            _readyState = WebBrowserReadyState.Complete;
+
+            ProcessPage();
         }
-        void CheckStatus()
+        void ProcessPage()
         {
-            if (wb.ReadyState == WebBrowserReadyState.Complete)
+            if (_reloadingSGML)
             {
-                if (_reloadingSGML)
+                lock (_padLock)
                 {
-                    lock (_padLock)
-                    {
-                        _readyState = WebBrowserReadyState.Complete;
-                        _reloadingSGML = false;
-                    }
+                    Log("CheckStatus: Browser Status is Complete");
+                    _readyState = WebBrowserReadyState.Complete;
+                    _reloadingSGML = false;
                 }
-                else
-                {
-                    _currentUrl = wb.Url.AbsoluteUri;
-                    if (wb.DocumentText == null)
-                        throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
-            
-                    byte[] byteArray = Encoding.ASCII.GetBytes(wb.DocumentText);
-                    MemoryStream stream = new MemoryStream(byteArray);
-                    XmlDocument doc = FromHtml(new StreamReader(stream));
-                    _reloadingSGML = true;
-                    _docText = doc.OuterXml;
-                    NavigateHTML(_docText);
-                    this.Text = wb.DocumentTitle + " - " + Title;
-                }
+            }
+            else
+            {
+                _currentUrl = wb.Url.AbsoluteUri;
+                Log("CheckStatus: Current Url: " + _currentUrl);
+                if (wb.DocumentText == null)
+                    throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
+
+                byte[] byteArray = Encoding.ASCII.GetBytes(wb.DocumentText);
+                MemoryStream stream = new MemoryStream(byteArray);
+                XmlDocument doc = FromHtml(new StreamReader(stream));
+                _reloadingSGML = true;
+                _docText = doc.OuterXml;
+                NavigateHTML(_docText);
+                this.Text = wb.DocumentTitle + " - " + Title;
             }
         }
         private void NavigateHTML(string html)
         {
+            Log("NavigateHTML");
             System.IO.File.WriteAllText("__page.html", html);
             wb.Navigate(Environment.CurrentDirectory + "/__page.html");
         }
         internal void LoadDocument(string html, int maxWait)
         {
+            Log("Loading Document");
             _reloadingSGML = false;
             //wb.DocumentText = html;
             NavigateHTML(html);
@@ -144,6 +166,7 @@ namespace Vibz.HTMLExtractor
         }
         public void Navigate(string url, int maxWait)
         {
+            Log("Navigate: Url - " + url);
             _baseUrl = new Uri(url);
             _reloadingSGML = false;
             wb.Navigate(url);
@@ -345,16 +368,19 @@ namespace Vibz.HTMLExtractor
         {
             HtmlElement el = GetElement(locator);
             el.InvokeMember("click");
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void Check(string locator)
         {
             HtmlElement el = GetElement(locator);
             el.SetAttribute("checked", "true");
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void UnCheck(string locator)
         {
             HtmlElement el = GetElement(locator);
             el.SetAttribute("checked", "");
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void SelectOption(string locator, string optionText)
         {
@@ -380,17 +406,20 @@ namespace Vibz.HTMLExtractor
                 HtmlElement ele = GetElement(Convert.ToInt32(nodeIdAttr.Value));
                 ele.SetAttribute("selected", "true");
             }
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void Type(string locator, string value)
         {
             HtmlElement el = GetElement(locator);
             el.SetAttribute("value", value);
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void DoubleClick(string locator)
         {
             HtmlElement el = GetElement(locator);
             el.InvokeMember("click");
             el.InvokeMember("click");
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void KeyPress(string locator, char c)
         {
@@ -410,6 +439,7 @@ namespace Vibz.HTMLExtractor
         }
         public void WaitForPageLoad(int maxWait, bool exceptionOnTimeout)
         {
+            Log("WaitForPageLoad begin");
             DateTime dtStart = DateTime.Now;
             bool isTimeOut = true;
             do
@@ -422,11 +452,13 @@ namespace Vibz.HTMLExtractor
                 }
                 System.Threading.Thread.Sleep(SleepTime);
             } while (((TimeSpan)DateTime.Now.Subtract(dtStart)).TotalMilliseconds < maxWait);
+            Log("WaitForPageLoad end: Browser Status - " + _readyState.ToString());
             if (isTimeOut && exceptionOnTimeout)
                 throw new Exception("Time out occured before page is completely loaded.");
         }
         public void WaitForControlLoad(string locator, int maxWait)
         {
+            Log("WaitForControlLoad begin");
             DateTime dtStart = DateTime.Now;
             bool isTimeOut = true;
             do
@@ -441,6 +473,7 @@ namespace Vibz.HTMLExtractor
                 }
                 System.Threading.Thread.Sleep(SleepTime);
             } while (((TimeSpan)DateTime.Now.Subtract(dtStart)).TotalMilliseconds < maxWait);
+            Log("WaitForControlLoad end");
             if (isTimeOut)
                 throw new Exception("Time out occured before control '" + locator + "' is loaded.");
         }
@@ -499,6 +532,7 @@ namespace Vibz.HTMLExtractor
         public void GoBack(int maxWait)
         {
             wb.GoBack();
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void Close()
         {
@@ -511,6 +545,7 @@ namespace Vibz.HTMLExtractor
         public void Refresh(int maxWait)
         {
             wb.Refresh();
+            _readyState = WebBrowserReadyState.Uninitialized;
         }
         public void SelectFrame(string frameLocator)
         {
@@ -763,10 +798,16 @@ namespace Vibz.HTMLExtractor
         public Dictionary<string, string> GetAttributes(string locator)
         {
             int index = 0;
-            XmlNode n = GetNode(locator, ref index, true);
-            XmlAttributeCollection attrCol = n.Attributes;
             Dictionary<string, string> retValue = new Dictionary<string, string>();
-            for (int i=0;i<attrCol.Count;i++)
+            XmlNode n = GetNode(locator, ref index, true);
+            if (n == null)
+                return retValue;
+            if (n.NodeType != XmlNodeType.Element)
+                throw new Exception("Element mismatch. Expected element is 'Node'. Element with locator '" + locator + "' is '" + n.NodeType + "'.");
+            XmlAttributeCollection attrCol = n.Attributes;
+            if (attrCol == null)
+                return retValue;
+            for (int i = 0; i < attrCol.Count; i++)
             {
                 retValue.Add(attrCol[i].Name, attrCol[i].Value);
             }
@@ -855,9 +896,20 @@ namespace Vibz.HTMLExtractor
         }
         internal bool IsDisposed
         {
-            get { return _disposed; }
+            get 
+            {
+                if (this.wb.IsDisposed)
+                    return true;
+                return _disposed; 
+            }
             set { _disposed = value; }
         }
         #endregion
+
+        void Log(string message)
+        {
+            toolStripStatusLabel1.Text = message;
+            Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("[WBrowser] - " + message, Vibz.Contract.Log.LogSeverity.Trace));
+        }
     }
 }

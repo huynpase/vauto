@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 
 namespace Vibz.Web.Browser.Instruction.Assert
 {
-    [TypeInfo(Author="Vibzworld", Details = "Checks if the control associated with given locator is enabled or not.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Checks if the control associated with given locator is enabled or not.",
+        Version = WebInstructionBase.Vesrion)]
     public class IsEnabled : AssertBase
     {
 

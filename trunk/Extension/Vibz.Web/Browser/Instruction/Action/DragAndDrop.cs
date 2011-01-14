@@ -8,8 +8,8 @@ using Vibz.Contract.Attribute;
 
 namespace Vibz.Web.Browser.Instruction.Action
 {
-    [TypeInfo(Author="Vibzworld", Details = "Drags the element on source locator and drops it on destination locator.",
-        Version = "2.0")]
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Drags the element on source locator and drops it on destination locator.",
+        Version = WebInstructionBase.Vesrion)]
     public class DragAndDrop : ActionBase
     {
         [XmlAttribute("sourcelocator")]

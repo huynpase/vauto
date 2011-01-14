@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <XML_DIZ_INFO>
 	<MASTER_PAD_VERSION_INFO>
 		<MASTER_PAD_VERSION>3.11</MASTER_PAD_VERSION>
@@ -17,15 +17,15 @@
 		<Contact_Info>
 			<Author_First_Name>Amit</Author_First_Name>
 			<Author_Last_Name>Vibhuti</Author_Last_Name>
-			<Author_Email>amit_vibhuti@rediffmail.com</Author_Email>
+			<Author_Email>vibzauto@gmail.com</Author_Email>
 			<Contact_First_Name>Amit</Contact_First_Name>
 			<Contact_Last_Name>Vibhuti</Contact_Last_Name>
-			<Contact_Email>amit_vibhuti@rediffmail.com</Contact_Email>
+			<Contact_Email>vibzauto@gmail.com</Contact_Email>
 		</Contact_Info>
 		<Support_Info>
-			<Sales_Email>amit_vibhuti@rediffmail.com</Sales_Email>
-			<Support_Email>amit_vibhuti@rediffmail.com</Support_Email>
-			<General_Email>amit_vibhuti@rediffmail.com</General_Email>
+			<Sales_Email>vibzauto@gmail.com</Sales_Email>
+			<Support_Email>vibzauto@gmail.com</Support_Email>
+			<General_Email>vibzauto@gmail.com</General_Email>
 			<Sales_Phone />
 			<Support_Phone />
 			<General_Phone />
@@ -34,7 +34,7 @@
 	</Company_Info>
 	<Program_Info>
 		<Program_Name>Vibz Automation</Program_Name>
-		<Program_Version>2.2</Program_Version>
+		<Program_Version>2.3</Program_Version>
 		<Program_Release_Month>12</Program_Release_Month>
 		<Program_Release_Day>04</Program_Release_Day>
 		<Program_Release_Year>2010</Program_Release_Year>
@@ -124,8 +124,8 @@ Easy of scripting:</Char_Desc_2000>
 			<Application_XML_File_URL />
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.2.11.0108.msi</Primary_Download_URL>
-			<Secondary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.2.11.0108.msi</Secondary_Download_URL>
+			<Primary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0114.msi</Primary_Download_URL>
+			<Secondary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0114.msi</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>

@@ -14,6 +14,5 @@ namespace Vibz.Web.Browser
         Dictionary<string, string> PageHeaders { get; }
         int DownloadAllImages(string absPath, string relPath);
         IWebDocument Document { get; }
-        
     }
 }

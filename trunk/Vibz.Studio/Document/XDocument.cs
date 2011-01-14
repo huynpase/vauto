@@ -158,7 +158,11 @@ namespace Vibz.Studio.Document
                     string indentText = "\r\n" + StringHelper.GetLineIndentation(CurrentLine);
                     rtbTextArea.SelectedText = indentText;
                     if (CurrentContext.Mode == XMode.InnerTextSibling)
-                        rtbTextArea.SelectedText = "\t";
+                    {
+                        // todo: if first child add tab space
+                        //rtbTextArea.SelectedText = "\t";
+
+                    }
                     if (CurrentContext.Mode == XMode.InnerText || CurrentContext.Mode == XMode.AttributeSeperation)
                     {
                         rtbTextArea.SelectedText = "\t";

@@ -1,0 +1,11 @@
+bin\Debug\demo_ext_macro.dll
+bin\Debug\demo_ext_macro.pdb
+bin\Debug\Vibz.Contract.dll
+bin\Debug\Vibz.dll
+bin\Debug\Vibz.Contract.pdb
+bin\Debug\Vibz.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\demo_ext_macro.dll
+obj\Debug\demo_ext_macro.pdb
+..\..\binaries\plugin\macro\demo\demo_ext_macro.dll
+..\..\binaries\plugin\macro\demo\demo_ext_macro.pdb

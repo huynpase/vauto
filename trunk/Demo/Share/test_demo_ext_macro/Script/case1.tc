@@ -1,0 +1,12 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+  <function name="tc1">
+    <include id="case1.id"></include>
+    <data>
+	<var name="number" type="Scalar" />
+    </data>
+    <body>
+	<textalert message="parse(concat(You are logged in as: ,UserName,__newline,Square root of 81 is:,sqrt(@number)))" display="fadecrawlin" direction="bottomtotop" position="bottomright" exit="autoclose" duration="10000"/>
+    </body>
+  </function>
+</section>

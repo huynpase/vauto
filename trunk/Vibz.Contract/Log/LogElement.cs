@@ -5,7 +5,7 @@ using System.Text;
 namespace Vibz.Contract.Log
 {
     public enum LogType { Element, Set }
-    public enum LogSeverity { Error, Trace, Warn, Info }
+    public enum LogSeverity { Error = 4, Warn = 3, Info = 2, Trace = 1 }
     public class LogElement
     {
         internal string _message;
@@ -26,7 +26,11 @@ namespace Vibz.Contract.Log
         {
             get { return _time; }
         }
-
+        string _threadId = "";
+        public string ThreadId
+        {
+            get { return _threadId; }
+        }
         public LogType Type
         {
             get { return LogType.Element; }
@@ -46,6 +50,7 @@ namespace Vibz.Contract.Log
             _time = DateTime.Now;
             Message = message;
             _severity = severity;
+            _threadId = System.Threading.Thread.CurrentThread.ManagedThreadId.ToString();
             LogQueue.Instance.Enqueue(new LogQueueElement(message, severity));
         }
 
@@ -55,6 +60,7 @@ namespace Vibz.Contract.Log
             log._time = this.Time;
             log.Severity = this.Severity;
             log.InnerLog = this.InnerLog;
+            log._threadId = this.ThreadId;
             return log;
         }
         public void Add(string logMessage) { this.InnerLog.Add(new LogElement(logMessage)); }

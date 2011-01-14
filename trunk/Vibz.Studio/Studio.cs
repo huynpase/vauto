@@ -91,6 +91,7 @@ namespace Vibz.Studio
             this.helpToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Help");
             this.aboutVibzworldAutomationStudioToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_AboutStudio");
             this.encodeBuildOutputToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Encode");
+            this.loggerToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Logger");
             this.aPISupportToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_APISupport"); ;
             this.lblDictTitle.Text = LangResource.TextManager.GetString("Txt_InstructionDict");
             this.Name = LangResource.TextManager.GetString("Txt_Studio");
@@ -627,6 +628,8 @@ namespace Vibz.Studio
                     _currentTask = new Executer();
                     break;
             }
+            LogEvent(LogSeverity.Trace, "******** Process " + type.ToString() + " Begin *********");
+
             TaskDelegate tDelegate = new TaskDelegate(_currentTask.Process);
             Thread taskThread = new Thread(new ParameterizedThreadStart(ExecuteInThread));
             taskThread.SetApartmentState(ApartmentState.STA);
@@ -636,10 +639,13 @@ namespace Vibz.Studio
         }
         public void ExecuteInThread(object param)
         {
+            LogQueue.Instance.Enqueue(new LogQueueElement("Thread process begin.", LogSeverity.Trace));
             System.Threading.Monitor.Enter(_taskLock);
+            LogQueue.Instance.Enqueue(new LogQueueElement("Thread lock acquired.", LogSeverity.Trace));
             TaskDelegate del = (TaskDelegate)((object[])param).GetValue(0);
             object arg = ((object[])param).GetValue(1);
             del(arg);
+            LogQueue.Instance.Enqueue(new LogQueueElement("Thread process end.", LogSeverity.Trace));
             System.Threading.Monitor.Exit(_taskLock);
         }
         
@@ -656,6 +662,9 @@ namespace Vibz.Studio
                     {
                         LogQueueElement ele = Vibz.Contract.Log.LogQueue.Instance.Dequeue();
                         rtbLogSummary.SelectionFont = new Font("Arial", (float)8, FontStyle.Regular);
+
+                        LogEvent(ele.Severity, ele.ThreadId + "\t" + ele.Message);
+                        
                         lblStatus.Text = ele.Message.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
                         switch (ele.Severity)
                         {
@@ -695,7 +704,7 @@ namespace Vibz.Studio
                     _project.Queue.Reset();
 
                     PlaySound(@"wav\testcomplete.wav");
-
+                    LogQueue.Instance.Enqueue(new LogQueueElement("Process complete.", LogSeverity.Trace));
                     return;
                 case Vibz.TaskState.Error:
                     rtbLogSummary.AppendText("\r\n" + _currentTask.Message);
@@ -809,33 +818,20 @@ namespace Vibz.Studio
             Configuration config = new Configuration(_project);
             config.ShowDialog();
         }
-
-        private void PlaySound(string soundFile)
+        private void LogEvent(Vibz.Contract.Log.LogSeverity severity, string message)
         {
             try
             {
-                if (App.Default.PlaySound)
+                if (App.Default.LogEvents && (int)severity >= (int)App.Default.LogSeverity)
                 {
-                    System.Media.SoundPlayer myPlayer = new System.Media.SoundPlayer();
-                    myPlayer.SoundLocation = Path.Combine(new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName, soundFile);
-                    myPlayer.Play();
+                    System.IO.File.AppendAllText(App.Default.LogPath, "\r\n" + DateTime.Now.ToLongTimeString() + "\t" + severity.ToString() + "\t" + message);
                 }
             }
             catch (Exception exc)
             { }
         }
-
-        private void playSoundToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            App.Default.PlaySound = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
-            App.Default.Save();
-        }
-
-        private void encodeBuildOutputToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            App.Default.EncodeBuild = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
-            App.Default.Save();
-        }
+        
+        
 
         private void rtbLogSummary_TextChanged(object sender, EventArgs e)
         {
@@ -897,6 +893,40 @@ namespace Vibz.Studio
         {
             allowToolResize = false;
         }
+        #endregion
+
+        #region User Selection Events
+        private void loggerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.Default.LogEvents = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
+            App.Default.Save();
+        }
+        private void playSoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.Default.PlaySound = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
+            App.Default.Save();
+        }
+
+        private void encodeBuildOutputToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.Default.EncodeBuild = ((System.Windows.Forms.ToolStripMenuItem)sender).Checked;
+            App.Default.Save();
+        }
+        private void PlaySound(string soundFile)
+        {
+            try
+            {
+                if (App.Default.PlaySound)
+                {
+                    System.Media.SoundPlayer myPlayer = new System.Media.SoundPlayer();
+                    myPlayer.SoundLocation = Path.Combine(new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName, soundFile);
+                    myPlayer.Play();
+                }
+            }
+            catch (Exception exc)
+            { }
+        }
+
         #endregion
     }
 }
