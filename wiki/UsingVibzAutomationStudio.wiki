@@ -1,0 +1,8 @@
+Automation Studio handles most of the complexity of automation project developmental process. A script writer need not worry about knowing bunch of instructions and their syntax. Any module on getting registered to the framework will have its instructions available in instruction dictionary. During scripting the studio provides the context sensitive help.<br/>
+To further improve the user experience the studio has Instruction Dictionary tray from where user can directly drag and drop an instruction over the script. Following section explains the usage of Vibz automation Studio.<br/>
+==Creating a new project==
+==Creating Project files==
+==Writing case==
+==Adding cases in a suite==
+==Building a project==
+==Project configuration==
