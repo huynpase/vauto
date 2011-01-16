@@ -15,7 +15,7 @@ To further improve the user experience the studio has Instruction Dictionary tra
   * *Report Location* screen: 
    * *Select Folder*: Select your desired report path.
    _Note: Report path is the directory location where the final report/s will be generated._
-   * Overwrite past report*: If you select to overwrite past report, the selected folder will be updated with the latest report.i.e. Past reports will be lost. To preserve past reports uncheck this control. New report will be created using timestamp every time a test is executed. 
+   * *Overwrite past report*: If you select to overwrite past report, the selected folder will be updated with the latest report.i.e. Past reports will be lost. To preserve past reports uncheck this control. New report will be created using timestamp every time a test is executed. 
    * Click *Finish* button.
 ==Creating Project files==
  * *Creating New Folder*:
