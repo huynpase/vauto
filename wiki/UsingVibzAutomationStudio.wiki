@@ -43,10 +43,13 @@ To further improve the user experience the studio has Instruction Dictionary tra
 </section>
   }}}
   A case file contains the set of functions which shares a common application feature. It is an XML based script with *section* as its root node.
-  A section contains one or more *function*s and set of module reference (defined with *include* node) being used by contained functions. Using an instruction without its reference will result into exception.
+  A section contains one or more *function* and set of module reference (defined with *include* node) being used by contained functions. Using an instruction without its reference will result into exception.
   Know more:<br/>
   * [FunctionStructure Structure of a function]
-  * [Example Examples]
+  * [Examples Examples]
+  Automation studio helps scripters to write complex logic with simple instructions in no time. It displays the Instruction dictionary from where it becomes easy to drag-drop an instruction on to the case file.
+  Context help is yet another mechanism where user gets the complete guidance at the time of scripting. 
+  _Note: The prime goal of the automation studio is to provide an environment where automation engineer needs to devote full concentration on the application's functional aspect rather that knowing the instructions and their usage._
 ==Adding cases in a suite==
  -- Todo
 ==Building a project==
