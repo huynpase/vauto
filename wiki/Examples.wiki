@@ -1,4 +1,4 @@
   # [http://code.google.com/p/vauto/wiki/ExampleHelloWorld Hello World]<br/>
   # [http://code.google.com/p/vauto/wiki/ExampleImageCollection Image Collection]<br/>
-  # [http://code.google.com/p/vauto/wiki/ExampleStockData Stock Data Processing]<br/>
+  # [http://code.google.com/p/vauto/wiki/ExampleStockData Stock Data Processor]<br/>
   # [http://vauto.googlecode.com/files/GoogleCrawler.zip Google Crowler]
