@@ -1,7 +1,10 @@
 Automation Studio handles most of the complexity of project developmental process. With mere click it creates basic project structure with required files. Adding new files is a simple click process. A script writer need not worry about knowing bunch of instructions and their syntax. Any module on getting registered to the framework will have its instructions available in instruction dictionary. During scripting the studio provides the context sensitive help.<p/>
 To further improve the user experience the studio has Instruction Dictionary tray from where user can directly drag and drop an instruction over the script. Following section explains the usage of Vibz automation Studio.<br/>
 ==Creating a new project==
- -- Todo
+ * Open Automation Studio from Start -> Programs -> Vibzworl -> Automate. 
+ * Click on *File* Tab on top. Now click on *New Project* sub menu. Alternatively you can do this by pressing *CTRL + N* keys. This will open up a multi form wizard. In wizard screen fill the required details.
+  * *Project Location* screen: 
+   * *Project Name*: Type project name in the first text box. The name can be any valid file name. This will be used to create the directory to store all the project files.
 ==Creating Project files==
  -- Todo
 ==Writing case==
