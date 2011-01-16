@@ -3,6 +3,9 @@
 ===Pre-requisite===
   * Vibz Automation Framework. [http://code.google.com/p/vauto/downloads/list?can=3&q=&colspec=Filename+Summary+Uploaded+Size+DownloadCount Download here]
 
+===Pre-knowledge===
+  * [http://code.google.com/p/vauto/wiki/UsingVibzAutomationStudio/Writing_case_function Case file format]
+
 ===Description===
 The source files can be viewed through Vibz Automation Studio or in any editor. The source contains project files, a script folder and a suite folder. Script folder is where you can find the case file and identifier files. Suite folder contains the test suite file. There is a bin/Debug in the source folder which has compiled script (VACS) file.<br/>
 The Vacs (Vibz automation compiled script), is portable, self contained executable file that can be executed on any remote machine where Vibz Automation framework (VAF) is installed.<br/>
