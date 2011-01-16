@@ -24,8 +24,9 @@ To further improve the user experience the studio has Instruction Dictionary tra
  * *Creating New Case File*:
   * In solution explorer, right click on a folder where you like to create the new case file. From the context menu options click on the *Add new case file* option. This will open up a *New Case file* wizard.
   * Type the name of the case file in the text box.
-==Writing case==
- -- Todo
+==Writing case function==
+ * When a case file is created using a wizard, a basic format is auto generated.
+ [http://code.google.com/p/vauto/wiki/Example Examples]
 ==Adding cases in a suite==
  -- Todo
 ==Building a project==
