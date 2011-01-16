@@ -124,8 +124,8 @@ Easy of scripting:</Char_Desc_2000>
 			<Application_XML_File_URL />
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0114.msi</Primary_Download_URL>
-			<Secondary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0114.msi</Secondary_Download_URL>
+			<Primary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0116.msi</Primary_Download_URL>
+			<Secondary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0116.msi</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>
