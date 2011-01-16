@@ -7,7 +7,7 @@ To further improve the user experience the studio has Instruction Dictionary tra
    * *Project Name*: Type project name in the first text box. 
    _Note: The name can be any valid file name. This will be used to create the directory to store all the project files._
    * *Select Folder*: Select the root directory location where you would like to place the project folder.
-   * Click *Next" button.
+   * Click *Next* button.
   * *Project Settings* screen: 
    * *Build Path*: Select your desired build location. 
    _Note: Build Path is the directory location where the compiled script files (VACS file) will be placed after compilation.. Build path is relative to the Project path. Default is *bin/Debug*. Optionally you can choose to change this path._
