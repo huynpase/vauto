@@ -1,10 +1,11 @@
 [http://code.google.com/p/vauto/ Home]<br/>
-[http://code.google.com/p/vauto/wiki/NeedForAFramework Need for an Framework]<br/>
-[http://code.google.com/p/vauto/wiki/IdealFramework Ideal framework]<br/>
-[http://code.google.com/p/vauto/wiki/ExtensibleFrameworkConcept Extensible framework]<br/>
-[http://code.google.com/p/vauto/wiki/DataDrivenarchitecture Data Driven architecture]<br/>
-[http://code.google.com/p/vauto/wiki/ComponentsOfTestProject Components of a Test Project]<br/>
-[http://code.google.com/p/vauto/wiki/ComponentsOfTestscript Components of a Test script]<br/>
-[http://code.google.com/p/vauto/wiki/CreatingExtendedModule Writing Extended module]<br/>
-[http://code.google.com/p/vauto/wiki/Examples Examples]<br/>
-[http://code.google.com/p/vauto/wiki/GetSourceCode Obtain the source code]<br/>
+[NeedForAFramework Need for an Framework]<br/>
+[IdealFramework Ideal framework]<br/>
+[ExtensibleFrameworkConcept Extensible framework]<br/>
+[DataDrivenarchitecture Data Driven architecture]<br/>
+[ComponentsOfTestProject Components of a Test Project]<br/>
+[ComponentsOfTestscript Components of a Test script]<br/>
+[UsingVibzAutomationStudio Using Vibz Automation Studio]
+[CreatingExtendedModule Writing Extended module]<br/>
+[Examples Examples]<br/>
+[GetSourceCode Obtain the source code]<br/>
