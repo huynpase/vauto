@@ -12,9 +12,10 @@
   <section color="990000">
     <header>Online Assistance</header>
     <content>
-      <item type="link" url="http://code.google.com/p/vauto/wiki/ComponentsOfTestscript"  date="08/01/2011">Get help for writing automation script.</item>
-      <item type="link" url="http://code.google.com/p/vauto/wiki/CreatingExtendedModule"  date="08/01/2011">Learn how to extend a module.</item>
-      <item type="link" url="http://code.google.com/p/vauto/wiki/RegisterModule"  date="08/01/2011">Know how to register a module.</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/UsingVibzAutomationStudio"  date="16/01/2011" highlight="true">Using Automation studio.</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/ComponentsOfTestscript"  date="08/01/2011">Writing automation script.</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/CreatingExtendedModule"  date="08/01/2011">Extending a module.</item>
+      <item type="link" url="http://code.google.com/p/vauto/wiki/RegisterModule"  date="08/01/2011">Registering a module.</item>
     </content>
   </section>
   <section color="C89800">
