@@ -5,6 +5,13 @@ To further improve the user experience the studio has Instruction Dictionary tra
  * Click on *File* Tab on top. Now click on *New Project* sub menu. Alternatively you can do this by pressing *CTRL + N* keys. This will open up a multi form wizard. In wizard screen fill the required details.
   * *Project Location* screen: 
    * *Project Name*: Type project name in the first text box. The name can be any valid file name. This will be used to create the directory to store all the project files.
+   * *Select Folder*: Select the root directory location where you would like to place the project folder.
+   * Click *Next" button.
+  * *Project Settings* screen: 
+   * *Build Path*: Select your desired build location. 
+    'Note: Build Path is the directory location where the compiled script files (VACS file) will be placed after compilation.'. Build path is relative to the Project path. Default is *bin/Debug*. Optionally you can choose to change this path.
+   * Click *Next" button.
+
 ==Creating Project files==
  -- Todo
 ==Writing case==
