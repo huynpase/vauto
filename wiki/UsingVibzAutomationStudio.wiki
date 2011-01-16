@@ -11,14 +11,19 @@ To further improve the user experience the studio has Instruction Dictionary tra
   * *Project Settings* screen: 
    * *Build Path*: Select your desired build location. 
    _Note: Build Path is the directory location where the compiled script files (VACS file) will be placed after compilation.. Build path is relative to the Project path. Default is *bin/Debug*. Optionally you can choose to change this path._
-   * Click *Next" button.
+   * Click *Next* button.
   * *Report Location* screen: 
    * *Select Folder*: Select your desired report path.
    _Note: Report path is the directory location where the final report/s will be generated._
    * Overwrite past report*: If you select to overwrite past report, the selected folder will be updated with the latest report.i.e. Past reports will be lost. To preserve past reports uncheck this control. New report will be created using timestamp every time a test is executed. 
-   * Click *Finish" button.
+   * Click *Finish* button.
 ==Creating Project files==
- -- Todo
+ * *Creating New Folder*:
+  * In solution explorer, right click on a folder where you like to create the new folder. From the context menu options click on the *Add New Folder* option. This will open up a new Folder wizard.
+  * Type the name of the folder in the text box.
+ * *Creating New Case File*:
+  * In solution explorer, right click on a folder where you like to create the new case file. From the context menu options click on the *Add new case file* option. This will open up a *New Case file* wizard.
+  * Type the name of the case file in the text box.
 ==Writing case==
  -- Todo
 ==Adding cases in a suite==
