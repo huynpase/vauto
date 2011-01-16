@@ -4,14 +4,19 @@ To further improve the user experience the studio has Instruction Dictionary tra
  * Open Automation Studio from Start -> Programs -> Vibzworl -> Automate. 
  * Click on *File* Tab on top. Now click on *New Project* sub menu. Alternatively you can do this by pressing *CTRL + N* keys. This will open up a multi form wizard. In wizard screen fill the required details.
   * *Project Location* screen: 
-   * *Project Name*: Type project name in the first text box. The name can be any valid file name. This will be used to create the directory to store all the project files.
+   * *Project Name*: Type project name in the first text box. 
+   _Note: The name can be any valid file name. This will be used to create the directory to store all the project files._
    * *Select Folder*: Select the root directory location where you would like to place the project folder.
    * Click *Next" button.
   * *Project Settings* screen: 
    * *Build Path*: Select your desired build location. 
-    'Note: Build Path is the directory location where the compiled script files (VACS file) will be placed after compilation.'. Build path is relative to the Project path. Default is *bin/Debug*. Optionally you can choose to change this path.
+   _Note: Build Path is the directory location where the compiled script files (VACS file) will be placed after compilation.. Build path is relative to the Project path. Default is *bin/Debug*. Optionally you can choose to change this path._
    * Click *Next" button.
-
+  * *Report Location* screen: 
+   * *Select Folder*: Select your desired report path.
+   _Note: Report path is the directory location where the final report/s will be generated._
+   * Overwrite past report*: If you select to overwrite past report, the selected folder will be updated with the latest report.i.e. Past reports will be lost. To preserve past reports uncheck this control. New report will be created using timestamp every time a test is executed. 
+   * Click *Finish" button.
 ==Creating Project files==
  -- Todo
 ==Writing case==
