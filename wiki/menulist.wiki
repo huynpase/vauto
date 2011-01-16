@@ -5,7 +5,7 @@
 [DataDrivenarchitecture Data Driven architecture]<br/>
 [ComponentsOfTestProject Components of a Test Project]<br/>
 [ComponentsOfTestscript Components of a Test script]<br/>
-[UsingVibzAutomationStudio Using Vibz Automation Studio]
+[UsingVibzAutomationStudio Using Vibz Automation Studio]<br/>
 [CreatingExtendedModule Writing Extended module]<br/>
 [Examples Examples]<br/>
 [GetSourceCode Obtain the source code]<br/>
