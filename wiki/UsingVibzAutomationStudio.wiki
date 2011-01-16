@@ -48,11 +48,16 @@ To further improve the user experience the studio has Instruction Dictionary tra
   * [FunctionStructure Structure of a function]
   * [Examples Examples]
   Automation studio helps scripters to write complex logic with simple instructions in no time. It displays the Instruction dictionary from where it becomes easy to drag-drop an instruction on to the case file.
-  Context help is yet another mechanism where user gets the complete guidance at the time of scripting. 
+  Context help is yet another mechanism where user gets the complete guidance at the time of scripting.<br/> 
   _Note: The prime goal of the automation studio is to provide an environment where automation engineer needs to devote full concentration on the application's functional aspect rather that knowing the instructions and their usage._
 ==Adding cases in a suite==
- -- Todo
-==Building a project==
- -- Todo
+ * To create a suite file one can directly drag drop a function onto a suite file. 
+ * There can be multiple suite files in a project. 
+ * When a suite file is compiled it creates a vacs with the same file name as that of the suite.<br/>
+ _Note: A suite file contains the logical flow of different functional unit(function)._
+==Building a suite==
+ * To build suite, double click on the suite file name in the soluion explorer.
+ * From in the *Task* sub menu click on the Compile option. <br/>
+ _Note: One can directly build and run the suite file from Task -> Run option._
 ==Project configuration==
  -- Todo
