@@ -1,0 +1,11 @@
+[http://vauto.googlecode.com/files/GoogleCrawler.zip Download Source] - [http://vauto.googlecode.com/files/GoogleCrawlerVacs.zip Download VACS]
+
+===Pre-requisite===
+  * Vibz Automation Framework. [http://code.google.com/p/vauto/downloads/list?can=3&q=&colspec=Filename+Summary+Uploaded+Size+DownloadCount Download here]
+
+===Pre-knowledge===
+  * [http://code.google.com/p/vauto/wiki/UsingVibzAutomationStudio#Writing_case_function Case file format]
+
+===You may need to know===
+  * [http://code.google.com/p/vauto/wiki/BuildingTestSuite What happens when suite file is compiled.]
+  * [http://code.google.com/p/vauto/wiki/Examples Other Examples]
