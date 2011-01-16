@@ -42,8 +42,11 @@ To further improve the user experience the studio has Instruction Dictionary tra
   </function>
 </section>
   }}}
-   A case file is a set of functions which shares the common application feature. It is an XML based script with *section* as the root node.
- [http://code.google.com/p/vauto/wiki/Example Examples]
+  A case file contains the set of functions which shares a common application feature. It is an XML based script with *section* as its root node.
+  A section contains one or more *function*s and set of module reference (defined with *include* node) being used by contained functions. Using an instruction without its reference will result into exception.
+  Know more:<br/>
+  * [FunctionStructure Structure of a function]
+  * [Example Examples]
 ==Adding cases in a suite==
  -- Todo
 ==Building a project==
