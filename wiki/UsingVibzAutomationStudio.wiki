@@ -43,7 +43,7 @@ To further improve the user experience the studio has Instruction Dictionary tra
 </section>
   }}}
   A case file contains the set of functions which shares a common application feature. It is an XML based script with *section* as its root node.
-  A section contains one or more *function* and set of module reference (defined with *include* node) being used by contained functions. Using an instruction without its reference will result into exception.
+  A section contains one or more *function* and set of module reference (defined with *include* node) being used by contained functions. Using an instruction without its reference will result into exception.<br/>
   Know more:<br/>
   * [FunctionStructure Structure of a function]
   * [Examples Examples]
