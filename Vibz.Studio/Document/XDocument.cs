@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -397,97 +414,102 @@ namespace Vibz.Studio.Document
             {
                 if (_context == null)
                 {
-                    _context = new Context();
-                    int index = rtbTextArea.SelectionStart;
-                    int cdataStart = rtbTextArea.Text.Substring(0, index).ToLower().LastIndexOf("<![cdata[");
-                    if (cdataStart != -1)
+                    try
                     {
-                        int cdataEnd = rtbTextArea.Text.Substring(cdataStart, index).ToLower().LastIndexOf("]]>");
-                        if (cdataEnd == -1)
+                        _context = new Context();
+                        int index = rtbTextArea.SelectionStart;
+                        int cdataStart = rtbTextArea.Text.Substring(0, index).ToLower().LastIndexOf("<![cdata[");
+                        if (cdataStart != -1)
                         {
-                            _context.Mode = XMode.CDATA;
-                            return _context;
-                        }
-                    }
-                    _context.Mode = XMode.InnerText;
-                    int startIndex = index - 1;
-                    while (true)
-                    {
-                        if (startIndex == -1)
-                        {
-                            _context.Mode = XMode.PageBegin;
-                            break;
-                        }
-                        char c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
-                        if (c == '<') // In a node
-                        {
-                            int endIndex = index;
-                            while (true)
+                            int cdataEnd = rtbTextArea.Text.Substring(cdataStart, index).ToLower().LastIndexOf("]]>");
+                            if (cdataEnd == -1)
                             {
-                                c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(endIndex));
-                                if (c == '/')
-                                {
-                                    if (rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(endIndex + 1)) == '>')
-                                    {
-                                        endIndex = endIndex + 2;
-                                        break;
-                                    }
-                                }
-                                else if (c == '>')
-                                {
-                                    endIndex = endIndex + 1;
-                                    break;
-                                }
-                                else if (c == '<')
-                                {
-                                    break;
-                                }
-                                else if (endIndex >= rtbTextArea.Text.Length) // End of file
-                                {
-                                    endIndex = endIndex + 1;
-                                    break;
-                                }
-                                endIndex++;
+                                _context.Mode = XMode.CDATA;
+                                return _context;
                             }
-                            string nodeText = rtbTextArea.Text.Substring(startIndex, endIndex - startIndex);
-                            _context.Load(nodeText, index - startIndex);
-                            _context.WordStartIndex = _context.WordStartIndex + startIndex;
-                            break;
                         }
-                        else if (c == '>') // Inner Text
+                        _context.Mode = XMode.InnerText;
+                        int startIndex = index - 1;
+                        while (true)
                         {
-                            _context.Mode = XMode.InnerTextSibling;
-                            startIndex--;
-                            c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
-                            if (c == '/')
+                            if (startIndex == -1)
                             {
+                                _context.Mode = XMode.PageBegin;
                                 break;
                             }
-                            while (true)
+                            char c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                            if (c == '<') // In a node
                             {
-                                c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
-                                if (c == '<')
-                                    break;
-                                if (c == '/')
+                                int endIndex = index;
+                                while (true)
                                 {
-                                    startIndex--;
-                                    c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
-                                    if (c == '<')
+                                    c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(endIndex));
+                                    if (c == '/')
+                                    {
+                                        if (rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(endIndex + 1)) == '>')
+                                        {
+                                            endIndex = endIndex + 2;
+                                            break;
+                                        }
+                                    }
+                                    else if (c == '>')
+                                    {
+                                        endIndex = endIndex + 1;
+                                        break;
+                                    }
+                                    else if (c == '<')
                                     {
                                         break;
                                     }
+                                    else if (endIndex >= rtbTextArea.Text.Length) // End of file
+                                    {
+                                        endIndex = endIndex + 1;
+                                        break;
+                                    }
+                                    endIndex++;
                                 }
-                                startIndex--;
+                                string nodeText = rtbTextArea.Text.Substring(startIndex, endIndex - startIndex);
+                                _context.Load(nodeText, index - startIndex);
+                                _context.WordStartIndex = _context.WordStartIndex + startIndex;
+                                break;
                             }
-                            break;
+                            else if (c == '>') // Inner Text
+                            {
+                                _context.Mode = XMode.InnerTextSibling;
+                                startIndex--;
+                                c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                                if (c == '/')
+                                {
+                                    break;
+                                }
+                                while (true)
+                                {
+                                    c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                                    if (c == '<')
+                                        break;
+                                    if (c == '/')
+                                    {
+                                        startIndex--;
+                                        c = rtbTextArea.GetCharFromPosition(rtbTextArea.GetPositionFromCharIndex(startIndex));
+                                        if (c == '<')
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    startIndex--;
+                                }
+                                break;
+                            }
+                            else if (startIndex <= 0) // Start of file
+                            {
+                                _context.Mode = XMode.InnerText;
+                                break;
+                            }
+                            startIndex--;
                         }
-                        else if (startIndex <= 0) // Start of file
-                        {
-                            _context.Mode = XMode.InnerText;
-                            break;
-                        }
-                        startIndex--;
                     }
+                    catch (Exception exc)
+                    { }
                 }
                 return _context;
             }

@@ -78,6 +78,7 @@
     <Compile Include="Browser\Instruction\Assert\IsExists.cs" />
     <Compile Include="Browser\Instruction\Assert\IsTextPresent.cs" />
     <Compile Include="Browser\Instruction\Assert\IsVisible.cs" />
+    <Compile Include="Browser\Instruction\Fetch\GetAllLinks.cs" />
     <Compile Include="Browser\Instruction\Fetch\GetAttributeValues.cs" />
     <Compile Include="Browser\Instruction\Fetch\GetAttribute.cs" />
     <Compile Include="Browser\Instruction\Fetch\GetTableContent.cs" />

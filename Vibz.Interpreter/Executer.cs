@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,6 +59,10 @@ namespace Vibz.Interpreter
             {
                 Process_Init();
                 string filePath = ((object[])param).GetValue(0).ToString();
+                
+                int waitInterval = 0;
+                int.TryParse(((object[])param).GetValue(1).ToString(), out waitInterval);
+
                 if (!System.IO.File.Exists(filePath))
                     throw new Exception("Invalid path '" + filePath + "'.");
                 _fParser = new FileParser(filePath);
@@ -53,7 +74,6 @@ namespace Vibz.Interpreter
 
                 if (frameworkVersion.CompareTo(scriptVersion) == -1)
                     LogQueue.Instance.Enqueue(new LogQueueElement("This script is generated using higher version of framework. It will continue to execute. In case it fails, you may need to upgrade to higher version of the tool.", LogSeverity.Warn));
-                //throw new Exception("The current automation framework does not support the version of VACS (compiled script). \r\n This is because the script is generated using higher version of framework.");
 
                 System.IO.FileInfo fi = new System.IO.FileInfo(filePath);
                 CommonMacroVariables.Set("__currentpath", fi.DirectoryName);
@@ -72,7 +92,7 @@ namespace Vibz.Interpreter
                     LogElement fncLog = new LogElement("Executing function '" + function.Name + "'.");
                     try
                     {
-                        function.Execute(function.DataSet);
+                        function.Execute(function.DataSet, waitInterval);
                         fncLog.Add(function.Name + ": Executed.", LogSeverity.Info);
                         fncLog.Add(function.InfoEnd);
                     }

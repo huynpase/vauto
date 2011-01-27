@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +45,7 @@ namespace Vibz.HTMLExtractor
         WebBrowserReadyState _readyState = WebBrowserReadyState.Uninitialized;
         public int NavigationCounter; 
         ScriptCallback scriptCallback;
-
+        XmlDocument _document = null;
         internal WBrowser()
         {
             //ShowInTaskbar = false; 
@@ -41,7 +58,22 @@ namespace Vibz.HTMLExtractor
         }
         bool _reloadingSGML = false;
         public int SleepTime = 250;
-
+        internal XmlDocument XDocument
+        {
+            get
+            {
+                if (_document == null)
+                    throw new Exception("Browser document is undefined.");
+                return _document;
+            }
+        }
+        internal XmlNode XBody
+        {
+            get
+            {
+                return XDocument.SelectSingleNode("//body");
+            }
+        }
         internal HtmlDocument Document
         {
             get 
@@ -74,7 +106,7 @@ namespace Vibz.HTMLExtractor
         Vibz.Web.Browser.Collection.ImageList _images = null;
         void Browser_Load(object sender, EventArgs e)
         {
-            Log("Browser Loading");
+            Log("Loading");
             wb.Dock = DockStyle.Fill;
             wb.AllowNavigation = true;
             wb.ScriptErrorsSuppressed = true;
@@ -88,7 +120,7 @@ namespace Vibz.HTMLExtractor
 
         void wb_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
-            Log("Progressed to " + _readyState.ToString());
+            Log("Status: " + _readyState.ToString());
             toolStripProgressBar1.Minimum = 0;
             toolStripProgressBar1.Maximum = (int)e.MaximumProgress;
             toolStripProgressBar1.Value = (int)e.CurrentProgress;
@@ -142,27 +174,19 @@ namespace Vibz.HTMLExtractor
 
                 byte[] byteArray = Encoding.ASCII.GetBytes(wb.DocumentText);
                 MemoryStream stream = new MemoryStream(byteArray);
-                XmlDocument doc = FromHtml(new StreamReader(stream));
+                _document = new XmlDocument();
+                _document = FromHtml(new StreamReader(stream));
                 _reloadingSGML = true;
-                _docText = doc.OuterXml;
-                NavigateHTML(_docText);
+                wb.Document.Body.InnerHtml = _document.SelectSingleNode("//body").InnerXml;
                 this.Text = wb.DocumentTitle + " - " + Title;
             }
         }
-        private void NavigateHTML(string html)
-        {
-            Log("NavigateHTML");
-            System.IO.File.WriteAllText("__page.html", html);
-            wb.Navigate(Environment.CurrentDirectory + "/__page.html");
-        }
-        internal void LoadDocument(string html, int maxWait)
+        internal void LoadDocument(string html)
         {
             Log("Loading Document");
             _reloadingSGML = false;
-            //wb.DocumentText = html;
-            NavigateHTML(html);
+            wb.DocumentText = html;
             _readyState = WebBrowserReadyState.Loading;
-            WaitForPageLoad(maxWait, true);
         }
         public void Navigate(string url, int maxWait)
         {
@@ -194,21 +218,8 @@ namespace Vibz.HTMLExtractor
         }
         internal void ModulatePage(ref XmlDocument doc)
         {
-            // Absolutify Urls
-            XmlNodeList xnl;
-            foreach (string urlAttr in new string[] { "//*/@href", "//*/@src", "//*/@action" })
-            {
-                xnl = doc.SelectNodes(urlAttr);
-                foreach (XmlNode xn in xnl)
-                {
-                    Uri uri;
-                    if (Uri.TryCreate(_baseUrl, xn.Value, out uri))
-                        xn.Value = uri.AbsoluteUri;
-                }
-            }
-
             // Add tbody to tables
-            xnl = doc.SelectNodes("//table");
+            XmlNodeList xnl = doc.SelectNodes("//table");
             foreach (XmlNode xn in xnl)
             {
                 if (xn.FirstChild.Name.ToLower() == "tbody")
@@ -305,8 +316,8 @@ namespace Vibz.HTMLExtractor
             if (wb.Document == null)
                 throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
             
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.LoadXml(wb.DocumentText);
+            // XmlDocument xDoc = new XmlDocument();
+            // xDoc.LoadXml(wb.Document.Body.OuterHtml);
                     
             string xpath = "";
             switch (GetLoacatorType(locator))
@@ -323,7 +334,7 @@ namespace Vibz.HTMLExtractor
                     xpath = "//*[@id='" + locator + "']";
                     break;
             }
-            XmlNode xnode = xDoc.SelectSingleNode(xpath);
+            XmlNode xnode = XBody.SelectSingleNode(xpath);
             if (xnode != null && xnode.Attributes == null)
                 return xnode;
             string nId = "-1";
@@ -333,17 +344,17 @@ namespace Vibz.HTMLExtractor
             if (xnode == null && throwExceptionOnNotFound)
                 throw new Exception("Control '" + locator + "' not found.");
 
-            nodeId = Convert.ToInt32(nId);
-            return (nodeId == -1 ? null : xnode);
+            nodeId = Convert.ToInt32(nId) + 1;
+            return (nodeId == 0 ? null : xnode);
         }
         internal List<XmlNode> SelectNodes(string xpath)
         {
             if (wb.Document == null)
                 throw new Exception("Browser document is not available. You must navigate to an url before accessing document elements.");
             
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.LoadXml(wb.DocumentText);
-            XmlNodeList xnodes = xDoc.SelectNodes(xpath);
+            //XmlDocument xDoc = new XmlDocument();
+            //xDoc.LoadXml(wb.DocumentText);
+            XmlNodeList xnodes = XBody.SelectNodes(xpath);
             List<XmlNode> list = new List<XmlNode>();
             if (xnodes != null)
             {
@@ -454,7 +465,10 @@ namespace Vibz.HTMLExtractor
             } while (((TimeSpan)DateTime.Now.Subtract(dtStart)).TotalMilliseconds < maxWait);
             Log("WaitForPageLoad end: Browser Status - " + _readyState.ToString());
             if (isTimeOut && exceptionOnTimeout)
+            {
+                Log("URL - " + wb.Url.PathAndQuery);
                 throw new Exception("Time out occured before page is completely loaded.");
+            }
         }
         public void WaitForControlLoad(string locator, int maxWait)
         {
@@ -520,8 +534,6 @@ namespace Vibz.HTMLExtractor
         {
             HtmlElement el = GetElement(locator, true);
             el.RaiseEvent(eventName);
-            //object n = null;
-            //object eobj = ((IHTMLDocument4)wb.Document).CreateEventObject(ref n);
             //((IHTMLElement3)el).FireEvent(eventName, ref eobj);
         }
         public void Focus(string locator)
@@ -682,13 +694,11 @@ namespace Vibz.HTMLExtractor
         
         public string GetFirstInnerText(string xpath)
         {
-            XmlNode n = SelectSingleNode(xpath);
+            HtmlElement n = GetElement(xpath);
             if (n != null)
             {
-                //_progres.Enqueue(new ProgressElement("GetFirstInnerText(" + xpath + ")" + " : " + n.InnerText));
                 return n.InnerText;
             }
-            //_progres.Enqueue(new ProgressElement("GetFirstInnerText(" + xpath + ")" + " : {No Value}"));
             return null;
         }
         public string[] GetAllInnerText(string xpath)
@@ -825,9 +835,8 @@ namespace Vibz.HTMLExtractor
         }
         public string GetInnerText(string locator)
         {
-            int index = 0;
-            XmlNode xNode = GetNode(locator, ref index, true);
-            return xNode.InnerText;
+            HtmlElement ele = GetElement(locator);
+            return ele.InnerText;
         }
         public string GetTitle()
         {

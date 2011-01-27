@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +39,7 @@ namespace Vibz.Web.Browser.Instruction
         static IBrowser _browser = null;
         static object _padLock = new object();
         static System.Threading.Thread _ownerThread = null;
+        protected Vibz.Contract.Data.DataHandler vList = null;
         internal static IBrowser Browser
         {
             get {
@@ -45,6 +63,41 @@ namespace Vibz.Web.Browser.Instruction
                     }
                 }
                 return _browser;
+            }
+        }
+        string _endInfo = null;
+        protected Exception GetBrowserException(Exception exc)
+        {
+            foreach (string key in BrowserStateInfo.Keys)
+            {
+                exc.Data.Add(key, BrowserStateInfo[key]);
+            }
+            return exc;
+        }
+        protected string GetInfo()
+        {
+            return _endInfo;
+        }
+        protected void SetInfo(string infoMessage)
+        {
+            _endInfo = infoMessage;
+        }
+        public override Vibz.Contract.Log.LogElement InfoEnd
+        {
+            get
+            {
+                if (_endInfo == null)
+                    _endInfo = "Instruction complete.";
+                return new Vibz.Contract.Log.LogElement(_endInfo);
+            }
+        }
+        protected Dictionary<string, string> BrowserStateInfo
+        {
+            get {
+                Dictionary<string, string> retValue = new Dictionary<string, string>();
+                if (_browser != null && _browser.Document != null)
+                    retValue.Add("Url", _browser.Document.GetLocation());
+                return retValue;
             }
         }
     }

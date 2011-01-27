@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -141,6 +158,7 @@ namespace Vibz.Solution.Element
         public static Function LoadFromSuite(string path, string fullname, int index, Project prj)
         {
             Function retValue = prj.CreateFunction(fullname);
+            retValue.Load();
             if (!File.Exists(path))
                 throw new Exception("Invalid Function file path.");
             prj.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading function '" + fullname + "'.", Vibz.Contract.Log.LogSeverity.Trace));
@@ -169,7 +187,12 @@ namespace Vibz.Solution.Element
             XmlNode xnData = doc.SelectSingleNode(SuiteFile.nSuite + "/" + nFunction + "[" + index.ToString() + "]/" + DataCollection.nData);
             if (xnData != null)
             {
-                retValue.DataSet = DataHandler.Load(xnData, retValue.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
+                DataHandler dh = DataHandler.Load(xnData, retValue.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
+                foreach (Variable dm in dh.DataList)
+                {
+                    retValue.DataSet.DataList.Update(dm);
+                }
+                //retValue.DataSet = DataHandler.Load(xnData, retValue.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
             }
             return retValue;
         }

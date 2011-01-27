@@ -129,6 +129,12 @@
       <DependentUpon>CaseDocument.cs</DependentUpon>
     </Compile>
     <Compile Include="LangResource\TextManager.cs" />
+    <Compile Include="StudioSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudioSettings.Designer.cs">
+      <DependentUpon>StudioSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInput\New.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LangResource\Text.hi.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudioSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>StudioSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInput\New.resx">
       <SubType>Designer</SubType>
@@ -332,4 +342,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,12 +68,16 @@ namespace Vibz.Interpreter.Script.FlowController
         }
         public void Execute(DataHandler vList)
         {
+            Execute(vList, 0);
+        }
+        public void Execute(DataHandler vList, int waitInterval)
+        {
             _progress = new Vibz.Contract.Log.LogElement("Executing function '" + Name + "'.");
             try
             {
                 MacroParser macro = new MacroParser(Configuration.MacroManager.Instance, vList);
                 ParameterSet.SetParser(macro);
-                this.Body.Execute(vList);
+                this.Body.Execute(vList, waitInterval);
                 _progress.Add(Body.InfoEnd);
             }
             catch (Exception exc)

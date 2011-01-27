@@ -29,5 +29,8 @@
     <Setting Name="LogSeverity" Type="Vibz.Contract.Log.LogSeverity" Scope="User">
       <Value Profile="(Default)">Trace</Value>
     </Setting>
+    <Setting Name="ExecutionSpeed" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

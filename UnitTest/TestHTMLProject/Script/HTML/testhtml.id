@@ -22,5 +22,7 @@
   <control name="loc21"><![CDATA[ddlSelect]]></control>
   <control name="loc22"><![CDATA[//select[@name='Select1']]]></control>
   <control name="loc23"><![CDATA[btnSubmit]]></control>
-  <control name="loc"><![CDATA[]]></control>
+  <control name="loc24"><![CDATA[btnSubmitPreview]]></control>
+    <control name="loc25"><![CDATA[preview]]></control>
+        <control name="loc26"><![CDATA[divBtn1]]></control>
 </controls>

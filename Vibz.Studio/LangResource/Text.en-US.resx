@@ -153,6 +153,9 @@
   <data name="Txt_Encode" xml:space="preserve">
     <value>Encode Build Output</value>
   </data>
+  <data name="Txt_ExecutionSpeed" xml:space="preserve">
+    <value>Execution Speed</value>
+  </data>
   <data name="Txt_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
@@ -173,6 +176,12 @@
   </data>
   <data name="Txt_Logger" xml:space="preserve">
     <value>Logger</value>
+  </data>
+  <data name="Txt_Max" xml:space="preserve">
+    <value>Max (Wait ~ 0 sec)</value>
+  </data>
+  <data name="Txt_Min" xml:space="preserve">
+    <value>Min (Wait ~ 5 sec)</value>
   </data>
   <data name="Txt_NewProject" xml:space="preserve">
     <value>New Project</value>
@@ -201,8 +210,14 @@
   <data name="Txt_ShowToolbox" xml:space="preserve">
     <value>Show Instruction Dictionary</value>
   </data>
+  <data name="Txt_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
   <data name="Txt_Studio" xml:space="preserve">
     <value>Studio</value>
+  </data>
+  <data name="Txt_StudioSettings" xml:space="preserve">
+    <value>Studio Settings</value>
   </data>
   <data name="Txt_StudioTitle" xml:space="preserve">
     <value>Vibz Automation Studio</value>

@@ -5,7 +5,10 @@
       <var name="urls" source="text" type="array">
         <param name="path">parse(concat(__currentpath,/data.txt))</param>
         <param name="seperationchar">parse(__newline)</param>
-        <Value><![CDATA[]]></Value>
+        <value><![CDATA[]]></value>
+      </var>
+      <var name="folder" source="internal" type="scalar">
+        <value><![CDATA[image2]]></value>
       </var>
     </data>
   </function>

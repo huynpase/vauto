@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 namespace Vibz.Studio
 {
     partial class Studio
@@ -36,6 +53,7 @@ namespace Vibz.Studio
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCompile = new System.Windows.Forms.ToolStripButton();
             this.btnRun = new System.Windows.Forms.ToolStripButton();
+            this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.tvLeft = new System.Windows.Forms.TreeView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,11 +72,14 @@ namespace Vibz.Studio
             this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.playSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.encodeBuildOutputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loggerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPISupportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutVibzworldAutomationStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +103,6 @@ namespace Vibz.Studio
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlToolHead = new System.Windows.Forms.Panel();
             this.lblDictTitle = new System.Windows.Forms.Label();
-            this.loggerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlSol.SuspendLayout();
@@ -102,7 +122,8 @@ namespace Vibz.Studio
             this.toolStripButton4,
             this.toolStripSeparator1,
             this.btnCompile,
-            this.btnRun});
+            this.btnRun,
+            this.btnStop});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(566, 25);
@@ -137,6 +158,7 @@ namespace Vibz.Studio
             // btnCompile
             // 
             this.btnCompile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCompile.Enabled = false;
             this.btnCompile.Image = ((System.Drawing.Image)(resources.GetObject("btnCompile.Image")));
             this.btnCompile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCompile.Name = "btnCompile";
@@ -147,12 +169,24 @@ namespace Vibz.Studio
             // btnRun
             // 
             this.btnRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRun.Enabled = false;
             this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
             this.btnRun.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(23, 22);
             this.btnRun.Text = "toolStripButton3";
             this.btnRun.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnStop.Enabled = false;
+            this.btnStop.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.Image")));
+            this.btnStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(23, 22);
+            this.btnStop.Text = "toolStripButton1";
+            this.btnStop.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // tvLeft
             // 
@@ -285,37 +319,51 @@ namespace Vibz.Studio
             this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.compileToolStripMenuItem,
             this.runToolStripMenuItem,
-            this.toolStripSeparator4});
+            this.toolStripSeparator4,
+            this.stopToolStripMenuItem});
             this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
             this.buildToolStripMenuItem.Size = new System.Drawing.Size(12, 20);
             // 
             // compileToolStripMenuItem
             // 
+            this.compileToolStripMenuItem.Enabled = false;
             this.compileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compileToolStripMenuItem.Image")));
             this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
             this.compileToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.compileToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.compileToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
             // 
             // runToolStripMenuItem
             // 
+            this.runToolStripMenuItem.Enabled = false;
             this.runToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("runToolStripMenuItem.Image")));
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(94, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(104, 6);
+            // 
+            // stopToolStripMenuItem
+            // 
+            this.stopToolStripMenuItem.Enabled = false;
+            this.stopToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("stopToolStripMenuItem.Image")));
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.stopToolStripMenuItem.Text = " ";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem1
             // 
             this.optionsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.configurationToolStripMenuItem,
-            this.playSoundToolStripMenuItem,
+            this.settingsStripMenuItem3,
             this.toolStripSeparator5,
+            this.playSoundToolStripMenuItem,
             this.encodeBuildOutputToolStripMenuItem,
             this.loggerToolStripMenuItem});
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
@@ -329,6 +377,18 @@ namespace Vibz.Studio
             this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
+            // settingsStripMenuItem3
+            // 
+            this.settingsStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("settingsStripMenuItem3.Image")));
+            this.settingsStripMenuItem3.Name = "settingsStripMenuItem3";
+            this.settingsStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.settingsStripMenuItem3.Click += new System.EventHandler(this.settingsStripMenuItem3_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            // 
             // playSoundToolStripMenuItem
             // 
             this.playSoundToolStripMenuItem.Checked = true;
@@ -338,11 +398,6 @@ namespace Vibz.Studio
             this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.playSoundToolStripMenuItem.Click += new System.EventHandler(this.playSoundToolStripMenuItem_Click);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
-            // 
             // encodeBuildOutputToolStripMenuItem
             // 
             this.encodeBuildOutputToolStripMenuItem.Checked = true;
@@ -351,6 +406,15 @@ namespace Vibz.Studio
             this.encodeBuildOutputToolStripMenuItem.Name = "encodeBuildOutputToolStripMenuItem";
             this.encodeBuildOutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.encodeBuildOutputToolStripMenuItem.Click += new System.EventHandler(this.encodeBuildOutputToolStripMenuItem_Click);
+            // 
+            // loggerToolStripMenuItem
+            // 
+            this.loggerToolStripMenuItem.Checked = true;
+            this.loggerToolStripMenuItem.CheckOnClick = true;
+            this.loggerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.loggerToolStripMenuItem.Name = "loggerToolStripMenuItem";
+            this.loggerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loggerToolStripMenuItem.Click += new System.EventHandler(this.loggerToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -555,15 +619,6 @@ namespace Vibz.Studio
             this.lblDictTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseMove);
             this.lblDictTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseUp);
             // 
-            // loggerToolStripMenuItem
-            // 
-            this.loggerToolStripMenuItem.Checked = true;
-            this.loggerToolStripMenuItem.CheckOnClick = true;
-            this.loggerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.loggerToolStripMenuItem.Name = "loggerToolStripMenuItem";
-            this.loggerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loggerToolStripMenuItem.Click += new System.EventHandler(this.loggerToolStripMenuItem_Click);
-            // 
             // Studio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -655,5 +710,8 @@ namespace Vibz.Studio
         private System.Windows.Forms.Label lblDictTitle;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ToolStripMenuItem loggerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnStop;
+        private System.Windows.Forms.ToolStripMenuItem settingsStripMenuItem3;
     }
 }
