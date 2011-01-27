@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 namespace Vibz.Studio
 {
     partial class Configuration
@@ -31,6 +48,12 @@ namespace Vibz.Studio
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuration));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpApplication = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbLogSeverity = new System.Windows.Forms.ComboBox();
+            this.btnLogPath = new System.Windows.Forms.Button();
+            this.txtLogPath = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnReportBrowse = new System.Windows.Forms.Button();
             this.txtReportPath = new System.Windows.Forms.TextBox();
@@ -40,12 +63,6 @@ namespace Vibz.Studio
             this.label1 = new System.Windows.Forms.Label();
             this.tpReport = new System.Windows.Forms.TabPage();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLogPath = new System.Windows.Forms.Button();
-            this.txtLogPath = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbLogSeverity = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tpApplication.SuspendLayout();
@@ -60,7 +77,7 @@ namespace Vibz.Studio
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(645, 440);
+            this.tabControl1.Size = new System.Drawing.Size(644, 443);
             this.tabControl1.TabIndex = 0;
             // 
             // tpApplication
@@ -75,15 +92,72 @@ namespace Vibz.Studio
             this.tpApplication.Controls.Add(this.label1);
             this.tpApplication.Location = new System.Drawing.Point(4, 22);
             this.tpApplication.Name = "tpApplication";
-            this.tpApplication.Size = new System.Drawing.Size(637, 414);
+            this.tpApplication.Size = new System.Drawing.Size(636, 417);
             this.tpApplication.TabIndex = 1;
             this.tpApplication.Text = "Application";
             this.tpApplication.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cbLogSeverity);
+            this.groupBox1.Controls.Add(this.btnLogPath);
+            this.groupBox1.Controls.Add(this.txtLogPath);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(7, 102);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(298, 105);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Logger Options";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Log Severity";
+            // 
+            // cbLogSeverity
+            // 
+            this.cbLogSeverity.FormattingEnabled = true;
+            this.cbLogSeverity.Location = new System.Drawing.Point(85, 66);
+            this.cbLogSeverity.Name = "cbLogSeverity";
+            this.cbLogSeverity.Size = new System.Drawing.Size(132, 21);
+            this.cbLogSeverity.TabIndex = 10;
+            // 
+            // btnLogPath
+            // 
+            this.btnLogPath.Location = new System.Drawing.Point(223, 29);
+            this.btnLogPath.Name = "btnLogPath";
+            this.btnLogPath.Size = new System.Drawing.Size(59, 23);
+            this.btnLogPath.TabIndex = 8;
+            this.btnLogPath.Text = "Browse";
+            this.btnLogPath.UseVisualStyleBackColor = true;
+            this.btnLogPath.Click += new System.EventHandler(this.btnLogPath_Click);
+            // 
+            // txtLogPath
+            // 
+            this.txtLogPath.Location = new System.Drawing.Point(85, 31);
+            this.txtLogPath.Name = "txtLogPath";
+            this.txtLogPath.Size = new System.Drawing.Size(132, 20);
+            this.txtLogPath.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Log Path";
+            // 
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(571, 385);
+            this.btnApply.Location = new System.Drawing.Point(570, 388);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(59, 23);
             this.btnApply.TabIndex = 10;
@@ -153,68 +227,11 @@ namespace Vibz.Studio
             this.tpReport.Text = "Reports";
             this.tpReport.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cbLogSeverity);
-            this.groupBox1.Controls.Add(this.btnLogPath);
-            this.groupBox1.Controls.Add(this.txtLogPath);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(7, 102);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(298, 105);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Logger Options";
-            // 
-            // btnLogPath
-            // 
-            this.btnLogPath.Location = new System.Drawing.Point(223, 29);
-            this.btnLogPath.Name = "btnLogPath";
-            this.btnLogPath.Size = new System.Drawing.Size(59, 23);
-            this.btnLogPath.TabIndex = 8;
-            this.btnLogPath.Text = "Browse";
-            this.btnLogPath.UseVisualStyleBackColor = true;
-            this.btnLogPath.Click += new System.EventHandler(this.btnLogPath_Click);
-            // 
-            // txtLogPath
-            // 
-            this.txtLogPath.Location = new System.Drawing.Point(85, 31);
-            this.txtLogPath.Name = "txtLogPath";
-            this.txtLogPath.Size = new System.Drawing.Size(132, 20);
-            this.txtLogPath.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Log Path";
-            // 
-            // cbLogSeverity
-            // 
-            this.cbLogSeverity.FormattingEnabled = true;
-            this.cbLogSeverity.Location = new System.Drawing.Point(85, 66);
-            this.cbLogSeverity.Name = "cbLogSeverity";
-            this.cbLogSeverity.Size = new System.Drawing.Size(132, 21);
-            this.cbLogSeverity.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Log Severity";
-            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 440);
+            this.ClientSize = new System.Drawing.Size(644, 443);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

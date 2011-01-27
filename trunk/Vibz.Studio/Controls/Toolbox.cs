@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +25,7 @@ using System.Windows.Forms;
 using Vibz.Interpreter.Plugin;
 using Vibz.Contract.Attribute;
 using Vibz.Contract;
-
+using System.Threading;
 namespace Vibz.Studio.Controls
 {
     public partial class Toolbox : UserControl
@@ -16,7 +33,26 @@ namespace Vibz.Studio.Controls
         public Toolbox()
         {
             InitializeComponent();
-            PopulateInstructions();
+
+            Thread tInstLoader = new Thread(new ThreadStart(PopulateInstructions));
+            tInstLoader.Start();
+
+            tvContainer.ExpandAll();
+            tvContainer.ShowNodeToolTips = true;
+        }
+        private delegate void ObjectDelegate(TreeNode node); 
+        public void AddInstruction(TreeNode node)
+        {
+            if (tvContainer.InvokeRequired)
+            {
+                ObjectDelegate method = new ObjectDelegate(AddInstruction);
+                Invoke(method, node);
+            }
+            else
+            {
+                tvContainer.Nodes.Add(node);
+                node.Expand();
+            }
         }
         public void PopulateInstructions()
         {
@@ -31,7 +67,7 @@ namespace Vibz.Studio.Controls
             }
             tn.ImageIndex = 4;
             tn.SelectedImageIndex = tn.ImageIndex;
-            tvContainer.Nodes.Add(tn);
+            AddInstruction(tn);
 
             PluginAssemblyInfo[] list = PluginManager.GetPluginInfoList(PluginType.Instruction);
             foreach (PluginAssemblyInfo pInfo in list)
@@ -48,11 +84,8 @@ namespace Vibz.Studio.Controls
                 }
                 tn.ImageIndex = 4;
                 tn.SelectedImageIndex = tn.ImageIndex;
-                tvContainer.Nodes.Add(tn);
+                AddInstruction(tn);
             }
-
-            tvContainer.ExpandAll();
-            tvContainer.ShowNodeToolTips = true;
         }
         TreeNode GetInstructionNode(FunctionTypeInfo ftInfo)
         {

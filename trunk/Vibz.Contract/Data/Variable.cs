@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,14 +38,33 @@ namespace Vibz.Contract.Data
         [XmlAttribute(Variable.nSource)]
         public string Source
         {
-            get { if (_source == null && Data != null) _source = Data.Source; return _source; }
+            get {
+                if (_source == null)
+                {
+                    if (Data != null)
+                        _source = Data.Source;
+                    else
+                        _source = Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower();
+                }
+
+                return _source; 
+            }
             set { _source = value; }
         }
         string _type = null;
         [XmlAttribute(Variable.nType)]
         public string Type
         {
-            get { if (_type == null && Data != null) _type = Data.Type; return _type; }
+            get { 
+                if (_type == null) 
+                {
+                    if (Data != null)
+                        _type = Data.Type;
+                    else
+                        _type = Vibz.Contract.Data.DataType.Scalar.ToString().ToLower();
+                }
+                return _type; 
+            }
             set { _type = value; }
         }
 

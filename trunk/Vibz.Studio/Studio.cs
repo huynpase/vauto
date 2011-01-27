@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,9 +60,8 @@ namespace Vibz.Studio
         
         private void Studio_Load(object sender, EventArgs e)
         {
-            Document.Welcome wel = new Vibz.Studio.Document.Welcome();
-            wel.MdiParent = this;
-            wel.Show();
+            SetLanguageText();
+            
             //menuStrip1.Enabled = ValidateRegistration();
             this.MainMenuStrip = new MenuStrip();
             configurationToolStripMenuItem.Enabled = false;
@@ -53,12 +69,21 @@ namespace Vibz.Studio
             runToolStripMenuItem.Enabled = false;
             btnRun.Enabled = false;
             btnCompile.Enabled = false;
+
+            playSoundToolStripMenuItem.CheckState = (App.Default.PlaySound ? CheckState.Checked : CheckState.Unchecked);
+            encodeBuildOutputToolStripMenuItem.CheckState = (App.Default.EncodeBuild ? CheckState.Checked : CheckState.Unchecked);
+            loggerToolStripMenuItem.CheckState = (App.Default.LogEvents ? CheckState.Checked : CheckState.Unchecked);
+
+            tvLeft.ImageList = ProjectElementIcons;
+
+            Document.Welcome wel = new Vibz.Studio.Document.Welcome();
+            wel.MdiParent = this;
+            wel.Show();
+
             if (_initialFilePath != null && _initialFilePath != "")
             {
                 OpenDocument(_initialFilePath);
             }
-            playSoundToolStripMenuItem.CheckState = (App.Default.PlaySound ? CheckState.Checked : CheckState.Unchecked);
-            SetLanguageText();
 
             Controls.Toolbox tb = new Controls.Toolbox();
             tb.Dock = DockStyle.Fill;
@@ -66,8 +91,11 @@ namespace Vibz.Studio
 
             pnlToolHead.SendToBack();
         }
+
         void SetLanguageText()
         {
+            this.Text = LangResource.TextManager.GetString("Txt_StudioTitle") + " : " + LangResource.TextManager.GetString("Txt_Copyright");
+            this.Name = LangResource.TextManager.GetString("Txt_Studio");
             this.toolStripButton2.ToolTipText = LangResource.TextManager.GetString("Txt_Save");
             this.toolStripButton4.ToolTipText = LangResource.TextManager.GetString("Txt_Search");
             this.btnCompile.ToolTipText = LangResource.TextManager.GetString("Txt_Compile");
@@ -85,6 +113,7 @@ namespace Vibz.Studio
             this.buildToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Task");
             this.compileToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Compile");
             this.runToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Run");
+            this.stopToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Stop");
             this.optionsToolStripMenuItem1.Text = LangResource.TextManager.GetString("Txt_Options");
             this.configurationToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Configuration");
             this.playSoundToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_PlaySound");
@@ -94,8 +123,7 @@ namespace Vibz.Studio
             this.loggerToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_Logger");
             this.aPISupportToolStripMenuItem.Text = LangResource.TextManager.GetString("Txt_APISupport"); ;
             this.lblDictTitle.Text = LangResource.TextManager.GetString("Txt_InstructionDict");
-            this.Name = LangResource.TextManager.GetString("Txt_Studio");
-            this.Text = LangResource.TextManager.GetString("Txt_StudioTitle") + " : " + LangResource.TextManager.GetString("Txt_Copyright");
+            this.settingsStripMenuItem3.Text = LangResource.TextManager.GetString("Txt_StudioSettings");
         }
         public bool ValidateRegistration()
         {
@@ -118,7 +146,7 @@ namespace Vibz.Studio
             {
                 if (!System.IO.File.Exists(openFileDialog1.FileName))
                     throw new Exception("Invalid Project path.");
-                
+
                 OpenProject(openFileDialog1.FileName);
             }
         }
@@ -134,7 +162,9 @@ namespace Vibz.Studio
                         _docList.OpenDocument(dType, path);
                         break;
                     case Vibz.Studio.Document.DocumentType.Project:
-                        OpenProject(path);
+                        Thread tProjectLoader = new Thread(new ParameterizedThreadStart(OpenProject));
+                        tProjectLoader.Start(path);
+                        //OpenProject(path);
                         break;
                 }
             }
@@ -143,10 +173,11 @@ namespace Vibz.Studio
                 ShowMessageBox(exc);
             }
         }
-        public void OpenProject(string path)
+        public void OpenProject(object oPath)
         {
             try
             {
+                string path = oPath.ToString();
                 if (_docList != null)
                 {
                     while (_docList.Count != 0)
@@ -154,18 +185,16 @@ namespace Vibz.Studio
                         _docList[0].Close();
                     }
                 }
-                tvLeft.Nodes.Clear();
+                ClearProjectNodes();
                 System.IO.FileInfo fInfo = new System.IO.FileInfo(path);
                 _project = Vibz.Solution.Loader.Load(path);
                 TreeNode tn = new TreeNode(fInfo.Directory.FullName);
                 tn.Tag = _project;
                 tn.ImageIndex = 4;
                 tn.SelectedImageIndex = 5;
-                tvLeft.Nodes.Add(tn);
-                tvLeft.ImageList = ProjectElementIcons;
+                AddProjectNode(tn);
                 AddNodesToProject(tn, _project.SubElements);
-                tvLeft.ExpandAll();
-                pnlSol.Visible = true;
+                ShowSolutionPanel();
                 _docList = new Document.DocumentList(this, _project);
                 configurationToolStripMenuItem.Enabled = true;
 
@@ -200,9 +229,12 @@ namespace Vibz.Studio
                     Vibz.Plugin.TemplateProcessor tProcessor = new Vibz.Plugin.TemplateProcessor(templatePath, param);
                     if (tProcessor.Execute())
                     {
-                        OpenProject(wCon.WizardParameterList[0][Vibz.Studio.Wizard.ProjectLocation.FolderPath] +
+                        string path = wCon.WizardParameterList[0][Vibz.Studio.Wizard.ProjectLocation.FolderPath] +
                         "/" + wCon.WizardParameterList[0][Vibz.Studio.Wizard.ProjectLocation.ProjectName] +
-                        "/" + wCon.WizardParameterList[0][Vibz.Studio.Wizard.ProjectLocation.ProjectName] + ".vproj");
+                        "/" + wCon.WizardParameterList[0][Vibz.Studio.Wizard.ProjectLocation.ProjectName] + ".vproj";
+
+                        OpenProject(path);
+                        
                     }
                 }
 
@@ -302,6 +334,10 @@ namespace Vibz.Studio
                 ShowMessageBox("To execute you must select a valid test suite file.");
             PerformAction(Vibz.TaskType.Execute, ele);
         }
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopTask();
+        }
         private IElement CurrentDocumentElement
         {
             get
@@ -343,6 +379,35 @@ namespace Vibz.Studio
             IElement ele = (IElement)node.Tag;
             if (ele.Type == ElementType.Space)
                 node.ImageIndex = (expand ? 5 : 4);
+        }
+
+        private void aboutVibzworldAutomationStudioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutStudio astudio = new AboutStudio();
+            astudio.ShowDialog();
+        }
+
+        private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_project == null)
+            {
+                ShowMessageBox("Select a project to view the configurations.");
+                return;
+            }
+            Configuration config = new Configuration(_project);
+            config.ShowDialog();
+        }
+        private void settingsStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            StudioSettings settings = new StudioSettings();
+            settings.ShowDialog();
+        }
+
+
+        private void aPISupportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApiDocument doc = new ApiDocument();
+            doc.Show();
         }
         #endregion
 
@@ -598,6 +663,12 @@ namespace Vibz.Studio
         #endregion
 
         #region Compile And Run
+        Thread _taskThread = null;
+        void StopTask()
+        {
+            if (_taskThread != null && _taskThread.IsAlive)
+                _taskThread.Abort();
+        }
         object PerformAction(Vibz.TaskType type, IElement element)
         {
             if (element == null)
@@ -612,10 +683,10 @@ namespace Vibz.Studio
                         _project.Queue.Enqueue(new LogQueueElement("Saving the document.", LogSeverity.Trace));
                         _docList.Current.Save();
                     }
-                    
+
                     _currentTask = new Compiler(App.Default.EncodeBuild);
                     if (!Directory.Exists(_project.BuildLocation))
-                       Vibz.Helper.IO.CreateFolderPath(new DirectoryInfo(_project.BuildLocation));
+                        Vibz.Helper.IO.CreateFolderPath(new DirectoryInfo(_project.BuildLocation));
                     string buildFile = _project.BuildLocation + "/" + element.Name + "." + Vibz.FileType.CompiledScropt;
 
                     arg = new object[] { element, buildFile };
@@ -623,7 +694,7 @@ namespace Vibz.Studio
                     break;
                 case Vibz.TaskType.Execute:
                     object cplArg = PerformAction(Vibz.TaskType.Compile, element);
-                    arg = new object[] { ((object[])cplArg).GetValue(1).ToString() };
+                    arg = new object[] { ((object[])cplArg).GetValue(1).ToString(), Convert.ToInt32((20 - App.Default.ExecutionSpeed) * 250) };
                     _project.Queue.Enqueue(new LogQueueElement("Executing document.", LogSeverity.Trace));
                     _currentTask = new Executer();
                     break;
@@ -631,22 +702,41 @@ namespace Vibz.Studio
             LogEvent(LogSeverity.Trace, "******** Process " + type.ToString() + " Begin *********");
 
             TaskDelegate tDelegate = new TaskDelegate(_currentTask.Process);
-            Thread taskThread = new Thread(new ParameterizedThreadStart(ExecuteInThread));
-            taskThread.SetApartmentState(ApartmentState.STA);
+            _taskThread = new Thread(new ParameterizedThreadStart(ExecuteInThread));
+            _taskThread.SetApartmentState(ApartmentState.STA);
             timerExecution.Start();
-            taskThread.Start(new object[] { tDelegate, arg });
+            _taskThread.Start(new object[] { tDelegate, arg });
             return arg;
         }
+        
         public void ExecuteInThread(object param)
         {
             LogQueue.Instance.Enqueue(new LogQueueElement("Thread process begin.", LogSeverity.Trace));
-            System.Threading.Monitor.Enter(_taskLock);
-            LogQueue.Instance.Enqueue(new LogQueueElement("Thread lock acquired.", LogSeverity.Trace));
-            TaskDelegate del = (TaskDelegate)((object[])param).GetValue(0);
-            object arg = ((object[])param).GetValue(1);
-            del(arg);
-            LogQueue.Instance.Enqueue(new LogQueueElement("Thread process end.", LogSeverity.Trace));
-            System.Threading.Monitor.Exit(_taskLock);
+            try
+            {
+                System.Threading.Monitor.Enter(_taskLock);
+                ChangeButtonStatus(btnStop, true);
+                ChangeButtonStatus(btnRun, false);
+                ChangeButtonStatus(btnCompile, false);
+                ChangeMenuStatus(stopToolStripMenuItem, true);
+                ChangeMenuStatus(runToolStripMenuItem, false);
+                ChangeMenuStatus(compileToolStripMenuItem, false);
+                LogQueue.Instance.Enqueue(new LogQueueElement("Thread lock acquired.", LogSeverity.Trace));
+                TaskDelegate del = (TaskDelegate)((object[])param).GetValue(0);
+                object arg = ((object[])param).GetValue(1);
+                del(arg);
+                LogQueue.Instance.Enqueue(new LogQueueElement("Thread process end.", LogSeverity.Trace));
+            }
+            finally
+            {
+                ChangeButtonStatus(btnStop, false);
+                ChangeButtonStatus(btnRun, true);
+                ChangeButtonStatus(btnCompile, true);
+                ChangeMenuStatus(stopToolStripMenuItem, false);
+                ChangeMenuStatus(runToolStripMenuItem, true);
+                ChangeMenuStatus(compileToolStripMenuItem, true);
+                System.Threading.Monitor.Exit(_taskLock);
+            }
         }
         
         #endregion
@@ -751,6 +841,12 @@ namespace Vibz.Studio
         {
             UpdateProgress();
         }
+
+        private void rtbLogSummary_TextChanged(object sender, EventArgs e)
+        {
+            pnlLog.Visible = (rtbLogSummary.Text.Trim() != "");
+
+        }
         #endregion
         
         #region Panel Sollution
@@ -802,48 +898,7 @@ namespace Vibz.Studio
         }
         #endregion
 
-        private void aboutVibzworldAutomationStudioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutStudio astudio = new AboutStudio();
-            astudio.ShowDialog();
-        }
 
-        private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (_project == null)
-            {
-                ShowMessageBox("Select a project to view the configurations.");
-                return;
-            }
-            Configuration config = new Configuration(_project);
-            config.ShowDialog();
-        }
-        private void LogEvent(Vibz.Contract.Log.LogSeverity severity, string message)
-        {
-            try
-            {
-                if (App.Default.LogEvents && (int)severity >= (int)App.Default.LogSeverity)
-                {
-                    System.IO.File.AppendAllText(App.Default.LogPath, "\r\n" + DateTime.Now.ToLongTimeString() + "\t" + severity.ToString() + "\t" + message);
-                }
-            }
-            catch (Exception exc)
-            { }
-        }
-        
-        
-
-        private void rtbLogSummary_TextChanged(object sender, EventArgs e)
-        {
-            pnlLog.Visible = (rtbLogSummary.Text.Trim() != "");
-                
-        }
-
-        private void aPISupportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ApiDocument doc = new ApiDocument();
-            doc.Show();
-        }
         #region Panel Toolbox
         bool allowToolDock = false;
         int delX = 0;
@@ -928,5 +983,85 @@ namespace Vibz.Studio
         }
 
         #endregion
+
+        #region Thread functions
+        private delegate void ObjectDelegate(TreeNode node);
+        public void AddProjectNode(TreeNode node)
+        {
+            if (tvLeft.InvokeRequired)
+            {
+                ObjectDelegate method = new ObjectDelegate(AddProjectNode);
+                Invoke(method, node);
+            }
+            else
+            {
+                tvLeft.Nodes.Add(node);
+                node.Expand();
+            }
+        }
+        public void ClearProjectNodes()
+        {
+            if (tvLeft.InvokeRequired)
+            {
+                tvLeft.Invoke(new MethodInvoker(this.ClearProjectNodes));
+            }
+            else
+            {
+                tvLeft.Nodes.Clear();
+            }
+        }
+        public void ShowSolutionPanel()
+        {
+            if (pnlSol.InvokeRequired)
+            {
+                pnlSol.Invoke(new MethodInvoker(this.ShowSolutionPanel));
+            }
+            else
+            {
+                pnlSol.Visible = true;
+            }
+        }
+        private delegate void ButtonDelegate(ToolStripButton btn, bool status);
+        public void ChangeButtonStatus(ToolStripButton btn, bool status)
+        {
+            if (toolStrip1.InvokeRequired)
+            {
+                ButtonDelegate d = new ButtonDelegate(ChangeButtonStatus);
+                toolStrip1.Invoke(d, new object[] { btn, status });
+            }
+            else
+            {
+                btn.Enabled = status;
+            }
+        }
+        private delegate void MenuDelegate(ToolStripMenuItem menu, bool status);
+        public void ChangeMenuStatus(ToolStripMenuItem menu, bool status)
+        {
+            if (menuStrip1.InvokeRequired)
+            {
+                MenuDelegate d = new MenuDelegate(ChangeMenuStatus);
+                menuStrip1.Invoke(d, new object[] { menu, status });
+            }
+            else
+            {
+                menu.Enabled = status;
+            }
+        }
+        private void LogEvent(Vibz.Contract.Log.LogSeverity severity, string message)
+        {
+            try
+            {
+                if (App.Default.LogEvents && (int)severity >= (int)App.Default.LogSeverity)
+                {
+                    System.IO.File.AppendAllText(App.Default.LogPath, "\r\n" + DateTime.Now.ToLongTimeString() + "\t" + severity.ToString() + "\t" + message);
+                }
+            }
+            catch (Exception exc)
+            { }
+        }
+        
+
+        #endregion
+        
     }
 }

@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,11 +70,12 @@ namespace Vibz.Solution.Element
             }
         }
 
-        string _rptPath = "/app.config";
+        string _rptPath = "/reports";
         public string ReportDirectory
         {
             get { return MapPath(_rptPath);  }
         }
+        
         internal string MapPath(string path)
         {
             return System.IO.Path.Combine(_path, path);
@@ -87,10 +105,13 @@ namespace Vibz.Solution.Element
                 xNode = _xDoc.SelectSingleNode("//" + NodeName + "/" + ReportPath);
                 if (xNode != null)
                     _rptPath = xNode.InnerText.Replace('/', '\\');
+                xNode = _xDoc.SelectSingleNode("//" + NodeName + "/" + SkipDirs);
+                if (xNode != null)
+                    _skipDirs = xNode.InnerText.Replace('/', '\\');
             }
             catch (Exception exc)
             {
-                throw new Exception("Invalid project or sollution.");
+                throw new Exception("Invalid project content.");
             }
         }
         public void Reset(Dictionary<string, string> param)

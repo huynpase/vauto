@@ -5,16 +5,18 @@
     <include id="case1.id"></include>
     <data>
       <var name="url"/>
+      <var name="folder"/>
     </data>
     <body>
       <openurl url="@url" maxwait="120000"/>
-      <downloadimages folderpath="images"/>
+      <downloadimages folderpath="@folder"/>
     </body>
   </function>
   <function name="Extract All Image From all URLs">
     <include id="case1.id"></include>
     <data>
       <var name="urls" type="array"/>
+      <var name="folder" type="scalar"/>
     </data>
     <body>
       <for count="@urls.length">
@@ -22,10 +24,22 @@
           <call name="Extract All Image From URL" onerror="continue">
             <data>
               <var name="url">@urls[@index]</var>
+                <var name="folder">@folder</var>
             </data>
           </call>
         </body>
       </for>
+    </body>
+  </function>
+    <function name="Extract All Image From URLs in Page">
+    <include id="case1.id"></include>
+    <data>
+     <var name="url"/>
+     <var name="folder"/>
+    </data>
+    <body>
+      <openurl url="@url" maxwait="120000"/>
+      <downloadimages folderpath="@folder" linkedimages="true"></downloadimages>
     </body>
   </function>
 </section>

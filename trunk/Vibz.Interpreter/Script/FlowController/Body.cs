@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -59,6 +76,10 @@ namespace Vibz.Interpreter.Script.FlowController
 
         public void Execute(DataHandler vList)
         {
+            Execute(vList, 0);
+        }
+        public void Execute(DataHandler vList, int waitInterval)
+        {
             _progress = new Vibz.Contract.Log.LogElement("Body start.");
             _resetInstruction = true;
             foreach (InstructionBase inst in Instructions)
@@ -91,10 +112,22 @@ namespace Vibz.Interpreter.Script.FlowController
                 catch (Exception exc)
                 {
                     string message = "Error occured while processing instruction '" + inst.GetType().Name + "'. " + Vibz.Contract.Log.LogException.GetFullException(exc);
-
+                    if (exc.Data != null && exc.Data.Count > 0)
+                    {
+                        message += "\r\nExtended Information:";
+                        foreach (object key in exc.Data.Keys)
+                        {
+                            message += "\r\n\t" + key + " : " + exc.Data[key].ToString();
+                        }
+                    }
                     if (inst.OnError == StepToFollow.Break.ToString().ToLower())
                         throw new Exception(message);
                     _progress.Add(message + FlowContinues, Vibz.Contract.Log.LogSeverity.Warn);
+                }
+                finally
+                {
+                    if (waitInterval > 0)
+                        System.Threading.Thread.Sleep(waitInterval);
                 }
             }
         }

@@ -1,3 +1,20 @@
+/*
+*	Copyright © 2011, The Vibzworld Team
+*	All rights reserved.
+*	http://code.google.com/p/vauto/
+*	
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	
+*	- Redistributions of source code must retain the above copyright
+*	notice, this list of conditions and the following disclaimer.
+*	
+*	- Neither the name of the Vibzworld Team, nor the names of its
+*	contributors may be used to endorse or promote products
+*	derived from this software without specific prior written
+*	permission.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,7 +55,7 @@ namespace Vibz.HTMLExtractor
             try
             {
                 Log("Init: url:" + url.AbsolutePath + ".");
-                ((WBrowser)Document).LoadDocument(htmlSource, MaxWait);
+                ((WBrowser)Document).LoadDocument(htmlSource);
                 _baseUrl = url;
             }
             catch (Exception exc)
@@ -46,7 +63,7 @@ namespace Vibz.HTMLExtractor
                 throw new Exception("Error occured while initializing Web Instance,", exc);
             }
         }
-        
+
         public void LoadUrl(string url, int maxWait)
         {
             try
@@ -64,7 +81,7 @@ namespace Vibz.HTMLExtractor
         {
             get { return _pageHeaders; }
         }
-        public int DownloadAllImages(string absPath, string relPath)
+        public int DownloadAllImages(string absPath, string relPath, bool linkedImages)
         {
             string path = Vibz.Helper.IO.CreateRelativePath(absPath, relPath);
             if (!Directory.Exists(path))
@@ -86,6 +103,22 @@ namespace Vibz.HTMLExtractor
                     Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Downloaded image '" + img.FileName + "'", Vibz.Contract.Log.LogSeverity.Trace));
                 }
                 catch (Exception exc) { }
+            }
+            if (linkedImages)
+            {
+                foreach (Url url in Document.RedirectLinks)
+                {
+                    try
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(url.Link, @"\.(?:jpe?g|png|gif)$"))
+                        {
+                            System.Drawing.Image img = DownloadImage(url.Link);
+                            img.Save(path + "/" + url.Text);
+                            Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Downloaded image '" + url.Text + "'", Vibz.Contract.Log.LogSeverity.Trace));
+                        }
+                    }
+                    catch (Exception exc) { }
+                }
             }
             return Document.Images.Count;
         }
@@ -144,6 +177,29 @@ namespace Vibz.HTMLExtractor
         void Log(string message)
         {
             Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("[Extractor] - " + message, Vibz.Contract.Log.LogSeverity.Trace));
+        }
+        public System.Drawing.Image DownloadImage(string _URL)
+        {
+            System.Drawing.Image _tmpImage = null;
+            try
+            {
+                System.Net.HttpWebRequest _HttpWebRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(_URL);
+                _HttpWebRequest.AllowWriteStreamBuffering = true;
+                _HttpWebRequest.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)";
+                _HttpWebRequest.Referer = "http://www.google.com/";
+                _HttpWebRequest.Timeout = 20000;
+                System.Net.WebResponse _WebResponse = _HttpWebRequest.GetResponse();
+                System.IO.Stream _WebStream = _WebResponse.GetResponseStream();
+                _tmpImage = System.Drawing.Image.FromStream(_WebStream);
+                _WebResponse.Close();
+            }
+            catch (Exception _Exception)
+            {
+                Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+                return null;
+            }
+
+            return _tmpImage;
         }
     }
 }

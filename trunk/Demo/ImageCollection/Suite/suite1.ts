@@ -3,14 +3,10 @@
   <function name="Extract All Image From URL" ref="Script/case1/Extract All Image From URL">
     <data>
       <var name="url" source="Internal" type="Scalar">
-        <Value><![CDATA[http://sify.com/finance/search-car-imagegallery.html]]></Value>
+        <value><![CDATA[http://sify.com/finance/search-bike-imagegallery.html]]></value>
       </var>
-    </data>
-  </function>
-  <function name="Extract All Image" ref="Script/case1/Extract All Image">
-    <data>
-      <var name="url" source="Internal" type="Scalar">
-        <Value><![CDATA[http://sify.com/finance/search-bike-imagegallery.html]]></Value>
+      <var name="folder" source="internal" type="scalar">
+        <value><![CDATA[image1]]></value>
       </var>
     </data>
   </function>
