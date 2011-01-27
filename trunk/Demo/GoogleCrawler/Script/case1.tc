@@ -1,0 +1,30 @@
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include ref="Vibz.IO"/>
+    <include ref="Vibz.Web"/>
+  <function name="tc1">
+    <include id="case1.id"></include>
+    <data>
+    </data>
+    <body>
+    	<openurl url="http://www.google.com"/>
+    	<type locator="//input[@name='q']" value="extensible automation framework"></type>
+    	<click locator="//input[@name='btnG']"></click>
+    	<waitforpageload maxwait="60000" ontimeout="break"></waitforpageload>
+    	<dowhile>
+    		<condition>
+    			<isexists locator="pnnext"></isexists>
+    		</condition>
+    		<body>
+    			<getattributevalues attributename="href" locator="//a[@class='l']" assignto="page_links"></getattributevalues>
+    		    	<for count="@page_links.length">
+		    		<body>
+    					<append content="parse(concat(__newline,@page_links[@index]))" filepath="C:/googlelinks.txt"></append>
+    				</body>
+    			</for>
+    			<click locator="pnnext"></click>
+		    	<waitforpageload maxwait="60000" ontimeout="break"></waitforpageload>
+    		</body>
+    	</dowhile>
+    </body>
+  </function>
+</section>
