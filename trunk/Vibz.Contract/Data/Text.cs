@@ -33,6 +33,8 @@ namespace Vibz.Contract.Data
         public string Type
         { get { return DataType.Scalar.ToString(); } }
 
+        public object GetValue() { return Value; }
+
         public virtual string Source
         { get { return Vibz.Contract.Data.Source.SourceType.Internal.ToString(); } }
 
@@ -72,6 +74,14 @@ namespace Vibz.Contract.Data
                     char[] dataC = new char[data.Length];
                     data.CopyTo(dataC, 0);
                     return Value.IndexOfAny(dataC).ToString();
+                case "startswith":
+                    if (data.Length >= 1)
+                        return Value.StartsWith((string)data[0]).ToString();
+                    return "false";
+                case "endswith":
+                    if (data.Length >= 1)
+                        return Value.EndsWith((string)data[0]).ToString();
+                    return "false";
                 case "lastindexofany":
                     dataC = new char[data.Length];
                     data.CopyTo(dataC, 0);

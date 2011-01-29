@@ -55,7 +55,7 @@
       <click locator="$loc19" onerror="continue"></click>
       <click locator="$loc20" onerror="continue"></click>
       <getvalue locator="$loc1" assignto="l1"></getvalue>
-      <getinnertext locator="$loc26"  assignto="l26"></getinnertext>
+      <getinnertext locator="$loc26" assignto="l26"></getinnertext>
       <selectoption locator="$loc21" optiontext="@data6" onerror="continue"></selectoption>
       <selectoption locator="$loc22" optiontext="@data7" onerror="continue"></selectoption>
       <click locator="$loc24" onerror="continue"></click>

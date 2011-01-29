@@ -116,11 +116,11 @@ namespace Vibz.Studio.Document
         }
         public override void Document_KeyDown(object sender, KeyEventArgs e)
         {
-            _debugMessage += " D_KD[" + e.KeyCode.ToString() + "]";
+            _debugMessage += " D_KD[" + GetKeyString(e) + "]";
         }
         public override void Document_KeyUp(object sender, KeyEventArgs e)
         {
-            _debugMessage += " D_KU[" + e.KeyCode.ToString() + "]";
+            _debugMessage += " D_KU[" + GetKeyString(e) + "]";
             Point p = RichTextArea.GetPositionFromCharIndex(RichTextArea.SelectionStart);
             p.Y = p.Y + 15;
             Reset();
@@ -144,19 +144,20 @@ namespace Vibz.Studio.Document
             _cMenu.AutoClose = true;
             _cMenu.Show(RichTextArea, p);
             RichTextArea.SelectionStart = RichTextArea.SelectionStart;
+            Debug();
         }
 
         Keys _currentKey = Keys.None;
         void _cMenu_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            _debugMessage += " C_PKD[" + e.KeyCode.ToString() + "]";
+            _debugMessage += " C_PKD[" + GetKeyString(e) + "]";
             if (char.IsLetterOrDigit((char)e.KeyCode))
                 _currentKey = e.KeyCode;
         }
 
         void cm_KeyDown(object sender, KeyEventArgs e)
         {
-            _debugMessage += " C_KD[" + e.KeyCode.ToString() + "]";
+            _debugMessage += " C_KD[" + GetKeyString(e) + "]";
         }
         
         void cm_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -198,12 +199,34 @@ namespace Vibz.Studio.Document
                     break;
             }
         }
+        string GetSelectionOffset(ContextMenuStrip cm, int offset)
+        {
+            int i = GetSelectedIndex(cm);
+            if (i == 0)
+                return cm.Items[0].Text;
+            if (i != -1
+                && (i + offset) <= cm.Items.Count
+                && cm.Items[i + offset] != null)
+            {
+                return cm.Items[i + offset].Text;
+            }
+            return "";
+        }
+        int GetSelectedIndex(ContextMenuStrip cm)
+        {
+            foreach (ToolStripItem tsi in cm.Items)
+            {
+                if (tsi.Selected)
+                    return cm.Items.IndexOf(tsi);
+            }
+            return -1;
+        }
         void cm_KeyUp(object sender, KeyEventArgs e)
         {
-            _debugMessage += " C_KU[" + e.KeyCode.ToString() + "]";
+            _debugMessage += " C_KU[" + GetKeyString(e) + "]";
             ContextMenuStrip cm = (ContextMenuStrip)sender;
             string keyValue = "";
-            
+            bool isChar = true;
             switch (e.KeyData)
             {
                 //case Keys.Space: keyValue = " "; break;
@@ -215,9 +238,17 @@ namespace Vibz.Studio.Document
                 case Keys.PageDown: keyValue = "{PGDN}"; break;
                 case Keys.PageUp: keyValue = "{PGUP}"; break;
                 case Keys.Insert: keyValue = "{INSERT}"; break;
-                case Keys.Tab: keyValue = "{TAB}"; break;
+                case Keys.Tab:
+                    keyValue = "{TAB}";
+                    string selMenu = GetSelectionOffset(cm, -1);
+                    if (selMenu != null && selMenu != "")
+                    {
+                        keyValue = selMenu;
+                        isChar = false;
+                    }
+                    break;
                 case Keys.Escape: keyValue = "{ESC}"; break;
-                default: break; // keyValue = Convert.ToString((char)e.KeyValue);
+                default: break; 
             }
             if (keyValue == "" && _currentKey != Keys.None)
             {
@@ -226,13 +257,15 @@ namespace Vibz.Studio.Document
             if (keyValue != "")
             {
                 RichTextArea.Focus();
-                SimulateKey(keyValue);
-                cm.Close();
-                cm.Dispose();
+                if (isChar)
+                    SimulateKey(keyValue);
+                else
+                    SetCurrentWord(keyValue);
+                RichTextArea.SelectionStart = RichTextArea.SelectionStart;
                 e.Handled = true;
+                cm.Dispose();
             }
             Debug();
-            RichTextArea.SelectionStart = RichTextArea.SelectionStart;
             _currentKey = Keys.None;
         }
         void SimulateKey(char c)
@@ -358,10 +391,17 @@ namespace Vibz.Studio.Document
             if (false)
             {
                 System.IO.File.AppendAllText("C:/log1.txt", "\r\n" + DateTime.Now.ToShortTimeString() + ":\t" + _debugMessage);
-                //SetStatusMessage(_debugMessage);
             }
             _debugMessage = "";
         }
-
+        
+        string GetKeyString(PreviewKeyDownEventArgs kArg)
+        {
+            return kArg.KeyCode.ToString() + ":" + kArg.KeyData.ToString() + ":" + kArg.KeyValue.ToString() + kArg;
+        }
+        string GetKeyString(KeyEventArgs kArg)
+        {
+            return kArg.KeyCode.ToString() + ":" + kArg.KeyData.ToString() + ":" + kArg.KeyValue.ToString() + kArg;
+        }
     }
 }

@@ -95,6 +95,8 @@ namespace Vibz.Interpreter.Configuration
                     _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Define), typeof(IAction)));
                     _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Set), typeof(IAction)));
                     _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Invoke), typeof(IFetch)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.Evaluate), typeof(IFetch)));
+                    _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.VariableControl.AssertBool), typeof(IAssert)));
                     _preLoadHandler = null;
                 }
                 return _internalInstructions;

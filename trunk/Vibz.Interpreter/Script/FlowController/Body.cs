@@ -82,56 +82,67 @@ namespace Vibz.Interpreter.Script.FlowController
         {
             _progress = new Vibz.Contract.Log.LogElement("Body start.");
             _resetInstruction = true;
-            foreach (InstructionBase inst in Instructions)
+            try
             {
-                try
+                foreach (InstructionBase inst in Instructions)
                 {
-                    MacroParser macro = new MacroParser(Configuration.MacroManager.Instance, vList);
-                    macro.Parse(inst);
-                    string additionalInfo = "";
-                    switch (inst.Type)
+                    try
                     {
-                        case InstructionType.Action:
-                            ((IAction)inst).Execute(vList);
-                            break;
-                        case InstructionType.Fetch:
-                            Vibz.Contract.Data.IData obj = ((IFetch)inst).Fetch(vList);
-                            if (((IFetch)inst).Output.Trim() != "")
-                            {
-                                vList.DataList.Update(new Variable(((IFetch)inst).Output, obj));
-                                additionalInfo = obj.ToString();
-                            }
-                            break;
-                        case InstructionType.Assert:
-                        case InstructionType.Condition:
-                            bool asrt = ((IAssert)inst).Assert(vList);
-                            break;
-                    }
-                    _progress.Add(inst.InfoEnd + (additionalInfo == "" ? "" : "[Data: " + additionalInfo + "]"));
-                }
-                catch (Exception exc)
-                {
-                    string message = "Error occured while processing instruction '" + inst.GetType().Name + "'. " + Vibz.Contract.Log.LogException.GetFullException(exc);
-                    if (exc.Data != null && exc.Data.Count > 0)
-                    {
-                        message += "\r\nExtended Information:";
-                        foreach (object key in exc.Data.Keys)
+                        MacroParser macro = new MacroParser(Configuration.MacroManager.Instance, vList);
+                        macro.Parse(inst);
+                        string additionalInfo = "";
+                        switch (inst.Type)
                         {
-                            message += "\r\n\t" + key + " : " + exc.Data[key].ToString();
+                            case InstructionType.Action:
+                                ((IAction)inst).Execute(vList);
+                                break;
+                            case InstructionType.Fetch:
+                                Vibz.Contract.Data.IData obj = ((IFetch)inst).Fetch(vList);
+                                if (((IFetch)inst).Output.Trim() != "")
+                                {
+                                    vList.DataList.Update(new Variable(((IFetch)inst).Output, obj));
+                                    additionalInfo = obj.ToString();
+                                }
+                                break;
+                            case InstructionType.Assert:
+                            case InstructionType.Condition:
+                                bool asrt = ((IAssert)inst).Assert(vList);
+                                break;
                         }
+                        _progress.Add(inst.InfoEnd + (additionalInfo == "" ? "" : "[Data: " + additionalInfo + "]"));
                     }
-                    if (inst.OnError == StepToFollow.Break.ToString().ToLower())
-                        throw new Exception(message);
-                    _progress.Add(message + FlowContinues, Vibz.Contract.Log.LogSeverity.Warn);
+                    catch (Exception exc)
+                    {
+                        ProcessError(inst, exc);
+                    }
+                    finally
+                    {
+                        if (waitInterval > 0)
+                            System.Threading.Thread.Sleep(waitInterval);
+                    }
                 }
-                finally
-                {
-                    if (waitInterval > 0)
-                        System.Threading.Thread.Sleep(waitInterval);
-                }
+            }
+            catch (Exception excBody)
+            {
+                ProcessError(this, excBody);
             }
         }
 
+        void ProcessError(InstructionBase inst, Exception exc)
+        {
+            string message = "Error occured while processing instruction '" + inst.GetType().Name + "'. " + Vibz.Contract.Log.LogException.GetFullException(exc);
+            if (exc.Data != null && exc.Data.Count > 0)
+            {
+                message += "\r\nExtended Information:";
+                foreach (object key in exc.Data.Keys)
+                {
+                    message += "\r\n\t" + key + " : " + exc.Data[key].ToString();
+                }
+            }
+            if (inst.OnError == StepToFollow.Break.ToString().ToLower())
+                throw new Exception(message);
+            _progress.Add(message + FlowContinues, Vibz.Contract.Log.LogSeverity.Warn);
+        }
         public override Vibz.Contract.Log.LogElement InfoEnd 
         { 
             get 

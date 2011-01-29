@@ -93,9 +93,17 @@ namespace Vibz.Studio.Document
             {
                 _doc.LoadStream(reader);
             }
+            catch (System.Xml.XmlException xExc)
+            {
+                _doc.RichTextArea.Clear();
+                _doc.SelectionColor = Color.Black;
+                _doc.RichTextArea.AppendText(File.ReadAllText(Path));
+                _doc.MarkErrorLine(xExc.LineNumber, xExc.LinePosition);           
+            }
             catch (Exception exc)
             {
                 _doc.Text = File.ReadAllText(Path);
+                _doc.SelectionColor = Color.Black;
                 MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally

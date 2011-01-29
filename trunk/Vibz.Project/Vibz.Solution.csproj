@@ -41,6 +41,9 @@
     </Compile>
     <Compile Include="Element\ApplicationConfiguration.cs" />
     <Compile Include="Element\ApplicationGlobalFile.cs" />
+    <Compile Include="Element\ElementBase.cs" />
+    <Compile Include="Element\PreCompile\Call.cs" />
+    <Compile Include="Element\PreCompile\ExpandableInstruction.cs" />
     <Compile Include="Element\Reference.cs" />
     <Compile Include="Element\SuiteElement.cs" />
     <Compile Include="Element\Function.cs" />

@@ -35,6 +35,7 @@ namespace Vibz.Contract.Data
 
         public virtual string Source
         { get { return Vibz.Contract.Data.Source.SourceType.Internal.ToString(); } }
+        public object GetValue() { return Value; }
 
         public virtual string Evaluate(params object[] args)
         {

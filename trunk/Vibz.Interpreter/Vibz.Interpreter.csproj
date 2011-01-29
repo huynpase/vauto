@@ -67,6 +67,8 @@
     <Compile Include="Script\FlowController\FunctionSet.cs" />
     <Compile Include="Script\FlowController\LoopControl\For.cs" />
     <Compile Include="Script\FlowController\LoopControl\DoWhile.cs" />
+    <Compile Include="Script\FlowController\VariableControl\AssertBool.cs" />
+    <Compile Include="Script\FlowController\VariableControl\Evaluate.cs" />
     <Compile Include="Script\FlowController\VariableControl\Define.cs" />
     <Compile Include="Script\FlowController\VariableControl\Invoke.cs" />
     <Compile Include="Script\FlowController\VariableControl\Set.cs" />

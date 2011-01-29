@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="test" ref="Suite/test">
-  <function name="main" ref="Script/HTML/testhtml/main">
+<suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ref="Suite/test" name="test">
+  <function ref="Script/HTML/testhtml/main" name="main">
     <data>
       <var name="url" source="internal" type="scalar">
         <value><![CDATA[C:\Amit\Auto mate\UnitTest\TestWebSite\Controls.htm]]></value>
@@ -31,9 +31,9 @@
       </var>
     </data>
   </function>
-  <function name="test2" ref="Script/HTML/SUBHTML/shtml/test2">
+  <function ref="Script/HTML/SUBHTML/shtml/test2" name="test2">
     <data />
   </function>
-  <suite name="NegativeTest" ref="Suite/NegativeTest" />
-  <suite name="ExternalDataTest" ref="Suite/ExternalDataTest" />
+  <suite ref="Suite/NegativeTest" name="NegativeTest" />
+  <suite ref="Suite/ExternalDataTest" name="ExternalDataTest" />
 </suite>

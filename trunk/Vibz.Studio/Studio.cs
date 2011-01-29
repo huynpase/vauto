@@ -77,6 +77,7 @@ namespace Vibz.Studio
             tvLeft.ImageList = ProjectElementIcons;
 
             Document.Welcome wel = new Vibz.Studio.Document.Welcome();
+            wel.Dock = DockStyle.Fill;
             wel.MdiParent = this;
             wel.Show();
 
@@ -276,41 +277,42 @@ namespace Vibz.Studio
                 switch (ele.Type)
                 {
                     case ElementType.Case:
-                        tn.ToolTipText = "Element: Case\r\nFunction Count: " + ((CaseFile)ele).Functions.Count.ToString();
+                        tn.ToolTipText = "Case file\r\nFunction Count: " + ((CaseFile)ele).Functions.Count.ToString();
                         tn.ImageIndex = 2;
                         AddNodesToProject(tn, ((CaseFile)ele).Functions);
-                        tn.SelectedImageIndex = tn.ImageIndex;
                         break;
                     case ElementType.Function:
-                        tn.ToolTipText = "Element: Function\r\n";
+                        tn.ToolTipText = "Function";
                         tn.ImageIndex = 0;
-                        tn.SelectedImageIndex = tn.ImageIndex;
                         break;
                     case ElementType.Identifier:
-                        tn.ToolTipText = "Element: Identifier\r\n";
+                        tn.ToolTipText = "Identifier file";
                         tn.ImageIndex = 1;
-                        tn.SelectedImageIndex = tn.ImageIndex;
                         break;
                     case ElementType.Space:
-                        tn.ToolTipText = "Element: NameSpace\r\n";
+                        tn.ToolTipText = "NameSpace";
                         tn.ImageIndex = 4;
                         AddNodesToProject(tn, ((Space)ele).SubElements);
                         tn.SelectedImageIndex = 5;
                         break;
                     case ElementType.Suite:
-                        tn.ToolTipText = "Element: Suite\r\n";
+                        tn.ToolTipText = "Suite file";
                         tn.ImageIndex = 3;
-                        tn.SelectedImageIndex = tn.ImageIndex;
                         break;
                     case ElementType.ApplicationGlobal:
-                        tn.ToolTipText = "Element: Application Global";
+                        tn.ToolTipText = "Application Global";
                         tn.ImageIndex = 6;
                         AddNodesToProject(tn, ((ApplicationGlobalFile)ele).Functions);
-                        tn.SelectedImageIndex = tn.ImageIndex;
                         break;
                     default:
                         break;
                 }
+                if (ele.HasError)
+                {
+                    tn.ToolTipText += "\r\n" + ele.Error;
+                    tn.ImageIndex = 7;
+                }
+                tn.SelectedImageIndex = tn.ImageIndex;
                 parentNode.Nodes.Add(tn);
                 parentNode.ExpandAll();
             }
@@ -610,7 +612,7 @@ namespace Vibz.Studio
             if (node.Tag == null)
                 return;
             Space spc = (Space)node.Tag;
-            UserInput.New uNew = new Vibz.Studio.UserInput.New("New folder", "Folder name", "Create");
+            UserInput.GetUserValue uNew = new Vibz.Studio.UserInput.GetUserValue("New folder", "Folder name", "Create");
             if (uNew.ShowDialog() == DialogResult.OK)
             {
                 DirectoryInfo dInfo = Directory.CreateDirectory(Path.Combine(spc.Path, uNew.Value));
@@ -626,7 +628,7 @@ namespace Vibz.Studio
             if (node.Tag == null)
                 return;
             Space spc = (Space)node.Tag;
-            UserInput.New uNew = new Vibz.Studio.UserInput.New("New Case file", "Case file name", "Create");
+            UserInput.GetUserValue uNew = new Vibz.Studio.UserInput.GetUserValue("New Case file", "Case file name", "Create");
             if (uNew.ShowDialog() == DialogResult.OK)
             {
                 string casePath=Path.Combine(spc.Path, uNew.Value) + "." + Vibz.FileType.TestCase;
@@ -699,33 +701,32 @@ namespace Vibz.Studio
                     _currentTask = new Executer();
                     break;
             }
-            LogEvent(LogSeverity.Trace, "******** Process " + type.ToString() + " Begin *********");
 
             TaskDelegate tDelegate = new TaskDelegate(_currentTask.Process);
             _taskThread = new Thread(new ParameterizedThreadStart(ExecuteInThread));
             _taskThread.SetApartmentState(ApartmentState.STA);
             timerExecution.Start();
-            _taskThread.Start(new object[] { tDelegate, arg });
+            _taskThread.Start(new object[] { tDelegate, arg, type });
             return arg;
         }
         
         public void ExecuteInThread(object param)
         {
-            LogQueue.Instance.Enqueue(new LogQueueElement("Thread process begin.", LogSeverity.Trace));
+            Vibz.TaskType type = Vibz.TaskType.Execute;
             try
             {
                 System.Threading.Monitor.Enter(_taskLock);
+                type = (Vibz.TaskType)((object[])param).GetValue(2);
+                LogEvent(LogSeverity.Trace, Thread.CurrentThread.ManagedThreadId.ToString() + "\t******** " + type.ToString() + " begin *********");
                 ChangeButtonStatus(btnStop, true);
                 ChangeButtonStatus(btnRun, false);
                 ChangeButtonStatus(btnCompile, false);
                 ChangeMenuStatus(stopToolStripMenuItem, true);
                 ChangeMenuStatus(runToolStripMenuItem, false);
                 ChangeMenuStatus(compileToolStripMenuItem, false);
-                LogQueue.Instance.Enqueue(new LogQueueElement("Thread lock acquired.", LogSeverity.Trace));
                 TaskDelegate del = (TaskDelegate)((object[])param).GetValue(0);
                 object arg = ((object[])param).GetValue(1);
                 del(arg);
-                LogQueue.Instance.Enqueue(new LogQueueElement("Thread process end.", LogSeverity.Trace));
             }
             finally
             {
@@ -735,6 +736,7 @@ namespace Vibz.Studio
                 ChangeMenuStatus(stopToolStripMenuItem, false);
                 ChangeMenuStatus(runToolStripMenuItem, true);
                 ChangeMenuStatus(compileToolStripMenuItem, true);
+                LogEvent(LogSeverity.Trace, Thread.CurrentThread.ManagedThreadId.ToString() + "\t******** " + type.ToString() + " end *********");
                 System.Threading.Monitor.Exit(_taskLock);
             }
         }

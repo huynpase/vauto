@@ -28,6 +28,7 @@ namespace Vibz.Contract.Data
         public abstract string Source { get; }
         public abstract void Load(ParameterSet param);
         public abstract void Export(ParameterSet param, T data, DataExportMode mode);
+        public object GetValue() { return Value; }
         public string Type 
         {
             get { return ((IData)Value).Type; }
