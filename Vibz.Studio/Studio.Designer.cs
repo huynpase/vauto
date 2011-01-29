@@ -374,20 +374,20 @@ namespace Vibz.Studio
             // 
             this.configurationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configurationToolStripMenuItem.Image")));
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
             // settingsStripMenuItem3
             // 
             this.settingsStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("settingsStripMenuItem3.Image")));
             this.settingsStripMenuItem3.Name = "settingsStripMenuItem3";
-            this.settingsStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.settingsStripMenuItem3.Size = new System.Drawing.Size(78, 22);
             this.settingsStripMenuItem3.Click += new System.EventHandler(this.settingsStripMenuItem3_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(75, 6);
             // 
             // playSoundToolStripMenuItem
             // 
@@ -395,7 +395,7 @@ namespace Vibz.Studio
             this.playSoundToolStripMenuItem.CheckOnClick = true;
             this.playSoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.playSoundToolStripMenuItem.Name = "playSoundToolStripMenuItem";
-            this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
             this.playSoundToolStripMenuItem.Click += new System.EventHandler(this.playSoundToolStripMenuItem_Click);
             // 
             // encodeBuildOutputToolStripMenuItem
@@ -404,7 +404,7 @@ namespace Vibz.Studio
             this.encodeBuildOutputToolStripMenuItem.CheckOnClick = true;
             this.encodeBuildOutputToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.encodeBuildOutputToolStripMenuItem.Name = "encodeBuildOutputToolStripMenuItem";
-            this.encodeBuildOutputToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.encodeBuildOutputToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
             this.encodeBuildOutputToolStripMenuItem.Click += new System.EventHandler(this.encodeBuildOutputToolStripMenuItem_Click);
             // 
             // loggerToolStripMenuItem
@@ -413,7 +413,7 @@ namespace Vibz.Studio
             this.loggerToolStripMenuItem.CheckOnClick = true;
             this.loggerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.loggerToolStripMenuItem.Name = "loggerToolStripMenuItem";
-            this.loggerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loggerToolStripMenuItem.Size = new System.Drawing.Size(78, 22);
             this.loggerToolStripMenuItem.Click += new System.EventHandler(this.loggerToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -450,6 +450,7 @@ namespace Vibz.Studio
             this.ProjectElementIcons.Images.SetKeyName(4, "Folder.ico");
             this.ProjectElementIcons.Images.SetKeyName(5, "FolderOpen.ico");
             this.ProjectElementIcons.Images.SetKeyName(6, "Exit.ico");
+            this.ProjectElementIcons.Images.SetKeyName(7, "Error.ico");
             // 
             // cmsTVLeft
             // 
@@ -572,16 +573,16 @@ namespace Vibz.Studio
             this.pnlTool.Location = new System.Drawing.Point(0, 74);
             this.pnlTool.Name = "pnlTool";
             this.pnlTool.Padding = new System.Windows.Forms.Padding(1);
-            this.pnlTool.Size = new System.Drawing.Size(128, 160);
+            this.pnlTool.Size = new System.Drawing.Size(178, 160);
             this.pnlTool.TabIndex = 16;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox2.Location = new System.Drawing.Point(121, 23);
+            this.pictureBox2.Location = new System.Drawing.Point(171, 24);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(2, 132);
+            this.pictureBox2.Size = new System.Drawing.Size(2, 131);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
@@ -598,7 +599,7 @@ namespace Vibz.Studio
             this.pnlToolHead.ForeColor = System.Drawing.Color.Black;
             this.pnlToolHead.Location = new System.Drawing.Point(1, 1);
             this.pnlToolHead.Name = "pnlToolHead";
-            this.pnlToolHead.Size = new System.Drawing.Size(122, 22);
+            this.pnlToolHead.Size = new System.Drawing.Size(172, 23);
             this.pnlToolHead.TabIndex = 0;
             this.pnlToolHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseDown);
             this.pnlToolHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlToolHead_MouseMove);

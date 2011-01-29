@@ -43,6 +43,8 @@
     <Compile Include="Math\Substract.cs" />
     <Compile Include="Math\Sum.cs" />
     <Compile Include="String\Concat.cs" />
+    <Compile Include="String\EndsWith.cs" />
+    <Compile Include="String\StartWith.cs" />
     <Compile Include="String\__Tab.cs" />
     <Compile Include="String\__NewLine.cs" />
     <Compile Include="String\Replace.cs" />

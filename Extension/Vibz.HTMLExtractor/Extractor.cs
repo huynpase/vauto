@@ -74,7 +74,7 @@ namespace Vibz.HTMLExtractor
             }
             catch (Exception exc)
             {
-                throw new Exception(exc.Message, exc);
+                throw new Exception(exc.Message + ". Url: " + url, exc);
             }
         }
         public Dictionary<string, string> PageHeaders

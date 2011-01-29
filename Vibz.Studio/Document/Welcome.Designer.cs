@@ -75,7 +75,7 @@ namespace Vibz.Studio.Document
             this.panel1.Controls.Add(this.pnlUserSession);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(389, 262);
+            this.panel1.Size = new System.Drawing.Size(569, 361);
             this.panel1.TabIndex = 0;
             // 
             // pnlWeb
@@ -87,7 +87,7 @@ namespace Vibz.Studio.Document
             this.pnlWeb.Controls.Add(this.wbVauto);
             this.pnlWeb.Location = new System.Drawing.Point(10, 142);
             this.pnlWeb.Name = "pnlWeb";
-            this.pnlWeb.Size = new System.Drawing.Size(369, 87);
+            this.pnlWeb.Size = new System.Drawing.Size(549, 186);
             this.pnlWeb.TabIndex = 7;
             // 
             // wbVauto
@@ -98,7 +98,7 @@ namespace Vibz.Studio.Document
             this.wbVauto.Name = "wbVauto";
             this.wbVauto.ScriptErrorsSuppressed = true;
             this.wbVauto.ScrollBarsEnabled = false;
-            this.wbVauto.Size = new System.Drawing.Size(369, 87);
+            this.wbVauto.Size = new System.Drawing.Size(549, 186);
             this.wbVauto.TabIndex = 0;
             // 
             // btnRecentProject
@@ -110,9 +110,9 @@ namespace Vibz.Studio.Document
             this.btnRecentProject.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
             this.btnRecentProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecentProject.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnRecentProject.Location = new System.Drawing.Point(113, 235);
+            this.btnRecentProject.Location = new System.Drawing.Point(113, 334);
             this.btnRecentProject.Name = "btnRecentProject";
-            this.btnRecentProject.Size = new System.Drawing.Size(266, 23);
+            this.btnRecentProject.Size = new System.Drawing.Size(446, 23);
             this.btnRecentProject.TabIndex = 6;
             this.btnRecentProject.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRecentProject.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@ namespace Vibz.Studio.Document
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 240);
+            this.label2.Location = new System.Drawing.Point(11, 339);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 5;
@@ -133,7 +133,7 @@ namespace Vibz.Studio.Document
             // 
             this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(91, 36);
+            this.lblVersion.Location = new System.Drawing.Point(181, 36);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 4;
@@ -143,7 +143,7 @@ namespace Vibz.Studio.Document
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(45, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(135, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(37, 35);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -155,7 +155,7 @@ namespace Vibz.Studio.Document
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(80, 7);
+            this.label1.Location = new System.Drawing.Point(170, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(257, 27);
             this.label1.TabIndex = 1;
@@ -168,7 +168,7 @@ namespace Vibz.Studio.Document
             this.pnlUserSession.BackColor = System.Drawing.Color.Transparent;
             this.pnlUserSession.Location = new System.Drawing.Point(10, 54);
             this.pnlUserSession.Name = "pnlUserSession";
-            this.pnlUserSession.Size = new System.Drawing.Size(369, 82);
+            this.pnlUserSession.Size = new System.Drawing.Size(549, 82);
             this.pnlUserSession.TabIndex = 0;
             // 
             // Welcome
@@ -176,7 +176,7 @@ namespace Vibz.Studio.Document
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(393, 266);
+            this.ClientSize = new System.Drawing.Size(573, 365);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Welcome";

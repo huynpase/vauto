@@ -24,11 +24,12 @@ using System.Xml.Serialization;
 using Vibz.Contract;
 namespace Vibz.Solution.Element
 {
-    public abstract class SuiteElement : IElement, ICompile
+    public abstract class SuiteElement : ElementBase, ICompile
     {
-        internal const string nReference = "ref";
-        internal const string nName = "name";
-        internal Project _ownerProject;
+        public SuiteElement() { }
+        public SuiteElement(Project ownerProject)
+            : base(ownerProject)
+        { }
         List<string> _includes;
         [XmlIgnore()]
         public List<string> Includes
@@ -40,22 +41,9 @@ namespace Vibz.Solution.Element
                 return _includes;
             }
         }
-        [XmlIgnore()]
-        public Project OwnerProject
-        {
-            get
-            {
-                return _ownerProject;
-            }
-        }
-        [XmlIgnore()]
-        public abstract ElementType Type { get; }
-
-        [XmlAttribute(Element.SuiteElement.nName)]
-        public abstract string Name { get; set; }
         internal string _fullname;
-        [XmlAttribute(Element.SuiteElement.nReference)]
-        public virtual string FullName
+        [XmlAttribute(Element.ElementBase.nReference)]
+        public override string FullName
         {
             get
             {
@@ -73,25 +61,6 @@ namespace Vibz.Solution.Element
             set { _fullname = value; }
         }
 
-        
-        internal string _path;
-        [XmlIgnore()]
-        public string Path
-        {
-            get
-            {
-                if (_path == null || _path == "")
-                    _path = "<No Path>";
-                return _path;
-            }
-        }
-
-        public abstract void SaveAs(string path);
-        public abstract void Save();
-        public abstract void Load();
-        public abstract void UnLoad();
-        [XmlIgnore()]
-        public abstract IElement Clone { get; }
-        public abstract string GetCompiledText();
+        public virtual void UnLoad() { }
     }
 }

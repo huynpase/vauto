@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AllCompanyDetailedReport" ref="Suite/AllCompanyDetailedReport">
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+<suite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ref="Suite/AllCompanyDetailedReport" name="AllCompanyDetailedReport">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/gainers/bse/daily/groupa]]></value>
@@ -16,7 +16,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/gainers/bse/daily/groupb]]></value>
@@ -32,7 +32,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/gainers/bse/daily/groups]]></value>
@@ -48,7 +48,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/gainers/bse/daily/groupt]]></value>
@@ -64,7 +64,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/gainers/bse/daily/groupts]]></value>
@@ -80,7 +80,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/gainers/bse/daily/groupz]]></value>
@@ -96,7 +96,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/losers/bse/daily/groupa]]></value>
@@ -112,7 +112,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/losers/bse/daily/groupb]]></value>
@@ -128,7 +128,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/losers/bse/daily/groups]]></value>
@@ -144,7 +144,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/losers/bse/daily/groupt]]></value>
@@ -160,7 +160,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/losers/bse/daily/groupts]]></value>
@@ -176,7 +176,7 @@
       </var>
     </data>
   </function>
-  <function name="ProcessAllStocks" ref="Script/case1/ProcessAllStocks">
+  <function ref="Script/case1/ProcessAllStocks" name="ProcessAllStocks">
     <data>
       <var name="url" source="Internal" type="Scalar">
         <value><![CDATA[http://money.rediff.com/losers/bse/daily/groupz]]></value>

@@ -41,78 +41,88 @@ namespace Vibz.Contract.Data
         }
         public string Evaluate(string name)
         {
-            if (name.StartsWith("@"))
+            try
             {
-                string key = name.Substring(1);
-                string[] key_index = key.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-                if (key_index == null || key_index.Length == 0)
-                    throw new Exception("Invalid data '" + name + "'");
-
-                if (!this.DataList.ContainsData(key_index.GetValue(0).ToString()))
+                if (name.StartsWith("@"))
                 {
-                    string[] key_prop = key_index.GetValue(0).ToString().Split(new char[] { '.' }, 2, StringSplitOptions.RemoveEmptyEntries);
-                    if (key_prop == null || key_prop.Length == 0)
+                    string key = name.Substring(1);
+                    string[] key_index = key.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (key_index == null || key_index.Length == 0)
                         throw new Exception("Invalid data '" + name + "'");
 
-                    key = key_prop.GetValue(0).ToString();
-                    
-                    if (!this.DataList.ContainsData(key))
-                        return name;
-                    else if (key_prop.Length==1)
-                        return DataProcessor.Evaluate(this.DataList.Get(key), new object[0]);
-
-                    string propOrMethod = key_prop.GetValue(1).ToString();
-
-                    if (!propOrMethod.Contains("("))
+                    if (!this.DataList.ContainsData(key_index.GetValue(0).ToString()))
                     {
-                        // Is a Property
-                        return DataProcessor.Evaluate(this.DataList.Get(key), propOrMethod);
-                    }
-                    else
-                    { 
-                        // Is a method
-                        if (!propOrMethod.Trim().EndsWith(")"))
+                        string[] key_prop = key_index.GetValue(0).ToString().Split(new char[] { '.' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                        if (key_prop == null || key_prop.Length == 0)
+                            throw new Exception("Invalid data '" + name + "'");
+
+                        key = key_prop.GetValue(0).ToString();
+
+                        if (!this.DataList.ContainsData(key))
                             return name;
-                        string method = propOrMethod.Substring(0, propOrMethod.IndexOf('('));
-                        string argString = propOrMethod.Substring(propOrMethod.IndexOf('(') + 1, propOrMethod.LastIndexOf(')') - propOrMethod.IndexOf('(') - 1);
-                        string[] argset = argString.Split(new string[] { "," }, StringSplitOptions.None);
-                        string[] newArgs = new string[argset.Length];
-                        for (int i=0;i< argset.Length;i++)
+                        else if (key_prop.Length == 1)
+                            return DataProcessor.Evaluate(this.DataList.Get(key), new object[0]);
+
+                        if (this.DataList.Get(key).Data != null && this.DataList.Get(key).Data.GetValue() == null)
+                            throw new Exception(name + " can not be evaluated as '" + key + "' is null.");
+
+                        string propOrMethod = key_prop.GetValue(1).ToString();
+
+                        if (!propOrMethod.Contains("("))
                         {
-                            newArgs.SetValue(Evaluate(argset.GetValue(i).ToString().Trim()), i);
+                            // Is a Property
+                            return DataProcessor.Evaluate(this.DataList.Get(key), propOrMethod);
                         }
+                        else
+                        {
+                            // Is a method
+                            if (!propOrMethod.Trim().EndsWith(")"))
+                                return name;
+                            string method = propOrMethod.Substring(0, propOrMethod.IndexOf('('));
+                            string argString = propOrMethod.Substring(propOrMethod.IndexOf('(') + 1, propOrMethod.LastIndexOf(')') - propOrMethod.IndexOf('(') - 1);
+                            string[] argset = argString.Split(new string[] { "," }, StringSplitOptions.None);
+                            string[] newArgs = new string[argset.Length];
+                            for (int i = 0; i < argset.Length; i++)
+                            {
+                                newArgs.SetValue(Evaluate(argset.GetValue(i).ToString().Trim()), i);
+                            }
+                            try
+                            {
+                                return DataProcessor.Evaluate(this.DataList.Get(key), method, newArgs);
+                            }
+                            catch (Exception exc)
+                            {
+                                throw new Exception("Method execution failed. " + exc.Message);
+                            }
+                        }
+
+                    }
+
+                    key = key_index.GetValue(0).ToString();
+                    object[] args = new object[key_index.Length - 1];
+                    for (int i = 1; i < key_index.Length; i++)
+                    {
+                        object param = null;
                         try
                         {
-                            return DataProcessor.Evaluate(this.DataList.Get(key), method, newArgs);
+                            param = key_index.GetValue(i);
+                            if (param.ToString().Length > 0 && this.DataList.ContainsData(param.ToString().Remove(0, 1)))
+                                param = this.DataList.Get(param.ToString().Remove(0, 1)).Data.Evaluate(new object[] { null });
                         }
                         catch (Exception exc)
                         {
-                            throw new Exception("Method execution failed. " + exc.Message);
+                            throw new Exception("Encountered '" + key_index.GetValue(i).ToString() + "' when expecting a number.");
                         }
+                        args.SetValue(param, i - 1);
                     }
-
+                    return DataProcessor.Evaluate(this.DataList.Get(key), args);
                 }
-
-                key = key_index.GetValue(0).ToString();
-                object[] args = new object[key_index.Length - 1];
-                for (int i = 1; i < key_index.Length; i++)
-                {
-                    object param = null;
-                    try
-                    {
-                        param = key_index.GetValue(i);
-                        if (param.ToString().Length > 0 && this.DataList.ContainsData(param.ToString().Remove(0, 1)))
-                            param = this.DataList.Get(param.ToString().Remove(0, 1)).Data.Evaluate(new object[] { null });
-                    }
-                    catch (Exception exc)
-                    {
-                        throw new Exception("Encountered '" + key_index.GetValue(i).ToString() + "' when expecting a number.");
-                    }
-                    args.SetValue(param, i - 1);
-                }
-                return DataProcessor.Evaluate(this.DataList.Get(key), args);
+                return name;
             }
-            return name;
+            catch (Exception exc)
+            {
+                throw new Exception("Error occured while evaluation of '" + name + "'. " + exc.Message);
+            }
         }
         public static DataHandler Load(XmlNode node, string path, IDataProcessor handler)
         {

@@ -28,42 +28,27 @@ namespace Vibz.Solution.Element
     public class SuiteFile : SuiteElement
     {
         internal const string nSuite = "suite";
-        internal const string nReference = "ref";
         public const string Extension = Vibz.FileType.TestSuite;
         
         public SuiteFile()
         { }
         internal SuiteFile(Project ownerProject)
-        {
-            _ownerProject = ownerProject;
-        }
+            : base(ownerProject)
+        { }
         internal SuiteFile(string fullname, Project ownerProject)
+            : base(ownerProject)
         {
             _name = fullname.Substring(fullname.LastIndexOf("/") + 1);
-            _ownerProject = ownerProject;
             _path = this.OwnerProject.FullName + fullname + "." + Extension;
         }
         internal SuiteFile(FileInfo fInfo, Project ownerProject)
+            : base(ownerProject)
         {
             _name = fInfo.Name.Replace(fInfo.Extension, "");
             _path = fInfo.FullName;
-            _ownerProject = ownerProject;
         }
         [XmlIgnore()]
         public override ElementType Type { get { return ElementType.Suite; } }
-
-        internal string _name;
-        [XmlAttribute(Element.SuiteElement.nName)]
-        public override string Name
-        {
-            get
-            {
-                if (_name == null || _name == "")
-                    _name = "<No Name>";
-                return _name;
-            }
-            set { _name = value; }
-        }
 
         List<SuiteElement> _suiteElement;
         [XmlElement(typeof(SuiteFile), ElementName = SuiteFile.nSuite)]

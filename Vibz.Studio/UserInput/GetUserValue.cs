@@ -25,10 +25,10 @@ using System.Windows.Forms;
 
 namespace Vibz.Studio.UserInput
 {
-    public partial class New : Form
+    public partial class GetUserValue : Form
     {
         public string Value = "";
-        public New(string formTitle, string addTitle, string btnText)
+        public GetUserValue(string formTitle, string addTitle, string btnText)
         {
             InitializeComponent();
             this.Text = formTitle;

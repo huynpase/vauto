@@ -17,7 +17,7 @@
 */
 namespace Vibz.Studio.UserInput
 {
-    partial class New
+    partial class GetUserValue
     {
         /// <summary>
         /// Required designer variable.
@@ -45,7 +45,7 @@ namespace Vibz.Studio.UserInput
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(New));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GetUserValue));
             this.lblNew = new System.Windows.Forms.Label();
             this.txtNewElement = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();

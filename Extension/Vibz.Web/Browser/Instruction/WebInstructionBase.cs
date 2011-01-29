@@ -31,7 +31,7 @@ namespace Vibz.Web.Browser.Instruction
     public abstract class WebInstructionBase : InstructionBase, IError 
     {
         public const string Author = "Vibzworld";
-        public const string Vesrion = "2.1";
+        public const string Vesrion = "2.2";
         public const string OnTimeOutInfo = "This setting determines how the execution should proceed when time out occurs before instruction has completed.";
         public const string MaxWaitInfo = "Maximum time to wait for the instruction to complete before declaring that instruction has failed. Default value is 60000";
         public const string AssignToInfo = "Name of the variable where the output from the instruction will be saved.";

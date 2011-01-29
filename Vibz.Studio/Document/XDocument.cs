@@ -52,13 +52,17 @@ namespace Vibz.Studio.Document
             rtbTextArea.AllowDrop = true;
             rtbTextArea.DragEnter += new DragEventHandler(rtbTextArea_DragEnter);
             rtbTextArea.DragDrop += new DragEventHandler(rtbTextArea_DragDrop);
-            rtbTextArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rtbTextArea_MouseUp);
             rtbTextArea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtbTextArea_KeyDown);
             rtbTextArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtbTextArea_KeyPress);
             rtbTextArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.rtbTextArea_KeyUp);
             rtbTextArea.TextChanged += new System.EventHandler(this.rtbTextArea_TextChanged);
-            
+            rtbTextArea.SelectionChanged += new EventHandler(rtbTextArea_SelectionChanged);
             rtbTextArea.TabStop = true;
+        }
+
+        void rtbTextArea_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateCaretPosition();
         }
         #endregion
         #region Richtextbox Members
@@ -129,7 +133,6 @@ namespace Vibz.Studio.Document
         }
         void rtbTextArea_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UpdateCaretPosition();
             this.rtbTextArea.SelectionColor = ContextColor;
             switch (CurrentContext.Mode)
             {
@@ -162,8 +165,6 @@ namespace Vibz.Studio.Document
         }
         void rtbTextArea_TextChanged(object sender, EventArgs e)
         {
-            UpdateCaretPosition();
-
             if (TextChange != null)
                 TextChange(sender, e);
         }
@@ -195,16 +196,24 @@ namespace Vibz.Studio.Document
         }
         void rtbTextArea_KeyUp(object sender, KeyEventArgs e)
         {
-            //LoadContext();
-            UpdateCaretPosition();
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                { 
+                    case Keys.G:
+                        UserInput.GetUserValue guv = new Vibz.Studio.UserInput.GetUserValue("Go to Line", "Line number:", "Go");
+                        if (guv.ShowDialog() == DialogResult.OK)
+                        {
+                            int line=Vibz.Helper.Math.TryGetInteger(guv.Value);
+                            if (line < RichTextArea.Lines.Length)
+                                RichTextArea.SelectionStart = RichTextArea.GetFirstCharIndexFromLine(line - 1);
+                        }
+                        break;
+                }
+            }
             if (KeyUp != null)
                 KeyUp(sender, e);
             Reset();
-        }
-        void rtbTextArea_MouseUp(object sender, MouseEventArgs e)
-        {
-            //LoadContext();
-            UpdateCaretPosition();
         }
         private static int EM_LINEINDEX = 0xbb;
         void LoadContext()
@@ -343,29 +352,10 @@ namespace Vibz.Studio.Document
                 return;
 
             string currentWord = CurrentContext.Word;
-            //switch (CurrentContext.Mode)
-            //{ 
-            //    case XMode.NodeBeginOpen:
-            //        currentWord = CurrentContext.Instruction;
-            //        break;
-            //    case XMode.AttributeName:
-            //        currentWord = CurrentContext.Word;
-            //        break;
-            //    case XMode.AttributeValue:
-            //        currentWord = CurrentContext.AttributeValue;
-            //        break;
-            //}
-            //rtbTextArea.SelectionStart = rtbTextArea.SelectionStart - currentWord.Length;
             rtbTextArea.Select(rtbTextArea.SelectionStart - currentWord.Length, currentWord.Length);
             rtbTextArea.Cut();
             rtbTextArea.SelectionColor = ContextColor;
             rtbTextArea.SelectedText = word;
-            //rtbTextArea.Text = rtbTextArea.Text.Remove(CurrentContext.WordStartIndex, rtbTextArea.SelectionStart - CurrentContext.WordStartIndex);
-            //rtbTextArea.Text = rtbTextArea.Text.Insert(CurrentContext.WordStartIndex, word);
-            //rtbTextArea.Focus();
-            //rtbTextArea.
-            //rtbTextArea.SelectionStart = currentPosition;
-            //rtbTextArea.ScrollToCaret();
         }
         public Color ContextColor
         {
@@ -418,14 +408,20 @@ namespace Vibz.Studio.Document
                     {
                         _context = new Context();
                         int index = rtbTextArea.SelectionStart;
-                        int cdataStart = rtbTextArea.Text.Substring(0, index).ToLower().LastIndexOf("<![cdata[");
-                        if (cdataStart != -1)
+                        int cdataStart = 0;
+                        while (cdataStart != -1)
                         {
-                            int cdataEnd = rtbTextArea.Text.Substring(cdataStart, index).ToLower().LastIndexOf("]]>");
-                            if (cdataEnd == -1)
+                            cdataStart = rtbTextArea.Text.Substring(cdataStart, index - cdataStart).ToLower().LastIndexOf("<![cdata[");
+                            if (cdataStart != -1)
                             {
-                                _context.Mode = XMode.CDATA;
-                                return _context;
+                                int cdataEnd = rtbTextArea.Text.Substring(cdataStart, index - cdataStart).ToLower().IndexOf("]]>");
+                                if (cdataEnd == -1)
+                                {
+                                    _context.Mode = XMode.CDATA;
+                                    return _context;
+                                }
+                                else
+                                    cdataStart += cdataEnd;
                             }
                         }
                         _context.Mode = XMode.InnerText;
@@ -527,5 +523,28 @@ namespace Vibz.Studio.Document
         }
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
+        public void MarkErrorLine(int lineNumber, int charPosition)
+        {
+            lineNumber--;
+            if (RichTextArea.Lines.Length > lineNumber)
+            {
+                int stIndex = RichTextArea.GetFirstCharIndexFromLine(lineNumber);
+                int indent = 0;
+                while (RichTextArea.Text[stIndex].ToString().Trim() == "")
+                {
+                    indent++;
+                    stIndex++;
+                }
+                int length = RichTextArea.Lines[lineNumber - 1].Length - indent;
+                if (length <= 0 || stIndex >= RichTextArea.Text.Length)
+                    return;
+                RichTextArea.SelectionStart = stIndex;
+                RichTextArea.SelectionLength = length;
+                RichTextArea.SelectionFont = new Font(RichTextArea.SelectionFont, FontStyle.Bold);
+                RichTextArea.SelectionBackColor = Color.Pink;
+                RichTextArea.SelectionLength = 0;
+            }
+        }
     }
 }

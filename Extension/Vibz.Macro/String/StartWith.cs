@@ -18,23 +18,24 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace Vibz.Solution.Element
+using Vibz.Contract;
+using Vibz.Contract.Attribute;
+using Vibz.Helper;
+namespace Vibz.Macro.String
 {
-    public enum ElementType { Project, Suite, Case, Identifier, Space, Function, ApplicationGlobal }
-    public interface IElement
+    [TypeInfo(Author="Vibzworld", Details = "Returns true when text starts with given string.",
+        Version = "2.0")]
+    public class StartsWith : IMacroFunction
     {
-        bool HasError { get; }
-        string Error { get; }
-        string Path { get; }
-        string FullName { get; set; }
-        string Name { get; set; }
-        ElementType Type { get; }
-        IElement Clone { get; }
-        void Load();
-        void Save();
-        string GetCompiledText();
-        void SaveAs(string path);
-        Project OwnerProject { get; }
+        public string Evaluate(object paramObj)
+        {
+            object[] param = (object[])paramObj;
+            switch (param.Length)
+            {
+                case 2:
+                    return param[1].ToString().StartsWith(param[1].ToString()).ToString();
+            }
+            return "false";
+        }
     }
 }

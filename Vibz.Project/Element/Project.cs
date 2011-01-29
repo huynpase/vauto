@@ -84,7 +84,7 @@ namespace Vibz.Solution.Element
         public Project(FileInfo fInfo)
             : base(fInfo.Directory)
         {
-            this._ownerProject = this;
+            SetOwnerProject(this);
 
             LoadProjectParam(fInfo.FullName);
         }

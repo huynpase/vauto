@@ -25,6 +25,7 @@ namespace Vibz.Contract.Data
     {
         string Source { get; }
         string Type { get; }
+        object GetValue();
         string Evaluate(params object[] args);
         string Evaluate(string property);
         string Evaluate(string method, params object[] args);

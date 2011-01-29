@@ -3,7 +3,7 @@
   <function name="Say Hello" ref="Script/case1/Say Hello">
     <data>
       <var name="message" source="Internal" type="Scalar">
-        <Value><![CDATA[Hello World]]></Value>
+        <value><![CDATA[Hello World]]></value>
       </var>
     </data>
   </function>

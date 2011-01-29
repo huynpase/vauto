@@ -29,47 +29,34 @@ namespace Vibz.Solution.Element
         internal const string nFunction = "function";
         internal const string nBody = "body";
         internal const string nIncludeId = "id";
-        public class Call
+        PreCompile.Call _functionCall;
+        PreCompile.Call FunctionCall
         {
-            internal const string nName = "name";
-            internal const string nCall = "call";
-            public class Data
+            get 
             {
-                internal const string nName = "name";
-                internal const string nData = "data";
+                if (_functionCall == null)
+                    _functionCall = new Vibz.Solution.Element.PreCompile.Call(this);
+                return _functionCall;
             }
         }
         public Function()
         { }
         internal Function(string fullname, Project ownerProject)
+            : base(ownerProject)
         {
             _name = fullname.Substring(fullname.LastIndexOf("/") + 1);
-            _ownerProject = ownerProject;
             if (!fullname.Contains("/"))
                 throw new Exception("Invalid function reference.");
             _path = this.OwnerProject.FullName + fullname.Substring(0, fullname.LastIndexOf("/")) + "." + CaseFile.Extension;
         }
         internal Function(FileInfo fInfo, string name, Project ownerProject)
+            : base(ownerProject)
         {
             _name = name;
             _path = fInfo.FullName;
-            _ownerProject = ownerProject;
         }
         [XmlIgnore()]
         public override ElementType Type { get { return ElementType.Function; } }
-
-        internal string _name;
-        [XmlAttribute(Element.SuiteElement.nName)]
-        public override string Name
-        {
-            get
-            {
-                if (_name == null || _name == "")
-                    _name = "<No Name>";
-                return _name;
-            }
-            set { _name = value; }
-        }
 
         internal string _fullname;
         [XmlAttribute(Element.SuiteElement.nReference)]
@@ -118,8 +105,6 @@ namespace Vibz.Solution.Element
             else
                 DataSet.DataList.Update(data);
         }
-        public override void UnLoad()
-        { }
         public override void Load()
         {
             if (!File.Exists(_path))
@@ -153,8 +138,6 @@ namespace Vibz.Solution.Element
                 DataSet = DataHandler.Load(xnData, _path, Vibz.Interpreter.Data.DataProcessor.Instance);
             }
         }
-        public override void SaveAs(string path) { }
-        public override void Save() { }
         public static Function LoadFromSuite(string path, string fullname, int index, Project prj)
         {
             Function retValue = prj.CreateFunction(fullname);
@@ -271,22 +254,10 @@ namespace Vibz.Solution.Element
 
             foreach (XmlNode xnInst in xnInstructionList)
             {
-                if (xnInst.Name.ToLower() == Call.nCall)
+                if (xnInst.Name.ToLower() == PreCompile.Call.nCall)
                 {
-                    try
-                    {
-                        XmlNodeList xnlCall = ParseCall(xnInst, idList);
-                        while (xnlCall.Count > 0)
-                        {
-                            XmlNode xnCallInst = xnlCall.Item(0);
-                            xnTemp.AppendChild(xnCallInst);
-                        }
-                        continue;
-                    }
-                    catch (Exception exc)
-                    {
-                        throw new Exception(Vibz.Contract.Log.LogException.GetFullException(exc));
-                    }
+                    FunctionCall.ExpandInto(xnInst, idList, ref xnTemp);
+                    continue;
                 }
                 XmlNode xnInstCopy = xnInst.CloneNode(true);
                 if (xnInstCopy.Attributes != null)
@@ -309,26 +280,6 @@ namespace Vibz.Solution.Element
                 xnTemp.AppendChild(xnInstCopy);
             }
             return xnTemp.ChildNodes;
-        }
-        XmlNodeList ParseCall(XmlNode xnCall, DataHandler idList)
-        {
-            string function = (xnCall.Attributes[Call.nName] == null ? "" : xnCall.Attributes[Call.nName].Value);
-            try
-            {
-                string funcName = function.Substring(function.LastIndexOf("/") + 1);
-                FileInfo fi = Reference.ResolveFunction(this, function);
-                Function fnc = this.OwnerProject.CreateFunction(fi, funcName);
-                fnc.DataSet = DataHandler.Load(xnCall.SelectSingleNode(Call.Data.nData), Path, Vibz.Interpreter.Data.DataProcessor.Instance);
-
-                string fncText = fnc.GetCompiledText();
-                XmlNode node = (XmlNode)xnCall.OwnerDocument.CreateElement(Call.nCall);
-                node.InnerXml = fncText;
-                return node.SelectSingleNode("//" + Function.nBody).ChildNodes;
-            }
-            catch (Exception exc)
-            {
-                throw new Exception("--at function call " + function, exc);
-            }
         }
         string Parse(string text, DataHandler idList)
         {

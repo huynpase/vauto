@@ -22,37 +22,29 @@ using System.IO;
 
 namespace Vibz.Solution.Element
 {
-    public class Space : IElement
+    public class Space : ElementBase
     {
         public const string SkipDirs = "skipdirectories";
-        protected internal Project _ownerProject;
         protected internal string _skipDirs = ".svn";
         public string[] SkipDirectories
         {
             get { return _skipDirs.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries); }
         }
 
-        public Project OwnerProject
-        {
-            get
-            {
-                return _ownerProject;
-            }
-        }
         internal Space(DirectoryInfo dInfo)
         {
             _name = dInfo.Name;
             _path = dInfo.FullName;
         }
         internal Space(DirectoryInfo dInfo, Project ownerProject)
+            : base(ownerProject)
         {
             _name = dInfo.Name;
             _path = dInfo.FullName;
-            _ownerProject = ownerProject;
         }
         
 
-        public ElementType Type { get { return ElementType.Space; } }
+        public override ElementType Type { get { return ElementType.Space; } }
 
         List<IElement> _subElements;
         public List<IElement> SubElements
@@ -66,18 +58,7 @@ namespace Vibz.Solution.Element
             set { _subElements = value; }
         }
 
-        internal string _name;
-        public string Name
-        {
-            get
-            {
-                if (_name == null || _name == "")
-                    _name = "<No Name>";
-                return _name;
-            }
-        }
-
-        public string FullName
+        public override string FullName
         {
             get
             {
@@ -87,22 +68,10 @@ namespace Vibz.Solution.Element
                 fullname = fullname.Replace("\\", "/");
                 return fullname + "/";
             }
+            set { throw new Exception("Full name can not be set for this file."); }        
         }
 
-        internal string _path;
-        public string Path
-        {
-            get
-            {
-                if (_path == null || _path == "")
-                    _path = "<No Path>";
-                return _path;
-            }
-        }
-        public void SaveAs(string path)
-        { }
-        public void Save() { }
-        public void Load()
+        public override void Load()
         {
             SubElements.Clear();
             DirectoryInfo diMain = new DirectoryInfo(_path);
@@ -138,18 +107,34 @@ namespace Vibz.Solution.Element
             FileInfo[] fiSub = diMain.GetFiles("*." + GetExtension(type), SearchOption.TopDirectoryOnly);
             foreach (FileInfo fi in fiSub)
             {
-                retValue.Add(CreateElementObject(type, fi));
+                try
+                {
+                    retValue.Add(CreateElementObject(type, fi));
+                }
+                catch (Exception exc)
+                { 
+                    // File Load error
+                    // Bring this error out on UI with error signal on file name
+                }
             }
             return retValue;
         }
-        IElement CreateElementObject(Type type, FileInfo fi)
+        ElementBase CreateElementObject(Type type, FileInfo fi)
         {
-            IElement retValue = null;
+            ElementBase retValue = null;
             switch (type.Name.ToLower())
             {
                 case "casefile":
                     retValue = this.OwnerProject.CreateCase(fi);
-                    retValue.Load();
+                    try
+                    {
+                        retValue.Load();
+                    }
+                    catch (Exception exc)
+                    {
+                        retValue._hasError = true;
+                        retValue._error = exc.Message;
+                    }
                     break;
                 case "suitefile":
                     retValue = this.OwnerProject.CreateSuite(fi);
@@ -179,11 +164,5 @@ namespace Vibz.Solution.Element
                     return "";
             }
         }
-        public IElement Clone
-        {
-            get { return null; }
-        }
-        public string GetCompiledText() { return ""; }
-
     }
 }

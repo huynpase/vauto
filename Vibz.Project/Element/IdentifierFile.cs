@@ -24,31 +24,23 @@ using System.Xml.Serialization;
 using Vibz.Contract.Data;
 namespace Vibz.Solution.Element
 {
-    public class IdentifierFile : IElement
+    public class IdentifierFile : ElementBase
     {
         internal const string nControls = "controls";
         internal const string nControl = "control";
         internal const string nName = "name";
-        Project _ownerProject;
-        public Project OwnerProject
-        {
-            get
-            {
-                return _ownerProject;
-            }
-        }
+
         internal IdentifierFile(FileInfo fInfo, Project ownerProject)
+            : base(ownerProject)
         {
             _name = fInfo.Name;
             _path = fInfo.FullName;
-            _ownerProject = ownerProject;
         }
 
         public const string Extension = Vibz.FileType.Identifier;
-        public ElementType Type { get { return ElementType.Identifier; } }
+        public override ElementType Type { get { return ElementType.Identifier; } }
 
-        internal string _name;
-        public string Name
+        public override string FullName
         {
             get
             {
@@ -56,27 +48,7 @@ namespace Vibz.Solution.Element
                     _name = "<No Name>";
                 return _name;
             }
-        }
-
-        public string FullName
-        {
-            get
-            {
-                if (_name == null || _name == "")
-                    _name = "<No Name>";
-                return _name;
-            }
-        }
-
-        internal string _path;
-        public string Path
-        {
-            get
-            {
-                if (_path == null || _path == "")
-                    _path = "<No Path>";
-                return _path;
-            }
+            set { _name = value; }
         }
 
         DataHandler _dataSet;
@@ -95,10 +67,7 @@ namespace Vibz.Solution.Element
                 _dataSet = value;
             }
         }
-        public void SaveAs(string path)
-        { }
-        public void Save() { }
-        public void Load()
+        public override void Load()
         {
             this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading identifier file '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
             XmlDocument doc = new XmlDocument();
@@ -122,11 +91,5 @@ namespace Vibz.Solution.Element
                 }
             }
         }
-        public IElement Clone
-        {
-            get { return null; }
-        }
-        public string GetCompiledText() { return ""; }
-
     }
 }

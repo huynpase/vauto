@@ -21,35 +21,36 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
  using Vibz.Contract.Attribute;
+using Vibz.Contract.Data;
 
-namespace Vibz.Web.Browser.Instruction.Action.Synchronize
+namespace Vibz.Web.Browser.Instruction.Fetch
 {
-    [TypeInfo(Author=WebInstructionBase.Author, Details = "Opens the given url in current browser.",
+    [TypeInfo(Author=WebInstructionBase.Author, Details = "Returns array of all the attributes of the control node associated with given locator.",
         Version = WebInstructionBase.Vesrion)]
-    public class OpenURL : SynchronizeBase
+    public class GetAllLinks : FetchBase
     {
-        string _actUrl = "";
-        [XmlAttribute("url")]
-        public string Url;
-        public OpenURL()
+
+        public GetAllLinks()
             : base()
         {
                     
         }
-        public OpenURL(string url, int maxWait)
+        public GetAllLinks(string assignto)
             : base()
         {
-            MaxWait = maxWait;
-            Url = url;
+            Output = assignto;
             
         }
-        public override void Execute()
+        public override IData Fetch()
         {
-            if (Url.Trim() == "")
-                throw new Exception("Url is empty.");
-            _actUrl = vList.Evaluate(Url);
-            Browser.LoadUrl(_actUrl, MaxWait);
-            SetInfo("Url '" + _actUrl + "' opened.");
+            Collection.URLList urls = Browser.Document.RedirectLinks;
+            string[] list = new string[urls.Count];
+            int i = 0;
+            foreach (Url url in urls)
+            {
+                list.SetValue(url.Link, i++);
+            }
+            return new Vibz.Contract.Data.TextArray(list);
         }
     }
 }

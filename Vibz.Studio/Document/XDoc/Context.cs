@@ -266,6 +266,10 @@ namespace Vibz.Studio.Document.XDoc
                     {
                         CreateDataRow(fType);
                     }
+                    foreach (FunctionTypeInfo fType in Vibz.Solution.Element.PreCompile.ExpandableInstruction.List)
+                    {
+                        CreateDataRow(fType);
+                    }
                 }
                 return _instructions;
             }
