@@ -8,3 +8,5 @@ Through *Vibz automation framework* any automation requirement can have their wa
 We do provide the source code. To get the source code send a mail request at
 
       ==vibzauto@gmail.com==
+<p/>
+Or Checkout from following [http://code.google.com/p/vauto/source/checkout SVN] location.
