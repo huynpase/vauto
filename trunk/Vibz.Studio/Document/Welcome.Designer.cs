@@ -97,7 +97,6 @@ namespace Vibz.Studio.Document
             this.wbVauto.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbVauto.Name = "wbVauto";
             this.wbVauto.ScriptErrorsSuppressed = true;
-            this.wbVauto.ScrollBarsEnabled = false;
             this.wbVauto.Size = new System.Drawing.Size(549, 186);
             this.wbVauto.TabIndex = 0;
             // 
@@ -180,7 +179,9 @@ namespace Vibz.Studio.Document
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Welcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome";
+            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Welcome_Load);
             this.panel1.ResumeLayout(false);

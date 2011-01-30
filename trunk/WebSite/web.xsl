@@ -20,18 +20,41 @@
         </div>
       </div>
       <div style="float: none">
+	<div style="float: left">
+		<table border="0" cellspacing="0" cellpadding="1" align="center">
+			<tr valign="middle"><td width="100%" height="15" bgcolor="#f27b34">
+				<div style="padding: 4px">
+				<font color="#FFFFFF">
+                      		<b>
+				<font face="Verdana, Arial, Helvetica, sans-serif" size="1">We welcome your feedbacks and suggestions over this tool.
+                        	</font>
+				</b>
+                    		</font>
+				</div>
+			</td></tr>
+			<tr><td bgcolor="#f27b34">
+				<table width="100%" border="0" cellspacing="0" cellpadding="1" height="100">
+                    		<tr bgcolor="#FFFFFF" valign="top">
+                      		<td>
+				<iframe src="feedback.htm" style="width: 500px; height: 220px;" frameborder="0" scrolling="no"></iframe>
+				</td>
+				</tr>
+				</table>
+			</td></tr>
+		</table>
+	</div>
         <xsl:for-each select="section">
           <div style="float: left">
-            <table border="0" cellspacing="0" cellpadding="2" align="center" height="200">
+            <table border="0" cellspacing="0" cellpadding="1" align="center" height="120">
               <tr valign="middle">
-                <td width="200" height="20">
+                <td width="100%" height="15">
                   <xsl:attribute name="bgcolor">
                     <xsl:value-of select="@color" />
                   </xsl:attribute>
-                  <div style="padding-left: 20px">
+                  <div style="padding-left: 5px">
                     <font color="#FFFFFF">
                       <b>
-                        <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                        <font face="Verdana, Arial, Helvetica, sans-serif" size="1">
                           <xsl:value-of select="header/."/>
                         </font>
                       </b>
@@ -40,14 +63,14 @@
                 </td>
               </tr>
               <tr valign="top">
-                <td width="200">
+                <td width="100%">
                   <xsl:attribute name="bgcolor">
                     <xsl:value-of select="@color" />
                   </xsl:attribute>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="3" height="180">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="1" height="100">
                     <tr bgcolor="#FFFFFF" valign="top">
                       <td>
-			<font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+			<font face="Verdana, Arial, Helvetica, sans-serif" size="1">
                         <ul>
                           <xsl:for-each select="content/item">
                             <li>
@@ -80,7 +103,7 @@
               </tr>
             </table>
           </div>
-          <div style="float: left; width: 5px;"></div>
+          <div style="float: left; width: 2px;"></div>
         </xsl:for-each>
       </div>
   	</body>
