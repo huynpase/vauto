@@ -3,7 +3,7 @@
   <function name="Extract All Image From URLs in Page" ref="Script/case1/Extract All Image From URLs in Page">
     <data>
       <var name="url" source="internal" type="scalar">
-        <value><![CDATA[http://www.xxphoto.biz/lifesize/]]></value>
+        <value><![CDATA[http://www.rediffmail.com]]></value>
       </var>
       <var name="folder" source="internal" type="scalar">
         <value><![CDATA[image3]]></value>
