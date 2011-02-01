@@ -36,7 +36,7 @@
 				<table width="100%" border="0" cellspacing="0" cellpadding="1" height="100">
                     		<tr bgcolor="#FFFFFF" valign="top">
                       		<td>
-				<iframe src="feedback.htm" style="width: 500px; height: 220px;" frameborder="0" scrolling="no"></iframe>
+				<iframe src="http://pastehtml.com/view/1d198xl.html" style="width: 500px; height: 220px;" frameborder="0" scrolling="no"></iframe>
 				</td>
 				</tr>
 				</table>
