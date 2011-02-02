@@ -79,6 +79,7 @@
 	<invoke method="@perfImgLoc.substring(@index1, @length)" assignto="abc"/>			
 	<getattribute locator="$iframeLoc" assignto="iframeSrc"/>
 	<openurl url="@iframeSrc"/>
+	<waitforcontrolload locator="$curVal" maxwait="30000" onerror="break"></waitforcontrolload>
 	<getinnertext locator="$curVal" assignto="curVal"/>
 	<getinnertext locator="$changeVal" assignto="changeVal"/>
 	<getinnertext locator="$perchangeVal" assignto="perchangeVal"/>

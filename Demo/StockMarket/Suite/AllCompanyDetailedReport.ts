@@ -9,7 +9,7 @@
         <value><![CDATA[update]]></value>
       </var>
       <var name="dataDestination" source="text" type="datatable">
-        <param name="path">parse(concat(__currentpath,/CompanyDetailedReport.txt))</param>
+        <param name="path">parse(concat(__currentpath,/CompanyDetailedReport_{DATETIMESTAMP}.txt))</param>
         <param name="rowseperationchar">parse(__newline)</param>
         <param name="colseperationchar">parse(__tab)</param>
         <value><![CDATA[]]></value>

@@ -142,6 +142,8 @@ namespace Vibz.HTMLExtractor
         void wb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             //Ref: http://www.codeproject.com/KB/aspnet/WebBrowser.aspx
+            if (wb.ReadyState != WebBrowserReadyState.Complete)
+                return;
             Log("Document load completed");
             HtmlDocument doc = ((WebBrowser)sender).Document;
 
@@ -153,7 +155,7 @@ namespace Vibz.HTMLExtractor
 
             _readyState = WebBrowserReadyState.Complete;
 
-            ProcessPage();
+                ProcessPage();
         }
         void ProcessPage()
         {
@@ -479,7 +481,7 @@ namespace Vibz.HTMLExtractor
             do
             {
                 Application.DoEvents();
-                Log("Status - " + _readyState.ToString());
+                Log("Waiting: Status - " + _readyState.ToString());
                 if (_readyState == WebBrowserReadyState.Complete)
                 {
                     isTimeOut = false;
@@ -496,7 +498,7 @@ namespace Vibz.HTMLExtractor
         }
         public void WaitForControlLoad(string locator, int maxWait)
         {
-            Log("WaitForControlLoad begin");
+            Log("WaitForControlLoad '" + locator + "' begin.");
             DateTime dtStart = DateTime.Now;
             bool isTimeOut = true;
             do
@@ -511,7 +513,7 @@ namespace Vibz.HTMLExtractor
                 }
                 System.Threading.Thread.Sleep(SleepTime);
             } while (((TimeSpan)DateTime.Now.Subtract(dtStart)).TotalMilliseconds < maxWait);
-            Log("WaitForControlLoad end");
+            Log("WaitForControlLoad '" + locator + "' end.");
             if (isTimeOut)
                 throw new Exception("Time out occured before control '" + locator + "' is loaded.");
         }
