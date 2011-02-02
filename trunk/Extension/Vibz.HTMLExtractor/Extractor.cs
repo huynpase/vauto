@@ -134,7 +134,6 @@ namespace Vibz.HTMLExtractor
         delegate WBrowser SetDocumentDelegate();
         WBrowser GetDocument()
         {
-            Log("GetDocument");
             if (_webControl == null || _webControl.IsDisposed)
             {
                 _webControl = new WBrowser();

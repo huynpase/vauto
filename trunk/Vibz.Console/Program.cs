@@ -34,6 +34,7 @@ namespace Vibz.Console
         static bool _firstTimeExecution = true;
         static object _taskLock = new object();
         delegate void TaskDelegate(object param);
+        static ITask _task;
         class Abbreviation
         {
             public const string FilePath = "f";
@@ -141,10 +142,10 @@ namespace Vibz.Console
                     SuiteElement element = prj.CreateSuite(new FileInfo(path));
                     element.Load();
 
-                    Compiler cpl = new Compiler();
+                    _task = new Compiler();
 
                     Thread taskThread = new Thread(new ParameterizedThreadStart(ExecuteInThread));
-                    TaskDelegate tDelegate = new TaskDelegate(cpl.Process);
+                    TaskDelegate tDelegate = new TaskDelegate(_task.Process);
 
                     if (!Directory.Exists(prj.BuildLocation))
                         Vibz.Helper.IO.CreateFolderPath(new DirectoryInfo(prj.BuildLocation));
@@ -162,15 +163,16 @@ namespace Vibz.Console
                 {
                     System.Console.WriteLine("Build Path: " + path + ".");
 
-                    Executer executer = new Executer();
+                    _task = new Executer();
                     Thread taskThread = new Thread(new ParameterizedThreadStart(ExecuteInThread));
-                    TaskDelegate tDelegate = new TaskDelegate(executer.Process);
+                    TaskDelegate tDelegate = new TaskDelegate(_task.Process);
 
                     object arg = new object[] { path };
 
                     taskThread.SetApartmentState(ApartmentState.STA);
                     taskThread.Start(new object[] { tDelegate, arg, "Execution" });
 
+                    taskThread.Join();
                 }
             }
             catch (Exception exc)
@@ -204,7 +206,7 @@ namespace Vibz.Console
             }
             finally
             {
-                // System.Console.Read();
+                System.Console.WriteLine(_task.State.ToString() + ": " + _task.Message);
             }
         }
         static Project LoadProject(string path)

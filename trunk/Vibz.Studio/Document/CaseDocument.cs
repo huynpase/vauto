@@ -139,7 +139,7 @@ namespace Vibz.Studio.Document
             _cMenu.PreviewKeyDown += new PreviewKeyDownEventHandler(_cMenu_PreviewKeyDown);
             _cMenu.AutoSize = false;
             _cMenu.ShowCheckMargin = false;
-            _cMenu.MaximumSize = new Size(100, 100);
+            _cMenu.MaximumSize = new Size(200, 100);
             _cMenu.ShowItemToolTips = true;
             _cMenu.AutoClose = true;
             _cMenu.Show(RichTextArea, p);

@@ -45,6 +45,7 @@ namespace Vibz.Contract.Data.Source
 
             if (!File.Exists(_filePath))
             {
+                _filePath = Vibz.Helper.IO.CreateFolderPath(_filePath, Vibz.Helper.IOType.File);
                 FileStream fs = File.Create(_filePath);
                 fs.Close();
             }

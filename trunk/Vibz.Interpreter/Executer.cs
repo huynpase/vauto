@@ -61,7 +61,8 @@ namespace Vibz.Interpreter
                 string filePath = ((object[])param).GetValue(0).ToString();
                 
                 int waitInterval = 0;
-                int.TryParse(((object[])param).GetValue(1).ToString(), out waitInterval);
+                if (((object[])param).Length > 1)
+                    int.TryParse(((object[])param).GetValue(1).ToString(), out waitInterval);
 
                 if (!System.IO.File.Exists(filePath))
                     throw new Exception("Invalid path '" + filePath + "'.");
