@@ -27,7 +27,7 @@ using Vibz.Solution.Element;
 using Vibz.Contract.Attribute;
 using Vibz.Studio.Document.XDoc;
 using System.Runtime.InteropServices;
-
+using System.Collections;
 namespace Vibz.Studio.Document
 {
     public delegate void DragEvent(object sender, DragEventArgs e);
@@ -98,14 +98,30 @@ namespace Vibz.Studio.Document
         {
             return rtbTextArea.GetCharIndexFromPosition(p);
         }
-        public int GetLineFromCharIndex(int index)
+        public int GetLineFromCharIndex(int index, out int lineStartPosition)
         {
-            return rtbTextArea.GetLineFromCharIndex(index);
+            string[] lines = rtbTextArea.Text.Split(new string[] { "\n" }, StringSplitOptions.None);
+            int lineIndex = 0;
+            lineStartPosition = 0;
+            IEnumerator linesEnum = lines.GetEnumerator();
+            while (( linesEnum.MoveNext() ) && ( linesEnum.Current != null ))
+            {
+                lineStartPosition += ((string)linesEnum.Current).Length + 1;
+                if (lineStartPosition > index)
+                {
+                    lineStartPosition -= ((string)linesEnum.Current).Length + 1;
+                    break;
+                }
+                lineIndex++;
+            }
+
+            return lineIndex;
         }
         public int GetLineIndexAtPoint(Point p)
         {
             Point pt = rtbTextArea.PointToClient(p);
-            return rtbTextArea.GetLineFromCharIndex(rtbTextArea.GetCharIndexFromPosition(pt));
+            int linePos = 0;
+            return GetLineFromCharIndex(rtbTextArea.GetCharIndexFromPosition(pt), out linePos);
         }
         public int GetFirstCharIndexFromLine(int lineNumber)
         {
@@ -226,8 +242,10 @@ namespace Vibz.Studio.Document
             //return;
             int line, col, index;
             index = rtbTextArea.SelectionStart;
-            line = rtbTextArea.GetLineFromCharIndex(index);
-            col = index - SendMessage(rtbTextArea.Handle, EM_LINEINDEX, -1, 0);
+            int linePos = 0;
+            line = GetLineFromCharIndex(index, out linePos);
+            //col = index - SendMessage(rtbTextArea.Handle, EM_LINEINDEX, -1, 0);
+            col = index - linePos;
             lblPosition.Text = "Ln " + (++line).ToString() + ", Ch " + (++col).ToString();
         }
         void ProcessEndCharacter(Context context, ref KeyPressEventArgs e)
@@ -518,9 +536,14 @@ namespace Vibz.Studio.Document
         {
             get
             {
-                return rtbTextArea.Lines[rtbTextArea.GetLineFromCharIndex(rtbTextArea.SelectionStart)];
+                int linePos = 0;
+                int lineNumber = GetLineFromCharIndex(rtbTextArea.SelectionStart, out linePos);
+                if (rtbTextArea.Lines.Length <= lineNumber)
+                    lineNumber = rtbTextArea.Lines.Length - 1;
+                return rtbTextArea.Lines[lineNumber];
             }
         }
+        
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
 

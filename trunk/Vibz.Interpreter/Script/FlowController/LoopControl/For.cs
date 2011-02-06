@@ -67,7 +67,7 @@ namespace Vibz.Interpreter.Script.FlowController.LoopControl
             int cnt = Vibz.Helper.Math.TryGetInteger(vList.Evaluate(Count), 0);
             for (int i = 0; i < cnt; i++)
             {
-                vList.DataList.Update(new Variable("index", new Vibz.Contract.Data.Text(i.ToString())));
+                vList.DataList.Update(new Var("index", new Vibz.Contract.Data.Text(i.ToString())));
                 Body.Execute(vList);
                 _progress.Add(Body.InfoEnd);
             }

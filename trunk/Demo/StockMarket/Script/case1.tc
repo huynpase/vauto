@@ -1,89 +1,253 @@
 <section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <include ref="Vibz.IO"/>
   <include ref="Vibz.Web"/>
+  <include ref="Vibz.Desktop"/>
   <function name="RecordDayData">
     <include id="case1.id"></include>
     <data>
-	<var name="url"></var>
-	<var name="dataDestination" type="datatable"></var>
+      <var name="url"></var>
+      <var name="dataDestination" type="datatable"></var>
     </data>
     <body>
-	<openurl url="@url"/>
-	<gettablecontent repeaterxpath="$repeaterXPath" columnxpathset="$columnXPathSet" xpathseperator="$xPathSeperator" assignto="data"/>
-	<export destination="@dataDestination" source="@data" mode="update" onerror="continue"/>
-    </body>
-  </function>
-  <function name="ProcessAllStocks">
-    <include id="case1.id"></include>
-    <data>
-	<var name="url"></var>
-	<var name="mode">insert</var>
-	<var name="dataDestination" type="datatable"></var>
-    </data>
-    <body>
-	<openurl url="@url" onerror="continue"/>
-	<gettablecontent repeaterxpath="$repeaterXPath" columnxpathset="$columnXPathSet" xpathseperator="$xPathSeperator" assignto="data" onerror="continue"/>
-	<define var="result" type="datatable"/>
-	<for count="@data.rowcount">
-        	      <body onerror="continue">
-		<call name="GetStockDetailedData">
-        			<data>
-			        	<var name="url">@data[@index][3]</var>
-			        	<var name="comp_name">@data[@index][0]</var>
-				<var name="result">@result</var>
-        			</data>
-      		</call>
-	        </body>
-      	</for>
-	<export destination="@dataDestination" source="@result" mode="@mode"/>
+      <openurl url="@url"/>
+      <gettablecontent repeaterxpath="$repeaterXPath" columnxpathset="$columnXPathSet" xpathseperator="$xPathSeperator" assignto="data"/>
+      <export destination="@dataDestination" source="@data" mode="update" onerror="continue"/>
     </body>
   </function>
   <function name="ProcessSourceStocks">
     <include id="case1.id"></include>
     <data>
-	<var name="url"></var>
-	<var name="stockSource" type="datatable"></var>
-	<var name="dataDestination" type="datatable"></var>
+      <var name="url"></var>
+      <var name="stockSource" type="datatable"></var>
+      <var name="dataDestination" type="datatable"></var>
     </data>
     <body>
-	<define var="result" type="datatable"/>
-	<for count="@stockSource.rowcount">
-        	<body>
-			<call name="GetStockDetailedData">
-        			<data>
-			        	<var name="url">parse(replace(replace(@url, {comp_name},@stockSource[@index][0] ), {comp_code},@stockSource[@index][1] ))</var>
-			        	<var name="comp_name">@stockSource[@index][0]</var>
-					<var name="result">@result</var>
-        			</data>
-      			</call>
-	        </body>
-      	</for>
-	<export destination="@dataDestination" source="@result" mode="update"/>
+      <define var="result" type="datatable"/>
+      <for count="@stockSource.rowcount">
+        <body>
+          <call name="GetStockDetailedData">
+            <data>
+              <var name="url">parse(replace(replace(@url, {comp_name},@stockSource[@index][0] ), {comp_code},@stockSource[@index][1] ))</var>
+              <var name="comp_name">@stockSource[@index][0]</var>
+              <var name="result">@result</var>
+            </data>
+          </call>
+        </body>
+      </for>
+      <export destination="@dataDestination" source="@result" mode="update"/>
     </body>
   </function>
   <function name="GetStockDetailedData">
     <include id="case1.id"></include>
     <data>
-	<var name="url"></var>
-	<var name="comp_name"></var>
-	<var name="result" type="datatable"></var>
+      <var name="url"></var>
+      <var name="comp_name"></var>
+      <var name="result" type="datatable"></var>
     </data>
     <body>
-	<openurl url="@url"/>
-	<set var="comp_name" value="@comp_name"/>
-	<getattribute locator="$perfImgLoc" assignto="perfImgLoc"/>
-	<invoke assignto="index1" method="@perfImgLoc.lastindexof(/)"/>
-	<set var="index1" value="parse(sum(@index1,1))"/>
-	<invoke assignto="index2" method="@perfImgLoc.lastindexof(.)"/>
-	<set var="length" value="parse(substract(@index2,@index1))"/>
-	<invoke method="@perfImgLoc.substring(@index1, @length)" assignto="abc"/>			
-	<getattribute locator="$iframeLoc" assignto="iframeSrc"/>
-	<openurl url="@iframeSrc"/>
-	<waitforcontrolload locator="$curVal" maxwait="30000" onerror="break"></waitforcontrolload>
-	<getinnertext locator="$curVal" assignto="curVal"/>
-	<getinnertext locator="$changeVal" assignto="changeVal"/>
-	<getinnertext locator="$perchangeVal" assignto="perchangeVal"/>
-	<invoke method="@result.AddRow(@comp_name,@curVal, @changeVal,@perchangeVal , @abc)"/>
+      <openurl url="@url"/>
+      <set var="comp_name" value="@comp_name"/>
+      <getattribute locator="$perfImgLoc" assignto="perfImgLoc"/>
+      <invoke assignto="index1" method="@perfImgLoc.lastindexof(/)"/>
+      <set var="index1" value="parse(sum(@index1,1))"/>
+      <invoke assignto="index2" method="@perfImgLoc.lastindexof(.)"/>
+      <set var="length" value="parse(substract(@index2,@index1))"/>
+      <invoke method="@perfImgLoc.substring(@index1, @length)" assignto="abc"/>
+      <getattribute locator="$iframeLoc" assignto="iframeSrc"/>
+      <openurl url="@iframeSrc"/>
+      <waitforcontrolload locator="$curVal" maxwait="30000" onerror="break"></waitforcontrolload>
+      <getinnertext locator="$curVal" assignto="curVal"/>
+      <getinnertext locator="$changeVal" assignto="changeVal"/>
+      <getinnertext locator="$perchangeVal" assignto="perchangeVal"/>
+      <invoke method="@result.AddRow(@comp_name,@curVal, @changeVal,@perchangeVal , @abc)"/>
+    </body>
+  </function>
+  <function name="ProcessStocksListedInUrl">
+    <include id="case1.id"></include>
+    <data>
+      <var name="url"></var>
+      <var name="mode">insert</var>
+      <var name="dataDestination" type="datatable"></var>
+    </data>
+    <body>
+      <openurl url="@url" onerror="continue"/>
+      <gettablecontent repeaterxpath="$repeaterXPath" columnxpathset="$columnXPathSet" xpathseperator="$xPathSeperator" assignto="data" onerror="continue"/>
+      <define var="result" type="datatable"/>
+      <for count="@data.rowcount">
+        <body onerror="continue">
+          <call name="GetStockDetailedData">
+            <data>
+              <var name="url">@data[@index][3]</var>
+              <var name="comp_name">@data[@index][0]</var>
+              <var name="result">@result</var>
+            </data>
+          </call>
+        </body>
+      </for>
+      <export destination="@dataDestination" source="@result" mode="@mode"/>
+    </body>
+  </function>
+  <function name="Rediff_ProcessAllStocks">
+    <include id="case1.id"></include>
+    <data>
+      <var name="dataDestination" type="datatable"></var>
+    </data>
+    <body>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groupa]]></var>
+          <var name="mode">update</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groupb]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groups]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groupt]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groupts]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groupz]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groupa]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groupb]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groups]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groupt]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groupts]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groupz]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="AlertHotStocks">
+        <data>
+          <var name="dataSource">@dataDestination</var>
+          <var name="dataDestination">parse(concat(__currentpath,/StockData/HotStock.txt))</var>
+        </data>
+      </call>
+    </body>
+  </function> 
+  <function name="AlertHotStocks">
+    <include id="case1.id"></include>
+    <data>
+      <var name="dataSource" type="datatable"></var>
+      <var name="dataDestination" type="keyvalueset"></var>
+    </data>
+    <body>
+	<define var="hotStock" type="keyvalueset"></define>
+	<define var="message" type="scalar"></define>
+	<for count="@dataSource.rowcount">
+        	     <body>
+        		<set var="rowindex" value="@index"></set>
+        		<evaluate expression="@dataSource[@rowindex][4]" assignto="stockGrade"></evaluate>
+		<if>
+		       <case>
+			<condition>
+				<assertbool expression="#@stockGrade &gt; 60"></assertbool>
+			</condition>
+			<body>
+				<evaluate expression="@dataSource[@rowindex][0]" assignto="compName"></evaluate>
+				<set var="message" value="parse(concat(@message, __newline,@compName, __space,:,__space, @stockGrade))"></set>
+				<invoke method="@hotStock.add(@compName, @stockGrade)"></invoke>
+			</body>	
+		      </case>
+		</if>
+	     </body>
+      	</for>
+      	<if>
+      		<case>
+      		      <condition>
+	      		<assertbool expression="#@hotStock.length &gt; 0"></assertbool>
+      		      </condition>
+      		      <body>
+      			<export destination="@dataDestination" source="@hotStock" mode="update" onerror="continue"/>
+      		      </body>
+      		</case>
+      		<else>
+      			<body>
+      				<set var="message" value="No Hot stock found"></set>
+      			</body>
+      		</else>
+      	</if>
+	<textalert height="300" width="200" message="@message" display="fadecrawlin" direction="toptobottom" position="center" exit="autoclose" duration="10000"/>
+    </body>
+  </function>
+  <function name="AlertLatestHotStocks">
+    <include id="case1.id"></include>
+    <data>
+      <var name="directory" type="scalar"></var>
+      <var name="dataDestination" type="keyvalueset"></var>
+    </data>
+    <body>
+      <getlatestfileindirectory directory="@directory" assignto="dataSource" pattern="CompanyDetailedReport*txt"></getlatestfileindirectory>
+      <call name="AlertHotStocks">
+        <data>
+          <var name="dataSource" source="text" type="datatable">
+        	<param name="path">@dataSource</param>
+        	<param name="rowseperationchar">parse(__newline)</param>
+        	<param name="colseperationchar">parse(__tab)</param>
+          </var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
     </body>
   </function>
 </section>

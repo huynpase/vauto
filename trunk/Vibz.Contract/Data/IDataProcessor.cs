@@ -22,9 +22,10 @@ namespace Vibz.Contract.Data
 {
     public interface IDataProcessor
     {
-        void Export(Variable source, Variable destination, DataExportMode mode);
-        string Evaluate(Variable var, params object[] args);
-        string Evaluate(Variable var, string property);
-        string Evaluate(Variable var, string method, params object[] args);
+        void Export(Var source, Var destination, DataExportMode mode);
+        string Evaluate(Var var, params object[] args);
+        string Evaluate(Var var, string property);
+        string Evaluate(Var var, string method, params object[] args);
+        IData LoadData(Var var);
     }
 }

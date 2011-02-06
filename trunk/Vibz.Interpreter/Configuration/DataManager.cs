@@ -65,7 +65,7 @@ namespace Vibz.Interpreter.Configuration
             }
             set { _dataTemplate = value; }
         }
-        public static void Export(Variable source, Variable destination, DataExportMode mode)
+        public static void Export(Var source, Var destination, DataExportMode mode)
         {
             if (destination == null)
                 throw new Exception("Destination is invalid.");
@@ -105,7 +105,7 @@ namespace Vibz.Interpreter.Configuration
                 }
             }
         }
-        public static IData GetData(Variable var)
+        public static IData GetData(Var var)
         {
             if (var.Source.ToLower() == SourceType.Internal.ToString().ToLower())
             {

@@ -24,7 +24,7 @@ using Vibz.Contract;
 
 namespace Vibz.Contract.Data
 {
-    public class Variable : ICompile
+    public class Var : InstructionBase, IAction, ICompile
     {
         public const string nNodeName = "var";
         public const string nName = "name";
@@ -32,10 +32,10 @@ namespace Vibz.Contract.Data
         public const string nType = "type";
         public const string nValue = "value";
 
-        [XmlAttribute(Variable.nName)]
+        [XmlAttribute(Var.nName)]
         public string Name;
         string _source = null;
-        [XmlAttribute(Variable.nSource)]
+        [XmlAttribute(Var.nSource)]
         public string Source
         {
             get {
@@ -52,7 +52,7 @@ namespace Vibz.Contract.Data
             set { _source = value; }
         }
         string _type = null;
-        [XmlAttribute(Variable.nType)]
+        [XmlAttribute(Var.nType)]
         public string Type
         {
             get { 
@@ -70,7 +70,7 @@ namespace Vibz.Contract.Data
 
         [XmlIgnore()]
         public string InnerText = "";
-        [XmlElement(Variable.nValue)]
+        [XmlElement(Var.nValue)]
         public XmlCDataSection InnerTextNode
         {
             get
@@ -91,19 +91,19 @@ namespace Vibz.Contract.Data
         [XmlElement(Parameter.nNodeName)]
         public ParameterSet ParamList = new ParameterSet();
         // This constructor should not be used.
-        public Variable() { }
-        public Variable(string name, IData data) 
+        public Var() { }
+        public Var(string name, IData data) 
         {
             Name = name;
             Data = data;
         }
-        public Variable(string fileName) { _filePath = fileName; }
-        public Variable(string fileName, string name, IData data, string innerText)
+        public Var(string fileName) { _filePath = fileName; }
+        public Var(string fileName, string name, IData data, string innerText)
             : this(fileName, name, data.Source, data.Type, data)
         {
             InnerText = innerText;
         }
-        public Variable(string fileName, string name, string source, string type, IData data)
+        public Var(string fileName, string name, string source, string type, IData data)
         {
             Name = name;
             Data = data;
@@ -111,22 +111,22 @@ namespace Vibz.Contract.Data
             Type = type;
             _filePath = fileName;
         }
-        public Variable(string fileName, XmlNode node)
+        public Var(string fileName, XmlNode node)
         {
             LoadTypeInstance(node);
             _filePath = fileName;
         }
         void LoadTypeInstance(XmlNode node)
         {
-            if (node.Attributes[Variable.nName] == null)
+            if (node.Attributes[Var.nName] == null)
                 throw new Exception("Data variables must define its name.");
-            Name = node.Attributes[Variable.nName].Value;
+            Name = node.Attributes[Var.nName].Value;
 
-            if (node.Attributes[Variable.nSource] != null)
-                Source = node.Attributes[Variable.nSource].Value;
+            if (node.Attributes[Var.nSource] != null)
+                Source = node.Attributes[Var.nSource].Value;
 
-            if (node.Attributes[Variable.nType] != null)
-                Type = node.Attributes[Variable.nType].Value;
+            if (node.Attributes[Var.nType] != null)
+                Type = node.Attributes[Var.nType].Value;
 
             XmlNodeList xnl = node.SelectNodes(Parameter.nNodeName);
             if (xnl != null && xnl.Count != 0)
@@ -142,11 +142,15 @@ namespace Vibz.Contract.Data
             else
                 InnerText = node.InnerText;
         }
-        public Variable Clone
+        public void Execute(Vibz.Contract.Data.DataHandler vList)
+        {
+            vList.DataList.Update(Name, vList.DataProcessor.LoadData(this));
+        }
+        public Var Clone
         {
             get
             {
-                return new Variable(_filePath, Name, Type, Source, Data);
+                return new Var(_filePath, Name, Type, Source, Data);
             }
         }
         public override string ToString()
@@ -180,7 +184,7 @@ namespace Vibz.Contract.Data
             if (innerXml.Trim() == "")
             {
                 if (InnerText != null || InnerText != "")
-                    retValue += "<" + Variable.nValue + "><![CDATA[" + InnerText + "]]></" + Variable.nValue + ">";
+                    retValue += "<" + Var.nValue + "><![CDATA[" + InnerText + "]]></" + Var.nValue + ">";
             }
             else
                 retValue += innerXml;

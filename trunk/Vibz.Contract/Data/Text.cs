@@ -49,7 +49,7 @@ namespace Vibz.Contract.Data
                 case "length":
                     return this.Value.Length.ToString();
                 default:
-                    throw new Exception("Invalid property '" + property + "' for array data type.");
+                    throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
             }
         }
         public virtual string Evaluate(string method, params object[] args)

@@ -1,12 +1,12 @@
 <section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <function name="OnTestcaseFail">
     <body>
-      <snapshot filepath="@{reportpath}/img/imgFail_{DATETIMESTAMP}.jpg" />
+      <snapshot filepath="@{reportpath}/img/imgFail_{DATETIMESTAMP}.jpg"/>
     </body>
   </function>
   <function name="OnTestcaseComplete">
     <body>
-      <snapshot filepath="@{reportpath}/img/imgComplete_{DATETIMESTAMP}.jpg" />
+      <snapshot filepath="@{reportpath}/img/imgComplete_{DATETIMESTAMP}.jpg"/>
     </body>
   </function>
   <function name="OnInstructionFail">

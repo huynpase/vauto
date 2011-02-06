@@ -149,8 +149,11 @@ namespace Vibz.IO.Window
         }
         void AutoClose()
         {
-            _t.Stop();
-            this.Close();
+            if (!this.DesktopBounds.Contains(Cursor.Position))
+            {
+                _t.Stop();
+                this.Close();
+            }
         }
         public TextAlertForm()
             : this("No message...", DisplayMode.FadeIn, ExitMode.AutoClose, Direction.RightToLeft, Position.BottomRight, 10000)

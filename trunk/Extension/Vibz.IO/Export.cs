@@ -48,7 +48,7 @@ namespace Vibz.IO
         }
         public void Execute(Vibz.Contract.Data.DataHandler vList)
         {
-            Variable var = null;
+            Var var = null;
             if (Source.StartsWith("@"))
             {
                 string key = Source.Substring(1);
@@ -56,9 +56,9 @@ namespace Vibz.IO
                     var = vList.DataList.Get(key);
             }
             if(var==null)
-                var = new Variable("__data__", new Text(vList.Evaluate(Source)));
+                var = new Var("__data__", new Text(vList.Evaluate(Source)));
 
-            Variable data = null;
+            Var data = null;
             if (Destination.StartsWith("@"))
             {
                 string key = Destination.Substring(1);

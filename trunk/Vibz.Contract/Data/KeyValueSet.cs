@@ -74,7 +74,7 @@ namespace Vibz.Contract.Data
                     return this.Value.Count.ToString();
 
                 default:
-                    throw new Exception("Invalid property '" + property + "' for array data type.");
+                    throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
             }
         }
         public virtual string Evaluate(string method, params object[] args)
@@ -84,6 +84,12 @@ namespace Vibz.Contract.Data
 
             switch (method.ToLower())
             {
+                case "add":
+                    if (args.Length != 2)
+                        throw new Exception("Invalid number of arguments for 'keyvalueset.add'.");
+                    Add(args[0].ToString(), args[1].ToString());
+                    return "";
+                    break;
                 default:
                     throw new Exception("Invalid method '" + method + "' for keyvalueset data type.");
             }

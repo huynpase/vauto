@@ -93,5 +93,23 @@ namespace Vibz.Helper
                 CreateFolderPath(directory.Parent);
             directory.Create();
         }
+        public static FileInfo GetLastUpdatedFileInDirectory(DirectoryInfo directoryInfo, string pattern)
+        {
+            FileInfo[] files = (pattern == null || pattern == "" ? directoryInfo.GetFiles() : directoryInfo.GetFiles("*" + pattern + "*"));
+
+            FileInfo lastUpdatedFile = null;
+            DateTime lastUpdate = new DateTime(2000, 1, 1);
+
+            foreach (FileInfo file in files)
+            {
+                if (file.LastWriteTime > lastUpdate)
+                {
+                    lastUpdatedFile = file;
+                    lastUpdate = file.LastAccessTime;
+                }
+            }
+
+            return lastUpdatedFile;
+        }
     }
 }

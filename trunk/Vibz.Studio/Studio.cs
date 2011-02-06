@@ -753,8 +753,16 @@ namespace Vibz.Studio
                     while (Vibz.Contract.Log.LogQueue.Instance.Count > 0)
                     {
                         LogQueueElement ele = Vibz.Contract.Log.LogQueue.Instance.Dequeue();
+                        if (_currentTask.State == Vibz.TaskState.Complete)
+                        { 
+                            // flush data to text file and break.
+                            LogEvent(ele.Severity, ele.ThreadId + "\t" + ele.Message);
+                            continue;
+                        }
+                        if (ele.Message == null)
+                            return;
                         rtbLogSummary.SelectionFont = new Font("Arial", (float)8, FontStyle.Regular);
-
+                        
                         LogEvent(ele.Severity, ele.ThreadId + "\t" + ele.Message);
                         
                         lblStatus.Text = ele.Message.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];

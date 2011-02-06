@@ -40,6 +40,7 @@
     <Compile Include="..\..\Vibz\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Directory\GetLatestFileInDirectory.cs" />
     <Compile Include="Export.cs" />
     <Compile Include="Screen\SnapShot.cs" />
     <Compile Include="TextFile\Instruction\Action\ActionBase.cs" />

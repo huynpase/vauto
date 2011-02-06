@@ -58,6 +58,8 @@ namespace Vibz.Contract.Macro
                         if (((PropertyInfo)mi).CanWrite)
                         {
                             object pValue = ((PropertyInfo)mi).GetValue(inst, null);
+                            if (pValue == null)
+                                break;
                             if (pValue.ToString().StartsWith(par) && pValue.ToString().EndsWith(")"))
                             {
                                 string parseText = pValue.ToString().Substring(par.Length, pValue.ToString().LastIndexOf(')') - par.Length);
@@ -68,7 +70,8 @@ namespace Vibz.Contract.Macro
                     case MemberTypes.Field:
                         object fValue = ((FieldInfo)mi).GetValue(inst);
                         if (fValue == null)
-                            throw new Exception("Expected " + mi.Name + " not found.");
+                            break;
+                            //throw new Exception("Expected " + mi.Name + " not found.");
                         if (fValue.ToString().StartsWith(par) && fValue.ToString().EndsWith(")"))
                         {
                             string parseText = fValue.ToString().Substring(par.Length, fValue.ToString().LastIndexOf(')') - par.Length);
@@ -87,7 +90,7 @@ namespace Vibz.Contract.Macro
                 string parseText = macroText.Substring(par.Length, macroText.LastIndexOf(')') - par.Length);
                 return Evaluate(parseText);
             }
-            return macroText;
+            return _vList.Evaluate(macroText);
         }
         string Evaluate(string macroString)
         {

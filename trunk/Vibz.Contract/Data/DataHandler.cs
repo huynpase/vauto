@@ -17,6 +17,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -26,7 +27,7 @@ namespace Vibz.Contract.Data
     public class DataHandler
     {
         public DataHandler() { }
-        [XmlElement(Variable.nNodeName)]
+        [XmlElement(Var.nNodeName)]
         public DataCollection DataList = new DataCollection();
         IDataProcessor _dataProcessor = null;
         [XmlIgnore()]
@@ -39,14 +40,24 @@ namespace Vibz.Contract.Data
         {
             _dataProcessor = handler;
         }
+        public IData GetData(string name)
+        {
+            if (!name.StartsWith("@"))
+                return new Text(Evaluate(name));
+            string nameData = name.Substring(1);
+            if (this.DataList.ContainsData(nameData))
+                return this.DataList.Get(nameData).Data;
+            else
+                return new Text(Evaluate(name));
+        }
         public string Evaluate(string name)
         {
             try
             {
-                if (name.StartsWith("@"))
+                if (name.StartsWith("@")) // Variable
                 {
-                    string key = name.Substring(1);
-                    string[] key_index = key.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+                    string nameData = name.Substring(1);
+                    string[] key_index = nameData.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
                     if (key_index == null || key_index.Length == 0)
                         throw new Exception("Invalid data '" + name + "'");
 
@@ -56,7 +67,7 @@ namespace Vibz.Contract.Data
                         if (key_prop == null || key_prop.Length == 0)
                             throw new Exception("Invalid data '" + name + "'");
 
-                        key = key_prop.GetValue(0).ToString();
+                        string key = key_prop.GetValue(0).ToString();
 
                         if (!this.DataList.ContainsData(key))
                             return name;
@@ -76,10 +87,12 @@ namespace Vibz.Contract.Data
                         else
                         {
                             // Is a method
-                            if (!propOrMethod.Trim().EndsWith(")"))
+                            string[] key_method = nameData.Split(new char[] { '.' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                            string methodArg = key_method.GetValue(1).ToString();
+                            if (!methodArg.Trim().EndsWith(")"))
                                 return name;
-                            string method = propOrMethod.Substring(0, propOrMethod.IndexOf('('));
-                            string argString = propOrMethod.Substring(propOrMethod.IndexOf('(') + 1, propOrMethod.LastIndexOf(')') - propOrMethod.IndexOf('(') - 1);
+                            string method = methodArg.Substring(0, methodArg.IndexOf('('));
+                            string argString = methodArg.Substring(methodArg.IndexOf('(') + 1, methodArg.LastIndexOf(')') - methodArg.IndexOf('(') - 1);
                             string[] argset = argString.Split(new string[] { "," }, StringSplitOptions.None);
                             string[] newArgs = new string[argset.Length];
                             for (int i = 0; i < argset.Length; i++)
@@ -98,7 +111,7 @@ namespace Vibz.Contract.Data
 
                     }
 
-                    key = key_index.GetValue(0).ToString();
+                    nameData = key_index.GetValue(0).ToString();
                     object[] args = new object[key_index.Length - 1];
                     for (int i = 1; i < key_index.Length; i++)
                     {
@@ -115,7 +128,20 @@ namespace Vibz.Contract.Data
                         }
                         args.SetValue(param, i - 1);
                     }
-                    return DataProcessor.Evaluate(this.DataList.Get(key), args);
+                    return DataProcessor.Evaluate(this.DataList.Get(nameData), args);
+                }
+                else if (name.StartsWith("#")) // Evaluate Expression
+                {
+                    string key = name.Substring(1);
+                    if (key.Trim() != "")
+                    {
+                        string[] elements = key.Split(new char[] { '>', '<', '=', '+', '-', '*', '/', '%' }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (string element in elements)
+                        {
+                            key = key.Replace(element, Evaluate(element.Trim()));
+                        }
+                        return EvaluateExpression(key).ToString();
+                    }
                 }
                 return name;
             }
@@ -124,12 +150,21 @@ namespace Vibz.Contract.Data
                 throw new Exception("Error occured while evaluation of '" + name + "'. " + exc.Message);
             }
         }
+        double EvaluateExpression(string expression)
+        {
+            return (double)new System.Xml.XPath.XPathDocument
+            (new System.IO.StringReader("<r/>")).CreateNavigator().Evaluate
+            (string.Format("number({0})", new
+            System.Text.RegularExpressions.Regex(@"([\+\-\*])").Replace(expression, " ${1} ")
+            .Replace("/", " div ").Replace("%", " mod ")));
+        }
+        
         public static DataHandler Load(XmlNode node, string path, IDataProcessor handler)
         {
             DataHandler dh = new DataHandler(handler);
             if (node == null)
                 return dh;
-            XmlNodeList xnlVars = node.SelectNodes(Variable.nNodeName);
+            XmlNodeList xnlVars = node.SelectNodes(Var.nNodeName);
             if (xnlVars != null)
             {
                 foreach (XmlNode xnv in xnlVars)
@@ -137,7 +172,7 @@ namespace Vibz.Contract.Data
                     if (xnv.NodeType == XmlNodeType.Comment)
                         continue;
 
-                    Variable dm = new Variable(path, xnv);
+                    Var dm = new Var(path, xnv);
 
                     dh.DataList.Update(dm);
                 }

@@ -65,6 +65,8 @@ namespace Vibz.Interpreter.Script.FlowController
         {
             get
             {
+                if (XBody == null)
+                    throw new Exception("Expected 'Body' section is missing.");
                 if (_body == null)
                 {
                     _body = (Body)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XBody);

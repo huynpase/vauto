@@ -23,13 +23,13 @@ namespace Vibz.Interpreter.Data
 {
     public class DataProcessor : IDataProcessor
     {
-        Dictionary<Variable, IData> _typeCache;
+        Dictionary<string, IData> _typeCache;
 
         static DataProcessor _instance;
         static object _padLock = new object();
         private DataProcessor()
         {
-            _typeCache = new Dictionary<Variable, IData>();
+            _typeCache = new Dictionary<string, IData>();
         }
         public static void Reset()
         {
@@ -52,35 +52,73 @@ namespace Vibz.Interpreter.Data
                 return _instance;
             }
         }
-        public string Evaluate(Variable var, params object[] args)
+        public string Evaluate(Var var, params object[] args)
         {
             return GetData(var).Evaluate(args);
         }
-        public string Evaluate(Variable var, string property)
+        public string Evaluate(Var var, string property)
         {
             return GetData(var).Evaluate(property);        
         }
-        public string Evaluate(Variable var, string method, params object[] args)
+        public IData LoadData(Var var)
+        {
+            IData data = Vibz.Interpreter.Configuration.DataManager.GetData(var);
+            if (data == null)
+                throw new Exception("No handler for data " + var.Source + "|" + var.Type + "|" + var.Name + ".");
+            if (_typeCache.ContainsKey(var.Name))
+                _typeCache[var.Name] = data;
+            else
+                _typeCache.Add(var.Name, data);
+            return data;
+        }
+        public string Evaluate(Var var, string method, params object[] args)
         {
             return GetData(var).Evaluate(method, args);        
         }
-        public void Export(Variable source, Variable destination, DataExportMode mode)
+        public void Export(Var source, Var destination, DataExportMode mode)
         {
             Configuration.DataManager.Export(source, destination, mode);
         }
-        IData GetData(Variable var)
+        IData GetData(Var var)
         {
-            IData data = null;
-            if (_typeCache.ContainsKey(var))
-                data = _typeCache[var];
-            else
-            {
-                data = Configuration.DataManager.GetData(var);
-                if (data == null)
-                    throw new Exception("No handler for data " + var.Source + "|" + var.Type + "|" + var.Name + ".");
-                _typeCache.Add(var, data);
-            }
-            return data;
+            /// TODO:
+            /// It would be good to cache the data after loading
+            /// it for first time to avoid reloading the same external 
+            /// source data.
+            /// Data may get changed, or same data may get assigned to 
+            /// different data source. These thing should be considered 
+            /// before caching it.
+            return LoadData(var);
+
+            //IData data = null;
+            //if (var.Data != null)
+            //{
+            //    data = var.Data;
+            //    if (_typeCache.ContainsKey(var.Name))
+            //        _typeCache[var.Name] = data;
+            //    else
+            //        _typeCache.Add(var.Name, data);
+            //}
+            //else if (_typeCache.ContainsKey(var.Name))
+            //{
+            //    if (_typeCache[var.Name] != null)
+            //        data = _typeCache[var.Name];
+            //    else
+            //    {
+            //        data = Configuration.DataManager.GetData(var);
+            //        if (data == null)
+            //            throw new Exception("No handler for data " + var.Source + "|" + var.Type + "|" + var.Name + ".");
+            //        _typeCache[var.Name] = data;
+            //    }
+            //}
+            //else
+            //{
+            //    data = Configuration.DataManager.GetData(var);
+            //    if (data == null)
+            //        throw new Exception("No handler for data " + var.Source + "|" + var.Type + "|" + var.Name + ".");
+            //    _typeCache.Add(var.Name, data);
+            //}
+            //return data;
         }
     }
 }

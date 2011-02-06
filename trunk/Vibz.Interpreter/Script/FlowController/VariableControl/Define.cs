@@ -32,8 +32,10 @@ namespace Vibz.Interpreter.Script.FlowController.VariableControl
     public class Define : InstructionBase, IAction
     {
         [XmlAttribute("var")]
+        [AttributeInfo("Identity for the variable", true)]
         public string Variable;
         [XmlAttribute("type")]
+        [AttributeInfo("Datatype of the variable", typeof(Vibz.Contract.Data.DataType), true)]
         public string DataType;
         public Define()
         {
@@ -49,7 +51,7 @@ namespace Vibz.Interpreter.Script.FlowController.VariableControl
         public void Execute(Vibz.Contract.Data.DataHandler vList)
         {
             Vibz.Contract.Data.IData obj = Vibz.Contract.Data.DataHandler.DefineData(DataType);
-            vList.DataList.Update(new Variable(Variable, obj));
+            vList.DataList.Update(new Var(Variable, obj));
         }
     }
 }

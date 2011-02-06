@@ -79,9 +79,12 @@ namespace Vibz.Interpreter.Configuration
                 {
                     //
                     // Sequence does matter. 
-                    // Put the lowest leaf instruction prior to a container instruction.
+                    // Put the lowest leaf instruction prior to a branch / trunk instruction.
                     //
-                    _internalInstructions = new List<FunctionTypeInfo>();
+                    _internalInstructions = new Vibz.Contract.Attribute.CoreInfo();
+                    
+                    //_internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Contract.Data.Variable), typeof(IAction)));
+
                     _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Body), typeof(IAction)));
                     _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Condition), typeof(IAssert)));
                     _internalInstructions.Add(CreateFunctionInfo(typeof(Vibz.Interpreter.Script.FlowController.Else), typeof(IAction)));
