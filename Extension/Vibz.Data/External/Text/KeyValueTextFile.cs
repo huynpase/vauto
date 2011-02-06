@@ -27,7 +27,7 @@ namespace Vibz.Data.External.Text
     {
         const string ListSeperationCharacter = "listseperationchar";
         const string ItemSeperationCharacter = "itemseperationchar";
-        string _listSeperationChar = "\n";
+        string _listSeperationChar = Environment.NewLine;
         string _itemSeperationChar = "\t";
         TextFile _tFile;
 

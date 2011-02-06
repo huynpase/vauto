@@ -98,7 +98,7 @@ namespace Vibz.Solution.Element
             else
                 DataSet.DataList.Update(key, value);
         }
-        public void UpdateData(Variable data)
+        public void UpdateData(Var data)
         {
             if (!DataSet.DataList.ContainsData(data.Name))
                 throw new Exception("Function " + this.FullName + " has no data argument with name '" + data.Name + "'.");
@@ -171,7 +171,7 @@ namespace Vibz.Solution.Element
             if (xnData != null)
             {
                 DataHandler dh = DataHandler.Load(xnData, retValue.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
-                foreach (Variable dm in dh.DataList)
+                foreach (Var dm in dh.DataList)
                 {
                     retValue.DataSet.DataList.Update(dm);
                 }
@@ -185,7 +185,7 @@ namespace Vibz.Solution.Element
         {
             get {
                 Function fnc = this.OwnerProject.CreateFunction(new FileInfo(this.Path), this.Name);
-                foreach (Variable dm in this.DataSet.DataList)
+                foreach (Var dm in this.DataSet.DataList)
                 {
                     fnc.DataSet.DataList.Add(dm.Name, dm.Data, dm._filePath, dm.InnerText);
                 }
@@ -287,7 +287,7 @@ namespace Vibz.Solution.Element
             {
                 if (DataSet.DataList.ContainsData(text.Remove(0, 1)))
                 {
-                    Variable dm = DataSet.DataList.Get(text.Remove(0, 1));
+                    Var dm = DataSet.DataList.Get(text.Remove(0, 1));
                     if (
                         (dm.Source == null || dm.Source == "" || dm.Source.ToLower() == Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower()) &&
                         (dm.Type == null || dm.Type == "" || dm.Type.ToLower() == Vibz.Contract.Data.DataType.Scalar.ToString().ToLower())

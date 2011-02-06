@@ -137,7 +137,7 @@ namespace Vibz.Studio.Document
             switch (se.Type)
             {
                 case ElementType.Function:
-                    foreach (Variable dm in ((Function)se).DataSet.DataList)
+                    foreach (Var dm in ((Function)se).DataSet.DataList)
                     {
                         DataGridViewRow dgvRow = new DataGridViewRow();
 
@@ -147,7 +147,6 @@ namespace Vibz.Studio.Document
 
                         dgvCell = new DataGridViewTextBoxCell();
                         dgvCell.Value = dm;
-
                         dgvRow.Cells.Add(dgvCell);
 
                         if (!dm.IsInternal)
@@ -160,7 +159,7 @@ namespace Vibz.Studio.Document
                     if (dgvArguments.Rows.Count > 0)
                     {
                         dgvArguments.Rows[0].Selected = true;
-                        DisplayParameter(((Variable)dgvArguments.Rows[0].Cells[1].Value), true);
+                        DisplayParameter(((Var)dgvArguments.Rows[0].Cells[1].Value), true);
                     }
                     break;
                 case ElementType.Suite:
@@ -178,37 +177,42 @@ namespace Vibz.Studio.Document
         void ArgumentClicked(DataGridViewCellEventArgs e)
         {
             _isModified = true;
-            DisplayParameter((Variable)dgvArguments[e.ColumnIndex, e.RowIndex].Value, (e.ColumnIndex == 1));        
+            if (e.ColumnIndex != 0)
+                DisplayParameter((Var)dgvArguments[e.ColumnIndex, e.RowIndex].Value, (e.ColumnIndex == 1));
         }
-        void DisplayParameter(Variable dm, bool dodisplay)
+        void DisplayParameter(Var dm, bool dodisplay)
         {
-            dgvDataParameter.Rows.Clear();
-            if (dodisplay && !dm.IsInternal)
-            {
-                foreach (Parameter param in dm.ParamList)
-                {
-                    DataGridViewRow dgvRow = new DataGridViewRow();
-
-                    DataGridViewCell dgvCell = new DataGridViewTextBoxCell();
-                    dgvCell.Value = param.Name;
-                    dgvRow.Cells.Add(dgvCell);
-
-                    dgvCell = new DataGridViewTextBoxCell();
-                    dgvCell.Value = param.Value;
-
-                    dgvRow.Cells.Add(dgvCell);
-
-                    dgvDataParameter.Rows.Add(dgvRow);
-                }
-                pnlDataParameter.Visible = true;
-                dgvDataParameter.Visible = true;
-            }
-            else
+            try
             {
                 dgvDataParameter.Rows.Clear();
-                pnlDataParameter.Visible = false;
-                dgvDataParameter.Visible = false;
+                if (dodisplay && !dm.IsInternal)
+                {
+                    foreach (Parameter param in dm.ParamList)
+                    {
+                        DataGridViewRow dgvRow = new DataGridViewRow();
+
+                        DataGridViewCell dgvCell = new DataGridViewTextBoxCell();
+                        dgvCell.Value = param.Name;
+                        dgvRow.Cells.Add(dgvCell);
+
+                        dgvCell = new DataGridViewTextBoxCell();
+                        dgvCell.Value = param.Value;
+
+                        dgvRow.Cells.Add(dgvCell);
+
+                        dgvDataParameter.Rows.Add(dgvRow);
+                    }
+                    pnlDataParameter.Visible = true;
+                    dgvDataParameter.Visible = true;
+                }
+                else
+                {
+                    dgvDataParameter.Rows.Clear();
+                    pnlDataParameter.Visible = false;
+                    dgvDataParameter.Visible = false;
+                }
             }
+            catch (Exception exc) { }
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -278,7 +282,8 @@ namespace Vibz.Studio.Document
         }
         private void dgvArguments_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            dgvArguments.CurrentCell.Value = dgvArguments.CurrentCell.Tag;
+            if (dgvArguments.CurrentCell.ColumnIndex != 0)
+                dgvArguments.CurrentCell.Value = dgvArguments.CurrentCell.Tag;
         }
         void UpdateSuiteElement()
         {
@@ -297,33 +302,41 @@ namespace Vibz.Studio.Document
         }
         void UpdateCurrentProperty()
         {
-            dgvArguments.CurrentCell.Value = GetProperty(dgvArguments.CurrentRow);
-            dgvArguments.CurrentCell.Tag = dgvArguments.CurrentCell.Value;
+            if (dgvArguments.CurrentCell.ColumnIndex != 0)
+            {
+                dgvArguments.CurrentCell.Value = GetProperty(dgvArguments.CurrentRow);
+                dgvArguments.CurrentCell.Tag = dgvArguments.CurrentCell.Value;
+            }
         }
-        Variable GetProperty(DataGridViewRow row)
+        Var GetProperty(DataGridViewRow row)
         {
             Function func = (Function)tvRight.SelectedNode.Tag;
+            Var dm = null;
             if (dgvArguments.CurrentCell == row.Cells[1])
             {
-                Variable dm = (Variable)dgvArguments.CurrentCell.Value;
+                dm = (Var)dgvArguments.CurrentCell.Value;
                 if (dm.IsInternal)
                     dm.InnerText = dgvArguments.CurrentCell.EditedFormattedValue.ToString();
                 else
                     dm = UpdateVariable(dm);
-                func.UpdateData(dm);
-                return dm;
             }
             else
-                return (Variable)row.Cells[1].Value;
+            {
+                return (Var)row.Cells[1].Value;
+            }
+            func.UpdateData(dm);
+            return dm;
         }
 
-        Variable UpdateVariable(Variable var)
+        Var UpdateVariable(Var var)
         {
             foreach (DataGridViewRow row in dgvDataParameter.Rows)
             {
                 if (dgvDataParameter.CurrentCell == row.Cells[1])
                     row.Cells[1].Value = dgvDataParameter.CurrentCell.EditedFormattedValue;
-                var.ParamList.GetParameter(row.Cells[0].Value.ToString()).Value = row.Cells[1].Value.ToString();
+                Parameter param = var.ParamList.GetParameter(row.Cells[0].Value.ToString());
+                if (param != null)
+                    param.Value = row.Cells[1].Value.ToString();
             }
             return var;
         }

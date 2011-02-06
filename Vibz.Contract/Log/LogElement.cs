@@ -90,7 +90,8 @@ namespace Vibz.Contract.Log
             {
                 foreach (LogElement ele in this.InnerLog)
                 {
-                    retValue += "\r\n" + ele.ToString();
+                    if (ele != null)
+                        retValue += "\r\n" + ele.ToString();
                 }
             }
             return retValue;

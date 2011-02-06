@@ -34,6 +34,7 @@ namespace Vibz.IO.Window
     {
         string _message;
         [XmlAttribute("message")]
+        [AttributeInfo("Message to be shown on the Message box.", false)]
         public string Message
         {
             get { return _message; }
@@ -41,13 +42,31 @@ namespace Vibz.IO.Window
         }
         int _duration;
         [XmlAttribute("duration")]
+        [AttributeInfo("Duration for which the Message box should be displayed.", false)]
         public int Duration
         {
             get { return _duration; }
             set { _duration = value; }
         }
+        int _width = 240;
+        [XmlAttribute("width")]
+        [AttributeInfo("Width of the Message box.",false)]
+        public int Width
+        {
+            get { return _width; }
+            set { _width = value; }
+        }
+        int _height = 120;
+        [XmlAttribute("height")]
+        [AttributeInfo("Height of the Message box.", false)]
+        public int Height
+        {
+            get { return _height; }
+            set { _height = value; }
+        }
         ExitMode _emode = ExitMode.AutoClose;
         [XmlAttribute("exit")]
+        [AttributeInfo("Mode of exiting the message box.", typeof(ExitMode), false)]
         public string EMode
         {
             get { return _emode.ToString().ToLower(); }
@@ -67,6 +86,7 @@ namespace Vibz.IO.Window
         }
         DisplayMode _dmode = DisplayMode.FadeIn;
         [XmlAttribute("display")]
+        [AttributeInfo("Mode of entry of the message box.", typeof(DisplayMode), false)]
         public string DMode
         {
             get { return _dmode.ToString().ToLower(); }
@@ -93,6 +113,7 @@ namespace Vibz.IO.Window
         }
         Direction _direction = Direction.RightToLeft;
         [XmlAttribute("direction")]
+        [AttributeInfo("Direction of entry of the message box.", typeof(Direction), false)]
         public string Motion
         {
             get { return _direction.ToString().ToLower(); }
@@ -118,6 +139,7 @@ namespace Vibz.IO.Window
         }
         Position _position = Position.BottomRight;
         [XmlAttribute("position")]
+        [AttributeInfo("Final position where the message box will get still.", typeof(Position), false)]
         public string Location
         {
             get { return _position.ToString().ToLower(); }
@@ -146,6 +168,8 @@ namespace Vibz.IO.Window
         public void Execute(Vibz.Contract.Data.DataHandler vList)
         {
             TextAlertForm frm = new TextAlertForm(vList.Evaluate(Message), _dmode, _emode, _direction, _position, _duration);
+            frm.Width = _width;
+            frm.Height = _height;
             frm.ShowDialog();
         }
 

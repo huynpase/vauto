@@ -100,7 +100,7 @@ namespace Vibz.Interpreter.Script.FlowController
                                 Vibz.Contract.Data.IData obj = ((IFetch)inst).Fetch(vList);
                                 if (((IFetch)inst).Output.Trim() != "")
                                 {
-                                    vList.DataList.Update(new Variable(((IFetch)inst).Output, obj));
+                                    vList.DataList.Update(new Var(((IFetch)inst).Output, obj));
                                     additionalInfo = obj.ToString();
                                 }
                                 break;

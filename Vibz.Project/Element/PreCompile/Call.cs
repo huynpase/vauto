@@ -77,7 +77,11 @@ namespace Vibz.Solution.Element.PreCompile
                 string fncText = fnc.GetCompiledText();
                 XmlNode node = (XmlNode)xnCall.OwnerDocument.CreateElement(Call.nCall);
                 node.InnerXml = fncText;
-                return node.SelectSingleNode("//" + Function.nBody).ChildNodes;
+
+                XmlNode callNode = (XmlNode)xnCall.OwnerDocument.CreateElement(Call.nCall);
+                callNode.InnerXml = node.SelectSingleNode("//" + Call.Data.nData).InnerXml +
+                    node.SelectSingleNode("//" + Function.nBody).InnerXml;
+                return callNode.ChildNodes;
             }
             catch (Exception exc)
             {

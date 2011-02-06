@@ -39,8 +39,14 @@ namespace Vibz.Interpreter.Script.FlowController.VariableControl
         public bool Assert(Vibz.Contract.Data.DataHandler vList)
         {
             bool retValue = false;
-            if (!bool.TryParse(vList.Evaluate(Expression), out retValue))
-                throw new Exception("Expression evaluated to non boolean text.");
+            string evalText = vList.Evaluate(Expression);
+            if (!bool.TryParse(evalText, out retValue))
+            {
+                if (Vibz.Helper.Math.IsNumber(evalText))
+                    return (evalText == "0" ? false : true);
+                else
+                    throw new Exception("Expression evaluated to non boolean text.");
+            }
             return retValue;
         }
     }

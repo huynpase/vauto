@@ -37,6 +37,7 @@
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Attribute\AttributeInfo.cs" />
+    <Compile Include="Attribute\CoreInfo.cs" />
     <Compile Include="Attribute\FunctionNode.cs" />
     <Compile Include="Attribute\NodeInfo.cs" />
     <Compile Include="Attribute\FunctionAttribute.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Data\TextArray.cs" />
     <Compile Include="Data\DataHandler.cs" />
     <Compile Include="Data\Parameter.cs" />
-    <Compile Include="Data\Variable.cs" />
+    <Compile Include="Data\Var.cs" />
     <Compile Include="FunctionType.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="IAssert.cs" />

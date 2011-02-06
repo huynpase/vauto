@@ -32,8 +32,10 @@ namespace Vibz.Interpreter.Script.FlowController.VariableControl
     public class Set : InstructionBase, IAction
     {
         [XmlAttribute("var")]
+        [AttributeInfo("Identity for the variable", true)]
         public string Variable;
         [XmlAttribute("value")]
+        [AttributeInfo("Initializing value for the variable", false)]
         public string Value;
         public Set()
         {
@@ -48,8 +50,8 @@ namespace Vibz.Interpreter.Script.FlowController.VariableControl
         }
         public void Execute(Vibz.Contract.Data.DataHandler vList)
         {
-            Vibz.Contract.Data.IData obj = new Vibz.Contract.Data.Text(vList.Evaluate(Value));
-            vList.DataList.Update(new Variable(Variable, obj));
+            Vibz.Contract.Data.IData obj = vList.GetData(Value);
+            vList.DataList.Update(new Var(Variable, obj));
             Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Value " + obj.ToString() + " assigned to " + Variable, Vibz.Contract.Log.LogSeverity.Trace));
         }
     }

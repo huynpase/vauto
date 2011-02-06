@@ -21,19 +21,19 @@ using System.Text;
 
 namespace Vibz.Contract.Data
 {
-    public class DataCollection : List<Variable>, ICompile
+    public class DataCollection : List<Var>, ICompile
     {
         public const string nData = "data";
         public bool ContainsData(string datakey)
         {
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 if (dm.Name == datakey)
                     return true;
             }
             return false;
         }
-        public void Add(Variable dMember)
+        public void Add(Var dMember)
         {
             if (this.ContainsData(dMember.Name))
                 throw new Exception("Data with name '" + dMember.Name + "' has already been initialised.");
@@ -41,11 +41,11 @@ namespace Vibz.Contract.Data
         }
         public void Add(string name, IData value, string path, string innerText)
         {
-            this.Add(new Variable(path, name, value, innerText));
+            this.Add(new Var(path, name, value, innerText));
         }
-        public void Update(Variable dMember)
+        public void Update(Var dMember)
         {
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 if (dm.Name == dMember.Name)
                 {
@@ -59,11 +59,13 @@ namespace Vibz.Contract.Data
         }
         public void Update(string name, IData data)
         {
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 if (dm.Name == name)
                 {
                     dm.Data = data;
+                    dm.Source = data.Source;
+                    dm.Type = data.Type;
                     return;
                 }
             }
@@ -71,7 +73,7 @@ namespace Vibz.Contract.Data
         }
         public void Update(string name, IData data, string path)
         {
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 if (dm.Name == name)
                 {
@@ -82,9 +84,9 @@ namespace Vibz.Contract.Data
             }
             throw new Exception("Data '" + name + "' not present in the data list.");
         }
-        public Variable Get(string name)
+        public Var Get(string name)
         {
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 if (dm.Name == name)
                 {
@@ -93,9 +95,9 @@ namespace Vibz.Contract.Data
             }
             throw new Exception("Data '" + name + "' not present in the data list.");
         }
-        public Variable TryGet(string name)
+        public Var TryGet(string name)
         {
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 if (dm.Name == name)
                     return dm;
@@ -104,7 +106,7 @@ namespace Vibz.Contract.Data
         }
         public void Merge(DataCollection dset)
         {
-            foreach (Variable dm in dset)
+            foreach (Var dm in dset)
             {
                 if (this.ContainsData(dm.Name))
                     throw new Exception("Multiple occurances of identifier '" + dm.Name + "'. [Files: '" + dm._filePath + "' and '" + this.Get(dm.Name)._filePath + "'");
@@ -117,7 +119,7 @@ namespace Vibz.Contract.Data
                 return "";
             string retValue = "<" + nData + ">";
             string innerText = "";
-            foreach (Variable dm in this)
+            foreach (Var dm in this)
             {
                 innerText += dm.GetCompiledText();
             }

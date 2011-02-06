@@ -74,6 +74,8 @@ namespace Vibz.Interpreter.Script.FlowController
         {
             get
             {
+                if (XElse == null)
+                    return null;
                 if (_else == null)
                 {
                     _else = (Else)Serializer.ConvertXmlElementToInstruction(Configuration.InstructionManager.Handlers, XElse);

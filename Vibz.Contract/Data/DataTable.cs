@@ -92,7 +92,7 @@ namespace Vibz.Contract.Data
                 case "columncount":
                     return this.Value.Columns.Count.ToString();
                 default:
-                    throw new Exception("Invalid property '" + property + "' for Data-table data type.");
+                    throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
             }
         }
         public virtual string Evaluate(string method, params object[] args)
