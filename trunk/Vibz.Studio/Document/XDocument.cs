@@ -96,7 +96,7 @@ namespace Vibz.Studio.Document
         }
         public int GetCharIndexFromPosition(Point p)
         {
-            return rtbTextArea.GetCharIndexFromPosition(p);
+            return rtbTextArea.GetCharIndexFromPosition(rtbTextArea.PointToClient(p));
         }
         public int GetLineFromCharIndex(int index, out int lineStartPosition)
         {
