@@ -61,8 +61,9 @@ namespace Vibz.Studio.Document
             if (e.Data.GetDataPresent(typeof(FunctionTypeInfo)))
             {
                 FunctionTypeInfo inst = (FunctionTypeInfo)e.Data.GetData(typeof(FunctionTypeInfo));
-                int lineIndex = _doc.GetLineIndexAtPoint(new Point(e.X, e.Y));
-                int index = _doc.GetFirstCharIndexFromLine(lineIndex);
+                int charIndex = _doc.GetCharIndexFromPosition(new Point(e.X, e.Y));
+                int index=0;
+                int lineIndex = _doc.GetLineFromCharIndex(charIndex, out index);
                 _doc.SelectionStart = index;
                 string indentText = StringHelper.GetLineIndentation(_doc.Lines[lineIndex]);
                 RenderFunctionNode(inst, indentText);
