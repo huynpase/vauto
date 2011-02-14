@@ -45,7 +45,25 @@ namespace Vibz.Helper
                     throw new Exception("This plug type is not supported.");
             }
             Directory.CreateDirectory(folderPath);
+            
             return path;
+        }
+        public static void CreateFilePath(string path)
+        {
+            path = CreateFolderPath(path, IOType.File);
+            if (!File.Exists(path))
+            {
+                FileStream fs = null;
+                try
+                {
+                    fs = File.Create(path);
+                }
+                finally
+                {
+                    if (fs != null)
+                        fs.Close();
+                }
+            }
         }
         public static string FilterFolderChar(string text)
         {
@@ -95,7 +113,7 @@ namespace Vibz.Helper
         }
         public static FileInfo GetLastUpdatedFileInDirectory(DirectoryInfo directoryInfo, string pattern)
         {
-            FileInfo[] files = (pattern == null || pattern == "" ? directoryInfo.GetFiles() : directoryInfo.GetFiles("*" + pattern + "*"));
+            FileInfo[] files = (pattern == null || pattern == "" ? directoryInfo.GetFiles() : directoryInfo.GetFiles("*" + pattern + "*", SearchOption.TopDirectoryOnly));
 
             FileInfo lastUpdatedFile = null;
             DateTime lastUpdate = new DateTime(2000, 1, 1);
@@ -105,7 +123,7 @@ namespace Vibz.Helper
                 if (file.LastWriteTime > lastUpdate)
                 {
                     lastUpdatedFile = file;
-                    lastUpdate = file.LastAccessTime;
+                    lastUpdate = file.LastWriteTime;
                 }
             }
 

@@ -34,7 +34,7 @@ namespace Vibz.Scheduler
     {
         EventType DefaultEventType = EventType.Command;
         ScheduleType DefaultScheduleType = ScheduleType.Periodic;
-
+        bool _hasError = false;
         public SchedulerUI()
             : this(null)
         {
@@ -42,26 +42,55 @@ namespace Vibz.Scheduler
         public SchedulerUI(string[] args)
         {
             InitializeComponent();
+            LoadHistory();
             if (args != null && args.Length != 0)
             {
                 AddEvent(args.GetValue(0).ToString());
+                LoadConfigSetting(-1);
             }
-            LoadHistory();
-            LoadConfigSetting();
+            else
+                LoadConfigSetting(0);
             serviceController1.ServiceName = Automate.VibzServiceName;
-            SetServiceControl();
-            timer1.Tick += new EventHandler(timer1_Tick);
+            this.Shown += new EventHandler(SchedulerUI_Shown);
+            try
+            {
+                SetServiceControl();
+                timer1.Tick += new EventHandler(timer1_Tick);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Service '" + Automate.VibzServiceName + "' failed to initialize. " + exc.Message + " Make sure the service exists.");
+                _hasError = true;
+            }
+        }
+
+        void SchedulerUI_Shown(object sender, EventArgs e)
+        {
+            if (_hasError)
+                this.Close();
         }
 
         void timer1_Tick(object sender, EventArgs e)
         {
-            Reload();
+            LoadDelta();
+            if (serviceController1.Status == System.ServiceProcess.ServiceControllerStatus.Stopped)
+                lblDueTime.Text = "Service is not running.";
+            else
+            {
+                TimeSpan ts = DateTime.Now.Subtract(ConfigManager.Configuration.LastInvocation);
+                double secs = Math.Round((ConfigManager.Configuration.TickInterval / 1000) - ts.TotalSeconds, 0);
+                if (secs > 0)
+                    lblDueTime.Text = "Next invocation will be triggered in " + secs + " sec";
+                else
+                    lblDueTime.Text = "Please wait...";
+            }
         }
         void SetServiceControl()
         {
             tsbStart.Enabled = false;
             tsbStop.Enabled = false;
             tsbRestart.Enabled = false;
+            
             switch (serviceController1.Status)
             { 
                 case System.ServiceProcess.ServiceControllerStatus.Stopped:
@@ -76,14 +105,14 @@ namespace Vibz.Scheduler
             }
             lblServiceStatus.Text = serviceController1.Status.ToString();
         }
-        void LoadConfigSetting()
+        void LoadConfigSetting(int selectIndex)
         {
             txtThreadCount.Text = ConfigManager.Configuration.MaxThreadCount.ToString();
-            LoadLoagLevel();
+            LoadLogLevel();
             cbLogLevel.SelectedItem = HistoryManager.History.LogLevel;
             tBarTick.Value = (int)ConfigManager.Configuration.TickInterval;
             UpdateTickValue();
-            LoadScheduleSetting(0);
+            LoadScheduleSetting(selectIndex);
             LoadScheduleTypes();
         }
         void LoadScheduleSetting(int selectIndex)
@@ -136,6 +165,8 @@ namespace Vibz.Scheduler
             {
                 tvRunningTask.SelectedNode = tvRunningTask.Nodes[selectIndex];
             }
+            tvRunningTask.SelectedNode.Expand();
+            tvRunningTask.Nodes[tvRunningTask.Nodes.Count - 1].EnsureVisible();
         }
         void LoadScheduleTypes()
         {
@@ -153,7 +184,7 @@ namespace Vibz.Scheduler
                 ddlElementType.Items.Add(type);
             }
         }
-        void LoadLoagLevel()
+        void LoadLogLevel()
         { 
             foreach (LogLevel level in Enum.GetValues(typeof(LogLevel))) 
             {
@@ -163,14 +194,18 @@ namespace Vibz.Scheduler
         void LoadHistory()
         {
             tvHistory.Nodes.Clear();
+            LoadHistory(Vibz.Service.Config.HistoryManager.History.HistoryList.ToArray());
+        }
+        void LoadHistory(Vibz.Service.History.IHistory[] listHistory)
+        {
             tvHistory.ImageList = imageList1;
-            foreach (Vibz.Service.History.IHistory hs in Vibz.Service.Config.HistoryManager.History.HistoryList)
+            foreach (Vibz.Service.History.IHistory hs in listHistory)
             {
                 TreeNode tn = new TreeNode();
                 switch (hs.Type)
                 { 
                     case Vibz.Service.History.HistoryType.Error:
-                        tn.Text = hs.LogTime.ToString() + ": " + hs.Message;
+                        tn.Text = hs.LogTime.ToString() + ": " + hs.ThreadId.ToString() + " " + hs.Message;
                         tn.ImageIndex = 2;
                         break;
                     case Vibz.Service.History.HistoryType.Event:
@@ -179,25 +214,33 @@ namespace Vibz.Scheduler
                         tn.Nodes.Add("Name", "Name: " + hse.Name, 3, 3);
                         tn.Nodes.Add("Result", "Result: " + hse.Result.Status.ToString(), 3, 3);
                         tn.Nodes.Add("StartTime", "Start Time: " + hse.Result.StartTime.ToString(), 3, 3);
-                        tn.Nodes.Add("Duration", "Duration: "
-                            + (hse.Result.Duration.Hours == 0 ? "" : hse.Result.Duration.Hours.ToString() + " hours ")
-                            + (hse.Result.Duration.Minutes == 0 ? "" : hse.Result.Duration.Hours.ToString() + " minutes ")
-                            + (hse.Result.Duration.Seconds == 0 ? "" : hse.Result.Duration.Hours.ToString() + " seconds ")
-                            + (hse.Result.Duration.Milliseconds == 0 ? "" : hse.Result.Duration.Hours.ToString() + " ms")
-                            , 3, 3);
+                        if (hse.Result.Duration.Hours == 0 &&
+                            hse.Result.Duration.Minutes == 0 &&
+                            hse.Result.Duration.Seconds == 0 &&
+                            hse.Result.Duration.Milliseconds == 0)
+                            tn.Nodes.Add("Duration", "Duration: 0 ms", 3, 3);
+                        else
+                            tn.Nodes.Add("Duration", "Duration: "
+                                + (hse.Result.Duration.Hours == 0 ? "" : hse.Result.Duration.Hours.ToString() + " hours ")
+                                + (hse.Result.Duration.Minutes == 0 ? "" : hse.Result.Duration.Minutes.ToString() + " minutes ")
+                                + (hse.Result.Duration.Seconds == 0 ? "" : hse.Result.Duration.Seconds.ToString() + " seconds ")
+                                + (hse.Result.Duration.Milliseconds == 0 ? "" : hse.Result.Duration.Milliseconds.ToString() + " ms")
+                                , 3, 3);
                         tn.Nodes.Add("Information", "Information: " + hse.Result.Message, 3, 3);
                         tn.Nodes.Add("LogTime", "Log time: " + hse.LogTime.ToString(), 3, 3);
+                        tn.Nodes.Add("ThreadId", "Thread id: " + hse.ThreadId.ToString(), 3, 3);
                         tn.ImageIndex = 1;
                         break;
                     default:
                     case Vibz.Service.History.HistoryType.Info:
-                        tn.Text = hs.LogTime.ToString() + ": " + hs.Message;
+                        tn.Text = hs.LogTime.ToString() + ": " + hs.ThreadId.ToString() + " " + hs.Message;
                         tn.ImageIndex = 0;
                         break;
                 }
                 tn.SelectedImageIndex = tn.ImageIndex;
                 tn.Collapse();
                 tvHistory.Nodes.Add(tn);
+                tvHistory.Nodes[tvHistory.Nodes.Count - 1].EnsureVisible();
             }
         }
 
@@ -211,7 +254,7 @@ namespace Vibz.Scheduler
 
         private void tsbReload_Click(object sender, EventArgs e)
         {
-            Reload();
+            LoadDelta();
         }
 
         private void tsbStart_Click(object sender, EventArgs e)
@@ -274,6 +317,9 @@ namespace Vibz.Scheduler
 
             try
             {
+                if (ddlElementType.SelectedItem == null && tvRunningTask.SelectedNode != null)
+                    ddlElementType.SelectedItem = ((ISchedule)tvRunningTask.SelectedNode.Tag).Type;
+
                 IElementNode newEle = ElementFactory.GetElement(ddlElementType.SelectedItem, tvRunningTask.SelectedNode.Tag);
                 newEle.SetParameters(GetConfigurations());
                 ConfigManager.Configuration.UpdateElement(newEle);
@@ -308,16 +354,17 @@ namespace Vibz.Scheduler
             }
         }
 
-        void Reload()
+        void LoadDelta()
         {
-            Vibz.Service.Config.HistoryManager.History.Reload();
-            LoadHistory();
+            LoadHistory(Vibz.Service.Config.HistoryManager.History.LoadDelta());
         }
         void StopService()
         {
             if (serviceController1.Status != System.ServiceProcess.ServiceControllerStatus.Stopped)
                 serviceController1.Stop();
             WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Stopped);
+            timer1.Stop();
+            lblDueTime.Text = "Service is not running.";
             SetServiceControl();
         }
         void StartService()
@@ -325,6 +372,7 @@ namespace Vibz.Scheduler
             if (serviceController1.Status != System.ServiceProcess.ServiceControllerStatus.Running)
                 serviceController1.Start();
             WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Running);
+            timer1.Start();
             SetServiceControl();
         }
         void RestartService()
@@ -384,9 +432,9 @@ namespace Vibz.Scheduler
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Automation Compiled Script files(*." + Vibz.FileType.CompiledScropt + ")|*." + Vibz.FileType.CompiledScropt +
+            openFileDialog1.Filter = "Automation Compiled Script files(*." + Vibz.FileType.CompiledScript + ")|*." + Vibz.FileType.CompiledScript +
                 "|Batch files(*.bat)|*.bat" +
-                "|All supported files (*." + Vibz.FileType.CompiledScropt + ", *.bat)|*." + Vibz.FileType.CompiledScropt + ";*.bat";
+                "|All supported files (*." + Vibz.FileType.CompiledScript + ", *.bat)|*." + Vibz.FileType.CompiledScript + ";*.bat";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 txtPath.Text = openFileDialog1.FileName;
@@ -396,6 +444,7 @@ namespace Vibz.Scheduler
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddEvent(txtPath.Text);
+            LoadConfigSetting(-1);
         }
         void AddEvent(string filePath)
         {
@@ -412,16 +461,13 @@ namespace Vibz.Scheduler
                 case ".bat":
                     evt.Arguments = "\'" + fi.FullName + "\'";
                     break;
-                case "." + Vibz.FileType.CompiledScropt:
-                    evt.Arguments = "/c vauto -r -f='" + fi.FullName + "'";
+                case "." + Vibz.FileType.CompiledScript:
+                    evt.Arguments = "/c vauto -r -f=\"" + fi.FullName + "\"";
                     break;
             }
             sch.EventList.Add(evt);
 
             ConfigManager.Configuration.UpdateSchedule(sch);
-
-            LoadScheduleSetting(-1);
-
             txtPath.Text = "";
         }
 
@@ -433,6 +479,7 @@ namespace Vibz.Scheduler
             {
                 IElementNode ele = (IElementNode)tvRunningTask.SelectedNode.Tag;
                 ConfigManager.Configuration.DeleteElement(ele);
+                ShowConfigurations(null);
             }
             LoadScheduleSetting(0);
         }

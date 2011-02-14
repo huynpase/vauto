@@ -36,25 +36,36 @@ namespace Vibz.Service.Schedule.Event
         string _scheduleName = "";
         public virtual string ScheduleName { get { return _scheduleName; } set { _scheduleName = value; } }
 
-        ExecutionResult _result=new ExecutionResult();
-        public virtual ExecutionResult Result { get { return _result; } set { _result = value; } }
+        ExecutionResult _result;
+        public virtual ExecutionResult Result 
+        { 
+            get {
+                if (_result == null)
+                    _result = new ExecutionResult();
+                return _result; 
+            } 
+            set { 
+                _result = value; 
+            } 
+        }
 
         public virtual EventType Type { get { return EventType.Command; } }
 
         public abstract void InvokeTask();
         public virtual void Invoke()
         {
-            _result.StartTime = DateTime.Now;
+            Config.HistoryManager.History.Log(Config.LogLevel.Debug, Name + " invoke Begin.");
+            Result.StartTime = DateTime.Now;
             try
             {
                 InvokeTask();
-                _result.Message = "Execution completed.";
             }
             catch (Exception exc)
             {
-                _result.Message = "Error: " + exc.Message;
+                Result.Message = "Error: " + exc.Message;
             }
-            _result.Duration = DateTime.Now.Subtract(_result.StartTime);
+            Result.Duration = DateTime.Now.Subtract(Result.StartTime);
+            Config.HistoryManager.History.Log(Config.LogLevel.Debug, Name + " invoke End.");
         }
         public virtual void Load(string scheduleName, XmlNode xNode)
         {

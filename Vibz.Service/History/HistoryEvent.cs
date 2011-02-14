@@ -34,8 +34,9 @@ namespace Vibz.Service.History
             public const string Duration = "duration";
             public const string Result = "result";
         }
-        public HistoryEvent() { }
+        public HistoryEvent() : base() { }
         public HistoryEvent(IEvent evt)
+            : base()
         {
             LogTime = DateTime.Now;
             _result = evt.Result;
@@ -75,9 +76,9 @@ namespace Vibz.Service.History
             DateTime.TryParse(xNode.Attributes[HistoryEvent.EventNode.StartTime].Value, out date);
             _result.StartTime = date;
 
-            int mSec=0;
-            int.TryParse(xNode.Attributes[HistoryEvent.EventNode.Duration].Value, out mSec);
-            _result.Duration = new TimeSpan(0, 0, 0, 0, mSec);
+            double mSec = 0;
+            double.TryParse(xNode.Attributes[HistoryEvent.EventNode.Duration].Value, out mSec);
+            _result.Duration = TimeSpan.FromMilliseconds(mSec);
 
             if (xNode.Attributes[HistoryEvent.EventNode.Result] == null)
                 _result.Status = EventStatus.Completed;

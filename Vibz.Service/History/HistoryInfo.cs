@@ -25,8 +25,9 @@ namespace Vibz.Service.History
     public class HistoryInfo : HistoryBase
     {
         public override HistoryType Type { get { return HistoryType.Info; } }
-        public HistoryInfo() { }
+        public HistoryInfo():base() { }
         public HistoryInfo(string info)
+            : base()
         {
             Message = info;
             LogTime = DateTime.Now;

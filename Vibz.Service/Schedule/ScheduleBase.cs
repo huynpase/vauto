@@ -31,6 +31,7 @@ namespace Vibz.Service.Schedule
             public const string MaxThreadCount = "threadcount";
             public const string TickInterval = "tickinterval";
             public const string LogLevel = "loglevel";
+            public const string LastInvocation = "lastinvocation";
             public class Schedule
             {
                 public const string NodeName = "schedule";

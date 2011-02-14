@@ -248,6 +248,7 @@
           <var name="dataDestination">@dataDestination</var>
         </data>
       </call>
+      <append  filepath="parse(concat(__currentpath,log.txt))" content="parse(sysdate)"></append>
     </body>
   </function>
 </section>

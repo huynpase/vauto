@@ -25,8 +25,9 @@ namespace Vibz.Service.History
     public class HistoryException : HistoryBase
     {
         public override HistoryType Type { get { return HistoryType.Error; } }
-        public HistoryException() { }
+        public HistoryException() : base() { }
         public HistoryException(Exception exc)
+            : base()
         {
             Message = exc.Message;
             LogTime = DateTime.Now;

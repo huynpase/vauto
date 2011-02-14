@@ -22,6 +22,7 @@ using System.Data;
 using System.Diagnostics;
 using System.ServiceProcess;
 using System.Text;
+using System.Xml;
 //using System.Threading;
 using System.Timers;
 using Vibz.Service.Schedule;
@@ -37,6 +38,7 @@ namespace Vibz.Service
         public const string VibzServiceDisplayName = "Vibz Scheduled Automation Service";
         private System.Diagnostics.EventLog _AppEventLog;
         static Timer _timer = null;
+
         public Automate()
         {
             InitializeComponent();
@@ -74,6 +76,7 @@ namespace Vibz.Service
 
         void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            Config.ConfigManager.Configuration.UpdateLastInvocation();
             InvokeScheduledEvent();
         }
 
@@ -90,7 +93,7 @@ namespace Vibz.Service
 
                 foreach (ISchedule schedule in Config.ConfigManager.Configuration.ScheduleList)
                 {
-                    Config.HistoryManager.History.Log(Vibz.Service.Config.LogLevel.Debug, "schedule:" + (schedule == null ? "null" : "not-null"));
+                    Config.HistoryManager.History.Log(Vibz.Service.Config.LogLevel.Debug, "schedule:" + (schedule == null ? "No name" : schedule.Name));
                     try
                     {
                         if (schedule.NeedExecution)
@@ -134,7 +137,7 @@ namespace Vibz.Service
         protected override void OnStop()
         {
             this._AppEventLog.WriteEntry("Vibz.Service.Automate stop.");
-            Config.HistoryManager.History.Log("Service Stoped.");
+            Config.HistoryManager.History.Log("Service stoped.");
         }
     }
 }

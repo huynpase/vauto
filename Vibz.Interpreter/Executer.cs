@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 using Vibz.Interpreter.Script;
 using Vibz.Contract;
 using Vibz.Interpreter.Script.FlowController;
@@ -126,7 +127,33 @@ namespace Vibz.Interpreter
             }
             finally
             {
+                CloseAllForms();
                 // Configuration.ConfigManager.UnLoadConfig();
+            }
+        }
+        static public void CloseAllForms()
+        {
+            FormCollection forms = Application.OpenForms;
+            foreach (Form form in forms)
+            {
+                CloseForm(form);
+            }
+        }
+
+        delegate void CloseMethod(Form form);
+        static private void CloseForm(Form form)
+        {
+            if (!form.IsDisposed)
+            {
+                if (form.InvokeRequired)
+                {
+                    CloseMethod method = new CloseMethod(CloseForm);
+                    form.Invoke(method, new object[] { form });
+                }
+                else
+                {
+                    form.Close();
+                }
             }
         }
         LogElement ExecuteGlobalFunction(string functionName, string initMessage)

@@ -31,7 +31,7 @@ namespace Vibz.Service.Schedule.Event
             public const string WorkingDirectory = "workingdirectory";
             public const string Arguments = "arguments";
         }
-        string _workingDirectory = Environment.CurrentDirectory;
+        string _workingDirectory = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName; // Environment.CurrentDirectory;
         public virtual string WorkingDirectory { get { return _workingDirectory; } set { _workingDirectory = value; } }
 
         string _command = Environment.ExpandEnvironmentVariables("%comspec%");
@@ -42,30 +42,38 @@ namespace Vibz.Service.Schedule.Event
 
         public override void InvokeTask()
         {
-            Process p = new Process();
             Config.HistoryManager.History.Log(Config.LogLevel.Debug, "Command: [" + Command + "]");
             Config.HistoryManager.History.Log(Config.LogLevel.Debug, "Arguments: [" + Arguments + "]");
             Config.HistoryManager.History.Log(Config.LogLevel.Debug, "WorkingDirectory: [" + WorkingDirectory + "]");
-            p.StartInfo.FileName = Command;
-            p.StartInfo.Arguments = Arguments;
-
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.WorkingDirectory = WorkingDirectory;
-            p.StartInfo.RedirectStandardError = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            if (!p.Start())
+            try
+            {
+                ProcessStartInfo pStartInfo = new ProcessStartInfo();
+                pStartInfo.FileName = Command;
+                pStartInfo.Arguments = Arguments;
+                pStartInfo.UseShellExecute = false;
+                pStartInfo.RedirectStandardError = true;
+                Process p = Process.Start(pStartInfo);
+                
+                p.WaitForExit();
+                
+                if (p.ExitCode != 0)
+                {
+                    Result.Message = "Error occured. Process terminated. \r\n\t" + p.StandardError.ReadToEnd();
+                    Config.HistoryManager.History.Log(Config.LogLevel.Debug, "Execution failed: " + Result.Message);
+                }
+                else
+                {
+                    Config.HistoryManager.History.Log(Config.LogLevel.Debug, "Execution completed successfully.");
+                    Result.Message = "Execution completed successfully.";
+                }
+                Result.Status = EventStatus.Completed;
+            }
+            catch (Exception exc)
             {
                 Result.Status = EventStatus.NoRun;
-                Result.Message = "Command event could not be started. " + p.StandardError.ReadToEnd();
+                Result.Message = "Error occured. " + exc.Message;
+                Config.HistoryManager.History.Log(exc);
             }
-            
-            p.WaitForExit();
-            if (p.ExitCode != 0)
-            {
-                Result.Message = "Error occured. Process terminated. \r\n\t" + p.StandardError.ReadToEnd();            
-            }
-            Result.Status = EventStatus.Completed;
         }
         public override void Load(string scheduleName, XmlNode xNode)
         {

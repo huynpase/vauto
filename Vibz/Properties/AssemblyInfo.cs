@@ -23,12 +23,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Vibz")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Vibz assemblies are constituents of Vibz automation framework.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("vibzworld")]
 [assembly: AssemblyProduct("Vibz")]
-[assembly: AssemblyCopyright("Copyright © vibzworld 2010")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Vibzworld 2011")]
+[assembly: AssemblyTrademark("Vibzworld presentation")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -48,5 +48,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("3.8.11.0206")]
-[assembly: AssemblyFileVersion("3.8.11.0206")]
+[assembly: AssemblyVersion("3.12.11.0213")]
+[assembly: AssemblyFileVersion("3.12.11.0213")]

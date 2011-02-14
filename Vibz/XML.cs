@@ -57,12 +57,26 @@ namespace Vibz
                                 doc.LoadXml(newDocumentText);
                             }
                             else
-                                doc.Load(fullpath);
+                            {
+                                try
+                                {
+                                    doc.LoadXml(File.ReadAllText(fullpath));
+                                }
+                                catch (Exception exc)
+                                {
+                                    if (File.ReadAllText(fullpath).Trim() == "")
+                                    {
+                                        doc.LoadXml(newDocumentText);
+                                    }
+                                    else
+                                        throw new Exception("File has corrupted XML data.");
+                                }
+                            }
                             doc._path = fullpath;
                         }
                         catch (Exception exc)
                         {
-                            throw new Exception("Error loading Xml file. " + exc.Message);
+                            // throw new Exception("Error loading Xml file. " + exc.Message);
                         }
                         if (!_listXml.ContainsKey(fullpath))
                             _listXml.Add(fullpath, doc);
@@ -75,7 +89,10 @@ namespace Vibz
         }
         public void Save()
         {
-            base.Save(this._path);
+            lock (_lock)
+            {
+                base.Save(this._path);
+            }
         }
     }
 }

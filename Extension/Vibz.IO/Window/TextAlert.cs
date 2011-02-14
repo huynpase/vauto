@@ -170,7 +170,7 @@ namespace Vibz.IO.Window
             TextAlertForm frm = new TextAlertForm(vList.Evaluate(Message), _dmode, _emode, _direction, _position, _duration);
             frm.Width = _width;
             frm.Height = _height;
-            frm.ShowDialog();
+            frm.Show();
         }
 
         public override Vibz.Contract.Log.LogElement InfoEnd

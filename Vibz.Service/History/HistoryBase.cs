@@ -32,6 +32,7 @@ namespace Vibz.Service.History
                 public const string NodeName = "log";
                 public const string Type = "type";
                 public const string Time = "time";
+                public const string ThreadId = "tid";
             }
         }
         DateTime _logTime;
@@ -39,9 +40,15 @@ namespace Vibz.Service.History
 
         public virtual HistoryType Type { get { return HistoryType.Info; } }
 
+        int _threadId;
+        public int ThreadId { get { return _threadId; } }
+
         string _message;
         public virtual string Message { get { return _message; } set { _message = value; } }
-
+        public HistoryBase()
+        {
+            _threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+        }
         public virtual void Load(XmlNode xNode)
         {
             if (xNode == null)
@@ -57,6 +64,15 @@ namespace Vibz.Service.History
             {
                 DateTime.TryParse(xNode.Attributes[HistoryDocument.Log.Time].Value, out _logTime);
             }
+            if (xNode.Attributes[HistoryDocument.Log.ThreadId] == null)
+            {
+                _threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+            }
+            else
+            {
+                int.TryParse(xNode.Attributes[HistoryDocument.Log.ThreadId].Value, out _threadId);
+            }
+
         }
         public virtual XmlNode GetNode(XmlDocument doc)
         {
@@ -68,6 +84,10 @@ namespace Vibz.Service.History
 
             attr = doc.CreateAttribute(HistoryDocument.Log.Type);
             attr.Value = Type.ToString();
+            node.Attributes.Append(attr);
+
+            attr = doc.CreateAttribute(HistoryDocument.Log.ThreadId);
+            attr.Value = ThreadId.ToString();
             node.Attributes.Append(attr);
 
             return node;
