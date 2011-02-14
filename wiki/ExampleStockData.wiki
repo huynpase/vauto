@@ -175,4 +175,5 @@ Above example collects stock data from the host site.
 
 ===You may need to know===
   * [http://code.google.com/p/vauto/wiki/BuildingTestSuite What happens when suite file is compiled.]
+  * [SchedulingAutomationScript Scheduling Automation Script]
   * [http://code.google.com/p/vauto/wiki/Examples Other Examples]
