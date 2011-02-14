@@ -7,5 +7,6 @@
 [ComponentsOfTestscript Components of a Test script]<br/>
 [UsingVibzAutomationStudio Using Vibz Automation Studio]<br/>
 [CreatingExtendedModule Writing Extended module]<br/>
+[SchedulingAutomationScript Scheduling Automation Script]<br/>
 [Examples Examples]<br/>
 [GetSourceCode Obtain the source code]<br/>
