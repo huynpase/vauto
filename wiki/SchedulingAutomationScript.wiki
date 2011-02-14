@@ -1,2 +1,4 @@
 ==Scheduling Automation Script==
--- coming soon 
+Although the process is automated, there is a need to initiate the execution. The framework has gone a step ahead to provide a facility to schedule your script execution at some regular interval or on some criteria fulfillment. This is useful in case of running a bot to crawl a site or starting a testing process when a new build arrives. 
+
+This is yet another open end where the framework can be extended to provide your own custom scheduling. One can have as many scheduled event running in parallel.
