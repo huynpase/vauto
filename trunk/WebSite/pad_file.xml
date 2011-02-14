@@ -124,8 +124,8 @@ Easy of scripting:</Char_Desc_2000>
 			<Application_XML_File_URL />
 		</Application_URLs>
 		<Download_URLs>
-			<Primary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0116.msi</Primary_Download_URL>
-			<Secondary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.3.11.0116.msi</Secondary_Download_URL>
+			<Primary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.17.11.0213.msi</Primary_Download_URL>
+			<Secondary_Download_URL>http://vauto.googlecode.com/files/AutomationStudio_2.17.11.0213.msi</Secondary_Download_URL>
 			<Additional_Download_URL_1 />
 			<Additional_Download_URL_2 />
 		</Download_URLs>
@@ -136,7 +136,7 @@ Easy of scripting:</Char_Desc_2000>
 	</Permissions>
 	<Affiliates>
 		<Affiliates_FORM>Y</Affiliates_FORM>
-		<Affiliates_VERSION>1.4</Affiliates_VERSION>
+		<Affiliates_VERSION>2.17.11.0213</Affiliates_VERSION>
 		<Affiliates_URL>http://pad.asp-software.org/extensions/Affiliates.htm</Affiliates_URL>
 		<Affiliates_Information_Page />
 		<Affiliates_Avangate_Order_Page />
