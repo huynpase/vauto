@@ -95,6 +95,8 @@ namespace Vibz.Scheduler
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.cmsScheduleTask = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblDueTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,6 +113,7 @@ namespace Vibz.Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.tBarTick)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.cmsScheduleTask.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -122,7 +125,7 @@ namespace Vibz.Scheduler
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(647, 425);
+            this.tabControl1.Size = new System.Drawing.Size(647, 403);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -132,7 +135,7 @@ namespace Vibz.Scheduler
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(639, 399);
+            this.tabPage1.Size = new System.Drawing.Size(639, 377);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Schedule Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -144,7 +147,7 @@ namespace Vibz.Scheduler
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(633, 318);
+            this.groupBox1.Size = new System.Drawing.Size(633, 296);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Running Tasks";
@@ -156,7 +159,7 @@ namespace Vibz.Scheduler
             this.tvRunningTask.HotTracking = true;
             this.tvRunningTask.Location = new System.Drawing.Point(3, 16);
             this.tvRunningTask.Name = "tvRunningTask";
-            this.tvRunningTask.Size = new System.Drawing.Size(410, 299);
+            this.tvRunningTask.Size = new System.Drawing.Size(410, 277);
             this.tvRunningTask.TabIndex = 0;
             this.tvRunningTask.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvRunningTask_AfterSelect);
             this.tvRunningTask.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvRunningTask_NodeMouseClick);
@@ -170,7 +173,7 @@ namespace Vibz.Scheduler
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(413, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 299);
+            this.panel1.Size = new System.Drawing.Size(217, 277);
             this.panel1.TabIndex = 1;
             // 
             // dgConfiguration
@@ -188,7 +191,7 @@ namespace Vibz.Scheduler
             this.dgConfiguration.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgConfiguration.RowHeadersVisible = false;
             this.dgConfiguration.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgConfiguration.Size = new System.Drawing.Size(217, 246);
+            this.dgConfiguration.Size = new System.Drawing.Size(217, 224);
             this.dgConfiguration.TabIndex = 4;
             // 
             // configName
@@ -283,7 +286,7 @@ namespace Vibz.Scheduler
             this.groupBox2.Controls.Add(this.txtPath);
             this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(3, 321);
+            this.groupBox2.Location = new System.Drawing.Point(3, 299);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(633, 75);
             this.groupBox2.TabIndex = 2;
@@ -337,7 +340,7 @@ namespace Vibz.Scheduler
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(639, 399);
+            this.tabPage2.Size = new System.Drawing.Size(639, 377);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Execution History";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -347,7 +350,7 @@ namespace Vibz.Scheduler
             this.tvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvHistory.Location = new System.Drawing.Point(3, 28);
             this.tvHistory.Name = "tvHistory";
-            this.tvHistory.Size = new System.Drawing.Size(633, 368);
+            this.tvHistory.Size = new System.Drawing.Size(633, 346);
             this.tvHistory.TabIndex = 1;
             // 
             // toolStrip2
@@ -394,7 +397,7 @@ namespace Vibz.Scheduler
             this.tabPage3.Controls.Add(this.toolStrip1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(639, 399);
+            this.tabPage3.Size = new System.Drawing.Size(639, 377);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Service Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -584,7 +587,7 @@ namespace Vibz.Scheduler
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 60000;
+            this.timer1.Interval = 1000;
             // 
             // openFileDialog1
             // 
@@ -595,15 +598,30 @@ namespace Vibz.Scheduler
             this.cmsScheduleTask.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteToolStripMenuItem});
             this.cmsScheduleTask.Name = "cmsScheduleTask";
-            this.cmsScheduleTask.Size = new System.Drawing.Size(153, 48);
+            this.cmsScheduleTask.Size = new System.Drawing.Size(117, 26);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblDueTime});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 403);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(647, 22);
+            this.statusStrip1.TabIndex = 22;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblDueTime
+            // 
+            this.lblDueTime.Name = "lblDueTime";
+            this.lblDueTime.Size = new System.Drawing.Size(0, 17);
             // 
             // SchedulerUI
             // 
@@ -611,6 +629,7 @@ namespace Vibz.Scheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 425);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SchedulerUI";
             this.Text = "Automation Scheduler";
@@ -638,7 +657,10 @@ namespace Vibz.Scheduler
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.cmsScheduleTask.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -692,6 +714,8 @@ namespace Vibz.Scheduler
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ContextMenuStrip cmsScheduleTask;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblDueTime;
     }
 }
 

@@ -86,37 +86,54 @@ namespace Vibz.Service.Config
                 _historyList = new List<IHistory>();
             }
         }
+        public IHistory[] LoadDelta()
+        {
+            int oldCount = _historyList.Count;
+            Reload();
+            if (_historyList.Count < oldCount)
+                return new IHistory[0];
+            IHistory[] list = new IHistory[_historyList.Count - oldCount];
+            _historyList.CopyTo(oldCount, list, 0, list.Length);
+            return list;
+        }
         public void Reload()
         {
-            _historyList = new List<IHistory>();
-            XML.GetDocument(_historyPath, NewDocumentText, true);
-            LoadHistory();
+            
+                _historyList = new List<IHistory>();
+                XML.GetDocument(_historyPath, NewDocumentText, true);
+                LoadHistory();
         }
         void LoadHistory()
         {
-            try
+            lock (_lock)
             {
-                _historyPath = System.Configuration.ConfigurationManager.AppSettings["ServiceHistory"];
-                if (_historyPath == null || _historyPath == "")
+                try
                 {
-                    _historyPath = DefaultPath;
+                    _historyPath = System.Configuration.ConfigurationManager.AppSettings["ServiceHistory"];
+                    if (_historyPath == null || _historyPath == "")
+                    {
+                        _historyPath = DefaultPath;
+                    }
+
+                    Environment.CurrentDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                    if (!File.Exists(_historyPath))
+                        Vibz.Helper.IO.CreateFilePath(Path.Combine(Environment.CurrentDirectory, _historyPath));
+
+                    _historyPath = new FileInfo(_historyPath).FullName;
+
+                    XML.GetDocument(_historyPath, NewDocumentText);
+
+                    // Log(LogLevel.Debug, "Service history loaded.");
+
+                    foreach (XmlNode xNode in XML.GetDocument(_historyPath).DocumentElement.ChildNodes)
+                    {
+                        HistoryList.Add(GetHistoryElement(xNode));
+                    }
                 }
-
-                Environment.CurrentDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-                _historyPath = new FileInfo(_historyPath).FullName;
-
-                XML.GetDocument(_historyPath, NewDocumentText);
-
-                // Log(LogLevel.Debug, "Service history loaded.");
-
-                foreach (XmlNode xNode in XML.GetDocument(_historyPath).DocumentElement.ChildNodes)
+                catch (Exception exc)
                 {
-                    HistoryList.Add(GetHistoryElement(xNode));            
-                }
-            }
-            catch (Exception exc)
-            {
 
+                }
             }
         }
         string NewDocumentText

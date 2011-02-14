@@ -28,5 +28,6 @@ namespace Vibz.Service.History
         string Message { get; set; }
         void Load(XmlNode xNode);
         XmlNode GetNode(XmlDocument doc);
+        int ThreadId { get; }
     }
 }

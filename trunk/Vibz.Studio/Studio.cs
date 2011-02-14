@@ -28,6 +28,8 @@ using Vibz.Contract.Log;
 using Vibz.Interpreter;
 using System.Threading;
 using System.IO;
+using System.Diagnostics;
+
 namespace Vibz.Studio
 {
     public partial class Studio : Form
@@ -441,6 +443,7 @@ namespace Vibz.Studio
                         AddMenuItem("Add to new Suite list.", ele, new eventDelegate(tsiNewTestSuite_Click));
                         if (_docList.Current != null && _docList.Current.Type == Document.DocumentType.TestSuite)
                             AddMenuItem("Add to current Suite list.", ele, new eventDelegate(tsiCurrentTestSuite_Click));
+                        AddMenuItem("Schedule", ele, new eventDelegate(tsiScheduleTestSuite_Click));
                         break;
                 }
                 AddMenuItem("Delete", ele, new eventDelegate(tsiDeleteTestSuite_Click));
@@ -523,6 +526,21 @@ namespace Vibz.Studio
             {
                 ShowMessageBox(exc);
             }
+        }
+        void tsiScheduleTestSuite_Click(object sender, EventArgs e)
+        {
+            ScheduleOutput((IElement)((ToolStripMenuItem)sender).Tag);
+        }
+        void ScheduleOutput(IElement element)
+        {
+
+            Process p = new Process();
+            p.StartInfo.FileName = Environment.ExpandEnvironmentVariables("%comspec%");
+            p.StartInfo.Arguments = "/c vauto -s -f=\"" + GetBuildFileName(element) + "\"";
+
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.WorkingDirectory = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName;
+            p.Start();
         }
         void tsiNewTestSuite_Click(object sender, EventArgs e)
         {
@@ -671,6 +689,10 @@ namespace Vibz.Studio
             if (_taskThread != null && _taskThread.IsAlive)
                 _taskThread.Abort();
         }
+        string GetBuildFileName(IElement element)
+        {
+            return _project.BuildLocation + "/" + element.Name + "." + Vibz.FileType.CompiledScript;
+        }
         object PerformAction(Vibz.TaskType type, IElement element)
         {
             if (element == null)
@@ -689,9 +711,8 @@ namespace Vibz.Studio
                     _currentTask = new Compiler(App.Default.EncodeBuild);
                     if (!Directory.Exists(_project.BuildLocation))
                         Vibz.Helper.IO.CreateFolderPath(new DirectoryInfo(_project.BuildLocation));
-                    string buildFile = _project.BuildLocation + "/" + element.Name + "." + Vibz.FileType.CompiledScropt;
 
-                    arg = new object[] { element, buildFile };
+                    arg = new object[] { element, GetBuildFileName(element) };
                     _project.Queue.Enqueue(new LogQueueElement("Compiling document.", LogSeverity.Trace));
                     break;
                 case Vibz.TaskType.Execute:

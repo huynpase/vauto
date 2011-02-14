@@ -64,34 +64,58 @@ namespace Vibz.Service.Config
             }
         }
         int _maxThreadCount = 1;
-        double _tickInterval = 300000;
         public int MaxThreadCount
         {
             get { return _maxThreadCount; }
         }
-        
+
+        double _tickInterval = 300000;
         public double TickInterval
         {
             get { return _tickInterval; }
+        }
+
+        public DateTime LastInvocation
+        {
+            get 
+            {
+                XmlNode xNode = XML.GetDocument(_schedulePath, NewDocumentText, true).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LastInvocation);
+                if (xNode != null)
+                    return DateTime.Parse(xNode.Value);
+                else
+                    return DateTime.MaxValue;
+            }
+        }
+        public void UpdateLastInvocation()
+        {
+            XmlNode xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LastInvocation);
+            if (xNode == null)
+            {
+                xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode);
+                XmlAttribute attr = Document.CreateAttribute(ScheduleBase.ScheduleDocument.LastInvocation);
+                xNode.Attributes.Append(attr);
+            }
+            xNode.Value = DateTime.Now.ToString();
+            Document.Save();
         }
         public void UpdateScheduleService(double tickInterval, int threadCount, LogLevel level)
         {
             lock (_lock)
             {
-                XmlNode xNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.MaxThreadCount);
+                XmlNode xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.MaxThreadCount);
                 xNode.Value = threadCount.ToString();
 
-                xNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.TickInterval);
+                xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.TickInterval);
                 xNode.Value = tickInterval.ToString();
 
-                xNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LogLevel);
+                xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LogLevel);
                 xNode.Value = level.ToString();
 
                 _tickInterval = tickInterval;
                 _maxThreadCount = threadCount;
                 HistoryManager.History.LogLevel = level;
 
-                XML.GetDocument(_schedulePath).Save();
+                Document.Save();
             }
         }
         public void DeleteElement(IElementNode ele)
@@ -100,21 +124,32 @@ namespace Vibz.Service.Config
             XmlNode rootNode = null;
             if (ele.GetType().GetInterface(typeof(ISchedule).FullName) != null)
             {
-                nodeToDelete = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + ele.Name + "']");
-                rootNode = XML.GetDocument(_schedulePath).DocumentElement;
+                nodeToDelete = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + ele.Name + "']");
+                rootNode = Document.DocumentElement;
+                ScheduleList.Remove((ISchedule)ele);
             }
             else if (ele.GetType().GetInterface(typeof(IEvent).FullName) != null)
             {
-                nodeToDelete = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + ((IEvent)ele).ScheduleName + "']/" + EventBase.Event.NodeName + "[@" + EventBase.Event.Name + "='" + ((IEvent)ele).Name + "']");
-                rootNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + ((IEvent)ele).ScheduleName + "']");
+                nodeToDelete = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + ((IEvent)ele).ScheduleName + "']/" + EventBase.Event.NodeName + "[@" + EventBase.Event.Name + "='" + ((IEvent)ele).Name + "']");
+                rootNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + ((IEvent)ele).ScheduleName + "']");
                 if (nodeToDelete.ParentNode.ChildNodes.Count == 1)
                 {
                     nodeToDelete = rootNode;
-                    rootNode = XML.GetDocument(_schedulePath).DocumentElement;
+                    rootNode = Document.DocumentElement;
+                    IEvent evt = ((IEvent)ele);
+                    foreach (ISchedule sch in ScheduleList)
+                    {
+                        if (sch.Name == evt.ScheduleName)
+                        {
+                            sch.EventList.Remove(evt);
+                            break;
+                        }
+                    }
                 }
             }
-            rootNode.RemoveChild(nodeToDelete);
-            XML.GetDocument(_schedulePath).Save();
+            if (nodeToDelete != null)
+                rootNode.RemoveChild(nodeToDelete);
+            Document.Save();
         }
         public void UpdateElement(IElementNode newEle)
         {
@@ -131,10 +166,10 @@ namespace Vibz.Service.Config
         {
             lock (_lock)
             {
-                XmlNode newNode = newSchedule.GetNode(XML.GetDocument(_schedulePath));
-                XmlNode nodeToReplace = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + newSchedule.Name + "']");
+                XmlNode newNode = newSchedule.GetNode(Document);
+                XmlNode nodeToReplace = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + newSchedule.Name + "']");
                 
-                XmlElement rootNode = XML.GetDocument(_schedulePath).DocumentElement;
+                XmlElement rootNode = Document.DocumentElement;
                 if (nodeToReplace == null)
                 {
                     if (newNode.ChildNodes.Count != 0)
@@ -151,18 +186,23 @@ namespace Vibz.Service.Config
                         rootNode.RemoveChild(nodeToReplace);
                     }
                 }
-                XML.GetDocument(_schedulePath).Save();
+                Document.Save();
                 LoadSchedule();
             }
         }
-        
+        public XML Document
+        {
+            get {
+                return XML.GetDocument(_schedulePath);
+            }
+        }
         public void UpdateEvent(IEvent evt)
         {
             lock (_lock)
             {
-                XmlNode newNode = evt.GetNode(XML.GetDocument(_schedulePath));
-                XmlNode nodeToReplace = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + evt.ScheduleName + "']/" + EventBase.Event.NodeName + "[@" + EventBase.Event.Name + "='" + evt.Name + "']");
-                XmlNode rootNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + evt.ScheduleName + "']");
+                XmlNode newNode = evt.GetNode(Document);
+                XmlNode nodeToReplace = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + evt.ScheduleName + "']/" + EventBase.Event.NodeName + "[@" + EventBase.Event.Name + "='" + evt.Name + "']");
+                XmlNode rootNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/" + ScheduleBase.ScheduleDocument.Schedule.NodeName + "[@" + ScheduleBase.ScheduleDocument.Schedule.Name + "='" + evt.ScheduleName + "']");
                 if (rootNode == null)
                     return;
                 if (nodeToReplace == null)
@@ -173,7 +213,7 @@ namespace Vibz.Service.Config
                 {
                     rootNode.ReplaceChild(newNode, nodeToReplace);
                 }
-                XML.GetDocument(_schedulePath).Save();
+                Document.Save();
                 LoadSchedule();
             }
         }
@@ -188,29 +228,32 @@ namespace Vibz.Service.Config
                 }
 
                 Environment.CurrentDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                if (!File.Exists(_schedulePath))
+                    Vibz.Helper.IO.CreateFilePath(Path.Combine(Environment.CurrentDirectory, _schedulePath));
+                
                 _schedulePath = new FileInfo(_schedulePath).FullName;
                 // HistoryManager.History.Log(LogLevel.Debug, "Schedule path: " + _schedulePath);
                 XML.GetDocument(_schedulePath, NewDocumentText);
 
-                XmlNode xNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.MaxThreadCount);
+                XmlNode xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.MaxThreadCount);
                 _maxThreadCount = Vibz.Helper.Math.TryGetInteger(xNode.Value, 1);
                 // HistoryManager.History.Log(LogLevel.Debug, "Maximum thread count: " + _maxThreadCount.ToString());
 
-                xNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.TickInterval);
+                xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.TickInterval);
                 _tickInterval = Vibz.Helper.Math.TryGetInteger(xNode.Value, 300000);
                 // HistoryManager.History.Log(LogLevel.Debug, "Tick Interval: " + _tickInterval.ToString());
 
-                xNode = XML.GetDocument(_schedulePath).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LogLevel);
+                xNode = Document.SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LogLevel);
                 if (xNode != null)
                 {
                     HistoryManager.History.LogLevel = GetLogLevel(xNode.Value);
                     // HistoryManager.History.Log(LogLevel.Debug, "Log level: " + HistoryManager.History.LogLevel.ToString());
                 }
-                if (XML.GetDocument(_schedulePath).ChildNodes == null || XML.GetDocument(_schedulePath).DocumentElement.ChildNodes.Count == 0)
+                if (Document.ChildNodes == null || Document.DocumentElement.ChildNodes.Count == 0)
                     return;
                 // HistoryManager.History.Log(LogLevel.Debug, "Task Count: " + _doc.DocumentElement.ChildNodes.Count.ToString());
                 _scheduleList = new List<ISchedule>();
-                foreach (XmlNode xn in XML.GetDocument(_schedulePath).DocumentElement.ChildNodes)
+                foreach (XmlNode xn in Document.DocumentElement.ChildNodes)
                 {
                     ISchedule schedule = GetScheduleElement(xn);
                     if (schedule != null)
@@ -257,6 +300,10 @@ namespace Vibz.Service.Config
 
                     attr = doc.CreateAttribute(ScheduleBase.ScheduleDocument.TickInterval);
                     attr.Value = "300000";
+                    xNode.Attributes.Append(attr);
+
+                    attr = doc.CreateAttribute(ScheduleBase.ScheduleDocument.LastInvocation);
+                    attr.Value = DateTime.Now.ToString();
                     xNode.Attributes.Append(attr);
 
                     attr = doc.CreateAttribute(ScheduleBase.ScheduleDocument.LogLevel);

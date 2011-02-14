@@ -37,8 +37,10 @@ namespace Vibz.Console
         static ITask _task;
         class Abbreviation
         {
+            public const string WaitTime = "w";
             public const string FilePath = "f";
             public const string Compile = "c";
+            public const string Log = "l";
             public const string Execute = "r";
             public const string Schedule = "s";
             public const string CompileAndExecute = "cr";
@@ -50,6 +52,7 @@ namespace Vibz.Console
         {
             public int count = 0;
         }
+        static Arguments CommandLine;
         static void Main(string[] args)
         {
             bool doRun = false;
@@ -77,7 +80,7 @@ namespace Vibz.Console
                     }
                 }
                 string path = "";
-                Arguments CommandLine = new Arguments(args);
+                CommandLine = new Arguments(args);
 
                 if (CommandLine[Abbreviation.FilePath] != null)
                 {
@@ -93,8 +96,8 @@ namespace Vibz.Console
                 }
                 if (CommandLine[Abbreviation.Schedule] != null)
                 {
-                    if (!path.ToLower().EndsWith("." + Vibz.FileType.CompiledScropt))
-                        throw new Exception("File of type [*." + Vibz.FileType.CompiledScropt + "] can only be scheduled.");
+                    if (!path.ToLower().EndsWith("." + Vibz.FileType.CompiledScript))
+                        throw new Exception("File of type [*." + Vibz.FileType.CompiledScript + "] can only be scheduled.");
 
                     Process p = new Process();
                     p.StartInfo.FileName = "Vibz.Scheduler.exe";
@@ -123,8 +126,8 @@ namespace Vibz.Console
 
                 if (doBuild == false || CommandLine[Abbreviation.Execute] != null)
                 {
-                    if (doBuild == false && !path.ToLower().EndsWith("." + Vibz.FileType.CompiledScropt))
-                        throw new Exception("File of type [*." + Vibz.FileType.CompiledScropt + "] can only be executed.");
+                    if (doBuild == false && !path.ToLower().EndsWith("." + Vibz.FileType.CompiledScript))
+                        throw new Exception("File of type [*." + Vibz.FileType.CompiledScript + "] can only be executed.");
                     doRun = true;
                 }
 
@@ -149,12 +152,12 @@ namespace Vibz.Console
 
                     if (!Directory.Exists(prj.BuildLocation))
                         Vibz.Helper.IO.CreateFolderPath(new DirectoryInfo(prj.BuildLocation));
-                    string buildFile = prj.BuildLocation + "/" + element.Name + "." + Vibz.FileType.CompiledScropt;
+                    string buildFile = prj.BuildLocation + "/" + element.Name + "." + Vibz.FileType.CompiledScript;
                     object arg = new object[] { element, buildFile };
 
                     taskThread.SetApartmentState(ApartmentState.STA);
                     taskThread.Start(new object[] { tDelegate, arg, "Compilation" });
-
+                    LogInfo("Compilation started.");
 
                     path = buildFile;
                 }
@@ -171,20 +174,40 @@ namespace Vibz.Console
 
                     taskThread.SetApartmentState(ApartmentState.STA);
                     taskThread.Start(new object[] { tDelegate, arg, "Execution" });
+                    LogInfo("Execution started.");
 
-                    taskThread.Join();
+                    int waitTime = 300000;
+                    if (CommandLine[Abbreviation.WaitTime] != null)
+                    {
+                        waitTime = Vibz.Helper.Math.TryGetInteger(CommandLine[Abbreviation.WaitTime], -1);
+                    }
+                    if (waitTime == -1)
+                    {
+                        LogInfo("Entering into endless wait for process to complete.");
+                        taskThread.Join();
+                    }
+                    else
+                    {
+                        LogInfo("Entering into wait state of " + waitTime + " msec for the process to complete.");
+                        if (!taskThread.Join(waitTime))
+                            throw new Exception("Execution could not be completed in defined time span of '" + waitTime.ToString() + "' msec.");
+                    }
                 }
             }
             catch (Exception exc)
             {
                 System.Console.WriteLine("Process failed. \r\n\tError: " + exc.Message);
-                System.IO.File.AppendAllText(Vibz.Helper.IO.CreateFolderPath(new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).DirectoryName + "/logs/cmd.log", Vibz.Helper.IOType.File), DateTime.Now.ToString() + ": " + exc.Message + "\r\n" + exc.StackTrace);
-                // System.Console.Read();
+                LogInfo(exc.Message + "\r\n" + exc.StackTrace);
             }
             finally
             {
                 _firstTimeExecution = false;
             }
+        }
+        static void LogInfo(string message)
+        {
+            if (CommandLine != null && CommandLine[Abbreviation.Log] != null)
+                System.IO.File.AppendAllText(Vibz.Helper.IO.CreateFolderPath(new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).DirectoryName + "/logs/cmd.log", Vibz.Helper.IOType.File), Environment.NewLine + DateTime.Now.ToString() + ": " + message);
         }
         static void ExecuteInThread(object param)
         {

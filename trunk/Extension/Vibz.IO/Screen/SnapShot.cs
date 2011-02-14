@@ -59,10 +59,17 @@ namespace Vibz.IO.TextFile.Instruction.Action
 
             FilePath = Vibz.Helper.IO.CreateFolderPath(FilePath, Vibz.Helper.IOType.File);
 
-            b = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
-            g = Graphics.FromImage(b);
-            g.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
-            b.Save(FilePath, ImageFormat.Jpeg);
+            try
+            {
+                b = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
+                g = Graphics.FromImage(b);
+                g.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
+                b.Save(FilePath, ImageFormat.Jpeg);
+            }
+            catch (System.ComponentModel.Win32Exception exc)
+            {
+                Vibz.Contract.Log.LogQueue.Instance.Enqueue(new Vibz.Contract.Log.LogQueueElement("Execution invoked by service, could not capture screenshot.", Vibz.Contract.Log.LogSeverity.Warn));
+            }
         }
 
         public override Vibz.Contract.Log.LogElement InfoEnd

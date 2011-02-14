@@ -130,7 +130,7 @@ namespace Vibz.Interpreter.Script.FlowController
 
         void ProcessError(InstructionBase inst, Exception exc)
         {
-            string message = "Error occured while processing instruction '" + inst.GetType().Name + "'. " + Vibz.Contract.Log.LogException.GetFullException(exc);
+            string message = "Error occured while processing instruction '" + inst.GetType().Name + "'. " + Environment.NewLine + exc.GetType() + ": " + Vibz.Contract.Log.LogException.GetFullException(exc);
             if (exc.Data != null && exc.Data.Count > 0)
             {
                 message += "\r\nExtended Information:";

@@ -31,6 +31,6 @@ namespace Vibz
         public const string Identifier = "id";
         public const string ApplicationGlobal = "ag";
         public const string Configuration = "config";
-        public const string CompiledScropt = "vacs";
+        public const string CompiledScript = "vacs";
     }
 }
