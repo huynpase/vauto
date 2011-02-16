@@ -24,7 +24,15 @@ _Note: Scheduling can be extended to include additional schedule type by writing
    # From the *file* menu (top) of the Studio click on *Open Project* option.
    # Navigate to Solution folder of the script that is to be scheduled and select the project file to open.
    # In the Solution explorer, right click on the suite file. This will open the context menu.
-   # Click on Schedule option in the context menu. This will open up the Automation Schedule window with selected task being added.
+   # Click on *Schedule* option in the context menu. This will open up the Automation Schedule window with selected task already being added.
    # Follow the steps as discussed above to edit the settings for the added schedule task.
   # *From windows explorer*
+   # Open Windows explorer window and navigate to Compiled script (VACS) file that is to be scheduled.
+   # Right click on the VACS file. This will open the context menu.
+   # Click on *Schedule* option in the context menu. This will open up the Automation Schedule window with selected task already being added.
+   # Follow the steps as discussed above to edit the settings for the added schedule task.
 ===Suspending scheduler process===
+The execution of task is being controlled be Windows scheduler service. One can start and stop the service from Vibz Scheduler window. To start or suspend the service do following step:
+  # Open the Vibz scheduler window.
+  # Navigate to Service Settings.
+  # At the top you will have the option to start and stop the service.
