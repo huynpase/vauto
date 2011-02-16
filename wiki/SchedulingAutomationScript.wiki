@@ -20,5 +20,11 @@ Vibz Automation Studio and Vibz automation framework both comes with Automation 
    # On selecting a Schedule type settings specific to the selected type will be available. Change the settings as per the requirement.
 _Note: Scheduling can be extended to include additional schedule type by writing a new [SchedulePlugin plug-in]._
   # *Using Automation Studio*
+   # Open Automation studio. *Start -> All Programs -> Vibzworld -> Automate*.
+   # From the *file* menu (top) of the Studio click on *Open Project* option.
+   # Navigate to Solution folder of the script that is to be scheduled and select the project file to open.
+   # In the Solution explorer, right click on the suite file. This will open the context menu.
+   # Click on Schedule option in the context menu. This will open up the Automation Schedule window with selected task being added.
+   # Follow the steps as discussed above to edit the settings for the added schedule task.
   # *From windows explorer*
 ===Suspending scheduler process===
