@@ -16,7 +16,9 @@ Vibz Automation Studio and Vibz automation framework both comes with Automation 
    # Vibz utility ideally comes with three types of Schedule mechanism.
     * *Periodic:* Select this option when you want to execute the script periodically after regularly interval of time.
     * *PeriodicMask:* Select this option when you have periodic execution but to some part of duration you do not want to the execution to happen. Example: For Stock Market Crawler you may not want to execute your script during Weekends.
-    * *OneTime:*
+    * *OneTime:* Select this option when you need your script to be executed only once on a particular date-time. After the execution the task will automatically get removed from the task list.
+   # On selecting a Schedule type settings specific to the selected type will be available. Change the settings as per the requirement.
+_Note: Scheduling can be extended to include additional schedule type by writing a new [SchedulePlugin plug-in]._
   # *Using Automation Studio*
   # *From windows explorer*
 ===Suspending scheduler process===
