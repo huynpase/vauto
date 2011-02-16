@@ -6,6 +6,12 @@ The framework has gone a step ahead to provide a facility to schedule your scrip
 ===How to schedule a script===
 Vibz Automation Studio and Vibz automation framework both comes with Automation scheduler. On installing either of these software you will see scheduler under *Start -> All Programs -> Vibzworld -> Automate Scheduler*. There are three ways by which you can schedule your script.
   # *Using Automation Scheduler*
+   # Open Automation Scheduler from Desktop Start menu.
+   # On the scheduler window you will see three tabs. Go to *Schedule Settings* tab.
+   # In the lower panel you will have new task option. Click on the *browse* button.
+   # In the *Open* file dialog box navigate to your compiled script (vacs) file.
+   # Click on *Add Task* button. This will add the schedule task in the Running task list.
+   # In the right panel, update the schedule settings.
   # *Using Automation Studio*
   # *From windows explorer*
 ===Suspending scheduler process===
