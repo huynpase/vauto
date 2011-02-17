@@ -21,7 +21,7 @@
           {check condition}
         </condition>
         <body>
-           {All instruction in this block will be iterated for given count}
+           {All instruction in this block will be iterated until the condition becomes false}
         </body>
       </while>
     }}}
@@ -33,7 +33,7 @@
     {{{
        <dowhile>
         <body>
-          {All instruction in this block will be iterated for given count}
+          {All instruction in this block will be iterated until the condition becomes false}
         </body>
         <condition>
           {check condition}
