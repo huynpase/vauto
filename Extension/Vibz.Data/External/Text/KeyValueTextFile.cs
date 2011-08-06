@@ -38,14 +38,17 @@ namespace Vibz.Data.External.Text
         {
             get {
                 if (_value == null)
+                {
                     _value = new KeyValueSet();
+                }
                 return _value;
             }
         }
-        public override void Load(ParameterSet param)
+        public override void LoadData(ParameterSet param)
         {
             _tFile = new TextFile();
             _tFile.Init(param);
+            Value.Parameters = _tFile.Parameters;
 
             if (param.GetParameter(ListSeperationCharacter) != null)
                 _listSeperationChar = param.GetParameter(ListSeperationCharacter).Value;
@@ -60,16 +63,16 @@ namespace Vibz.Data.External.Text
                     continue;
                 if (keyValue.Length == 1)
                 {
-                    if (!_value.Contains(keyValue.GetValue(0).ToString()))
-                        _value.Add(keyValue.GetValue(0).ToString(), "");
+                    if (!Value.Contains(keyValue.GetValue(0).ToString()))
+                        Value.Add(keyValue.GetValue(0).ToString(), "");
                     else
-                        _value[keyValue.GetValue(0).ToString()] = "";
+                        Value[keyValue.GetValue(0).ToString()] = "";
                     continue;
                 }
-                if (!_value.Contains(keyValue.GetValue(0).ToString()))
-                    _value.Add(keyValue.GetValue(0).ToString(), keyValue.GetValue(1).ToString());
+                if (!Value.Contains(keyValue.GetValue(0).ToString()))
+                    Value.Add(keyValue.GetValue(0).ToString(), keyValue.GetValue(1).ToString());
                 else
-                    _value[keyValue.GetValue(0).ToString()] = keyValue.GetValue(1).ToString();
+                    Value[keyValue.GetValue(0).ToString()] = keyValue.GetValue(1).ToString();
             }
         }
         public override void Export(ParameterSet param, KeyValueSet data, DataExportMode mode)

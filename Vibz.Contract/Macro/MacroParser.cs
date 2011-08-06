@@ -23,6 +23,7 @@ using System.Reflection;
 using Vibz.Contract.Log;
 using Vibz.Contract;
 using Vibz.Contract.Data;
+using System.Xml.Serialization;
 namespace Vibz.Contract.Macro
 {
     public class MacroParser
@@ -40,7 +41,7 @@ namespace Vibz.Contract.Macro
             get 
             { 
                 if (_progress == null) 
-                    _progress = new LogElement("Parsing Macro."); 
+                    _progress = new LogElement(""); 
                 return _progress; 
             }
         }
@@ -49,9 +50,12 @@ namespace Vibz.Contract.Macro
             MemberInfo[] mis = inst.GetType().FindMembers(MemberTypes.Field | MemberTypes.Property,
                 BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance, null, null);
 
+            string par = "parse(";
             foreach (MemberInfo mi in mis)
             {
-                string par = "parse(";
+                if (mi.GetCustomAttributes(true).Length == 0)
+                    continue;
+                string value;
                 switch (mi.MemberType)
                 {
                     case MemberTypes.Property:
@@ -60,9 +64,10 @@ namespace Vibz.Contract.Macro
                             object pValue = ((PropertyInfo)mi).GetValue(inst, null);
                             if (pValue == null)
                                 break;
-                            if (pValue.ToString().StartsWith(par) && pValue.ToString().EndsWith(")"))
+                            value = pValue.ToString();
+                            if (value.StartsWith(par) && value.EndsWith(")"))
                             {
-                                string parseText = pValue.ToString().Substring(par.Length, pValue.ToString().LastIndexOf(')') - par.Length);
+                                string parseText = value.Substring(par.Length, value.LastIndexOf(')') - par.Length);
                                 ((PropertyInfo)mi).SetValue(inst, Evaluate(parseText), null);
                             }
                         }
@@ -72,9 +77,10 @@ namespace Vibz.Contract.Macro
                         if (fValue == null)
                             break;
                             //throw new Exception("Expected " + mi.Name + " not found.");
-                        if (fValue.ToString().StartsWith(par) && fValue.ToString().EndsWith(")"))
+                        value = fValue.ToString();
+                        if (value.StartsWith(par) && value.EndsWith(")"))
                         {
-                            string parseText = fValue.ToString().Substring(par.Length, fValue.ToString().LastIndexOf(')') - par.Length);
+                            string parseText = value.Substring(par.Length, value.LastIndexOf(')') - par.Length);
                             ((FieldInfo)mi).SetValue(inst, Evaluate(parseText));
                         }
                         break;

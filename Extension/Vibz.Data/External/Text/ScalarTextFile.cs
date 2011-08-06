@@ -34,15 +34,18 @@ namespace Vibz.Data.External.Text
             get
             {
                 if (_value == null)
+                {
                     _value = new Vibz.Contract.Data.Text();
+                }
                 return _value;
             }
         }
-        public override void Load(ParameterSet param)
+        public override void LoadData(ParameterSet param)
         {
             _tFile = new TextFile();
             _tFile.Init(param);
-            _value.Value = _tFile.Content;
+            Value.Parameters = _tFile.Parameters;
+            Value.Value = _tFile.Content;
         }
         public override void Export(ParameterSet param, Vibz.Contract.Data.Text data, DataExportMode mode)
         {

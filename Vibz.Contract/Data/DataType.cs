@@ -23,6 +23,7 @@ namespace Vibz.Contract.Data
 {
     public enum DataType
     {
+        None,
         Scalar,
         Array,
         DataTable,

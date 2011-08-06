@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using Vibz.Contract.Data;
 
 namespace Vibz.IO.TextFile
 {
@@ -41,6 +42,10 @@ namespace Vibz.IO.TextFile
         public override void Write(object text)
         {
             System.IO.File.WriteAllText(FilePath, text.ToString());
+        }
+        public override IData Read()
+        {
+            return new Vibz.Contract.Data.Text(System.IO.File.ReadAllText(FilePath));
         }
         public override void Append(object text)
         {

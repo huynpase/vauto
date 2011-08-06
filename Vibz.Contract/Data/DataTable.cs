@@ -22,7 +22,7 @@ using System.Data;
 
 namespace Vibz.Contract.Data
 {
-    public class DataTable : IData
+    public class DataTable : BaseData
     {
         protected System.Data.DataTable Value = new System.Data.DataTable();
 
@@ -32,15 +32,15 @@ namespace Vibz.Contract.Data
         public DataTable(System.Data.DataTable value)
         { Value = value; }
 
-        public string Type
+        public override string Type
         { get { return DataType.DataTable.ToString(); } }
 
-        public virtual string Source
+        public override string Source
         { get { return Vibz.Contract.Data.Source.SourceType.Internal.ToString(); } }
 
-        public object GetValue() { return Value; }
+        public override object GetValue() { return Value; }
 
-        public virtual string Evaluate(params object[] args)
+        public override string Evaluate(params object[] args)
         {
             if (!ValidateValue)
                 throw new Exception("Data is not initialized.");
@@ -78,7 +78,7 @@ namespace Vibz.Contract.Data
 
             return this.Value.Rows[index1].ItemArray.GetValue(index2).ToString();
         }
-        public virtual string Evaluate(string property)
+        public override string Evaluate(string property)
         {
             if (!ValidateValue)
                 throw new Exception("Data is not initialized.");
@@ -92,10 +92,13 @@ namespace Vibz.Contract.Data
                 case "columncount":
                     return this.Value.Columns.Count.ToString();
                 default:
-                    throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
+                    Parameter param = this.Parameters.GetParameter(property.ToLower());
+                    if (param == null)
+                        throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
+                    return param.Value; 
             }
         }
-        public virtual string Evaluate(string method, params object[] args)
+        public override string Evaluate(string method, params object[] args)
         {
             if (!ValidateValue)
                 throw new Exception("Data is not initialized.");

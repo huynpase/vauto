@@ -36,19 +36,22 @@ namespace Vibz.Data.External.Text
             get
             {
                 if (_value == null)
+                {
                     _value = new TextArray();
+                }
                 return _value;
             }
         }
-        public override void Load(ParameterSet param)
+        public override void LoadData(ParameterSet param)
         {
             _tFile = new TextFile();
             _tFile.Init(param);
+            Value.Parameters = _tFile.Parameters;
 
             if (param.GetParameter(SeperationCharacter) != null)
                 _seperationChar = param.GetParameter(SeperationCharacter).Value;
 
-            _value.Value = _tFile.Content.Split(new string[] { _seperationChar }, StringSplitOptions.RemoveEmptyEntries);
+            Value.Value = _tFile.Content.Split(new string[] { _seperationChar }, StringSplitOptions.RemoveEmptyEntries);
         }
         public override void Export(ParameterSet param, TextArray data, DataExportMode mode)
         {

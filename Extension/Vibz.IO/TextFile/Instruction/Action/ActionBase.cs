@@ -19,14 +19,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Vibz.Contract;
+using System.Xml.Serialization;
 
 namespace Vibz.IO.TextFile.Instruction.Action
 {
     public abstract class ActionBase : IOInstructionBase, IAction
     {
+        protected IOBase IOfile;
         public virtual void Execute(Vibz.Contract.Data.DataHandler vList)
         {
-            base.Execute(vList);
+            IOBase iofile = IOFactory.GetIOFile(FilePath);
+            operation(vList.Evaluate(Content));
+        }
+        string _content = "CONTENT";
+        [XmlAttribute("content")]
+        public string Content
+        {
+            get { return _content; }
+            set { _content = value; }
         }
     }
 }

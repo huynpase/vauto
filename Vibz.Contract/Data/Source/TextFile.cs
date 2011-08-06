@@ -22,7 +22,7 @@ using System.IO;
 
 namespace Vibz.Contract.Data.Source
 {
-    public class TextFile : ISource
+    public class TextFile : SourceFile
     {
         const string Path = "path";
         string _filePath;
@@ -33,7 +33,7 @@ namespace Vibz.Contract.Data.Source
                 return _filePath;
             }
         }
-        public void Init(ParameterSet param)
+        public override void Initialize(ParameterSet param)
         {
             if (param.Count < 1)
                 throw new Exception("Less parameters to load a text file.");

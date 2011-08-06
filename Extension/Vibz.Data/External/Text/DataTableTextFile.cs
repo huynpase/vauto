@@ -38,14 +38,17 @@ namespace Vibz.Data.External.Text
             get
             {
                 if (_value == null)
+                {
                     _value = new DataTable();
+                }
                 return _value;
             }
         }
-        public override void Load(ParameterSet param)
+        public override void LoadData(ParameterSet param)
         {
             _tFile = new TextFile();
             _tFile.Init(param);
+            Value.Parameters = _tFile.Parameters;
 
             if (param.GetParameter(RowSeperationCharacter) != null)
                 _rowSeperationChar = param.GetParameter(RowSeperationCharacter).Value;
@@ -56,7 +59,7 @@ namespace Vibz.Data.External.Text
             foreach (string rowData in rowDataList)
             {
                 string[] rowValues = rowData.Split(new string[] { _colSeperationChar }, StringSplitOptions.None);
-                _value.AddRow(rowValues);
+                Value.AddRow(rowValues);
             }
         }
         public override void Export(ParameterSet param, DataTable data, DataExportMode mode)

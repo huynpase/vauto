@@ -112,7 +112,7 @@ namespace Vibz.Interpreter.Configuration
                 if (var.Data != null)
                     return var.Data;
                 else if (var.InnerText != null)
-                    return new Vibz.Contract.Data.Text(var.InnerText);
+                    return new Vibz.Contract.Data.BaseData(var.InnerText);
                 else
                     throw new Exception("Data Error.");
             }

@@ -68,7 +68,8 @@ namespace Vibz.Contract.Log
             Message = message;
             _severity = severity;
             _threadId = System.Threading.Thread.CurrentThread.ManagedThreadId.ToString();
-            LogQueue.Instance.Enqueue(new LogQueueElement(message, severity));
+            if (message != null && message != "")
+                LogQueue.Instance.Enqueue(new LogQueueElement(message, severity));
         }
 
         public LogElement Clone()

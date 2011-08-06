@@ -6,6 +6,7 @@
   <instruction>
     <include name="Vibz.Web" path="plugin\instruction\web\Vibz.Web.dll" config="plugin\instruction\web\browser.config" />
     <include name="Vibz.IO" path="plugin\instruction\io\Vibz.IO.dll" />
+    <include name="Vibz.Net" path="plugin\instruction\net\Vibz.Net.dll" />
     <include name="Vibz.Desktop" path="plugin\instruction\desktop\Vibz.Desktop.dll" />
     <include name="demo_ext" path="plugin\instruction\calendar\demo_ext_instruction.dll" />
   </instruction>
