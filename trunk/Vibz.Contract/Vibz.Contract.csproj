@@ -44,12 +44,14 @@
     <Compile Include="Attribute\FunctionTypeInfo.cs" />
     <Compile Include="Common\IError.cs" />
     <Compile Include="Common\ISynchronize.cs" />
+    <Compile Include="Data\BaseData.cs" />
     <Compile Include="Data\DataExportMode.cs" />
     <Compile Include="Data\ExternalData.cs" />
     <Compile Include="Data\DataCollection.cs" />
     <Compile Include="Data\IDataProcessor.cs" />
     <Compile Include="Data\Source\ISource.cs" />
     <Compile Include="Data\ParameterSet.cs" />
+    <Compile Include="Data\Source\SourceFile.cs" />
     <Compile Include="Data\Source\SourceType.cs" />
     <Compile Include="Data\Source\TextFile.cs" />
     <Compile Include="Data\DataTable.cs" />

@@ -47,7 +47,7 @@ namespace Vibz.Service
         }
         protected override void OnBeforeUninstall(IDictionary savedState)
         {
-            ServiceController controller = new ServiceController(Automate.VibzServiceName);
+            ServiceController controller = new ServiceController(Automate.VibzServiceName, Environment.MachineName);
             try
             {
                 if (controller.Status == ServiceControllerStatus.Running | controller.Status == ServiceControllerStatus.Paused)

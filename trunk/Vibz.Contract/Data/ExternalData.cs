@@ -24,9 +24,15 @@ namespace Vibz.Contract.Data
 {
     public abstract class ExternalData<T> : IData
     {
+        public ParameterSet Parameters = new ParameterSet();
         public abstract T Value { get; }
         public abstract string Source { get; }
-        public abstract void Load(ParameterSet param);
+        public abstract void LoadData(ParameterSet param);
+        public void Load(ParameterSet param)
+        {
+            Parameters = param;
+            LoadData(param);        
+        }
         public abstract void Export(ParameterSet param, T data, DataExportMode mode);
         public object GetValue() { return Value; }
         public string Type 
@@ -37,6 +43,7 @@ namespace Vibz.Contract.Data
         {
             return ((IData)Value).Evaluate(args);
         }
+
         public string Evaluate(string property)
         {
             return ((IData)Value).Evaluate(property);        

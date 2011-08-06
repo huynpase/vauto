@@ -117,6 +117,7 @@ namespace Vibz.HTMLExtractor
             wb.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
             this.Controls.Add(wb);
             scriptCallback = new ScriptCallback(this);
+            wb.ObjectForScripting = scriptCallback;
         }
 
         void wb_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
@@ -125,9 +126,21 @@ namespace Vibz.HTMLExtractor
             toolStripProgressBar1.Minimum = 0;
             toolStripProgressBar1.Maximum = (int)e.MaximumProgress;
             toolStripProgressBar1.Value = (int)e.CurrentProgress;
+            toolStripProgressBar1.Visible = true;
 
-            toolStripStatusLabel1.Text = wb.ReadyState == WebBrowserReadyState.Loading ? "Loading " + wb.Url.ToString() :
-                (wb.ReadyState == WebBrowserReadyState.Complete ? "Done" : "Website found." + wb.Url.ToString());
+            switch (wb.ReadyState)
+            { 
+                case WebBrowserReadyState.Loading:
+                    toolStripStatusLabel1.Text = "Loading " + wb.Url.ToString();
+                    break;
+                case WebBrowserReadyState.Complete:
+                    toolStripStatusLabel1.Text = "Done";
+                    toolStripProgressBar1.Visible = false;
+                    break;
+                default:
+                    toolStripStatusLabel1.Text = "Website found." + wb.Url.ToString();
+                    break;
+            }
         }
 
         void wb_Navigated(object sender, WebBrowserNavigatedEventArgs e)
@@ -155,7 +168,7 @@ namespace Vibz.HTMLExtractor
 
             _readyState = WebBrowserReadyState.Complete;
 
-                ProcessPage();
+            ProcessPage();
         }
         void ProcessPage()
         {
@@ -163,8 +176,11 @@ namespace Vibz.HTMLExtractor
             {
                 lock (_padLock)
                 {
+                    if (_readyState == WebBrowserReadyState.Complete)
+                        return;
                     Log("CheckStatus - Browser Status is Complete");
                     _readyState = WebBrowserReadyState.Complete;
+                    wb.Stop();
                     _reloadingSGML = false;
                 }
             }

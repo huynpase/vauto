@@ -74,7 +74,7 @@ namespace Vibz.Solution.Element.PreCompile
                 Function fnc = OwnerFunction.OwnerProject.CreateFunction(fi, funcName);
                 fnc.DataSet = DataHandler.Load(xnCall.SelectSingleNode(Call.Data.nData), OwnerFunction.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
 
-                string fncText = fnc.GetCompiledText();
+                string fncText = fnc.GetCompiledText(funcName);
                 XmlNode node = (XmlNode)xnCall.OwnerDocument.CreateElement(Call.nCall);
                 node.InnerXml = fncText;
 

@@ -197,8 +197,13 @@ namespace Vibz.Service.Config
                 HistoryInfo history = new HistoryInfo(message);
                 lock (_lock)
                 {
-                    XML.GetDocument(_historyPath).DocumentElement.AppendChild(history.GetNode(XML.GetDocument(_historyPath)));
-                    XML.GetDocument(_historyPath).Save();
+                    try
+                    {
+                        XML.GetDocument(_historyPath).DocumentElement.AppendChild(history.GetNode(XML.GetDocument(_historyPath)));
+                        XML.GetDocument(_historyPath).Save();
+                    }
+                    catch (Exception exc)
+                    { }
                 }
             }
         }

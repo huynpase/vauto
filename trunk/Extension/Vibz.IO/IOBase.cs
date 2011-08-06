@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Vibz.Contract.Data;
 
 namespace Vibz.IO
 {
@@ -31,6 +32,7 @@ namespace Vibz.IO
         }
         public abstract void Init(Dictionary<string, object> param);
         public abstract void Write(object text);
+        public abstract IData Read();
         public abstract void Append(object text);
     }
 }

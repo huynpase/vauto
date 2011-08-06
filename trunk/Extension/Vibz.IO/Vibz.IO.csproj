@@ -44,6 +44,8 @@
     <Compile Include="Export.cs" />
     <Compile Include="Screen\SnapShot.cs" />
     <Compile Include="TextFile\Instruction\Action\ActionBase.cs" />
+    <Compile Include="TextFile\Instruction\Fetch\Read.cs" />
+    <Compile Include="TextFile\Instruction\Fetch\FetchBase.cs" />
     <Compile Include="TextFile\Instruction\IOInstructionBase.cs" />
     <Compile Include="TextFile\Instruction\Action\Append.cs" />
     <Compile Include="TextFile\Instruction\Action\Write.cs" />

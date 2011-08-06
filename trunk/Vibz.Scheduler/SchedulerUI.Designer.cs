@@ -15,6 +15,8 @@
 *	derived from this software without specific prior written
 *	permission.
 */
+using Vibz.Service;
+using System;
 namespace Vibz.Scheduler
 {
     partial class SchedulerUI
@@ -90,7 +92,7 @@ namespace Vibz.Scheduler
             this.tsbStop = new System.Windows.Forms.ToolStripButton();
             this.tsbRestart = new System.Windows.Forms.ToolStripButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.serviceController1 = new System.ServiceProcess.ServiceController();
+            this.serviceController1 = new System.ServiceProcess.ServiceController(Automate.VibzServiceName, Environment.MachineName);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.cmsScheduleTask = new System.Windows.Forms.ContextMenuStrip(this.components);

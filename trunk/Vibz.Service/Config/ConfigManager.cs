@@ -23,6 +23,7 @@ using System.IO;
 using Vibz;
 using Vibz.Service.Schedule;
 using Vibz.Service.Schedule.Event;
+using System.Globalization;
 namespace Vibz.Service.Config
 {
     public class ConfigManager
@@ -81,7 +82,7 @@ namespace Vibz.Service.Config
             {
                 XmlNode xNode = XML.GetDocument(_schedulePath, NewDocumentText, true).SelectSingleNode(ScheduleBase.ScheduleDocument.RootNode + "/@" + ScheduleBase.ScheduleDocument.LastInvocation);
                 if (xNode != null)
-                    return DateTime.Parse(xNode.Value);
+                    return DateTime.Parse(xNode.Value, new CultureInfo("en-US", false));
                 else
                     return DateTime.MaxValue;
             }

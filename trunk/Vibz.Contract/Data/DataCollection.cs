@@ -39,6 +39,21 @@ namespace Vibz.Contract.Data
                 throw new Exception("Data with name '" + dMember.Name + "' has already been initialised.");
             base.Add(dMember);
         }
+        public void Add(string name, IData value)
+        {
+            if (value.Source.ToLower() == Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower()
+                && value.Type.ToLower() == Vibz.Contract.Data.DataType.None.ToString().ToLower())
+            {
+                object val = value.GetValue();
+                if (val != null && val.GetType() == typeof(String) && val.ToString().StartsWith("@") && this.ContainsData(val.ToString().Substring(1)))
+                {
+                    Var v = this.Get(val.ToString().Substring(1));
+                    this.Add(new Var(name, v));
+                    return;
+                }
+            }
+            this.Add(new Var(name, value));
+        }
         public void Add(string name, IData value, string path, string innerText)
         {
             this.Add(new Var(path, name, value, innerText));
@@ -71,6 +86,18 @@ namespace Vibz.Contract.Data
             }
             throw new Exception("Data '" + name + "' not present in the data list.");
         }
+        public void AddOrUpdate(string name, IData data)
+        {
+            foreach (Var dm in this)
+            {
+                if (dm.Name == name)
+                {
+                    this.Remove(dm);
+                    break;
+                }
+            }
+            this.Add(name, data);
+        }
         public void Update(string name, IData data, string path)
         {
             foreach (Var dm in this)
@@ -90,6 +117,8 @@ namespace Vibz.Contract.Data
             {
                 if (dm.Name == name)
                 {
+                    if (dm.PointerTo != null)
+                        return dm.PointerTo;
                     return dm;
                 }
             }
@@ -100,7 +129,11 @@ namespace Vibz.Contract.Data
             foreach (Var dm in this)
             {
                 if (dm.Name == name)
+                {
+                    if (dm.PointerTo != null)
+                        return dm.PointerTo;
                     return dm;
+                }
             }
             return null;
         }
@@ -113,7 +146,22 @@ namespace Vibz.Contract.Data
                 this.Add(dm);
             }
         }
+        public string SetPrefix(string value, string prefix)
+        {
+            foreach (Var dm in this)
+            {
+                if (value.Contains("@" + dm.Name))
+                {
+                    value = value.Replace("@" + dm.Name, "@" + prefix + "_" + dm.Name);
+                }
+            }
+            return value;
+        }
         public string GetCompiledText()
+        {
+            return GetCompiledText("");
+        }
+        public string GetCompiledText(string prefix)
         {
             if (this == null || this.Count == 0)
                 return "";
@@ -121,7 +169,7 @@ namespace Vibz.Contract.Data
             string innerText = "";
             foreach (Var dm in this)
             {
-                innerText += dm.GetCompiledText();
+                innerText += dm.GetCompiledText(prefix);
             }
             if (innerText == "")
                 return "";

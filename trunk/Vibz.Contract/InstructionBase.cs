@@ -89,5 +89,9 @@ namespace Vibz.Contract
             string constructedString = encoding.GetString(characters);
             return (constructedString);
         }
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 }

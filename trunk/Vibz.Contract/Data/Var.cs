@@ -39,6 +39,8 @@ namespace Vibz.Contract.Data
         public string Source
         {
             get {
+                if (_pointer != null)
+                    _source = _pointer.Source;
                 if (_source == null)
                 {
                     if (Data != null)
@@ -49,23 +51,33 @@ namespace Vibz.Contract.Data
 
                 return _source; 
             }
-            set { _source = value; }
+            set {
+                if (_pointer != null)
+                    _pointer.Source = value;
+                _source = value; 
+            }
         }
         string _type = null;
         [XmlAttribute(Var.nType)]
         public string Type
         {
-            get { 
+            get {
+                if (_pointer != null)
+                    _type = _pointer.Type;
                 if (_type == null) 
                 {
                     if (Data != null)
                         _type = Data.Type;
                     else
-                        _type = Vibz.Contract.Data.DataType.Scalar.ToString().ToLower();
+                        _type = Vibz.Contract.Data.DataType.None.ToString().ToLower();
                 }
                 return _type; 
             }
-            set { _type = value; }
+            set {
+                if (_pointer != null)
+                    _pointer.Type = value;
+                _type = value; 
+            }
         }
 
         [XmlIgnore()]
@@ -75,12 +87,17 @@ namespace Vibz.Contract.Data
         {
             get
             {
+                if (_pointer != null)
+                    InnerText = _pointer.InnerText;
                 XmlDocument doc = new XmlDocument();
                 return doc.CreateCDataSection(InnerText);
             }
             set
             {
-                InnerText = value.Value;
+                if (_pointer != null)
+                    _pointer.InnerText = value.Value;
+                else
+                    InnerText = value.Value;
             }
         }
 
@@ -88,14 +105,43 @@ namespace Vibz.Contract.Data
         public IData Data = null;
         [XmlIgnore()]
         public string _filePath;
+        ParameterSet _ParamList = new ParameterSet();
         [XmlElement(Parameter.nNodeName)]
-        public ParameterSet ParamList = new ParameterSet();
+        public ParameterSet ParamList
+        {
+            get {
+                if (_pointer != null)
+                    return _pointer.ParamList;
+                return _ParamList; 
+            }
+            set {
+                if (_pointer != null)
+                    _pointer.ParamList = value;
+                _ParamList = value;
+            }
+        }
+        Var _pointer = null;
+        public Var PointerTo
+        {
+            get { return _pointer; }
+            set { _pointer = value; }
+        }
         // This constructor should not be used.
         public Var() { }
-        public Var(string name, IData data) 
+        public Var(string name, IData data)
         {
             Name = name;
             Data = data;
+            if (data != null)
+            {
+                _source = data.Source;
+                _type = data.Type;
+            }
+        }
+        public Var(string name, Var pointer) 
+        {
+            Name = name;
+            PointerTo = pointer;
         }
         public Var(string fileName) { _filePath = fileName; }
         public Var(string fileName, string name, IData data, string innerText)
@@ -144,7 +190,7 @@ namespace Vibz.Contract.Data
         }
         public void Execute(Vibz.Contract.Data.DataHandler vList)
         {
-            vList.DataList.Update(Name, vList.DataProcessor.LoadData(this));
+            vList.DataList.AddOrUpdate(Name, vList.DataProcessor.LoadData(this));
         }
         public Var Clone
         {
@@ -155,15 +201,16 @@ namespace Vibz.Contract.Data
         }
         public override string ToString()
         {
-            if ((this.Source==null || this.Type==null) || this.Source.ToLower() == Vibz.Contract.Data.Source.SourceType.Internal.ToString().ToLower()
-                            && this.Type.ToLower() == Vibz.Contract.Data.DataType.Scalar.ToString().ToLower())
-            {
-                return (this.InnerText == null ? "" : this.InnerText);
-            }
-            else
-            {
-                return "[" + this.Source + ":" + this.Type + "]";
-            }
+            string retValue = base.ToString() + "|";
+            if (this.Name != null)
+                retValue += this.Name + "|";
+            if (this.Type != null)
+                retValue += this.Type + "|";
+            if (this.Source != null)
+                retValue += this.Source + "|";
+            if (this.InnerText != null)
+                retValue += this.InnerText;
+            return retValue;
         }
         public bool IsInternal
         {
@@ -173,14 +220,20 @@ namespace Vibz.Contract.Data
         }
         public string GetCompiledText()
         {
+            return GetCompiledText("");
+        }
+        public string GetCompiledText(string prefix)
+        {
             string innerXml = "";
             foreach (Parameter param in ParamList)
             {
                 innerXml += param.GetCompiledText();
             }
 
-            string retValue = "<" + nNodeName + " " + nName + "='" + Name + "' " +
-                nSource + "='" + Source + "' " + nType + "='" + Type + "'>";
+            string retValue = "<" + nNodeName + " " + nName + "='" + (prefix == "" ? "" : prefix + "_") + Name + "'" +
+                " " + nSource + "='" + Source + "'" +
+                (Type == Vibz.Contract.Data.DataType.None.ToString().ToLower() ? "" : " " + nType + "='" + Type + "'") +
+                ">";
             if (innerXml.Trim() == "")
             {
                 if (InnerText != null || InnerText != "")
@@ -190,6 +243,13 @@ namespace Vibz.Contract.Data
                 retValue += innerXml;
             retValue += "</" + nNodeName + ">";
             return retValue;
+        }
+        public override Vibz.Contract.Log.LogElement InfoEnd
+        {
+            get
+            {
+                return new Vibz.Contract.Log.LogElement("Variable " + this.Name + " processed.");
+            }
         }
     }
 }

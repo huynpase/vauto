@@ -128,7 +128,10 @@ namespace Vibz.Contract.Data
                         }
                         args.SetValue(param, i - 1);
                     }
-                    return DataProcessor.Evaluate(this.DataList.Get(nameData), args);
+                    string retValue = DataProcessor.Evaluate(this.DataList.Get(nameData), args);
+                    if (retValue.StartsWith("@") || retValue.StartsWith("#"))
+                        return Evaluate(retValue);
+                    return retValue;
                 }
                 else if (name.StartsWith("#")) // Evaluate Expression
                 {
@@ -140,7 +143,10 @@ namespace Vibz.Contract.Data
                         {
                             key = key.Replace(element, Evaluate(element.Trim()));
                         }
-                        return EvaluateExpression(key).ToString();
+                        string retValue = EvaluateExpression(key).ToString();
+                        if (retValue.StartsWith("@") || retValue.StartsWith("#"))
+                            return Evaluate(retValue);
+                        return retValue;
                     }
                 }
                 return name;

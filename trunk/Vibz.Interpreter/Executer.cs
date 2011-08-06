@@ -25,6 +25,7 @@ using Vibz.Interpreter.Script.FlowController;
 using System.Reflection;
 using Vibz.Contract.Log;
 using Vibz.Contract.Macro;
+using System.Collections;
 namespace Vibz.Interpreter
 {
     public class Executer : ITask
@@ -127,17 +128,28 @@ namespace Vibz.Interpreter
             }
             finally
             {
-                CloseAllForms();
+                try
+                {
+                    CloseAllForms();
+                }
+                catch (Exception exc) { }
                 // Configuration.ConfigManager.UnLoadConfig();
             }
         }
         static public void CloseAllForms()
         {
             FormCollection forms = Application.OpenForms;
-            foreach (Form form in forms)
+            Form mainForm = null;
+            if (forms[System.Configuration.ConfigurationManager.AppSettings["formName"]] != null)
+                mainForm = forms[System.Configuration.ConfigurationManager.AppSettings["formName"]];
+            List<string> list = new List<string>();
+            foreach (Form frm in forms)
             {
-                CloseForm(form);
+                if (mainForm!=null && (frm.Name != mainForm.Name || frm.ParentForm.Name != mainForm.Name))
+                    list.Add(frm.Name);
             }
+            foreach (string name in list)
+                CloseForm(forms[name]);
         }
 
         delegate void CloseMethod(Form form);

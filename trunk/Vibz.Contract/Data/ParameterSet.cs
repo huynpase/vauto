@@ -38,11 +38,20 @@ namespace Vibz.Contract.Data
         {
             base.Add(param);
         }
+        public bool Contains(string paramKey)
+        {
+            foreach (Parameter param in this)
+            {
+                if (param.Name.ToLower() == paramKey.ToLower())
+                    return true;
+            }
+            return false;
+        }
         public Parameter GetParameter(string paramKey)
         {
             foreach (Parameter param in this)
             {
-                if (param.Name == paramKey)
+                if (param.Name.ToLower() == paramKey.ToLower())
                 {
                     if (_mParser != null)
                         param.Value = _mParser.Parse(param.Value);

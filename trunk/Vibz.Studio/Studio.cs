@@ -348,7 +348,8 @@ namespace Vibz.Studio
             {
                 if (_docList.Current == null)
                 {
-                    ShowMessageBox("No document selected.");
+                    ShowMessageBox("Please select a document.");
+                    return null;
                 }
 
                 IElement element = null;
@@ -739,29 +740,27 @@ namespace Vibz.Studio
                 System.Threading.Monitor.Enter(_taskLock);
                 type = (Vibz.TaskType)((object[])param).GetValue(2);
                 LogEvent(LogSeverity.Trace, Thread.CurrentThread.ManagedThreadId.ToString() + "\t******** " + type.ToString() + " begin *********");
-                ChangeButtonStatus(btnStop, true);
-                ChangeButtonStatus(btnRun, false);
-                ChangeButtonStatus(btnCompile, false);
-                ChangeMenuStatus(stopToolStripMenuItem, true);
-                ChangeMenuStatus(runToolStripMenuItem, false);
-                ChangeMenuStatus(compileToolStripMenuItem, false);
+                SetUserOptions(true);
                 TaskDelegate del = (TaskDelegate)((object[])param).GetValue(0);
                 object arg = ((object[])param).GetValue(1);
                 del(arg);
             }
             finally
             {
-                ChangeButtonStatus(btnStop, false);
-                ChangeButtonStatus(btnRun, true);
-                ChangeButtonStatus(btnCompile, true);
-                ChangeMenuStatus(stopToolStripMenuItem, false);
-                ChangeMenuStatus(runToolStripMenuItem, true);
-                ChangeMenuStatus(compileToolStripMenuItem, true);
+                SetUserOptions(false);
                 LogEvent(LogSeverity.Trace, Thread.CurrentThread.ManagedThreadId.ToString() + "\t******** " + type.ToString() + " end *********");
                 System.Threading.Monitor.Exit(_taskLock);
             }
         }
-        
+        void SetUserOptions(bool setOnRun)
+        {
+            ChangeButtonStatus(btnStop, setOnRun);
+            ChangeButtonStatus(btnRun, !setOnRun);
+            ChangeButtonStatus(btnCompile, !setOnRun);
+            ChangeMenuStatus(stopToolStripMenuItem, setOnRun);
+            ChangeMenuStatus(runToolStripMenuItem, !setOnRun);
+            ChangeMenuStatus(compileToolStripMenuItem, !setOnRun);
+        }
         #endregion
 
         #region Log
@@ -826,12 +825,14 @@ namespace Vibz.Studio
 
                     PlaySound(@"wav\testcomplete.wav");
                     LogQueue.Instance.Enqueue(new LogQueueElement("Process complete.", LogSeverity.Trace));
+                    SetUserOptions(false);
                     return;
                 case Vibz.TaskState.Error:
                     rtbLogSummary.AppendText("\r\n" + _currentTask.Message);
                     lblStatus.Text = _currentTask.Type.ToString() + " failed.";
                     timerExecution.Stop();
                     PlaySound(@"wav\executionfailed.wav");
+                    SetUserOptions(false);
                     return;
                 case Vibz.TaskState.NotStarted:
                 case Vibz.TaskState.Processing:
@@ -1093,6 +1094,7 @@ namespace Vibz.Studio
         
 
         #endregion
-        
+
+
     }
 }

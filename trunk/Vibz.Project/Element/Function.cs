@@ -58,6 +58,8 @@ namespace Vibz.Solution.Element
         [XmlIgnore()]
         public override ElementType Type { get { return ElementType.Function; } }
 
+        XmlDocument _doc = new XmlDocument();
+
         internal string _fullname;
         [XmlAttribute(Element.SuiteElement.nReference)]
         public override string FullName
@@ -110,12 +112,12 @@ namespace Vibz.Solution.Element
             if (!File.Exists(_path))
                 throw new Exception("Invalid Function file path.");
             this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Loading function '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
-            XmlDocument doc = new XmlDocument();
+            _doc = new XmlDocument();
             XmlNodeList xnlFnc = null;
             try
             {
-                doc.Load(_path);
-                xnlFnc = doc.SelectNodes(CaseFile.nSection + "/" + nFunction + "[@" + nName + "='" + _name + "']");
+                _doc.Load(_path);
+                xnlFnc = _doc.SelectNodes(CaseFile.nSection + "/" + nFunction + "[@" + nName + "='" + _name + "']");
                 if (xnlFnc.Count > 1)
                     throw new Exception("Multiple occurances of function '" + _name + "' found in '" + _path + "'.");
 
@@ -126,13 +128,13 @@ namespace Vibz.Solution.Element
             }
             try
             {
-                doc.Load(_path);
+                _doc.Load(_path);
             }
             catch (Exception exc)
             {
                 throw new Exception("Invalid Function content. " + exc.Message);
             }
-            XmlNode xnData = doc.SelectSingleNode(CaseFile.nSection + "/" + nFunction + "[@" + nName + "='" + _name + "']/" + DataCollection.nData);
+            XmlNode xnData = _doc.SelectSingleNode(CaseFile.nSection + "/" + nFunction + "[@" + nName + "='" + _name + "']/" + DataCollection.nData);
             if (xnData != null)
             {
                 DataSet = DataHandler.Load(xnData, _path, Vibz.Interpreter.Data.DataProcessor.Instance);
@@ -192,19 +194,23 @@ namespace Vibz.Solution.Element
                 return fnc;
             }
         }
-        public override string GetCompiledText() 
+        public override string GetCompiledText()
         {
-            XmlDocument doc = new XmlDocument();
+            return GetCompiledText("");
+        }
+        public string GetCompiledText(string prefix)
+        {
+            _doc = new XmlDocument();
             try
             {
-                doc.Load(_path);
+                _doc.Load(_path);
             }
             catch (Exception exc)
             {
                 throw new Exception("Invalid Function content. [" + Path + "]" + exc.Message);
             }
             this.OwnerProject.Queue.Enqueue(new Vibz.Contract.Log.LogQueueElement("Compiling function '" + this.FullName + "'.", Vibz.Contract.Log.LogSeverity.Trace));
-            XmlNodeList xnlVar = doc.SelectNodes("//" + CaseFile.nSection + "/" + CaseFile.nInclude + "/@" + CaseFile.nReference);
+            XmlNodeList xnlVar = _doc.SelectNodes("//" + CaseFile.nSection + "/" + CaseFile.nInclude + "/@" + CaseFile.nReference);
             if (xnlVar != null)
             {
                 foreach (XmlNode xnv in xnlVar)
@@ -215,7 +221,7 @@ namespace Vibz.Solution.Element
                 }
             }
             DataHandler idList = new DataHandler();
-            xnlVar = doc.SelectNodes("//" + nFunction + "[@" + nName + "='" + this.Name + "']/" + CaseFile.nInclude + "/@" + Function.nIncludeId);
+            xnlVar = _doc.SelectNodes("//" + nFunction + "[@" + nName + "='" + this.Name + "']/" + CaseFile.nInclude + "/@" + Function.nIncludeId);
             if (xnlVar != null)
             {
                 foreach (XmlNode xnv in xnlVar)
@@ -227,12 +233,12 @@ namespace Vibz.Solution.Element
                     idList.DataList.Merge(iFile.DataSet.DataList);
                 }
             }
-            XmlNode xn = doc.SelectSingleNode("//" + nFunction + "[@" + nName + "='" + this.Name + "']/" + nBody);
+            XmlNode xn = _doc.SelectSingleNode("//" + nFunction + "[@" + nName + "='" + this.Name + "']/" + nBody);
             if (xn == null)
                 throw new Exception("Invalid function call. " + this.Name);
             string retValue = "<" + nFunction + " " + nName + "=\"" + this.Name + "\""  + " " + nReference + "=\"" + this.FullName + "\">";
-            retValue += DataSet.DataList.GetCompiledText();
-            XmlNodeList xnlParsed = ParseInstructionList(xn.ChildNodes, idList);
+            retValue += DataSet.DataList.GetCompiledText(prefix);
+            XmlNodeList xnlParsed = ParseInstructionList(prefix, DataSet.DataList, xn.ChildNodes, idList);
             if (xnlParsed != null)
             {
                 xn.RemoveAll();
@@ -246,7 +252,7 @@ namespace Vibz.Solution.Element
             retValue += "</" + nFunction + ">";
             return retValue;
         }
-        XmlNodeList ParseInstructionList(XmlNodeList xnInstructionList, DataHandler idList)
+        XmlNodeList ParseInstructionList(string prefix, DataCollection dc, XmlNodeList xnInstructionList, DataHandler idList)
         {
             if (xnInstructionList == null || xnInstructionList.Count == 0)
                 return null;
@@ -262,11 +268,20 @@ namespace Vibz.Solution.Element
                 XmlNode xnInstCopy = xnInst.CloneNode(true);
                 if (xnInstCopy.Attributes != null)
                 {
-                    foreach (XmlAttribute attr in xnInstCopy.Attributes)
-                        attr.Value = Parse(attr.Value, idList);
+                    int cnt = xnInstCopy.Attributes.Count;
+                    for (int i = 0; i < cnt; i++)
+                    {
+                        XmlAttribute attr = xnInstCopy.Attributes[i];
+                        XmlAttribute attrNew = _doc.CreateAttribute(attr.Name);
+                        attrNew.Value = Parse(attr.Value, idList);
+                        if (prefix.Trim() != "")
+                            attrNew.Value = dc.SetPrefix(attrNew.Value, prefix);
+                        xnInstCopy.Attributes.SetNamedItem(attrNew);
+                        //attr.Value = Parse(attr.Value, idList);
+                    }
                 }
 
-                XmlNodeList xnlInstParsed = ParseInstructionList(xnInstCopy.ChildNodes, idList);
+                XmlNodeList xnlInstParsed = ParseInstructionList(prefix, dc, xnInstCopy.ChildNodes, idList);
                 if (xnlInstParsed != null)
                 {
                     while (xnInstCopy.ChildNodes.Count!=0)

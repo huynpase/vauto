@@ -68,7 +68,8 @@ namespace Vibz.IO
             if (data == null || data.Source == Vibz.Contract.Data.Source.SourceType.Internal.ToString())
                 throw new Exception("Destination must be an external file.");
 
-            vList.DataProcessor.Export(var, data, (ExportMode.ToLower() == DataExportMode.Insert.ToString().ToLower() ? DataExportMode.Insert : DataExportMode.Update));
+            string mode = vList.Evaluate(ExportMode);
+            vList.DataProcessor.Export(var, data, (mode == DataExportMode.Insert.ToString().ToLower() ? DataExportMode.Insert : DataExportMode.Update));
         }
     }
 }

@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Vibz.Contract.Data
 {
-    public class TextArray : IData
+    public class TextArray : BaseData
     {
         public string[] Value = new string[0];
 
@@ -31,15 +31,15 @@ namespace Vibz.Contract.Data
         public TextArray(string[] value)
         { Value = value; }
 
-        public string Type
+        public override string Type
         { get { return DataType.Array.ToString(); } }
 
-        public virtual string Source
+        public override string Source
         { get { return Vibz.Contract.Data.Source.SourceType.Internal.ToString(); } }
-       
-        public object GetValue() { return Value; }
 
-        public virtual string Evaluate(params object[] args)
+        public override object GetValue() { return Value; }
+
+        public override string Evaluate(params object[] args)
         {
             if (!ValidateValue)
                 throw new Exception("Data is not initialized.");
@@ -65,7 +65,7 @@ namespace Vibz.Contract.Data
             
             return Value.GetValue(index).ToString();
         }
-        public virtual string Evaluate(string property)
+        public override string Evaluate(string property)
         {
             if (!ValidateValue)
                 throw new Exception("Data is not initialized.");
@@ -75,10 +75,13 @@ namespace Vibz.Contract.Data
                 case "length":
                     return this.Value.Length.ToString();
                 default:
-                    throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
+                    Parameter param = this.Parameters.GetParameter(property.ToLower());
+                    if (param == null)
+                        throw new Exception("Invalid property '" + property + "' for " + Type + " data type.");
+                    return param.Value;
             }
         }
-        public virtual string Evaluate(string method, params object[] args)
+        public override string Evaluate(string method, params object[] args)
         {
             if (!ValidateValue)
                 throw new Exception("Data is not initialized.");

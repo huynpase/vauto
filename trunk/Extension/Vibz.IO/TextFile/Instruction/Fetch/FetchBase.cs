@@ -20,25 +20,31 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Vibz.Contract.Common;
 using Vibz.Contract;
-using System.IO;
+using Vibz.Contract.Attribute;
 using Vibz.Contract.Data;
-namespace Vibz.IO.TextFile.Instruction
-{
-    public abstract class IOInstructionBase : InstructionBase, IError
-    {
 
-        protected Vibz.Contract.Data.DataHandler vList = null;
-        protected delegate void delOpern(object content);
-        [XmlIgnore()]
-        protected delOpern operation;
-        string _filePath = "c://file.txt";
-        [XmlAttribute("filepath")]
-        public string FilePath
+namespace Vibz.IO.TextFile.Instruction.Fetch
+{
+    public abstract class FetchBase : IOInstructionBase, IFetch
+    {
+        public FetchBase()
         {
-            get { return _filePath; }
-            set { _filePath = value; }
+            Type = InstructionType.Fetch;
         }
+        private string _output = "assignto";
+        [XmlAttribute("assignto")][AttributeInfo("Fetches the content of file.")]
+        public string Output
+        {
+            get { return _output; }
+            set { _output = value; }
+        }
+        public abstract IData Fetch();
+        public virtual IData Fetch(Vibz.Contract.Data.DataHandler varList)
+        {
+            vList = varList;
+            return Fetch();
+        }
+        
     }
 }
