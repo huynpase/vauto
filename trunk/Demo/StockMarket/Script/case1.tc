@@ -1,6 +1,7 @@
 <section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <include ref="Vibz.IO"/>
   <include ref="Vibz.Web"/>
+  <include ref="Vibz.Net"/>
   <include ref="Vibz.Desktop"/>
   <function name="RecordDayData">
     <include id="case1.id"></include>
@@ -86,6 +87,28 @@
       </for>
       <export destination="@dataDestination" source="@result" mode="@mode"/>
     </body>
+  </function>
+  <function name="Rediff_ProcessStockGroupA">
+    <include id="case1.id"></include>
+    <data>
+      <var name="dataDestination" type="datatable"></var>
+    </data>
+    <body>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/gainers/bse/daily/groupa]]></var>
+          <var name="mode">update</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <call name="ProcessStocksListedInUrl">
+        <data>
+          <var name="url"><![CDATA[http://money.rediff.com/losers/bse/daily/groupa]]></var>
+          <var name="mode">insert</var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+       </call>
+      </body>
   </function>
   <function name="Rediff_ProcessAllStocks">
     <include id="case1.id"></include>
@@ -206,7 +229,7 @@
 			<body>
 				<evaluate expression="@dataSource[@rowindex][0]" assignto="compName"></evaluate>
 				<set var="message" value="parse(concat(@message, __newline,@compName, __space,:,__space, @stockGrade))"></set>
-				<invoke method="@hotStock.add(@compName, @stockGrade)"></invoke>
+				<invoke method="@hotStock.add(@compName, concat(@stockGrade,&lt;/br&gt;))"></invoke>
 			</body>	
 		      </case>
 		</if>
@@ -237,7 +260,7 @@
       <var name="dataDestination" type="keyvalueset"></var>
     </data>
     <body>
-      <getlatestfileindirectory directory="@directory" assignto="dataSource" pattern="CompanyDetailedReport*txt"></getlatestfileindirectory>
+      <getlatestfileindirectory directory="@directory" assignto="dataSource" pattern="CompanyADetailedReport*txt"></getlatestfileindirectory>
       <call name="AlertHotStocks">
         <data>
           <var name="dataSource" source="text" type="datatable">
@@ -248,7 +271,32 @@
           <var name="dataDestination">@dataDestination</var>
         </data>
       </call>
-      <append  filepath="parse(concat(__currentpath,log.txt))" content="parse(sysdate)"></append>
+      <append filepath="parse(concat(__currentpath,log.txt))" content="parse(sysdate)"></append>
+    </body>
+  </function>
+  <function name="PostOnBlog">
+    <include id="case1.id"></include>
+    <data>
+      <var name="directory" type="scalar"></var>
+      <var name="dataDestination" type="keyvalueset"></var>
+      <var name="fromuserid" type="scalar"></var>
+      <var name="frompassword" type="scalar"></var>
+      <var name="to" type="scalar"></var>
+    </data>
+    <body>
+      <getlatestfileindirectory directory="@directory" assignto="dataSource" pattern="CompanyADetailedReport*txt"></getlatestfileindirectory>
+      <call name="AlertHotStocks">
+        <data>
+          <var name="dataSource" source="text" type="datatable">
+        	<param name="path">@dataSource</param>
+        	<param name="rowseperationchar">parse(__newline)</param>
+        	<param name="colseperationchar">parse(__tab)</param>
+          </var>
+          <var name="dataDestination">@dataDestination</var>
+        </data>
+      </call>
+      <read assignto="hotStock" filepath="@dataDestination.path"></read>
+      <sendmail body="@hotStock" frompassword="@frompassword" fromuserid="@fromuserid" subject="parse(sysdate)" to="@to"></sendmail>
     </body>
   </function>
 </section>
