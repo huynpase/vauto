@@ -6,8 +6,8 @@
         <value><![CDATA[parse(__currentpath)]]></value>
       </var>
       <var onerror="break" name="dataDestination" source="text" type="keyvalueset">
-        <param name="path">parse(concat(__currentpath,/StockData/HotStock.txt))</param>
         <value><![CDATA[]]></value>
+        <param name="path">parse(concat(__currentpath,/StockData/AHotStock.txt))</param>
       </var>
     </data>
   </function>
