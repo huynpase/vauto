@@ -28,6 +28,7 @@ namespace Vibz.Contract.Macro
 {
     public class MacroParser
     {
+        public const string KeyWord = "parse";
         DataHandler _vList;
         IMacroManager _macroManager;
         public MacroParser(IMacroManager mgr, DataHandler handler)
@@ -50,7 +51,7 @@ namespace Vibz.Contract.Macro
             MemberInfo[] mis = inst.GetType().FindMembers(MemberTypes.Field | MemberTypes.Property,
                 BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance, null, null);
 
-            string par = "parse(";
+            string par = KeyWord + "(";
             foreach (MemberInfo mi in mis)
             {
                 if (mi.GetCustomAttributes(true).Length == 0)
@@ -90,7 +91,7 @@ namespace Vibz.Contract.Macro
         }
         public string Parse(string macroText)
         {
-            string par = "parse(";
+            string par = KeyWord + "(";
             if (macroText.StartsWith(par) && macroText.EndsWith(")"))
             {
                 string parseText = macroText.Substring(par.Length, macroText.LastIndexOf(')') - par.Length);
@@ -98,7 +99,7 @@ namespace Vibz.Contract.Macro
             }
             return _vList.Evaluate(macroText);
         }
-        string Evaluate(string macroString)
+        public string Evaluate(string macroString)
         {
             
             try
@@ -119,7 +120,7 @@ namespace Vibz.Contract.Macro
                             string val = cmd.Substring(startIndex, currentIndex - startIndex).Trim();
                             if (val != "")
                             {
-                                if (!IsAFunction(val))
+                                if (!val.StartsWith("@") && !IsAFunction(val))
                                     throw new Exception("Macro function '" + val + "' is not defined.");
                                 items.Push(val);
                             }
@@ -153,19 +154,24 @@ namespace Vibz.Contract.Macro
                                 items.Push(Evaluate(val, null));
                             while (true)
                             {
-                                string item = _vList.Evaluate(items.Pop());
-                                if (IsAFunction(item))
+                                string command = items.Pop();
+                                object paramObj = new object[param.Count];
+                                if (param.Count == 1)
+                                    paramObj = param[0].ToString();
+                                else
+                                    param.CopyTo((object[])paramObj);
+
+                                command = _vList.Evaluate(command, param.ToArray());
+                                if (IsAFunction(command))
                                 {
-                                    object paramObj = new object[param.Count];
-                                    if (param.Count == 1)
-                                        paramObj = param[0].ToString();
-                                    else
-                                        param.CopyTo((object[])paramObj);
-                                    items.Push(Evaluate(item, paramObj));
+                                    items.Push(Evaluate(command, paramObj));
                                     break;
                                 }
                                 else
-                                    param.Add(item);
+                                {
+                                    param.Add(command);
+                                }
+
                             }
                             startIndex = currentIndex + 1;
                             break;
@@ -200,7 +206,11 @@ namespace Vibz.Contract.Macro
             switch (ftype.Interface.Name.ToLower())
             {
                 case "imacrofunction":
-                    return ((IMacroFunction)fObj).Evaluate(param);
+                    {
+                        if (param == null)
+                            return macro;
+                        return ((IMacroFunction)fObj).Evaluate(param);
+                    }
                 case "imacrovariable":
                     return ((IMacroVariable)fObj).Value;
                 default:

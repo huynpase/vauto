@@ -22,11 +22,17 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Vibz.Contract;
+using Vibz.Contract.Macro;
 namespace Vibz.Contract.Data
 {
     public class DataHandler
     {
         public DataHandler() { }
+        public DataHandler(IDataProcessor handler, IMacroManager manager)
+        {
+            _dataProcessor = handler;
+            _macroManager = manager;
+        }
         [XmlElement(Var.nNodeName)]
         public DataCollection DataList = new DataCollection();
         IDataProcessor _dataProcessor = null;
@@ -36,9 +42,17 @@ namespace Vibz.Contract.Data
             get { return _dataProcessor; }
             set { _dataProcessor = value; }
         }
-        public DataHandler(IDataProcessor handler)
+        MacroParser _macroParser = null;
+        IMacroManager _macroManager;
+        [XmlIgnore()]
+        public MacroParser MacroParser
         {
-            _dataProcessor = handler;
+            get { 
+                if(_macroParser==null)
+                    _macroParser = new MacroParser(_macroManager, this);
+                return _macroParser; 
+            }
+            set { _macroParser = value; }
         }
         public IData GetData(string name)
         {
@@ -49,6 +63,19 @@ namespace Vibz.Contract.Data
                 return this.DataList.Get(nameData).Data;
             else
                 return new Text(Evaluate(name));
+        }
+        public string Evaluate(string name, params object[] args)
+        {
+            if (name.StartsWith("@") && name.Contains(".") && args.Length > 0)
+            {
+                name += "(";
+                foreach (object obj in args)
+                {
+                    name += obj.ToString() + ",";
+                }
+                name = name.Substring(0, name.Length - 1) + ")";
+            }
+            return Evaluate(name);
         }
         public string Evaluate(string name)
         {
@@ -94,14 +121,30 @@ namespace Vibz.Contract.Data
                             string method = methodArg.Substring(0, methodArg.IndexOf('('));
                             string argString = methodArg.Substring(methodArg.IndexOf('(') + 1, methodArg.LastIndexOf(')') - methodArg.IndexOf('(') - 1);
                             string[] argset = argString.Split(new string[] { "," }, StringSplitOptions.None);
-                            string[] newArgs = new string[argset.Length];
+                            //string[] newArgs = new string[argset.Length];
+                            ArrayList newArgs = new ArrayList();
+                            string prevArg = "";
                             for (int i = 0; i < argset.Length; i++)
                             {
-                                newArgs.SetValue(Evaluate(argset.GetValue(i).ToString().Trim()), i);
+                                string arg = argset.GetValue(i).ToString().Trim();
+                                arg = (prevArg.Trim() != "" ? prevArg + "," + arg : arg);
+                                if ((i < argset.Length - 1) && 
+                                    (arg.Contains("(") || arg.Contains(")")) &&
+                                    !Vibz.Helper.String.IsValidFunction(arg))
+                                {
+                                    prevArg = arg;
+                                    continue;
+                                }
+                                prevArg = "";
+                                newArgs.Add(Evaluate(arg));
+                                //newArgs.SetValue(Evaluate(arg), i);
                             }
+
                             try
                             {
-                                return DataProcessor.Evaluate(this.DataList.Get(key), method, newArgs);
+                                string[] argList=new string[newArgs.Count];
+                                newArgs.CopyTo(argList);
+                                return DataProcessor.Evaluate(this.DataList.Get(key), method, argList);
                             }
                             catch (Exception exc)
                             {
@@ -149,6 +192,13 @@ namespace Vibz.Contract.Data
                         return retValue;
                     }
                 }
+                else // Evaluate Macro
+                {
+                    if (name.StartsWith(MacroParser.KeyWord + "("))
+                        name = MacroParser.Parse(name);
+                    else
+                        name = MacroParser.Evaluate(name);                        
+                }
                 return name;
             }
             catch (Exception exc)
@@ -164,10 +214,10 @@ namespace Vibz.Contract.Data
             System.Text.RegularExpressions.Regex(@"([\+\-\*])").Replace(expression, " ${1} ")
             .Replace("/", " div ").Replace("%", " mod ")));
         }
-        
-        public static DataHandler Load(XmlNode node, string path, IDataProcessor handler)
+
+        public static DataHandler Load(XmlNode node, string path, IDataProcessor handler, IMacroManager manager)
         {
-            DataHandler dh = new DataHandler(handler);
+            DataHandler dh = new DataHandler(handler, manager);
             if (node == null)
                 return dh;
             XmlNodeList xnlVars = node.SelectNodes(Var.nNodeName);
