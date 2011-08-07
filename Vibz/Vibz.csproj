@@ -40,6 +40,7 @@
     <Compile Include="Helper\Dictionary.cs" />
     <Compile Include="Helper\IO.cs" />
     <Compile Include="Helper\Math.cs" />
+    <Compile Include="Helper\String.cs" />
     <Compile Include="Helper\Time.cs" />
     <Compile Include="Helper\Xml.cs" />
     <Compile Include="ITask.cs" />

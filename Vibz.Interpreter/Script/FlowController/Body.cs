@@ -88,8 +88,7 @@ namespace Vibz.Interpreter.Script.FlowController
                 {
                     try
                     {
-                        MacroParser macro = new MacroParser(Configuration.MacroManager.Instance, vList);
-                        macro.Parse(inst);
+                        vList.MacroParser.Parse(inst);
                         string additionalInfo = "";
                         switch (inst.Type)
                         {

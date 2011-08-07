@@ -95,7 +95,7 @@ namespace Vibz.Interpreter
                     LogElement fncLog = new LogElement("Executing function '" + function.Name + "'.");
                     try
                     {
-                        function.Execute(function.DataSet, waitInterval);
+                        function.Execute(waitInterval);
                         fncLog.Add(function.Name + ": Executed.", LogSeverity.Info);
                         fncLog.Add(function.InfoEnd);
                     }

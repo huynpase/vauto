@@ -72,7 +72,7 @@ namespace Vibz.Solution.Element.PreCompile
                 string funcName = function.Substring(function.LastIndexOf("/") + 1);
                 FileInfo fi = Reference.ResolveFunction(OwnerFunction, function);
                 Function fnc = OwnerFunction.OwnerProject.CreateFunction(fi, funcName);
-                fnc.DataSet = DataHandler.Load(xnCall.SelectSingleNode(Call.Data.nData), OwnerFunction.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
+                fnc.DataSet = DataHandler.Load(xnCall.SelectSingleNode(Call.Data.nData), OwnerFunction.Path, Vibz.Interpreter.Data.DataProcessor.Instance, Vibz.Interpreter.Configuration.MacroManager.Instance);
 
                 string fncText = fnc.GetCompiledText(funcName);
                 XmlNode node = (XmlNode)xnCall.OwnerDocument.CreateElement(Call.nCall);

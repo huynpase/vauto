@@ -137,7 +137,7 @@ namespace Vibz.Solution.Element
             XmlNode xnData = _doc.SelectSingleNode(CaseFile.nSection + "/" + nFunction + "[@" + nName + "='" + _name + "']/" + DataCollection.nData);
             if (xnData != null)
             {
-                DataSet = DataHandler.Load(xnData, _path, Vibz.Interpreter.Data.DataProcessor.Instance);
+                DataSet = DataHandler.Load(xnData, _path, Vibz.Interpreter.Data.DataProcessor.Instance, Vibz.Interpreter.Configuration.MacroManager.Instance);
             }
         }
         public static Function LoadFromSuite(string path, string fullname, int index, Project prj)
@@ -172,7 +172,7 @@ namespace Vibz.Solution.Element
             XmlNode xnData = doc.SelectSingleNode(SuiteFile.nSuite + "/" + nFunction + "[" + index.ToString() + "]/" + DataCollection.nData);
             if (xnData != null)
             {
-                DataHandler dh = DataHandler.Load(xnData, retValue.Path, Vibz.Interpreter.Data.DataProcessor.Instance);
+                DataHandler dh = DataHandler.Load(xnData, retValue.Path, Vibz.Interpreter.Data.DataProcessor.Instance, Vibz.Interpreter.Configuration.MacroManager.Instance);
                 foreach (Var dm in dh.DataList)
                 {
                     retValue.DataSet.DataList.Update(dm);

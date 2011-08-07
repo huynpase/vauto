@@ -43,12 +43,19 @@ namespace Vibz.Interpreter.Script.FlowController
             get
             {
                 if (_dataSet == null)
-                    _dataSet = new DataHandler(Vibz.Interpreter.Data.DataProcessor.Instance);
+                    _dataSet = new DataHandler(Vibz.Interpreter.Data.DataProcessor.Instance, Configuration.MacroManager.Instance);
                 return _dataSet;
             }
             set
             {
-                _dataSet = value;
+                if (value == null)
+                    _dataSet = new DataHandler(Vibz.Interpreter.Data.DataProcessor.Instance, Configuration.MacroManager.Instance);
+                else
+                {
+                    _dataSet = value;
+                    _dataSet.DataProcessor = Vibz.Interpreter.Data.DataProcessor.Instance;
+                    _dataSet.MacroParser = new MacroParser(Configuration.MacroManager.Instance, _dataSet);
+                }
             }
         }
 
@@ -66,18 +73,17 @@ namespace Vibz.Interpreter.Script.FlowController
                 _body = value;
             }
         }
-        public void Execute(DataHandler vList)
+        public void Execute()
         {
-            Execute(vList, 0);
+            Execute(0);
         }
-        public void Execute(DataHandler vList, int waitInterval)
+        public void Execute(int waitInterval)
         {
             _progress = new Vibz.Contract.Log.LogElement("Executing function '" + Name + "'.");
             try
             {
-                MacroParser macro = new MacroParser(Configuration.MacroManager.Instance, vList);
-                ParameterSet.SetParser(macro);
-                this.Body.Execute(vList, waitInterval);
+                ParameterSet.SetParser(DataSet.MacroParser);
+                this.Body.Execute(DataSet, waitInterval);
                 _progress.Add(Body.InfoEnd);
             }
             catch (Exception exc)
